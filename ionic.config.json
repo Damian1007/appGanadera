@@ -1,0 +1,7 @@
+{
+  "name": "appGanadera",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
