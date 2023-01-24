@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "app-ganadera-64d0f": {
+      "hosting": {
+        "app": [
+          "app-ganadera-64d0f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "app-ganadera-64d0f"
+  }
+}
