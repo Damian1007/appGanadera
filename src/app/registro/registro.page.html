@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    
     <ion-title>Registrarse</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,18 +12,48 @@
   <form [formGroup]="form" novalidate (ngSubmit)="registro()">
     <ion-list>
       <ion-item>
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input formControlName="email"></ion-input>
+        <ion-label position="stacked">Correo Electronico</ion-label>
+        <ion-input formControlName="correo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input formControlName="apellido"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-input type="password" formControlName="contraseña"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Confirmar Contraseña</ion-label>
-        <ion-input type="password" formControlName="confirmPassword"></ion-input>
+        <ion-input type="password" formControlName="confirmarContraseña"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">País</ion-label>
+        <ion-input formControlName="pais"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Teléfono</ion-label>
+        <ion-input formControlName="telefono"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Departamento</ion-label>
+        <ion-input formControlName="departamento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Ciudad</ion-label>
+        <ion-input formControlName="ciudad"></ion-input>
       </ion-item>
     </ion-list>
 

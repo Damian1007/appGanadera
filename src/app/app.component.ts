@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AutentificarService } from './services/autentificar.service';
+import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +18,19 @@ export class AppComponent {
     { title: 'Trash', url: '', icon: 'trash' },
     { title: 'Spam', url: '', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  
+  usuario$ = this.autentificarService.authState$.pipe(
+    filter(state => state ? true : false)
+  );
+
+  constructor(
+    private autentificarService : AutentificarService,
+    private router : Router
+  ) {}
+
+  cerrarSesion() {
+    this.autentificarService.cerrarSesion();
+    this.router.navigate(['/login']);
+  }
+
 }

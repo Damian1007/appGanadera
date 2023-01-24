@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AutentificarService } from './../services/autentificar.service';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +11,29 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginPage implements OnInit {
 
   form = this.formBuilder.group({
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', [Validators.required]],
+    correo: ['', [Validators.email, Validators.required]],
+    contraseña: ['', [Validators.required]],
   });
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(
+    private formBuilder : FormBuilder,
+    private autentificarService : AutentificarService,
+    private router : Router,
+  ) { }
 
   ngOnInit() {
   }
 
   login(){
     if(this.form.valid) {
-      const {email, password} = this.form.getRawValue();
-      console.log(email, password);
+      const {correo, contraseña} = this.form.getRawValue();
+      this.autentificarService.iniciarSesion(correo, contraseña)
+      .then(() => {
+        this.router.navigate(['/seleccionar-finca']);
+      })
+      .catch(error => {
+        console.error(error);
+      });
     } else {
       this.form.markAllAsTouched();
     }

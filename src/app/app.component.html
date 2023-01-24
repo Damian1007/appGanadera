@@ -3,13 +3,22 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ng-container *ngIf="usuario$ | async as usuario">
+            <ion-list-header>Nombre</ion-list-header>
+            <ion-note>{{ usuario.email }}</ion-note>
+          </ng-container>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" (click)="cerrarSesion()">
+              <ion-icon slot="start" icon="log-out"></ion-icon>
+              <ion-label>Cerrar Sesión</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
