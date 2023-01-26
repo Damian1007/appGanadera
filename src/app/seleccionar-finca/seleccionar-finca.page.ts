@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-seleccionar-finca',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeleccionarFincaPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public menuCtrl: MenuController
+  ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true);
   }
 
 }

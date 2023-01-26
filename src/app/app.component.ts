@@ -28,9 +28,9 @@ export class AppComponent {
     private router : Router
   ) {}
 
-  cerrarSesion() {
-    this.autentificarService.cerrarSesion();
-    this.router.navigate(['/login']);
+  async cerrarSesion() {
+    await this.autentificarService.cerrarSesion();
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 
 }

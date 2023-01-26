@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AutentificarService } from './../services/autentificar.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -19,23 +20,28 @@ export class LoginPage implements OnInit {
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
+    public menuCtrl: MenuController
   ) { }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+
   login(){
     if(this.form.valid) {
-      const {correo, contraseña} = this.form.getRawValue();
-      this.autentificarService.iniciarSesion(correo, contraseña)
-      .then(() => {
-        this.router.navigate(['/seleccionar-finca']);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+        const {correo, contraseña} = this.form.getRawValue();
+        this.autentificarService.iniciarSesion(correo, contraseña)
+        .then(() => {
+          this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
+        })
+        .catch(error => {
+          console.error(error);
+        });
     } else {
-      this.form.markAllAsTouched();
+        this.form.markAllAsTouched();
     }
   }
 
