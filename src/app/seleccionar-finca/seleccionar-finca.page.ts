@@ -15,8 +15,8 @@ export class SeleccionarFincaPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewDidEnter() {
-    this.menuCtrl.enable(true);
-  }
+  // ionViewDidEnter() {
+  //   this.menuCtrl.enable(true);
+  // }
 
 }

@@ -1,0 +1,27 @@
+.icono{
+    block-size: 60px;
+    width: 80px;
+}
+
+.nombre{
+    font-size: 22px;
+
+    padding-left: 15%;
+}
+
+.proposito{
+    font-size: 18px;
+
+    padding-left: 5%;
+}
+
+ion-button[shape=circle] {
+    position: absolute;
+
+    --border-radius: 50%;
+    width: 70px;
+    height: 70px;
+
+    right: 15px;
+    bottom: 5%;
+}

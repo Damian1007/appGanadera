@@ -28,6 +28,10 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     data: { authGuardPipe : redirectUnauthorizedToLogin },
     loadChildren: () => import('./seleccionar-finca/seleccionar-finca.module').then( m => m.SeleccionarFincaPageModule)
+  },
+  {
+    path: 'crear-finca',
+    loadChildren: () => import('./crear-finca/crear-finca.module').then( m => m.CrearFincaPageModule)
   }
 ];
 
