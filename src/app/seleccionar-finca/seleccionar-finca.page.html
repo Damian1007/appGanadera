@@ -10,22 +10,22 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="full">
+    <ion-item *ngFor="let finca of fincas" lines="full">
       <ion-thumbnail  class="icono" slot="start">
-        Foto
+        <img src={{finca.foto}}>
       </ion-thumbnail >
       
       <ion-label class="nombre">
-        Nombre
+        {{finca.nombre}}
       </ion-label>
 
       <ion-label class="proposito">
-        Prososito
+        {{finca.orientacion}}
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-button shape="circle" color="primary">
+  <ion-button shape="circle" color="primary" routerLink="/crear-finca">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
 </ion-content>

@@ -19,7 +19,7 @@ import { AuthGuardModule } from '@angular/fire/auth-guard';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), 
-    AuthGuardModule
+    AuthGuardModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
