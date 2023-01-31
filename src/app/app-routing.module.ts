@@ -32,7 +32,11 @@ const routes: Routes = [
   {
     path: 'crear-finca',
     loadChildren: () => import('./crear-finca/crear-finca.module').then( m => m.CrearFincaPageModule)
-  }
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({

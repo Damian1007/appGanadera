@@ -17,6 +17,7 @@ export class SeleccionarFincaPage implements OnInit {
     private fincaService : FincaService
   ) { 
       this.fincas = [{
+        id: '',
         nombre: '',
         orientacion: '',
         areaFinca: '',
