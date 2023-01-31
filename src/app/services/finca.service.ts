@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore, deleteDoc, doc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, Firestore, deleteDoc, doc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Finca } from '../interfaces/finca';
 
@@ -9,7 +9,8 @@ import { Finca } from '../interfaces/finca';
 })
 export class FincaService {
 
-  constructor(private firestore : Firestore) { }
+  constructor(
+    private firestore : Firestore) { }
 
   addFinca(finca : Finca) {
     const fincaRef = collection(this.firestore, 'fincas');
@@ -21,8 +22,14 @@ export class FincaService {
     return collectionData(fincaRef, { idField: 'id'}) as Observable<Finca[]>;
   }
 
+  getFinca(finca : Finca): Observable<Finca> {
+    const fincaDocRef = doc(this.firestore, `fincas/${finca.id}`);
+    return docData(fincaDocRef) as Observable<Finca>;
+  }
+
   deleteFinca(finca : Finca) {
     const fincaDocRef = doc(this.firestore, 'finca/${finca.id}');
     return deleteDoc(fincaDocRef);
-  } 
+  }
+
 }

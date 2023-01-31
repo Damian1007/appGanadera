@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Finca } from '../interfaces/finca';
 import { FincaService } from '../services/finca.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seleccionar-finca',
@@ -14,7 +15,8 @@ export class SeleccionarFincaPage implements OnInit {
 
   constructor(
     public menuCtrl: MenuController,
-    private fincaService : FincaService
+    private fincaService : FincaService,
+    private router : Router
   ) { 
       this.fincas = [{
         id: '',
@@ -34,6 +36,12 @@ export class SeleccionarFincaPage implements OnInit {
     this.fincaService.getFincas().subscribe(fincas => {
       this.fincas = fincas;
     })
+  }
+
+  getId(id : any) {
+    localStorage.setItem('id', id);
+    console.log(id);
+    this.router.navigate(['/tabs/finca/id']);
   }
 
   // ionViewDidEnter() {
