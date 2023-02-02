@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'actualizar-finca',
+    loadChildren: () => import('./actualizar-finca/actualizar-finca.module').then( m => m.ActualizarFincaPageModule)
+  },
 ];
 
 @NgModule({

@@ -14,81 +14,82 @@
     <img src={{finca.foto}}>
   </ion-card>
 
-  <!-- <ion-fab vertical="top" horizontal="end">
+  <ion-fab vertical="top" horizontal="end">
     <ion-fab-button class="btn" >
       <ion-icon name="chevron-down-circle"></ion-icon>
     </ion-fab-button>
+    
     <ion-fab-list side="bottom">
-      <ion-fab-button class="btns" [routerLink]="['/actualizar-finca', id]">
+      <ion-fab-button class="btns" routerLink='/actualizar-finca'>
         <ion-icon name="pencil"></ion-icon>
       </ion-fab-button>
 
-      <ion-fab-button class="btns">
+      <ion-fab-button class="btns" (click)="EliminarFinca()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
-  </ion-fab> -->
+  </ion-fab>
 
-  <ion-grid>
+  <ion-grid class="grid">
     <ion-row>
-      <ion-col>
+      <ion-col class="atributo">
         <ion-label>Orientacion:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.orientacion}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <ion-label>Area Total:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Area Total:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.areaFinca}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <ion-label>Area para Ganaderia:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Area Ganaderia:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.areaGanaderia}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <ion-label>Departamento:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Departamento:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.departamento}}</ion-label>
       </ion-col>
     </ion-row>
     
     <ion-row>
-      <ion-col>
-        <ion-label>Ciudad:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Ciudad:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.ciudad}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <ion-label>Corregimiento:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Corregimiento:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.corregimiento}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <ion-label>Coordenadas:</ion-label>
+      <ion-col class="atributo">
+        <ion-label >Coordenadas:</ion-label>
       </ion-col>
-      <ion-col>
+      <ion-col class="valor">
         <ion-label>{{finca.coordenadas}}</ion-label>
       </ion-col>
     </ion-row>

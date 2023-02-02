@@ -41,7 +41,7 @@ export class SeleccionarFincaPage implements OnInit {
   getId(id : any) {
     localStorage.setItem('id', id);
     console.log(id);
-    this.router.navigate(['/tabs/finca/id']);
+    this.router.navigate(['/tabs/finca']);
   }
 
   // ionViewDidEnter() {

@@ -33,5 +33,6 @@ export class CrearFincaPage implements OnInit {
 
   crearFinca() {
     this.fincaService.addFinca(this.form.getRawValue());
+    this.router.navigate(['/seleccionar-finca']);
   }
 }

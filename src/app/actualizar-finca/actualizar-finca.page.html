@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Actualizar Finca</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" novalidate (ngSubmit)="actualizarFinca()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Orientación</ion-label>
+        <ion-select formControlName="orientacion" placeholder="Selecciona una Orientación">
+          <ion-select-option value="Doble Proposito">Doble Proposito</ion-select-option>
+          <ion-select-option value="Carne">Carne</ion-select-option>
+          <ion-select-option value="Leche">Leche</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Área total de la finca</ion-label>
+        <ion-input formControlName="areaFinca"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Área para ganadería</ion-label>
+        <ion-input formControlName="areaGanaderia"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Departamento</ion-label>
+        <ion-input formControlName="departamento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Ciudad</ion-label>
+        <ion-input formControlName="ciudad"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Corregimiento</ion-label>
+        <ion-input formControlName="corregimiento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Coordenadas</ion-label>
+        <ion-input formControlName="coordenadas"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Actualizar Finca</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

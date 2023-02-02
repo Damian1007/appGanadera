@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '', icon: 'mail' },
+    { title: 'Seleccionar Finca', url: 'seleccionar-finca', icon: 'home' },
     { title: 'Outbox', url: '', icon: 'paper-plane' },
     { title: 'Favorites', url: '', icon: 'heart' },
     { title: 'Archived', url: '', icon: 'archive' },

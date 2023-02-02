@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'finca/:id',
+        path: 'finca',
         loadChildren: () => import('../finca/finca.module').then( m => m.FincaPageModule)
       }
     ]
