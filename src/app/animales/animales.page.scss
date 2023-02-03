@@ -1,0 +1,29 @@
+.icono{
+    block-size: 60px;
+    width: 80px;
+}
+
+.nombre{
+    font-size: 26px;
+
+    padding-left: 10%;
+}
+
+.genero{
+    font-size: 24px;
+
+    padding-left: 20%;
+}
+
+ion-button[shape=circle] {
+    position: absolute;
+
+    --background: #3880ff;
+
+    --border-radius: 50%;
+    width: 70px;
+    height: 70px;
+
+    right: 15px;
+    bottom: 5%;
+}

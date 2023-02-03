@@ -4,28 +4,31 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Seleccionar Finca</ion-title>
+    <ion-title>Animales</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
   <ion-list>
-    <ion-item *ngFor="let finca of fincas" lines="full" (click)="getId(finca.id)">
-      <ion-thumbnail  class="icono" slot="start">
-        <img src={{finca.foto}}>
+    <ion-item *ngFor="let animal of animales" lines="full" >
+      <ion-thumbnail class="icono" class="icono" slot="start">
+        <img src={{animal.foto}}>
       </ion-thumbnail >
       
       <ion-label class="nombre">
-        {{finca.nombre}}
+        {{animal.nombre}}
       </ion-label>
 
-      <ion-label class="proposito">
-        {{finca.orientacion}}
+      <ion-label class="genero">
+        {{animal.genero}}
       </ion-label>
+      
     </ion-item>
   </ion-list>
 
-  <ion-button shape="circle" color="primary" routerLink="/crear-finca">
+  <ion-button shape="circle" routerLink="/crear-animal">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
+
 </ion-content>

@@ -11,7 +11,11 @@ const routes: Routes = [
       {
         path: 'finca',
         loadChildren: () => import('../finca/finca.module').then( m => m.FincaPageModule)
-      }
+      },
+      {
+        path: 'animales',
+        loadChildren: () => import('../animales/animales.module').then( m => m.AnimalesPageModule)
+      },
     ]
   }
 ];

@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'actualizar-finca',
     loadChildren: () => import('./actualizar-finca/actualizar-finca.module').then( m => m.ActualizarFincaPageModule)
   },
+  {
+    path: 'crear-animal',
+    loadChildren: () => import('./crear-animal/crear-animal.module').then( m => m.CrearAnimalPageModule)
+  },
 ];
 
 @NgModule({
