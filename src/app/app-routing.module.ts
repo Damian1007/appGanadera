@@ -30,12 +30,12 @@ const routes: Routes = [
     loadChildren: () => import('./seleccionar-finca/seleccionar-finca.module').then( m => m.SeleccionarFincaPageModule)
   },
   {
-    path: 'crear-finca',
-    loadChildren: () => import('./crear-finca/crear-finca.module').then( m => m.CrearFincaPageModule)
-  },
-  {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'crear-finca',
+    loadChildren: () => import('./crear-finca/crear-finca.module').then( m => m.CrearFincaPageModule)
   },
   {
     path: 'actualizar-finca',
@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: 'crear-animal',
     loadChildren: () => import('./crear-animal/crear-animal.module').then( m => m.CrearAnimalPageModule)
+  },
+  {
+    path: 'actualizar-animal',
+    loadChildren: () => import('./actualizar-animal/actualizar-animal.module').then( m => m.ActualizarAnimalPageModule)
   },
 ];
 

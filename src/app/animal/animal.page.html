@@ -4,14 +4,14 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>{{finca.nombre}}</ion-title>
+    <ion-title>{{animal.nombre}}</ion-title>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <img src={{finca.foto}}>
+    <img src={{animal.foto}}>
   </ion-card>
 
   <ion-fab vertical="top" horizontal="end">
@@ -20,11 +20,11 @@
     </ion-fab-button>
     
     <ion-fab-list side="bottom">
-      <ion-fab-button class="btns" routerLink='/actualizar-finca'>
+      <ion-fab-button class="btns" routerLink='/actualizar-animal'>
         <ion-icon name="pencil"></ion-icon>
       </ion-fab-button>
 
-      <ion-fab-button class="btns" (click)="eliminarFinca()">
+      <ion-fab-button class="btns" (click)="eliminarAnimal()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
@@ -33,67 +33,75 @@
   <ion-grid class="grid">
     <ion-row>
       <ion-col class="atributo">
-        <ion-label>Orientacion:</ion-label>
+        <ion-label>Genero:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.orientacion}}</ion-label>
+        <ion-label>{{animal.genero}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Area Total:</ion-label>
+        <ion-label >Lote:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.areaFinca}}</ion-label>
+        <ion-label>{{animal.lote}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Area Ganaderia:</ion-label>
+        <ion-label >Raza:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.areaGanaderia}}</ion-label>
+        <ion-label>{{animal.raza}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Departamento:</ion-label>
+        <ion-label >Grupo Etario:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.departamento}}</ion-label>
+        <ion-label>{{animal.grupoEtario}}</ion-label>
       </ion-col>
     </ion-row>
     
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Ciudad:</ion-label>
+        <ion-label >Fecha de Nacimiento:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.ciudad}}</ion-label>
+        <ion-label>{{animal.fechaNacimiento}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Corregimiento:</ion-label>
+        <ion-label >Padre:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.corregimiento}}</ion-label>
+        <ion-label>{{animal.padre}}</ion-label>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col class="atributo">
-        <ion-label >Coordenadas:</ion-label>
+        <ion-label >Madre:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{finca.coordenadas}}</ion-label>
+        <ion-label>{{animal.madre}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="atributo">
+        <ion-label >Peso Actual:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{animal.pesoActual}}</ion-label>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  
 </ion-content>

@@ -38,4 +38,9 @@ export class AnimalesPage implements OnInit {
     })
   }
 
+  async getId(id : any) {
+    await localStorage.setItem('animalId', id);
+    this.router.navigate(['/tabs/animal'], { replaceUrl: true });
+  }
+
 }

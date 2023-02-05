@@ -28,7 +28,7 @@ export class FincaService {
       ciudad: finca.ciudad,
       corregimiento: finca.corregimiento,
       coordenadas: finca.coordenadas
-    } );
+    });
   }
 
   getFincas(): Observable<Finca[]> {
@@ -41,11 +41,10 @@ export class FincaService {
     return docData(fincaDocRef) as Observable<Finca>;
   }
 
-   deleteFinca(finca : Finca) {
-    const fincaDocRef = doc(this.firestore, `finca/${finca.id}`);
-    return deleteDoc(fincaDocRef).then(() => {
-      console.log("hhhhhhhhh");
-    })
+  async deleteFinca(id : any) {
+    console.log(id);
+    const fincaDocRef = doc(this.firestore, `fincas/${id}`);
+    await deleteDoc(fincaDocRef);
   }
 
 }

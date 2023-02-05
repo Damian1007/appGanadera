@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class FincaPage implements OnInit {
 
   finca : Finca;
+  fincaId = localStorage.getItem('id');
 
   constructor(
     private fincaService : FincaService,
@@ -33,12 +34,11 @@ export class FincaPage implements OnInit {
   ngOnInit() {  
     this.fincaService.getFinca(this.finca.id).subscribe(finca => {
       this.finca = finca;
-      console.log(finca);
     })
   }
 
-  EliminarFinca() {
-    this.fincaService.deleteFinca(this.finca);
+  eliminarFinca() {
+    this.fincaService.deleteFinca(this.fincaId);
     this.router.navigate(['/seleccionar-finca']);
   }
 }

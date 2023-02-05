@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Actualizar Animal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" novalidate (ngSubmit)="actualizarAnimal()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Genero</ion-label>
+        <ion-select formControlName="genero" placeholder="Selecciona un genero">
+          <ion-select-option value="Macho">Macho</ion-select-option>
+          <ion-select-option value="Hembra">Hembra</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Lote</ion-label>
+        <ion-input formControlName="lote"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Raza</ion-label>
+        <ion-select formControlName="raza" placeholder="Selecciona una Raza">
+          <ion-select-option value="Normando">Normando</ion-select-option>
+          <ion-select-option value="Jersey">Jersey</ion-select-option>
+          <ion-select-option value="Criolla">Criolla</ion-select-option>
+          <ion-select-option value="Nelore">Nelore</ion-select-option>
+          <ion-select-option value="Brahman">Brahman</ion-select-option>
+          <ion-select-option value="Holstein ">Holstein </ion-select-option>
+          <ion-select-option value="Otra ">Otra </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Grupo Etario</ion-label>
+        <ion-select formControlName="grupoEtario" placeholder="Selecciona un Grupo">
+          <ion-select-option value="Ternero(a) ordeño">Ternero(a) ordeño</ion-select-option>
+          <ion-select-option value="Ternero(a) levante">Ternero(a) levante</ion-select-option>
+          <ion-select-option value="Novillo">Novillo</ion-select-option>
+          <ion-select-option value="Novilla de vientre">Novilla de vientre</ion-select-option>
+          <ion-select-option value="Vaca lactante">Vaca lactante</ion-select-option>
+          <ion-select-option value="Vaca seca (horra)">Vacas secas (horras)</ion-select-option>
+          <ion-select-option value="Toro">Toro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+        <ion-input formControlName="fechaNacimiento"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Padre</ion-label>
+        <ion-input formControlName="padre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Madre</ion-label>
+        <ion-input formControlName="madre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Peso Actual</ion-label>
+        <ion-input formControlName="pesoActual"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Actualizar Animal</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

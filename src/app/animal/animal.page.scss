@@ -1,0 +1,44 @@
+.grid{
+    font-size: 18px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+ion-row{
+    margin-top: 10px; 
+}
+
+ion-col{
+    border-bottom-style: solid;
+    border-color: #3880ff;
+    border-width: 1px;
+}
+
+.atributo{
+    text-align: left;
+    margin-left: 15px;
+}
+
+.valor{
+    text-align: center;
+    margin-right: 15px;
+}
+
+ion-fab-button::part(native){
+    --background-color: blue;
+}
+
+ion-fab-button.btn{
+    width: 65px;
+    height: 65px;
+}
+
+ion-fab-button.btns{
+    margin-left: 6px;
+
+    width: 55px;
+    height: 55px;
+
+    --background: #3880ff;
+    --color: white;
+}
