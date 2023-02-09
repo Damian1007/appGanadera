@@ -33,12 +33,13 @@ export class LoginPage implements OnInit {
   login(){
     if(this.form.valid) {
         const {correo, contraseña} = this.form.getRawValue();
+
         this.autentificarService.iniciarSesion(correo, contraseña)
         .then(() => {
           this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
         })
         .catch(error => {
-          console.error(error);
+          console.error(error, "Error al Iniciar Sesión");
         });
     } else {
         this.form.markAllAsTouched();

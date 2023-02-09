@@ -16,7 +16,7 @@ export class SeleccionarFincaPage implements OnInit {
   constructor(
     public menuCtrl: MenuController,
     private fincaService : FincaService,
-    private router : Router
+    private router : Router,
   ) { 
       this.fincas = [{
         id: '',
