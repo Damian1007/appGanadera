@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc } from '@angular/fire/firestore';
-import { filter, Observable } from 'rxjs';
+import { addDoc, collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc, setDoc } from '@angular/fire/firestore';
+import { filter, map, Observable } from 'rxjs';
 import { Finca } from '../interfaces/finca';
 import { MiembrosService } from './miembros.service';
 import { AutentificarService } from '../services/autentificar.service';
@@ -16,9 +16,10 @@ export class FincaService {
     private autentificarService : AutentificarService) { }
 
   async addFinca(finca : Finca) {
-    const fincaRef = collection(this.firestore, 'fincas');
-    await addDoc(fincaRef, finca);
-    // this.miembroService.addMiembro(finca.id, )
+    const fincaRef = doc(this.firestore, `fincas/${finca.id}`);
+    await setDoc(fincaRef, finca)
+
+    this.miembroService.addMiembro(finca.id, localStorage.getItem("usuarioId"), "Propietario");
   }
 
   updateFinca(finca : Finca, id : any) {
