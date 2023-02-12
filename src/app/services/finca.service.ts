@@ -17,7 +17,7 @@ export class FincaService {
 
   async addFinca(finca : Finca) {
     const fincaRef = doc(this.firestore, `fincas/${finca.id}`);
-    await setDoc(fincaRef, finca)
+    await setDoc(fincaRef, finca);
 
     this.miembroService.addMiembro(finca.id, localStorage.getItem("usuarioId"), "Propietario");
   }
@@ -39,7 +39,7 @@ export class FincaService {
 
   getFincas(): Observable<Finca[]> {
     const fincaRef = collection(this.firestore, 'fincas');
-    return collectionData(fincaRef, { idField: 'id'}) as Observable<Finca[]>;
+    return collectionData(fincaRef) as Observable<Finca[]>;
   }
 
   getFinca(id : any): Observable<Finca> {

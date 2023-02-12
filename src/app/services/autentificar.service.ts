@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, authState } from '@angular/fire/auth';
-import { addDoc, collection, doc, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, doc, docData, Firestore } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
+import { Observable } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
 
 @Injectable({
@@ -16,9 +17,9 @@ export class AutentificarService {
     private firestore : Firestore
     ) { }
 
-    getUid() {
-      localStorage.setItem("usuarioId", this.afAutentificador.currentUser.uid);
-    }
+  getUid() {
+    localStorage.setItem("usuarioId", this.afAutentificador.currentUser.uid);
+  }
     
   registroAuth(correo: string, contraseña: string) {
     return createUserWithEmailAndPassword(this.afAutentificador, correo, contraseña)
@@ -28,9 +29,9 @@ export class AutentificarService {
   registroUsu(usuario : Usuario) {
       const usuarioDocRef = doc(this.firestore, `usuarios/${usuario.id}`);
       return setDoc(usuarioDocRef, usuario);
-    }
+  }
 
-   iniciarSesion(correo: string, contraseña: string) {
+  iniciarSesion(correo: string, contraseña: string) {
     return signInWithEmailAndPassword(this.afAutentificador, correo, contraseña)
     .then(() => {
       this.getUid();
@@ -39,5 +40,10 @@ export class AutentificarService {
 
   cerrarSesion() {
     return signOut(this.afAutentificador);
+  }
+
+  getUsuario(usuarioId : any): Observable<Usuario> {
+    const animalDocRef = doc(this.firestore, `usuarios/${usuarioId}`);
+    return docData(animalDocRef) as Observable<Usuario>;
   }
 }
