@@ -12,6 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ActualizarFincaPage implements OnInit {
 
   form = this.formBuilder.group({
+    id: ['', [Validators.required]], 
     nombre: ['', [Validators.required]],
     orientacion: ['', [Validators.required]],
     areaFinca: ['', [Validators.required]],
@@ -24,6 +25,7 @@ export class ActualizarFincaPage implements OnInit {
   });
 
   finca : Finca;
+  fincaId = localStorage.getItem("id");
 
   constructor(
     private formBuilder : FormBuilder,
@@ -31,7 +33,7 @@ export class ActualizarFincaPage implements OnInit {
     private fincaService : FincaService
   ) { 
       this.finca = {
-        id: localStorage.getItem('id'),
+        id: '',
         nombre: '',
         orientacion: '',
         areaFinca: '',
@@ -45,12 +47,24 @@ export class ActualizarFincaPage implements OnInit {
     }
 
   ngOnInit() {
-    this.fincaService.getFinca(this.finca.id).subscribe(finca => {
-      this.form.setValue(finca);
+    this.fincaService.getFinca(this.fincaId).subscribe(finca => {
+      this.form.setValue({
+        id : finca.id,
+        nombre: finca.nombre,
+        orientacion: finca.orientacion,
+        areaFinca: finca.areaFinca,
+        areaGanaderia: finca.areaGanaderia,
+        foto: finca.foto,
+        departamento: finca.departamento,
+        ciudad: finca.ciudad,
+        corregimiento: finca.corregimiento,
+        coordenadas: finca.coordenadas
+      });
     })
   }
 
   actualizarFinca() {
+    this.finca.id = this.form.getRawValue().id;
     this.finca.nombre = this.form.getRawValue().nombre;
     this.finca.orientacion = this.form.getRawValue().orientacion;
     this.finca.areaFinca = this.form.getRawValue().areaFinca;
