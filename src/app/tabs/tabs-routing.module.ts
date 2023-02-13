@@ -20,6 +20,18 @@ const routes: Routes = [
         path: 'animal',
         loadChildren: () => import('../animal/animal.module').then( m => m.AnimalPageModule)
       },
+      {
+        path: 'produccion',
+        loadChildren: () => import('../finca/finca.module').then( m => m.FincaPageModule)
+      },
+      {
+        path: 'alertas',
+        loadChildren: () => import('../animales/animales.module').then( m => m.AnimalesPageModule)
+      },
+      {
+        path: 'informes',
+        loadChildren: () => import('../animales/animales.module').then( m => m.AnimalesPageModule)
+      },
     ]
   }
 ];

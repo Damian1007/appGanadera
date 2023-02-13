@@ -38,7 +38,11 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ngOnInit(){
-    this.getFinca();
+    this.fincaService.getFincas().subscribe(finca => {
+      this.fincas = finca;
+    });
+
+    //this.getFinca();
   }
 
   ionViewDidLeave(){

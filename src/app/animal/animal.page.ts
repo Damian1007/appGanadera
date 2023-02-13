@@ -13,7 +13,7 @@ export class AnimalPage implements OnInit {
 
   animal : Animal;
   fincaId = localStorage.getItem('id');
-  animalId : any;
+  animalId = localStorage.getItem('animalId');
 
   constructor(
     private animalService : AnimalService,
@@ -35,11 +35,6 @@ export class AnimalPage implements OnInit {
     }
 
   ngOnInit() {    
-  }
-
-  ionViewWillEnter() {
-    this.animalId = localStorage.getItem('animalId');
-
     this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
       this.animal = animal;
     })

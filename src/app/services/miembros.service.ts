@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, doc, docData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
 import { map } from 'rxjs';
 import { Finca } from '../interfaces/finca';
@@ -22,5 +22,10 @@ export class MiembrosService {
   getMiembro(fincaId : any, usuarioId : any) {
     const miembroDocRef = doc(this.firestore, `fincas/${fincaId}/miembros/${usuarioId}`);
     return docData(miembroDocRef); 
+  }
+
+  async deleteMiembro(fincaId : any, usuarioId : any) {
+    const miembroDocRef = doc(this.firestore, `fincas/${fincaId}/miembros/${usuarioId}`);
+    await deleteDoc(miembroDocRef);
   }
 }
