@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Actualizar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" novalidate (ngSubmit)="actualizarUsuario()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input formControlName="correo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input formControlName="apellido"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item> -------- CAMBIAR CONTARSEÑA -------------
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input formControlName="contraseña"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Confirmar Contraseña</ion-label>
+        <ion-input formControlName="confirmarContraseña"></ion-input>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label position="stacked">Pais</ion-label>
+        <ion-input formControlName="pais"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Telefono</ion-label>
+        <ion-input formControlName="telefono"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Departamento</ion-label>
+        <ion-input formControlName="departamento"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Ciudad</ion-label>
+        <ion-input formControlName="ciudad"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Actualizar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

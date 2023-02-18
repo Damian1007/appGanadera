@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimalService } from '../services/animal.service';
 import { Animal } from '../interfaces/animal';
-import { url } from 'inspector';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-animal',
@@ -12,9 +12,10 @@ import { url } from 'inspector';
 export class AnimalPage implements OnInit {
 
   animal : Animal;
-  fincaId = localStorage.getItem('id');
-  animalId = localStorage.getItem('animalId');
-
+  fincaId : any;
+  animalId : any;
+  animalSub : Subscription;
+  
   constructor(
     private animalService : AnimalService,
     private router : Router
@@ -35,13 +36,28 @@ export class AnimalPage implements OnInit {
     }
 
   ngOnInit() {    
-    this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
+    
+  }
+
+  ionViewWillEnter(){
+    this.fincaId = localStorage.getItem('id');
+    this.animalId = localStorage.getItem('animalId');
+
+    this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
       this.animal = animal;
-    })
+    });
+  }
+
+  ionViewDidLeave() {
+    this.animalSub.unsubscribe;
+  }
+
+  actualizarAnimal() {
+    this.router.navigate(['/actualizar-animal'], { replaceUrl: true });
   }
 
   eliminarAnimal() {
     this.animalService.deleteAnimal(this.fincaId, this.animalId)
-    this.router.navigate(['/tabs/animales']);
+    this.router.navigate(['/tabs/animales'], { replaceUrl: true });
   }
 }

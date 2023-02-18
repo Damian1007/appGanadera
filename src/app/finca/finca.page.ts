@@ -45,8 +45,9 @@ export class FincaPage implements OnInit {
   }
 
   eliminarFinca() {
-    this.miembroService.deleteMiembro(this.fincaId, this.usuarioId);
-    this.fincaService.deleteFinca(this.fincaId);
+    console.log("Desconectado");
+    // this.miembroService.deleteMiembro(this.fincaId, this.usuarioId);
+    // this.fincaService.deleteFinca(this.fincaId);
     this.router.navigate(['/seleccionar-finca']);
   }
 }

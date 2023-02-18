@@ -12,8 +12,8 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   public appPages = [
     { title: 'Seleccionar Finca', url: 'seleccionar-finca', icon: 'home' },
-    { title: 'Miembros', url: 'seleccionar-finca', icon: 'paper-plane' },
-    { title: 'Usuario', url: 'seleccionar-finca', icon: 'heart' },
+    { title: 'Perfil de Usuario', url: 'usuario', icon: 'person-circle' },
+    { title: 'Miembros', url: 'seleccionar-finca', icon: 'people' },
   ];
   
   usuario$ = this.autentificarService.authState$.pipe(

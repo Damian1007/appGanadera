@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Animal } from '../interfaces/animal';
 import { AnimalService } from '../services/animal.service';
 
@@ -13,6 +14,7 @@ export class ActualizarAnimalPage implements OnInit {
 
   animal : Animal;
   fincaId : any = localStorage.getItem('id');
+  animalSub : Subscription;
 
   form = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -48,9 +50,13 @@ export class ActualizarAnimalPage implements OnInit {
     }
 
   ngOnInit() {
-    this.animalService.getAnimal(this.fincaId, this.animal.id).subscribe(animal => {
+    this.animalSub = this.animalService.getAnimal(this.fincaId, this.animal.id).subscribe(animal => {
       this.form.setValue(animal);
     })
+  }
+
+  ionViewDidLeave() {
+    this.animalSub.unsubscribe();
   }
 
   actualizarAnimal() {
@@ -66,7 +72,7 @@ export class ActualizarAnimalPage implements OnInit {
     this.animal.pesoActual = this.form.getRawValue().pesoActual;
 
     this.animalService.updateAnimal(this.animal, this.fincaId, this.animal.id);
-    this.router.navigate(['/tabs/animal']);
+    this.router.navigate(['/tabs/animal'], { replaceUrl: true });
   }
 
 }

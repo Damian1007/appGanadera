@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, authState } from '@angular/fire/auth';
-import { addDoc, collection, doc, docData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
@@ -43,7 +43,22 @@ export class AutentificarService {
   }
 
   getUsuario(usuarioId : any): Observable<Usuario> {
-    const animalDocRef = doc(this.firestore, `usuarios/${usuarioId}`);
-    return docData(animalDocRef) as Observable<Usuario>;
+    const usuarioDocRef = doc(this.firestore, `usuarios/${usuarioId}`);
+    return docData(usuarioDocRef) as Observable<Usuario>;
+  }
+
+  updateUsuario(usuario : Usuario, usuarioId : any) {
+    const usuarioDocRef = doc(this.firestore, `usuarios/${usuarioId}`);
+    return updateDoc(usuarioDocRef, {
+      correo: usuario.correo,
+      nombre: usuario.nombre,
+      apellido: usuario.apellido,
+      contraseña: usuario.contraseña,
+      pais: usuario.pais,
+      telefono: usuario.telefono,
+      departamento: usuario.departamento,
+      ciudad: usuario.ciudad,
+    });
   }
 }
+

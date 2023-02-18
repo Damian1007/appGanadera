@@ -15,7 +15,9 @@ export class SeleccionarFincaPage implements OnInit {
 
   fincas : Finca[];
   usuarioId = localStorage.getItem("usuarioId");
-  
+  fincaSub : Subscription;
+  miembroSub : Subscription;
+
   constructor(
     private fincaService : FincaService,
     public menuCtrl: MenuController,
@@ -38,23 +40,24 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ngOnInit(){
-    this.fincaService.getFincas().subscribe(finca => {
-      this.fincas = finca;
-    });
+    // this.fincaService.getFincas().subscribe(finca => {
+    //   this.fincas = finca;
+    // });
 
-    //this.getFinca();
+    this.getFinca();
   }
 
   ionViewDidLeave(){
-
+    this.fincaSub.unsubscribe();
+    this.miembroSub.unsubscribe();
   }
 
   getFinca() {
-    this.fincaService.getFincas().subscribe(finca => {
+    this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
       this.fincas.pop()
 
       for (let i = 0; i < finca.length; i++) {
-        this.miembrosServices.getMiembro(finca[i].id, this.usuarioId).subscribe(miembro => {
+        this.miembroSub = this.miembrosServices.getMiembro(finca[i].id, this.usuarioId).subscribe(miembro => {
           if(miembro) {
             console.log(miembro['id'], finca[i].id);
             this.fincas.push(finca[i]);
@@ -62,10 +65,9 @@ export class SeleccionarFincaPage implements OnInit {
           else {
             console.log(miembro);
           } 
-        });  
+        });
       }
     });
-    
   }
 
   getId(id : any) {
@@ -73,32 +75,4 @@ export class SeleccionarFincaPage implements OnInit {
     this.router.navigate(['/tabs/finca'], { replaceUrl: true });
   }
   
-  // ionViewDidEnter() {
-  //   this.menuCtrl.enable(true);
-  // }
-
-  // ngOnInit(){
-  //   this.fincaLoader = this.fincaService.getFincas().subscribe(finca => {
-  //     this.fincas = finca;
-
-  //     this.fincasVista.pop();
-  //     this.fincas.forEach(finca => {
-  //       //console.log(finca);
-  //       this.miembroLoader = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe(miembro => {
-  //         //console.log(miembro);
-  //         if(miembro) {
-  //           // console.log(miembro);
-  //           if(miembro['id'] == this.usuarioId) {
-  //             this.fincasVista.push(finca);
-  //           }
-  //         }
-  //       })
-  //     });
-  //   });
-  // }
-
-  // ionViewDidLeave(){
-  //   this.fincaLoader.unsubscribe();
-  //   this.miembroLoader.unsubscribe();
-  // }
 }
