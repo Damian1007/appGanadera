@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Miembros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let miembro of miembros" lines="full" (click)="getId(miembro.id)">
+      
+      <ion-label class="nombre">
+        {{miembro.nombre}} {{miembro.apellido}}
+      </ion-label>
+
+      <ion-label class="rol">
+        {{miembro.rol}}
+      </ion-label>
+      
+    </ion-item>
+  </ion-list>
+
+  <ion-button shape="circle" >
+    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+  </ion-button>
+
+</ion-content>

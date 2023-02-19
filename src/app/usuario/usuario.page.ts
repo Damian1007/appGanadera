@@ -36,4 +36,8 @@ export class UsuarioPage implements OnInit {
     });
   }
 
+  ionViewDidLeave() {
+    this.usuarioSub.unsubscribe();
+  }
+
 }

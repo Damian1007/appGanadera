@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
-import { map } from 'rxjs';
-import { Finca } from '../interfaces/finca';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +15,11 @@ export class MiembrosService {
       id: usuarioId,
       rol: rol
     });
+  }
+
+  getMiembros(fincaId : any) {
+    const miembroRef = collection(this.firestore, `fincas/${fincaId}/miembros`);
+    return collectionData(miembroRef, { idField: 'id'});
   }
 
   getMiembro(fincaId : any, usuarioId : any) {

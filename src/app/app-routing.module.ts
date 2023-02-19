@@ -57,6 +57,10 @@ const routes: Routes = [
     path: 'actualizar-usuario',
     loadChildren: () => import('./actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
+  {
+    path: 'miembros',
+    loadChildren: () => import('./miembros/miembros.module').then( m => m.MiembrosPageModule)
+  },
 ];
 
 @NgModule({

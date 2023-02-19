@@ -1,0 +1,20 @@
+.nombre{
+    font-size: 16px;
+
+    padding-left: 10%;
+}
+
+.rol{
+    font-size: 16px;
+}
+
+ion-button[shape=circle] {
+    position: absolute;
+
+    --border-radius: 50%;
+    width: 70px;
+    height: 70px;
+
+    right: 15px;
+    bottom: 5%;
+}

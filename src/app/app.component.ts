@@ -13,7 +13,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Seleccionar Finca', url: 'seleccionar-finca', icon: 'home' },
     { title: 'Perfil de Usuario', url: 'usuario', icon: 'person-circle' },
-    { title: 'Miembros', url: 'seleccionar-finca', icon: 'people' },
+    { title: 'Miembros', url: 'miembros', icon: 'people' },
   ];
   
   usuario$ = this.autentificarService.authState$.pipe(
