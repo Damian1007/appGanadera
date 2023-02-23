@@ -16,8 +16,8 @@ export class FincaService {
     private autentificarService : AutentificarService) { }
 
   async addFinca(finca : Finca) {
-    const fincaRef = doc(this.firestore, `fincas/${finca.id}`);
-    await setDoc(fincaRef, finca);
+    const fincaDocRef = doc(this.firestore, `fincas/${finca.id}`);
+    await setDoc(fincaDocRef, finca);
 
     this.miembroService.addMiembro(finca.id, localStorage.getItem("usuarioId"), "Propietario");
   }

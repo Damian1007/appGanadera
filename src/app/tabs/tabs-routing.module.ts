@@ -19,7 +19,11 @@ const routes: Routes = [
       {
         path: 'animal',
         loadChildren: () => import('../animal/animal.module').then( m => m.AnimalPageModule)
-      }
+      },
+      {
+        path: 'salud',
+        loadChildren: () => import('../salud/salud.module').then( m => m.SaludPageModule)
+      },
     ]
   }
 ];

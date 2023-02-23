@@ -1,0 +1,135 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+
+    <ion-title>Historial Medico</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let historia of historias" lines="full" (click)="getId(historia.id)">
+      
+      <ion-label class="nombre">
+        {{historia.nombre}}
+      </ion-label>
+
+      <ion-label class="ref">
+        {{historia.ref}}
+      </ion-label>
+
+      <ion-label class="fecha">
+        {{historia.fecha}}
+      </ion-label>
+      
+    </ion-item>
+  </ion-list>
+
+  <ion-label>
+    
+  </ion-label>
+
+  <ion-button id="open-modal" shape="circle">
+    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+  </ion-button>
+
+  <!----------------------------------- 1er Modal ------------------------------------------->
+  <ion-modal #modal [backdropDismiss]="true" trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Selecciona el tipo de Historia</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form [formGroup]="form" novalidate (ngSubmit)="tipo()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Tipo de Historia</ion-label>
+              <ion-select formControlName="ref" placeholder="Selecciona un tipo:">
+                <ion-select-option value="Enfermedad">Enfermedad</ion-select-option>
+                <ion-select-option value="Vacuna">Vacuna</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" expand="block" (click)="setOpen(true)">Continuar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!----------------------------------- 2do Modal ------------------------------------------->
+  <ion-modal class="modal2" [backdropDismiss]="true" [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar Historia de {{historia.ref}}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form [formGroup]="form" novalidate (ngSubmit)="crearHistoria()">
+
+          <!-------------------------VENTANA ENFERMEDAD------------------------------>
+          <ion-list *ngIf="historia.ref == 'Enfermedad'">
+            
+            <ion-item>
+              <ion-label position="stacked">Nombre de la Enfermedad</ion-label>
+              <ion-input formControlName="nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Sintomas</ion-label>
+              <ion-input formControlName="sintomas"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Nombre y cantidad del Medicamento</ion-label>
+              <ion-input formControlName="nomCan_med"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Fecha de inyección del medicamento</ion-label>
+              <ion-input formControlName="fecha"></ion-input>
+            </ion-item>
+          </ion-list>
+
+          <!-------------------------VENTANA VACUNA------------------------------>
+          <ion-list *ngIf="historia.ref == 'Vacuna'">
+            <br>
+            <ion-item>
+              <ion-label position="stacked">Nombre de la Vacuna</ion-label>
+              <ion-input formControlName="nombre"></ion-input>
+            </ion-item>
+            
+            <br>
+            <ion-item>
+              <ion-label position="stacked">Fecha de Vacunación</ion-label>
+              <ion-input formControlName="fecha"></ion-input>
+            </ion-item>
+            <br>
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" expand="block" (click)="setOpen(false)">Continuar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>

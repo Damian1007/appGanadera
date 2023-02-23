@@ -49,7 +49,7 @@ export class AnimalPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.animalSub.unsubscribe;
+    this.animalSub.unsubscribe();
   }
 
   actualizarAnimal() {
@@ -59,5 +59,17 @@ export class AnimalPage implements OnInit {
   eliminarAnimal() {
     this.animalService.deleteAnimal(this.fincaId, this.animalId)
     this.router.navigate(['/tabs/animales'], { replaceUrl: true });
+  }
+
+  salud() {
+    this.router.navigate(['/tabs/salud']);
+  }
+
+  produccion() {
+    console.log("pro");
+  }
+
+  reproduccion() {
+    console.log("rep");
   }
 }
