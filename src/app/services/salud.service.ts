@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Salud } from '../interfaces/salud';
 
@@ -20,5 +20,10 @@ export class SaludService {
   getHistorias(fincaId : any, animalId : any): Observable<Salud[]> {
     const saludRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/salud`);
     return collectionData(saludRef, { idField: 'id'}) as Observable<Salud[]>;
+  }
+
+  getHistoria(fincaId : any, animalId : any, id : any): Observable<Salud> {
+    const saludDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}/salud/${id}`);
+    return docData(saludDocRef) as Observable<Salud>;
   }
 }

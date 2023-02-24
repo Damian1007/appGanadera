@@ -71,7 +71,8 @@ export class SaludPage implements OnInit {
 
   getId(id : any) {
     localStorage.setItem('saludId', id);
-    console.log(localStorage.getItem('saludId'));
+    //console.log(localStorage.getItem('saludId'));
+    this.router.navigate(['/historia']);
   }
 
   tipo() {

@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/salud"></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+
+    <ion-title>{{historia.nombre}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label>Tipo:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.ref}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label >Nombre:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.nombre}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label >Sintomas:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.sintomas}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label >Medicamento y Cantidad:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.nomCan_med}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label >Fecha de Inyección:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.fecha}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+
+  </ion-grid>
+</ion-content>
