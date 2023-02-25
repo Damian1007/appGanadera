@@ -66,7 +66,7 @@ export class AnimalPage implements OnInit {
   }
 
   produccion() {
-    console.log("pro");
+    this.router.navigate(['/tabs/produccion-carne']);
   }
 
   reproduccion() {

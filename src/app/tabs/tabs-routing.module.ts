@@ -24,6 +24,14 @@ const routes: Routes = [
         path: 'salud',
         loadChildren: () => import('../salud/salud.module').then( m => m.SaludPageModule)
       },
+      {
+        path: 'produccion-carne',
+        loadChildren: () => import('../produccion-carne/produccion-carne.module').then( m => m.ProduccionCarnePageModule)
+      },
+      {
+        path: 'produccion-leche',
+        loadChildren: () => import('../produccion-leche/produccion-leche.module').then( m => m.ProduccionLechePageModule)
+      },
     ]
   }
 ];

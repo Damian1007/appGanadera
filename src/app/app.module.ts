@@ -12,6 +12,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
 
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +23,7 @@ import { AuthGuardModule } from '@angular/fire/auth-guard';
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), 
     AuthGuardModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, NgChartsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
