@@ -11,4 +11,44 @@
 
 <ion-content>
   <canvas id="myChart" width="400" height="400"></canvas>
+
+  <div class="peso">
+    <ion-button id="open-modal" (click)="agregarPeso()">Agregar Peso</ion-button>
+  </div>
+
+  <!----------------------------------- Modal ------------------------------------------->
+  
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Nuevo Peso</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form [formGroup]="form" novalidate (ngSubmit)="agregarPeso()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Peso</ion-label>
+              <ion-input formControlName="peso"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Fecha</ion-label>
+              <ion-input formControlName="fecha"></ion-input>
+            </ion-item>
+
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" expand="block">Agregar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+
+    </ng-template>
+  </ion-modal>
 </ion-content>
