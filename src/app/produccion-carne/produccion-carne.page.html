@@ -13,7 +13,7 @@
   <canvas id="myChart" width="400" height="400"></canvas>
 
   <div class="peso">
-    <ion-button id="open-modal" (click)="agregarPeso()">Agregar Peso</ion-button>
+    <ion-button id="open-modal">Agregar Peso</ion-button>
   </div>
 
   <!----------------------------------- Modal ------------------------------------------->
@@ -34,10 +34,20 @@
               <ion-input formControlName="peso"></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item (click)="showPicker = !showPicker">
               <ion-label position="stacked">Fecha</ion-label>
-              <ion-input formControlName="fecha"></ion-input>
+              <ion-input maxlength="0">{{fechaValor}}</ion-input>
             </ion-item>
+            
+            <ion-datetime *ngIf="showPicker"
+              #datetime
+              [value]="dateValor"
+              size="cover"
+              presentation="date"
+              (ionChange)="tiempoChange(datetime.value)"
+              showDefaultButtons="true"
+              (ionCancel)="showPicker = false"
+            ></ion-datetime>
 
           </ion-list>
 
