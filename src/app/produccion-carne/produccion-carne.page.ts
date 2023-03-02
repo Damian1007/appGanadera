@@ -8,6 +8,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
+import { clearCanvas } from 'chart.js/dist/helpers/helpers.canvas';
 
 @Component({
   selector: 'app-produccion-carne',
@@ -21,12 +22,14 @@ export class ProduccionCarnePage implements OnInit {
   fincaId : any;
   animalId : any;
   graficaSub : Subscription;
+  myChart : Chart
 
   showPicker = false;
   dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
-  pesoArray : any[];
-  fechaArray : any[];
+  pesajesArray : any[];
+  label : any[];
+  data : any[];
 
   form = this.formBuilder.group({
     peso: ['', [Validators.required]],
@@ -52,40 +55,65 @@ export class ProduccionCarnePage implements OnInit {
   ionViewWillEnter() {
     this.fincaId = localStorage.getItem('id');
     this.animalId = localStorage.getItem('animalId');
-    this.pesoArray = [];
-    this.fechaArray = [];
-
-    this.graficaSub = this.produccionService.getPesajes(this.fincaId, this.animalId).subscribe(pesajes => {
-      pesajes.forEach(pesaje => {
-        this.pesoArray.push(pesaje.peso);
-        this.fechaArray.push(pesaje.fecha);
-      });
-      //console.log(this.pesoArray, this.fechaArray);
-      this.crearGrafico();
-    });
-
     
+    this.mostrarGrafico();
   }
 
   ionViewDidLeave() {
     this.graficaSub.unsubscribe();
   }
 
+  mostrarGrafico() {
+    this.pesajesArray = [];
+    this.label = [];
+    this.data = [];
+
+    this.graficaSub = this.produccionService.getPesajes(this.fincaId, this.animalId).subscribe(pesajes => {
+      pesajes.forEach(pesaje => {
+        
+        this.pesajesArray.push(
+          {peso : pesaje.peso, fecha : pesaje.fecha}
+        );
+
+      });
+
+      this.pesajesArray.sort(function (a, b) {
+        if (a.fecha > b.fecha) {
+          return 1;
+        }
+
+        if (a.fecha < b.fecha) {
+          return -1;
+        }
+        
+        // a must be equal to b
+        return 0;
+      });
+
+      this.pesajesArray.forEach(p => {
+        this.label.push(p.fecha);
+        this.data.push(p.peso);
+      });
+
+      this.crearGrafico();
+    });
+  }
+
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
   setTiempo() {
-    this.fechaValor = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'dd/MM/yyyy');
+    this.fechaValor = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'yyyy/MM/dd');
   }
 
   tiempoChange(value: any) {
     this.dateValor = value;
-    this.fechaValor = format(parseISO(value), 'dd/MM/yyyy');
+    this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
     this.showPicker = false;
   }
   // <!------------------------------------------------------------------------------------------------------>
 
 
-  agregarPeso() {
+  async agregarPeso() {
     this.form.setValue({peso : this.form.getRawValue().peso, fecha : this.fechaValor});
     console.log(this.form.getRawValue());
 
@@ -93,20 +121,24 @@ export class ProduccionCarnePage implements OnInit {
     this.pesaje.fecha = this.form.getRawValue().fecha
 
     this.modal.dismiss(null, 'peso');
+    this.graficaSub.unsubscribe();
 
-    this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
+    this.myChart.destroy();
+    await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
+
+    this.mostrarGrafico();
   }
 
   crearGrafico() {
     const canvas = document.getElementById('myChart');
     const ctx = (canvas as HTMLCanvasElement).getContext('2d');
-    const myChart = new Chart(ctx, {
+    this.myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: this.fechaArray,
+        labels: this.label,
         datasets: [{
           label: 'Peso en KG',
-          data: this.pesoArray,
+          data: this.data,
           
         }]
       },
