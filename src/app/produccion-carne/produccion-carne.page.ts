@@ -115,7 +115,7 @@ export class ProduccionCarnePage implements OnInit {
 
   async agregarPeso() {
     this.form.setValue({peso : this.form.getRawValue().peso, fecha : this.fechaValor});
-    console.log(this.form.getRawValue());
+    //console.log(this.form.getRawValue());
 
     this.pesaje.peso = this.form.getRawValue().peso
     this.pesaje.fecha = this.form.getRawValue().fecha

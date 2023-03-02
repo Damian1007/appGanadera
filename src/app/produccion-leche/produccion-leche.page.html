@@ -1,9 +1,65 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>produccion_leche</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+
+    <ion-title>Producción de Leche</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <canvas id="myChart" width="400" height="400"></canvas>
 
+  <div class="leche">
+    <ion-button id="open-modal">Agregar Ordeño</ion-button>
+  </div>
+
+    <!----------------------------------- Modal ------------------------------------------->
+  
+    <ion-modal trigger="open-modal">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Nuevo Ordeño</ion-title>
+          </ion-toolbar>
+        </ion-header>
+  
+        <ion-content class="ion-padding">
+          <form [formGroup]="form" novalidate (ngSubmit)="agregarLeche()">
+            <ion-list>
+              <ion-item>
+                <ion-label position="stacked">Leche</ion-label>
+                <ion-input formControlName="leche"></ion-input>
+              </ion-item>
+  
+              <ion-item (click)="showPicker = !showPicker">
+                <ion-label position="stacked">Fecha</ion-label>
+                <ion-input maxlength="0">{{fechaValor}}</ion-input>
+              </ion-item>
+              
+              <ion-datetime *ngIf="showPicker"
+                #datetime
+                [value]="dateValor"
+                size="cover"
+                presentation="date"
+                (ionChange)="tiempoChange(datetime.value)"
+                showDefaultButtons="true"
+                (ionCancel)="showPicker = false"
+              ></ion-datetime>
+  
+            </ion-list>
+  
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" expand="block">Agregar</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-content>
+  
+      </ng-template>
+    </ion-modal>
 </ion-content>
