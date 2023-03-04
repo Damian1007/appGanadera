@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+
+    <ion-title>Reproducción</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let evento of eventos" lines="full">
+      
+      <ion-label class="tipo">
+        {{evento.tipo}}
+      </ion-label>
+
+      <ion-label class="fecha">
+        {{evento.fecha}}
+      </ion-label>
+      
+    </ion-item>
+  </ion-list>
+
+  <ion-button id="open-modal" class="agregar" expand="block">Agregar</ion-button>
+
+  <!----------------------------------- 1er Modal ------------------------------------------->
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar Nuevo Evento Reproductivo</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <form [formGroup]="form" novalidate (ngSubmit)="agregarEvento()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Evento</ion-label>
+              <ion-select formControlName="tipo" placeholder="Selecciona un Evento:">
+                <ion-select-option value="Monta">Monta</ion-select-option>
+                <ion-select-option value="Parto">Parto</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-list>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" expand="block">Continuar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

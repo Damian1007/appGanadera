@@ -70,6 +70,6 @@ export class AnimalPage implements OnInit {
   }
 
   reproduccion() {
-    console.log("rep");
+    this.router.navigate(['/tabs/reproduccion']);
   }
 }

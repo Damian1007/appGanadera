@@ -32,6 +32,10 @@ const routes: Routes = [
         path: 'produccion-leche',
         loadChildren: () => import('../produccion-leche/produccion-leche.module').then( m => m.ProduccionLechePageModule)
       },
+      {
+        path: 'reproduccion',
+        loadChildren: () => import('../reproduccion/reproduccion.module').then( m => m.ReproduccionPageModule)
+      },
     ]
   }
 ];
