@@ -8,7 +8,6 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
-import { clearCanvas } from 'chart.js/dist/helpers/helpers.canvas';
 
 @Component({
   selector: 'app-produccion-carne',

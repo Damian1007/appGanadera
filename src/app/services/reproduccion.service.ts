@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Reproduccion } from '../interfaces/reproduccion';
 
@@ -20,5 +20,22 @@ export class ReproduccionService {
   getReproducciones(fincaId : any, animalId : any): Observable<Reproduccion[]> {
     const reproRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion`);
     return collectionData(reproRef, { idField: 'id'}) as Observable<Reproduccion[]>;
+  }
+
+  getReproduccion(fincaId : any, animalId : any, id : any): Observable<Reproduccion> {
+    const reproDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion/${id}`);
+    return docData(reproDocRef) as Observable<Reproduccion>;
+  }
+
+  updateReproduccion(reproduccion : Reproduccion, fincaId : any, animalId : any) {
+    const reproDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion/${reproduccion.id}`);
+    return updateDoc(reproDocRef, {
+      tipo: reproduccion.tipo,
+      fechaMonta: reproduccion.fechaMonta,
+      nombreToro: reproduccion.nombreToro,
+      fechaPartoProbable: reproduccion.fechaPartoProbable,
+      fechaParto: reproduccion.fechaParto,
+      nombreCria: reproduccion.nombreCria,
+    });
   }
 }
