@@ -23,6 +23,7 @@ export class ProduccionCarnePage implements OnInit {
   graficaSub : Subscription;
   myChart : Chart
 
+  isModalOpen = false;
   showPicker = false;
   dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
@@ -60,6 +61,7 @@ export class ProduccionCarnePage implements OnInit {
 
   ionViewDidLeave() {
     this.graficaSub.unsubscribe();
+    this.myChart.destroy();
   }
 
   mostrarGrafico() {
@@ -98,6 +100,10 @@ export class ProduccionCarnePage implements OnInit {
     });
   }
 
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
   setTiempo() {
@@ -120,8 +126,9 @@ export class ProduccionCarnePage implements OnInit {
     this.pesaje.fecha = this.form.getRawValue().fecha
 
     this.modal.dismiss(null, 'peso');
-    this.graficaSub.unsubscribe();
+    this.setOpen(false);
 
+    this.graficaSub.unsubscribe();
     this.myChart.destroy();
     await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
 
@@ -129,7 +136,7 @@ export class ProduccionCarnePage implements OnInit {
   }
 
   crearGrafico() {
-    const canvas = document.getElementById('myChart');
+    const canvas = document.getElementById('myChartCarne');
     const ctx = (canvas as HTMLCanvasElement).getContext('2d');
     this.myChart = new Chart(ctx, {
       type: 'line',
@@ -149,6 +156,22 @@ export class ProduccionCarnePage implements OnInit {
         }
       }
     });
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'peso') {
+      //console.log(this.evento);
+      this.form.reset();
+    }
+
+    console.log(ev.detail.role);
+
+    if (ev.detail.role === 'backdrop') {
+      //console.log(this.evento);
+      this.setOpen(false);
+      this.form.reset();
+    }
   }
 
 }

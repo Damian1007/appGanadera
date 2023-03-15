@@ -25,11 +25,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-button id="open-modal" expand="block">Nueva Monta</ion-button>
+  <ion-button (click)="setOpen(true, 1)" expand="block">Nueva Monta</ion-button>
   
 
   <!----------------------------------- 1er Modal ------------------------------------------->
-  <ion-modal #modal trigger="open-modal" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -70,7 +70,7 @@
   </ion-modal>
 
   <!----------------------------------- 2do Modal ------------------------------------------->
-  <ion-modal class="modal2" [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal class="modal2" [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -140,7 +140,7 @@
   </ion-modal>
 
   <!----------------------------------- 3er Modal ------------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen3" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -149,11 +149,37 @@
       </ion-header>
 
       <ion-content class="ion-padding">
-        <form [formGroup]="form" novalidate (ngSubmit)="agregarParto()">
+        <form [formGroup]="form2" novalidate (ngSubmit)="agregarParto()">
           <ion-list>
             <ion-item>
               <ion-label position="stacked">Nombre de la Cria</ion-label>
               <ion-input formControlName="nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Genero</ion-label>
+              <ion-select formControlName="genero" placeholder="Selecciona un genero">
+                <ion-select-option value="Macho">Macho</ion-select-option>
+                <ion-select-option value="Hembra">Hembra</ion-select-option>
+              </ion-select>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label position="stacked">Lote</ion-label>
+              <ion-input formControlName="lote"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label position="stacked">Raza</ion-label>
+              <ion-select formControlName="raza" placeholder="Selecciona una Raza">
+                <ion-select-option value="Normando">Normando</ion-select-option>
+                <ion-select-option value="Jersey">Jersey</ion-select-option>
+                <ion-select-option value="Criolla">Criolla</ion-select-option>
+                <ion-select-option value="Nelore">Nelore</ion-select-option>
+                <ion-select-option value="Brahman">Brahman</ion-select-option>
+                <ion-select-option value="Holstein ">Holstein </ion-select-option>
+                <ion-select-option value="Otra ">Otra </ion-select-option>
+              </ion-select>
             </ion-item>
 
             <ion-item (click)="showPicker = !showPicker">
@@ -169,12 +195,12 @@
               (ionChange)="tiempoChange(datetime.value)"
             ></ion-datetime>
           </ion-list>
-
+          
           <ion-row>
             <ion-col>
-              <ion-button expand="block" (click)="agregarParto()">Agregar Parto</ion-button>
+              <ion-button type="submit" expand="block">Agregar Parto</ion-button>
             </ion-col>
-          </ion-row>
+          </ion-row >
         </form>
       </ion-content>
     </ng-template>

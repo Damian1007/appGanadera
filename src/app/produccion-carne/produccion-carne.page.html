@@ -11,15 +11,15 @@
 </ion-header>
 
 <ion-content>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChartCarne" width="400" height="400"></canvas>
 
   <div class="peso">
-    <ion-button id="open-modal">Agregar Peso</ion-button>
+    <ion-button (click)="setOpen(true)">Agregar Peso</ion-button>
   </div>
 
   <!----------------------------------- Modal ------------------------------------------->
   
-  <ion-modal trigger="open-modal">
+  <ion-modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>

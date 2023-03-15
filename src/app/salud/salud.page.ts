@@ -21,6 +21,7 @@ export class SaludPage implements OnInit {
   animalId : any;
   saludSub : Subscription;
   isModalOpen = false;
+  isModalOpen2 = false;
 
   form = this.formBuilder.group({
     ref: ['', [Validators.required]],
@@ -66,6 +67,8 @@ export class SaludPage implements OnInit {
   }
 
   ionViewDidLeave() {
+    this.setOpen(false, 1);
+    this.setOpen(false, 2);
     this.saludSub.unsubscribe();
   }
 
@@ -78,11 +81,18 @@ export class SaludPage implements OnInit {
   tipo() {
     this.historia.ref = this.form.getRawValue().ref;
     this.modal.dismiss(null, 'tipo');
+    this.setOpen(false, 1);
+    this.setOpen(true, 2);
     //console.log(this.historia);
   }
 
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  setOpen(isOpen : boolean, num : any) {
+    if(num == 1) {
+      this.isModalOpen = isOpen;
+    }
+    if(num == 2) {
+      this.isModalOpen2 = isOpen;
+    }
   }
 
   crearHistoria() {
@@ -94,19 +104,20 @@ export class SaludPage implements OnInit {
     this.saludService.addHistoria(this.fincaId, this.animalId, this.historia);
 
     this.modal.dismiss(null, "crear");
+    this.setOpen(false, 2);
     console.log(this.historia);
   }
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'tipo') {
-      console.log("tipo");
+      //console.log("tipo");
       this.form.reset();
     }
 
-    //console.log(ev.detail.role);
+    console.log(ev.detail.role);
     if (ev.detail.role === 'crear') {
-      console.log("crear");
+      //console.log("crear");
       this.form.reset();
       this.historia.ref = '';
       this.historia.nombre = '';
@@ -115,9 +126,10 @@ export class SaludPage implements OnInit {
       this.historia.fecha = '';
     }
 
-    
     if (ev.detail.role === 'backdrop') {
-      console.log("else");
+      this.setOpen(false, 1);
+      this.setOpen(false, 2);
+      //console.log("else");
       this.form.reset();
       this.historia.ref = '';
       this.historia.nombre = '';

@@ -7,6 +7,7 @@ import { format, parseISO } from 'date-fns';
 import { Subscription } from 'rxjs';
 import { Ordeño } from '../interfaces/ordeño';
 import { ProduccionService } from '../services/produccion.service';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-produccion-leche',
@@ -22,6 +23,7 @@ export class ProduccionLechePage implements OnInit {
   graficaSub : Subscription;
   myChart : Chart
 
+  isModalOpen = false;
   showPicker = false;
   dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
@@ -97,6 +99,10 @@ export class ProduccionLechePage implements OnInit {
     });
   }
 
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
   setTiempo() {
     this.fechaValor = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'yyyy/MM/dd');
@@ -117,8 +123,9 @@ export class ProduccionLechePage implements OnInit {
     this.ordeño.fecha = this.form.getRawValue().fecha
 
     this.modal.dismiss(null, 'leche');
-    this.graficaSub.unsubscribe();
+    this.setOpen(false);
 
+    this.graficaSub.unsubscribe();
     this.myChart.destroy();
     await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño);
 
@@ -126,7 +133,7 @@ export class ProduccionLechePage implements OnInit {
   }
 
   crearGrafico() {
-    const canvas = document.getElementById('myChart');
+    const canvas = document.getElementById('myChartLeche');
     const ctx = (canvas as HTMLCanvasElement).getContext('2d');
     this.myChart = new Chart(ctx, {
       type: 'line',
@@ -146,6 +153,22 @@ export class ProduccionLechePage implements OnInit {
         }
       }
     });
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'leche') {
+      //console.log(this.evento);
+      this.form.reset();
+    }
+
+    console.log(ev.detail.role);
+
+    if (ev.detail.role === 'backdrop') {
+      //console.log(this.evento);
+      this.setOpen(false);
+      this.form.reset();
+    }
   }
   
 }

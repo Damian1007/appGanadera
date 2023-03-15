@@ -29,12 +29,12 @@
     </ion-item>
   </ion-list>
 
-  <ion-button id="open-modal" shape="circle">
+  <ion-button (click)="setOpen(true, 1)" shape="circle">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
 
   <!----------------------------------- 1er Modal ------------------------------------------->
-  <ion-modal #modal [backdropDismiss]="true" trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -57,7 +57,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-button type="submit" expand="block" (click)="setOpen(true)">Continuar</ion-button>
+              <ion-button type="submit" expand="block">Continuar</ion-button>
             </ion-col>
           </ion-row>
         </form>
@@ -66,7 +66,7 @@
   </ion-modal>
 
   <!----------------------------------- 2do Modal ------------------------------------------->
-  <ion-modal class="modal2" [backdropDismiss]="true" [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+  <ion-modal class="modal2" [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -119,7 +119,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-button type="submit" expand="block" (click)="setOpen(false)">Continuar</ion-button>
+              <ion-button type="submit" expand="block">Continuar</ion-button>
             </ion-col>
           </ion-row>
         </form>

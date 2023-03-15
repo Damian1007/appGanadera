@@ -14,6 +14,7 @@ export class AnimalPage implements OnInit {
   animal : Animal;
   fincaId : any;
   animalId : any;
+  animalNombre : any;
   animalSub : Subscription;
   
   constructor(
@@ -45,6 +46,7 @@ export class AnimalPage implements OnInit {
 
     this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
       this.animal = animal;
+      this.animalNombre = localStorage.setItem('animalNombre', animal.nombre);
     });
   }
 
@@ -65,7 +67,11 @@ export class AnimalPage implements OnInit {
     this.router.navigate(['/tabs/salud']);
   }
 
-  produccion() {
+  produccionCarne() {
+    this.router.navigate(['/tabs/produccion-carne']);
+  }
+
+  produccionLeche() {
     this.router.navigate(['/tabs/produccion-leche']);
   }
 
