@@ -36,6 +36,10 @@ const routes: Routes = [
         path: 'reproduccion',
         loadChildren: () => import('../reproduccion/reproduccion.module').then( m => m.ReproduccionPageModule)
       },
+      {
+        path: 'datos-produccion',
+        loadChildren: () => import('../datos-produccion/datos-produccion.module').then( m => m.DatosProduccionPageModule)
+      },
     ]
   }
 ];

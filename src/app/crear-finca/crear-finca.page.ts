@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FincaService } from '../services/finca.service';
-import { MiembrosService } from '../services/miembros.service';
 import { Finca } from '../interfaces/finca';
+import { Miembro } from '../interfaces/miembro';
+import { AutentificarService } from '../services/autentificar.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-crear-finca',
@@ -25,13 +27,16 @@ export class CrearFincaPage implements OnInit {
   });
 
   finca : Finca;
+  miembro : Miembro;
+  miembroId = localStorage.getItem('usuarioId');
   randomId : number;
+  usuarioSub : Subscription;
   
   constructor(
     private formBuilder : FormBuilder,
     private router : Router,
     private fincaService : FincaService,
-    private miembrosService : MiembrosService
+    private auth : AutentificarService
   ) { 
       this.finca = {
         id: '',
@@ -43,7 +48,15 @@ export class CrearFincaPage implements OnInit {
         departamento: '',
         ciudad: '',
         corregimiento: '',
-        coordenadas: ''
+        coordenadas: '',
+        propietario: this.miembroId
+      };
+
+      this.miembro = {
+        id : this.miembroId,
+        rol : 'Propietario',
+        nombre : '',
+        apellido : ''
       };
     }
 
@@ -52,6 +65,15 @@ export class CrearFincaPage implements OnInit {
 
   ionViewWillEnter() {
     this.randomId = Math.floor(Math.random() * 255);
+
+    this.usuarioSub = this.auth.getUsuario(this.miembro.id).subscribe(usu => {
+      this.miembro.nombre = usu.nombre;
+      this.miembro.apellido = usu.apellido;
+    });
+  }
+
+  ionViewDidLeave() {
+    this.usuarioSub.unsubscribe();
   }
 
   crearFinca() {
@@ -66,7 +88,7 @@ export class CrearFincaPage implements OnInit {
     this.finca.coordenadas = this.form.getRawValue().coordenadas;
     this.finca.id = this.finca.nombre + this.finca.corregimiento + this.randomId;
 
-    this.fincaService.addFinca(this.finca);
+    this.fincaService.addFinca(this.finca, this.miembro);
     this.router.navigate(['/seleccionar-finca']);
   }
 }

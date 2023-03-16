@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class SeleccionarFincaPage implements OnInit {
 
   fincas : Finca[];
+  fincasAux : Finca[];
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
@@ -35,38 +36,38 @@ export class SeleccionarFincaPage implements OnInit {
       departamento: '',
       ciudad: '',
       corregimiento: '',
-      coordenadas: ''
+      coordenadas: '',
+      propietario: ''
     }];
   }
 
   ngOnInit(){
-    // this.fincaService.getFincas().subscribe(finca => {
-    //   this.fincas = finca;
-    // });
+    
+  }
 
-    this.getFinca();
+  ionViewWillEnter(){
+    this.getFincas();
   }
 
   ionViewDidLeave(){
-    this.fincaSub.unsubscribe();
     this.miembroSub.unsubscribe();
+    this.fincaSub.unsubscribe();
   }
 
-  getFinca() {
+  getFincas() {
     this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
-      this.fincas.pop()
-
-      for (let i = 0; i < finca.length; i++) {
-        this.miembroSub = this.miembrosServices.getMiembro(finca[i].id, this.usuarioId).subscribe(miembro => {
+      finca.forEach(f => {
+        this.miembroSub = this.miembrosServices.getMiembro(f.id, this.usuarioId).subscribe(miembro => {
+          
           if(miembro) {
-            console.log(miembro['id'], finca[i].id);
-            this.fincas.push(finca[i]);
+            console.log(miembro.id, f.id);
+            this.fincas.push(f);
           }
           else {
             console.log(miembro);
           } 
         });
-      }
+      });
     });
   }
 

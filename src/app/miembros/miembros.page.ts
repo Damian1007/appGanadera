@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { async } from '@firebase/util';
 import { Subscription } from 'rxjs';
 import { AutentificarService } from '../services/autentificar.service';
 import { MiembrosService } from '../services/miembros.service';
+import { Miembro } from '../interfaces/miembro';
 
 @Component({
   selector: 'app-miembros',
@@ -12,7 +12,7 @@ import { MiembrosService } from '../services/miembros.service';
 })
 export class MiembrosPage implements OnInit {
 
-  miembros : any[];
+  miembros : Miembro[];
   fincaId = localStorage.getItem('id');
   miembrosSub : Subscription;
   usuarioSub : Subscription;
@@ -31,9 +31,8 @@ export class MiembrosPage implements OnInit {
    }
 
   ngOnInit() {
-    
   }
-
+  // --------------------CORREGIR LLAMADA DE MIEMBROS------------------------
   ionViewWillEnter() {
     this.miembrosSub = this.miembrosService.getMiembros(this.fincaId).subscribe(miembros => {
 

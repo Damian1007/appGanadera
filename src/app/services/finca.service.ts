@@ -4,6 +4,7 @@ import { filter, map, Observable } from 'rxjs';
 import { Finca } from '../interfaces/finca';
 import { MiembrosService } from './miembros.service';
 import { AutentificarService } from '../services/autentificar.service';
+import { Miembro } from '../interfaces/miembro';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class FincaService {
     private miembroService : MiembrosService,
     private autentificarService : AutentificarService) { }
 
-  async addFinca(finca : Finca) {
+  async addFinca(finca : Finca, miembro : Miembro) {
     const fincaDocRef = doc(this.firestore, `fincas/${finca.id}`);
     await setDoc(fincaDocRef, finca);
 
-    this.miembroService.addMiembro(finca.id, localStorage.getItem("usuarioId"), "Propietario");
+    this.miembroService.addMiembro(finca.id, miembro);
   }
 
   updateFinca(finca : Finca, id : any) {

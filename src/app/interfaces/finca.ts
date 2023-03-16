@@ -9,4 +9,5 @@ export interface Finca {
     ciudad: string;
     corregimiento: string;
     coordenadas: string;
+    propietario: string;
 }

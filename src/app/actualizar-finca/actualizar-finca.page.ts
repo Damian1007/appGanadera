@@ -42,7 +42,8 @@ export class ActualizarFincaPage implements OnInit {
         departamento: '',
         ciudad: '',
         corregimiento: '',
-        coordenadas: ''
+        coordenadas: '',
+        propietario: ''
       };
     }
 
