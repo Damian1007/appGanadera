@@ -34,7 +34,7 @@ export class AnimalPage implements OnInit {
         madre: '',
         pesoActual: ''
       };
-    }
+  }
 
   ngOnInit() {    
     

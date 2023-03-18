@@ -56,6 +56,8 @@ export class SeleccionarFincaPage implements OnInit {
 
   getFincas() {
     this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
+      this.fincas.pop();
+
       finca.forEach(f => {
         this.miembroSub = this.miembrosServices.getMiembro(f.id, this.usuarioId).subscribe(miembro => {
           
@@ -64,7 +66,7 @@ export class SeleccionarFincaPage implements OnInit {
             this.fincas.push(f);
           }
           else {
-            console.log(miembro);
+            //console.log(miembro);
           } 
         });
       });
