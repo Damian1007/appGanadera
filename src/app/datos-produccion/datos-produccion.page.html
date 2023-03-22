@@ -183,10 +183,19 @@
     
         <ion-row class="row1">
           <ion-col class="atributo">
-            <ion-label >Ganancia de Peso Mensual:</ion-label>
+            <ion-label >Ganancia de Peso Mes:</ion-label>
           </ion-col>
           <ion-col class="valor">
-            <ion-label></ion-label>
+            <ion-label>{{prodCarneMes}} KG</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="row1">
+          <ion-col class="atributo">
+            <ion-label >Ganancia de Peso Año:</ion-label>
+          </ion-col>
+          <ion-col class="valor">
+            <ion-label>{{prodCarneYear}} KG</ion-label>
           </ion-col>
         </ion-row>
     
@@ -195,7 +204,7 @@
             <ion-label >Peso actual de la Finca:</ion-label>
           </ion-col>
           <ion-col class="valor">
-            <ion-label>{{pesajeTotal}}</ion-label>
+            <ion-label>{{pesajeTotal}} KG</ion-label>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -221,12 +230,22 @@
     
         <ion-row class="row1">
           <ion-col class="atributo">
-            <ion-label >Produccion de Leche Mensual:</ion-label>
+            <ion-label >Produccion de Leche Mes:</ion-label>
           </ion-col>
           <ion-col class="valor">
-            <ion-label></ion-label>
+            <ion-label>{{prodLecheMes}} L</ion-label>
           </ion-col>
         </ion-row>
+
+        <ion-row class="row1">
+          <ion-col class="atributo">
+            <ion-label >Produccion de Leche Año:</ion-label>
+          </ion-col>
+          <ion-col class="valor">
+            <ion-label>{{prodLecheYear}} L</ion-label>
+          </ion-col>
+        </ion-row>
+
       </ion-grid>
     </ion-card-content>
   </ion-card>

@@ -3,6 +3,7 @@ import { AnimalService } from '../services/animal.service';
 import { Animal } from '../interfaces/animal';
 import { Subscription } from 'rxjs';
 import { ProduccionService } from '../services/produccion.service';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-datos-produccion',
@@ -15,6 +16,7 @@ export class DatosProduccionPage implements OnInit {
   fincaId : any;
   animalSub : Subscription;
   pesajeSub : Subscription;
+  ordeñoSub : Subscription;
 
   totalAnimales : number;
   totalHembras : number;
@@ -32,6 +34,12 @@ export class DatosProduccionPage implements OnInit {
   totalMuertos : number;
 
   pesajeTotal : number;
+  mesActual : string;
+  yearActual : string;
+  prodCarneMes : number;
+  prodCarneYear : number;
+  prodLecheMes : number;
+  prodLecheYear : number;
 
   constructor(
     private animalService : AnimalService,
@@ -74,6 +82,12 @@ export class DatosProduccionPage implements OnInit {
       this.totalMuertos = 0;
       
       this.pesajeTotal = 0;
+      this.mesActual = format(new Date(), 'M');
+      this.yearActual = format(new Date(), 'yyyy');
+      this.prodCarneMes = 0;
+      this.prodCarneYear = 0;
+      this.prodLecheMes = 0;
+      this.prodLecheYear = 0;
 
       // -------------------------------- SECCIÓN DATOS GENERALES -----------------------------------
       animales.forEach(animal => {
@@ -142,9 +156,17 @@ export class DatosProduccionPage implements OnInit {
         // -------------------------------- SECCIÓN PRODUCCIÓN DE CARNE -----------------------------------
         this.pesajeSub = this.produccionService.getPesajes(this.fincaId, animal.id).subscribe(pesajes => {
           var ultimoPesoF = '00/00/0000';
-          var ultimoPeso = 0;
+          let ultimoPeso = 0;
 
           pesajes.forEach(pesaje => {
+            if (this.mesActual == format(new Date(pesaje.fecha), 'M') && this.yearActual == format(new Date(pesaje.fecha), 'yyyy')) {
+              this.prodCarneMes += parseInt(pesaje.peso);
+            }
+            
+            if (this.yearActual == format(new Date(pesaje.fecha), 'yyyy')) {
+              this.prodCarneYear += parseInt(pesaje.peso);
+            }
+            
             if (pesaje.fecha > ultimoPesoF) {
               ultimoPesoF = pesaje.fecha;
               ultimoPeso = parseInt(pesaje.peso);
@@ -155,8 +177,18 @@ export class DatosProduccionPage implements OnInit {
         });
 
         // -------------------------------- SECCIÓN PRODUCCIÓN DE LECHE -----------------------------------
-
-
+        this.ordeñoSub = this.produccionService.getOrdeños(this.fincaId, animal.id).subscribe(ordeños => {
+          ordeños.forEach(ordeño => {
+            if (this.mesActual == format(new Date(ordeño.fecha), 'M') && this.yearActual == format(new Date(ordeño.fecha), 'yyyy')) {
+              //console.log(this.mesActual, format(new Date(ordeño.fecha), 'M'), this.yearActual, format(new Date(ordeño.fecha), 'yyyy'));
+              this.prodLecheMes += parseInt(ordeño.leche);
+            }
+            
+            if (this.yearActual == format(new Date(ordeño.fecha), 'yyyy')) {
+              this.prodLecheYear += parseInt(ordeño.leche);
+            }
+          });
+        });
       });
     });
   }
@@ -164,5 +196,6 @@ export class DatosProduccionPage implements OnInit {
   ionViewDidLeave() {
     this.animalSub.unsubscribe();
     this.pesajeSub.unsubscribe();
+    this.ordeñoSub.unsubscribe();
   }
 }

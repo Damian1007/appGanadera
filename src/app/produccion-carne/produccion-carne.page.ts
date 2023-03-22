@@ -21,7 +21,7 @@ export class ProduccionCarnePage implements OnInit {
   fincaId : any;
   animalId : any;
   graficaSub : Subscription;
-  myChart : Chart
+  myChart : Chart;
 
   isModalOpen = false;
   showPicker = false;
