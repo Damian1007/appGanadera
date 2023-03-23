@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Alertas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let alerta of alertas" lines="full">
+      <ion-thumbnail class="icono" class="icono" slot="start">
+        <img src={{alerta.foto}}>
+      </ion-thumbnail >
+      
+      <ion-label class="usuario">
+        {{alerta.usuario}}
+      </ion-label>
+
+      <ion-label class="cambio">
+        {{alerta.cambio}}
+      </ion-label>
+
+      <ion-note class="fecha">
+        {{alerta.fecha}}
+      </ion-note>
+      
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -40,6 +40,10 @@ const routes: Routes = [
         path: 'datos-produccion',
         loadChildren: () => import('../datos-produccion/datos-produccion.module').then( m => m.DatosProduccionPageModule)
       },
+      {
+        path: 'alertas',
+        loadChildren: () => import('../alertas/alertas.module').then( m => m.AlertasPageModule)
+      },
     ]
   }
 ];
