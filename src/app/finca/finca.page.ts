@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Finca } from '../interfaces/finca';
 import { FincaService } from '../services/finca.service';
 import { Router } from '@angular/router';
-import { Auth } from '@angular/fire/auth';
-import { MiembrosService } from '../services/miembros.service';
-import { AnimalService } from '../services/animal.service';
 
 @Component({
   selector: 'app-finca',
@@ -19,13 +16,9 @@ export class FincaPage implements OnInit {
 
   constructor(
     private fincaService : FincaService,
-    private miembroService : MiembrosService,
-    private animalService : AnimalService,
     private router : Router,
-    private auth : Auth
   ) { 
       this.finca = {
-        id: this.fincaId,
         nombre: '',
         orientacion: '',
         areaFinca: '',

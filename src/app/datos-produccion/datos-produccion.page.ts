@@ -197,5 +197,13 @@ export class DatosProduccionPage implements OnInit {
     this.animalSub.unsubscribe();
     this.pesajeSub.unsubscribe();
     this.ordeñoSub.unsubscribe();
+
+    if (this.pesajeSub) {
+      this.pesajeSub.unsubscribe();
+    }
+
+    if (this.ordeñoSub) {
+      this.ordeñoSub.unsubscribe();
+    }
   }
 }

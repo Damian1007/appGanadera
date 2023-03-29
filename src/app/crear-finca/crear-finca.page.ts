@@ -6,6 +6,9 @@ import { Finca } from '../interfaces/finca';
 import { Miembro } from '../interfaces/miembro';
 import { AutentificarService } from '../services/autentificar.service';
 import { Subscription } from 'rxjs';
+import { AlertasService } from '../services/alertas.service';
+import { Alertas } from '../interfaces/alertas';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-crear-finca',
@@ -13,6 +16,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./crear-finca.page.scss'],
 })
 export class CrearFincaPage implements OnInit {
+
+  finca : Finca;
+  alertas : Alertas;
+  miembro : Miembro;
+  usuarioId = localStorage.getItem('usuarioId');
+  usuarioSub : Subscription;
+  randomId : number;
 
   form = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -25,18 +35,13 @@ export class CrearFincaPage implements OnInit {
     corregimiento: ['', [Validators.required]],
     coordenadas: ['', [Validators.required]],
   });
-
-  finca : Finca;
-  miembro : Miembro;
-  miembroId = localStorage.getItem('usuarioId');
-  randomId : number;
-  usuarioSub : Subscription;
   
   constructor(
     private formBuilder : FormBuilder,
     private router : Router,
     private fincaService : FincaService,
-    private auth : AutentificarService
+    private auth : AutentificarService,
+    private alertasService : AlertasService,
   ) { 
       this.finca = {
         id: '',
@@ -49,14 +54,21 @@ export class CrearFincaPage implements OnInit {
         ciudad: '',
         corregimiento: '',
         coordenadas: '',
-        propietario: this.miembroId
+        propietario: this.usuarioId
       };
 
       this.miembro = {
-        id : this.miembroId,
+        id : this.usuarioId,
         rol : 'Propietario',
         nombre : '',
         apellido : ''
+      };
+
+      this.alertas = {
+        usuario: '',
+        cambio: '',
+        foto: '',
+        fecha: ''
       };
     }
 
@@ -66,9 +78,10 @@ export class CrearFincaPage implements OnInit {
   ionViewWillEnter() {
     this.randomId = Math.floor(Math.random() * 255);
 
-    this.usuarioSub = this.auth.getUsuario(this.miembro.id).subscribe(usu => {
-      this.miembro.nombre = usu.nombre;
-      this.miembro.apellido = usu.apellido;
+    this.usuarioSub = this.auth.getUsuario(this.usuarioId).subscribe(usuario => {
+      this.alertas.usuario = usuario.nombre
+      this.miembro.nombre = usuario.nombre;
+      this.miembro.apellido = usuario.apellido;
     });
   }
 
@@ -88,7 +101,18 @@ export class CrearFincaPage implements OnInit {
     this.finca.coordenadas = this.form.getRawValue().coordenadas;
     this.finca.id = this.finca.nombre + this.finca.corregimiento + this.randomId;
 
-    this.fincaService.addFinca(this.finca, this.miembro);
-    this.router.navigate(['/seleccionar-finca']);
+    this.alertas.cambio = 'Creo la finca ' + this.finca.nombre;
+    this.alertas.foto = this.finca.foto;
+    this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
+
+    this.fincaService.addFinca(this.finca, this.miembro)
+    .then(() => {
+      this.alertasService.addAlerta(this.alertas, this.finca.id);
+
+      this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
+    })
+    .catch(error => {
+      console.log('Error al Crear finca', error);
+    });
   }
 }

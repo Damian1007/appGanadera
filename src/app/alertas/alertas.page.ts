@@ -26,7 +26,9 @@ export class AlertasPage implements OnInit {
     }];
    }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     this.alertasSub = this.alertasService.getAlertas(this.fincaId).subscribe(alertas => {
       this.alertas = alertas;
     });

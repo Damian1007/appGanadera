@@ -23,7 +23,7 @@ export class MiembrosService {
 
   getMiembro(fincaId : any, usuarioId : any): Observable<Miembro> {
     const miembroDocRef = doc(this.firestore, `fincas/${fincaId}/miembros/${usuarioId}`);
-    return docData(miembroDocRef) as Observable<Miembro>; 
+    return docData(miembroDocRef, { idField: 'id'}) as Observable<Miembro>; 
   }
 
   async deleteMiembro(fincaId : any, usuarioId : any) {

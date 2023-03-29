@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import { FincaService } from '../services/finca.service';
 import { Finca } from '../interfaces/finca';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AlertasService } from '../services/alertas.service';
+import { Alertas } from '../interfaces/alertas';
+import { AutentificarService } from '../services/autentificar.service';
+import { format } from 'date-fns';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-actualizar-finca',
@@ -11,8 +16,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ActualizarFincaPage implements OnInit {
 
+  finca : Finca;
+  alertas : Alertas;
+  fincaId : any = localStorage.getItem('id');
+  usuarioId : any = localStorage.getItem('usuarioId');
+  fincaSub : Subscription;
+  usuarioSub : Subscription;
+  
   form = this.formBuilder.group({
-    id: ['', [Validators.required]], 
     nombre: ['', [Validators.required]],
     orientacion: ['', [Validators.required]],
     areaFinca: ['', [Validators.required]],
@@ -24,16 +35,14 @@ export class ActualizarFincaPage implements OnInit {
     coordenadas: ['', [Validators.required]],
   });
 
-  finca : Finca;
-  fincaId = localStorage.getItem("id");
-
   constructor(
     private formBuilder : FormBuilder,
     private router : Router,
-    private fincaService : FincaService
+    private fincaService : FincaService,
+    private alertasService : AlertasService,
+    private autentificarService : AutentificarService
   ) { 
       this.finca = {
-        id: '',
         nombre: '',
         orientacion: '',
         areaFinca: '',
@@ -45,12 +54,18 @@ export class ActualizarFincaPage implements OnInit {
         coordenadas: '',
         propietario: ''
       };
+
+      this.alertas = {
+        usuario: '',
+        cambio: '',
+        foto: '',
+        fecha: ''
+      };
     }
 
   ngOnInit() {
-    this.fincaService.getFinca(this.fincaId).subscribe(finca => {
+    this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
       this.form.setValue({
-        id : finca.id,
         nombre: finca.nombre,
         orientacion: finca.orientacion,
         areaFinca: finca.areaFinca,
@@ -61,11 +76,23 @@ export class ActualizarFincaPage implements OnInit {
         corregimiento: finca.corregimiento,
         coordenadas: finca.coordenadas
       });
+
+      this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
+        this.alertas.usuario = usuario.nombre;
+      });
+
+      this.alertas.cambio = 'Actualizo la finca ' + finca.nombre;
+      this.alertas.foto = finca.foto;
+      this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
     })
   }
 
+  ionViewDidLeave() {
+    this.fincaSub.unsubscribe();
+    this.usuarioSub.unsubscribe();
+  }
+
   actualizarFinca() {
-    this.finca.id = this.form.getRawValue().id;
     this.finca.nombre = this.form.getRawValue().nombre;
     this.finca.orientacion = this.form.getRawValue().orientacion;
     this.finca.areaFinca = this.form.getRawValue().areaFinca;
@@ -76,8 +103,15 @@ export class ActualizarFincaPage implements OnInit {
     this.finca.corregimiento = this.form.getRawValue().corregimiento;
     this.finca.coordenadas = this.form.getRawValue().coordenadas;
 
-    this.fincaService.updateFinca(this.finca, this.finca.id);
-    this.router.navigate(['/tabs/finca']);
+    this.fincaService.updateFinca(this.finca, this.fincaId)
+    .then(() => {
+      this.alertasService.addAlerta(this.alertas, this.fincaId);
+
+      this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+    })
+    .catch(error => {
+      console.log('Error al Actualizar finca', error);
+    });
   }
 
 }

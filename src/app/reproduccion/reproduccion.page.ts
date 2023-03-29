@@ -7,6 +7,10 @@ import { IonModal } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { AnimalService } from '../services/animal.service';
+import { AlertasService } from '../services/alertas.service';
+import { Alertas } from '../interfaces/alertas';
+import { AutentificarService } from '../services/autentificar.service';
+import { FincaService } from '../services/finca.service';
 
 @Component({
   selector: 'app-reproduccion',
@@ -18,10 +22,14 @@ export class ReproduccionPage implements OnInit {
 
   eventos : Reproduccion[];
   evento : Reproduccion;
+  alertas : Alertas;
   fincaId : any;
   animalId : any;
   animalNombre : any;
   reproduccionId : any;
+  usuarioId : any = localStorage.getItem('usuarioId');
+  usuarioSub : Subscription;
+  fincaSub : Subscription;
   reproduccionesSub : Subscription;
   reproduccionSub : Subscription;
 
@@ -56,7 +64,10 @@ export class ReproduccionPage implements OnInit {
   constructor(
     private reproduccionService : ReproduccionService,
     private formBuilder : FormBuilder,
-    private animalService : AnimalService
+    private animalService : AnimalService,
+    private alertasService : AlertasService,
+    private autentificarService : AutentificarService,
+    private fincaService : FincaService
   ) { 
     this.eventos = [{
       tipo: '',
@@ -75,6 +86,13 @@ export class ReproduccionPage implements OnInit {
       nombreCria: '',
       fechaPartoProbable: '',
       fechaParto: ''
+    };
+
+    this.alertas = {
+      usuario: '',
+      cambio: '',
+      foto: '',
+      fecha: ''
     };
 
     this.setTiempo();
@@ -98,6 +116,16 @@ export class ReproduccionPage implements OnInit {
         }
       });
     });
+
+    this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
+      this.alertas.usuario = usuario.nombre;
+    });
+
+    this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
+      this.alertas.foto = finca.foto;
+    });
+
+    this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
   }
 
   ionViewDidLeave() {
@@ -153,10 +181,18 @@ export class ReproduccionPage implements OnInit {
       this.evento.nombreToro = this.form.getRawValue().nombre;
       this.evento.fechaMonta = this.fechaValor;
 
+      this.alertas.cambio = 'Agrego una monta a ' + this.animalNombre;
+
       this.modal.dismiss(null, 'monta');
       this.setOpen(false, 1);
 
-      this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento);
+      this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento)
+      .then(() => {
+        this.alertasService.addAlerta(this.alertas, this.fincaId);
+      })
+      .catch(error => {
+        console.log('Error al Agregar monta', error);
+      });
     }
   }
 
@@ -175,15 +211,23 @@ export class ReproduccionPage implements OnInit {
     this.evento.nombreCria = this.form2.getRawValue().nombre;
 
     if (this.form2.getRawValue().genero == 'Macho') {
-      this.grupoEtario = 'Ternero';
+      this.grupoEtario = 'Ternero ordeño';
     } else {
-      this.grupoEtario = 'Ternera';
+      this.grupoEtario = 'Ternera ordeño';
     }
     this.form2.get('grupoEtario').setValue(this.grupoEtario, { onlySelf: true});
     this.form2.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
 
+    this.alertas.cambio = 'Agrego el nacimiento de ' + this.evento.nombreCria;
+
     this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
-    this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId);
+    this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
+    .then(() => {
+      this.alertasService.addAlerta(this.alertas, this.fincaId);
+    })
+    .catch(error => {
+      console.log('Error al Agregar parto', error);
+    });
 
     this.modal.dismiss(null, 'parto');
     this.setOpen(false, 3);

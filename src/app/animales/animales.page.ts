@@ -20,7 +20,6 @@ export class AnimalesPage implements OnInit {
     private router : Router
   ) { 
       this.animales = [{
-        id: '',
         nombre: '',
         genero: '',
         foto: '',

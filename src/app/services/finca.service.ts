@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc, setDoc } from '@angular/fire/firestore';
-import { filter, map, Observable } from 'rxjs';
+import { collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc, setDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Finca } from '../interfaces/finca';
 import { MiembrosService } from './miembros.service';
-import { AutentificarService } from '../services/autentificar.service';
 import { Miembro } from '../interfaces/miembro';
 
 @Injectable({
@@ -13,8 +12,7 @@ export class FincaService {
 
   constructor(
     private firestore : Firestore,
-    private miembroService : MiembrosService,
-    private autentificarService : AutentificarService) { }
+    private miembroService : MiembrosService) { }
 
   async addFinca(finca : Finca, miembro : Miembro) {
     const fincaDocRef = doc(this.firestore, `fincas/${finca.id}`);
@@ -40,7 +38,7 @@ export class FincaService {
 
   getFincas(): Observable<Finca[]> {
     const fincaRef = collection(this.firestore, 'fincas');
-    return collectionData(fincaRef) as Observable<Finca[]>;
+    return collectionData(fincaRef, { idField: 'id'}) as Observable<Finca[]>;
   }
 
   getFinca(id : any): Observable<Finca> {

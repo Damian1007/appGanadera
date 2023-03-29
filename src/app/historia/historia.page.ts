@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { IonModal } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historia',
@@ -31,7 +30,6 @@ export class HistoriaPage implements OnInit {
 
   constructor( 
     private saludService : SaludService,
-    private router : Router,
     private formBuilder : FormBuilder
   ) { 
       this.historia = {

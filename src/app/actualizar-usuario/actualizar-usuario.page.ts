@@ -12,8 +12,11 @@ import { AutentificarService } from '../services/autentificar.service';
 })
 export class ActualizarUsuarioPage implements OnInit {
 
+  usuario : Usuario;
+  usuarioId : any = localStorage.getItem("usuarioId");
+  usuarioSub : Subscription;
+
   form = this.formBuilder.group({
-    id: ['', [Validators.required]],
     correo: ['', [Validators.email, Validators.required]],
     nombre: ['', [Validators.required]],
     apellido: ['', [Validators.required]],
@@ -25,17 +28,12 @@ export class ActualizarUsuarioPage implements OnInit {
     ciudad: ['', [Validators.required]],
   });
 
-  usuario : Usuario;
-  usuarioId : any = localStorage.getItem("usuarioId");
-  usuarioSub : Subscription;
-
   constructor(
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
   ) { 
     this.usuario = {
-      id: this.usuarioId,
       correo: '',
       nombre: '',
       apellido: '',
@@ -48,9 +46,8 @@ export class ActualizarUsuarioPage implements OnInit {
    }
 
   ngOnInit() {
-    this.usuarioSub = this.autentificarService.getUsuario(this.usuario.id).subscribe(usu => {
+    this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usu => {
       this.form.setValue({
-        id: this.usuarioId,
         correo: usu.correo,
         nombre: usu.nombre,
         apellido: usu.apellido,
@@ -64,8 +61,11 @@ export class ActualizarUsuarioPage implements OnInit {
     });
   }
 
+  ionViewDidLeave() {
+    this.usuarioSub.unsubscribe();
+  }
+
   actualizarUsuario() {
-    this.usuario.id = this.form.getRawValue().id;
     this.usuario.correo = this.form.getRawValue().correo;
     this.usuario.nombre = this.form.getRawValue().nombre;
     this.usuario.apellido = this.form.getRawValue().apellido;
@@ -75,7 +75,12 @@ export class ActualizarUsuarioPage implements OnInit {
     this.usuario.departamento = this.form.getRawValue().departamento;
     this.usuario.ciudad = this.form.getRawValue().ciudad;
 
-    this.autentificarService.updateUsuario(this.usuario, this.usuario.id);
-    this.router.navigate(['/usuario']);
+    this.autentificarService.updateUsuario(this.usuario, this.usuarioId)
+    .then(() => {
+      this.router.navigate(['/usuario'], { replaceUrl: true });
+    })
+    .catch(error => {
+      console.log('Error al Actualizar usuario', error);
+    });
   }
 }
