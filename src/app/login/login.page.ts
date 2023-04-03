@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutentificarService } from './../services/autentificar.service';
 import { MenuController } from '@ionic/angular';
 
@@ -11,10 +11,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  form = this.formBuilder.group({
-    correo: ['', [Validators.email, Validators.required]],
-    contraseña: ['', [Validators.required]],
-  });
+  form : FormGroup;
+  isSubmitted = false;
 
   constructor(
     private formBuilder : FormBuilder,
@@ -24,17 +22,24 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      contrasena: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
   // ionViewDidEnter() {
   //   this.menuCtrl.enable(false);
   // }
 
+  get errorControl() {
+    return this.form.controls;
+  }
+  
   login(){
+    this.isSubmitted = true;
     if(this.form.valid) {
-        const {correo, contraseña} = this.form.getRawValue();
-
-        this.autentificarService.iniciarSesion(correo, contraseña)
+        this.autentificarService.iniciarSesion(this.form.getRawValue().correo, this.form.getRawValue().contrasena)
         .then(() => {
           this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
         })
@@ -45,5 +50,7 @@ export class LoginPage implements OnInit {
         this.form.markAllAsTouched();
     }
   }
+
+  
 
 }

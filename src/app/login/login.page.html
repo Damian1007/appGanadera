@@ -5,26 +5,49 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="form" novalidate (ngSubmit)="login()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Correo Electronico</ion-label>
-        <ion-input formControlName="correo"></ion-input>
-      </ion-item>
+  <div class="contenedor">
+    <form [formGroup]="form" novalidate (ngSubmit)="login()">
+      <ion-list>
+        <ion-item class="correo">
+          <ion-label position="stacked">Correo Electronico</ion-label>
+          <ion-input type="email" formControlName="correo"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" formControlName="contraseña"></ion-input>
-      </ion-item>
-    </ion-list>
+        <!---------------------------------- Error de Validadores -------------------------------------->
+        <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.required">
+          El correo es obligatorio.
+        </span>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" expand="block">Iniciar Sesión</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button routerLink="/registro" routerDirection="back" type="button" expand="block">Registrarse</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+        <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.pattern">
+          Debe ingresar un correo valido.
+        </span>
+        <!---------------------------------------------------------------------------------------------->
+
+        <ion-item class="contrasena">
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input type="password" formControlName="contrasena"></ion-input>
+        </ion-item>
+
+        <!---------------------------------- Error de Validadores -------------------------------------->
+        <span class="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.required">
+          La contraseña es obligatoria.
+        </span>
+
+        <span class="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.minlength">
+          Debe tener un minimo de 8 caracteres.
+        </span>
+        <!---------------------------------------------------------------------------------------------->
+      </ion-list>
+
+      <ion-row class="boton">
+        <ion-col>
+          <ion-button type="submit" expand="block">Iniciar Sesión</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button routerLink="/registro" routerDirection="back" type="button" expand="block">Registrarse</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+
 </ion-content>

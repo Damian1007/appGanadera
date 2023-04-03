@@ -31,6 +31,19 @@ export class AlertasPage implements OnInit {
   ionViewWillEnter() {
     this.alertasSub = this.alertasService.getAlertas(this.fincaId).subscribe(alertas => {
       this.alertas = alertas;
+
+      this.alertas.sort(function (a, b) {
+        if (a.fecha > b.fecha) {
+          return -1;
+        }
+
+        if (a.fecha < b.fecha) {
+          return 1;
+        }
+        
+        // a must be equal to b
+        return 0;
+      });
     });
   }
 

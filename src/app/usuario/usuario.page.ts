@@ -18,11 +18,10 @@ export class UsuarioPage implements OnInit {
     private autentificarService : AutentificarService
   ) {
     this.usuario = {
-      id: this.usuarioId,
       correo: '',
       nombre: '',
       apellido: '',
-      contraseña: '',
+      contrasena: '',
       pais: '',
       telefono: '',
       departamento: '',
@@ -31,8 +30,8 @@ export class UsuarioPage implements OnInit {
   }
 
   ngOnInit() {
-    this.usuarioSub = this.autentificarService.getUsuario(this.usuario.id).subscribe(usu => {
-      this.usuario = usu;
+    this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
+      this.usuario = usuario;
     });
   }
 

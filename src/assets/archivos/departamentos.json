@@ -1,0 +1,136 @@
+{
+    "data": [
+        {
+        "codigo": 5,
+        "depto": "Antioquia"
+        },
+        {
+        "codigo": 8,
+        "depto": "Atlántico"
+        },
+        {
+        "codigo": 11,
+        "depto": "Bogotá, D.C."
+        },
+        {
+        "codigo": 13,
+        "depto": "Bolívar"
+        },
+        {
+        "codigo": 15,
+        "depto": "Boyacá"
+        },
+        {
+        "codigo": 17,
+        "depto": "Caldas"
+        },
+        {
+        "codigo": 18,
+        "depto": "Caquetá"
+        },
+        {
+        "codigo": 19,
+        "depto": "Cauca"
+        },
+        {
+        "codigo": 20,
+        "depto": "Cesar"
+        },
+        {
+        "codigo": 23,
+        "depto": "Córdoba"
+        },
+        {
+        "codigo": 25,
+        "depto": "Cundinamarca"
+        },
+        {
+        "codigo": 27,
+        "depto": "Chocó"
+        },
+        {
+        "codigo": 41,
+        "depto": "Huila"
+        },
+        {
+        "codigo": 44,
+        "depto": "La Guajira"
+        },
+        {
+        "codigo": 47,
+        "depto": "Magdalena"
+        },
+        {
+        "codigo": 50,
+        "depto": "Meta"
+        },
+        {
+        "codigo": 52,
+        "depto": "Nariño"
+        },
+        {
+        "codigo": 54,
+        "depto": "Norte de Santander"
+        },
+        {
+        "codigo": 63,
+        "depto": "Quindío"
+        },
+        {
+        "codigo": 66,
+        "depto": "Risaralda"
+        },
+        {
+        "codigo": 68,
+        "depto": "Santander"
+        },
+        {
+        "codigo": 70,
+        "depto": "Sucre"
+        },
+        {
+        "codigo": 73,
+        "depto": "Tolima"
+        },
+        {
+        "codigo": 76,
+        "depto": "Valle del Cauca"
+        },
+        {
+        "codigo": 81,
+        "depto": "Arauca"
+        },
+        {
+        "codigo": 85,
+        "depto": "Casanare"
+        },
+        {
+        "codigo": 86,
+        "depto": "Putumayo"
+        },
+        {
+        "codigo": 88,
+        "depto": "San Andrés"
+        },
+        {
+        "codigo": 91,
+        "depto": "Amazonas"
+        },
+        {
+        "codigo": 94,
+        "depto": "Guainía"
+        },
+        {
+        "codigo": 95,
+        "depto": "Guaviare"
+        },
+        {
+        "codigo": 97,
+        "depto": "Vaupés"
+        },
+        {
+        "codigo": 99,
+        "depto": "Vichada"
+        }
+    ]
+}

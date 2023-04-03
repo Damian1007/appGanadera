@@ -20,8 +20,8 @@ export class ActualizarUsuarioPage implements OnInit {
     correo: ['', [Validators.email, Validators.required]],
     nombre: ['', [Validators.required]],
     apellido: ['', [Validators.required]],
-    contraseña: ['', [Validators.required]],
-    confirmarContraseña: ['', [Validators.required]],
+    contrasena: ['', [Validators.required]],
+    confirmarContrasena: ['', [Validators.required]],
     pais: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
     departamento: ['', [Validators.required]],
@@ -37,7 +37,7 @@ export class ActualizarUsuarioPage implements OnInit {
       correo: '',
       nombre: '',
       apellido: '',
-      contraseña: '',
+      contrasena: '',
       pais: '',
       telefono: '',
       departamento: '',
@@ -51,8 +51,8 @@ export class ActualizarUsuarioPage implements OnInit {
         correo: usu.correo,
         nombre: usu.nombre,
         apellido: usu.apellido,
-        contraseña: '',
-        confirmarContraseña: '',
+        contrasena: '',
+        confirmarContrasena: '',
         pais: usu.pais,
         telefono: usu.telefono,
         departamento: usu.departamento,
@@ -69,7 +69,7 @@ export class ActualizarUsuarioPage implements OnInit {
     this.usuario.correo = this.form.getRawValue().correo;
     this.usuario.nombre = this.form.getRawValue().nombre;
     this.usuario.apellido = this.form.getRawValue().apellido;
-    this.usuario.contraseña = this.form.getRawValue().contraseña;
+    this.usuario.contrasena = this.form.getRawValue().contrasena;
     this.usuario.pais = this.form.getRawValue().pais;
     this.usuario.telefono = this.form.getRawValue().telefono;
     this.usuario.departamento = this.form.getRawValue().departamento;

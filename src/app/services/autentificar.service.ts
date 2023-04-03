@@ -26,8 +26,8 @@ export class AutentificarService {
     .then(() => signInWithEmailAndPassword(this.afAutentificador, correo, contraseña));
   }
 
-  registroUsu(usuario : Usuario) {
-      const usuarioDocRef = doc(this.firestore, `usuarios/${usuario.id}`);
+  registroUsu(usuario : Usuario, id : any) {
+      const usuarioDocRef = doc(this.firestore, `usuarios/${id}`);
       return setDoc(usuarioDocRef, usuario);
   }
 
@@ -53,7 +53,7 @@ export class AutentificarService {
       correo: usuario.correo,
       nombre: usuario.nombre,
       apellido: usuario.apellido,
-      contraseña: usuario.contraseña,
+      contraseña: usuario.contrasena,
       pais: usuario.pais,
       telefono: usuario.telefono,
       departamento: usuario.departamento,

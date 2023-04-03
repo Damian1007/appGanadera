@@ -4,21 +4,22 @@
 }
 
 .usuario{
-    font-size: 16px;
+    font-size: 18px;
+    color: black;
 
     position: fixed;
     left: 25%;
 }
 
 .cambio{
-    font-size: 16px;
-
-    position: fixed;
-    left: 45%;
+    font-size: 18px;
+    text-align: center;
+    
+    padding-top: 5%;
 }
 
 .fecha{
-    font-size: 15px;
+    font-size: 16px;
 
     position: absolute;
     right: 5%;

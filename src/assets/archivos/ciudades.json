@@ -1,0 +1,5599 @@
+{
+    "data": [
+        {
+        "Codigo": 5001,
+        "Ciudad": "Medellín",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5002,
+        "Ciudad": "Abejorral",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5004,
+        "Ciudad": "Abriaqui",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5021,
+        "Ciudad": "Alejandría",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5030,
+        "Ciudad": "Amaga",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5031,
+        "Ciudad": "Amalfi",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5034,
+        "Ciudad": "Andes",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5036,
+        "Ciudad": "Angelópolis",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5038,
+        "Ciudad": "Angostura",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5040,
+        "Ciudad": "Anorí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5042,
+        "Ciudad": "Santafé de Antioquia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5044,
+        "Ciudad": "Anza",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5045,
+        "Ciudad": "Apartadó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5051,
+        "Ciudad": "Arboletes",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5055,
+        "Ciudad": "Argelia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5059,
+        "Ciudad": "Armenia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5079,
+        "Ciudad": "Barbosa",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5086,
+        "Ciudad": "Belmira",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5088,
+        "Ciudad": "Bello",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5091,
+        "Ciudad": "Betania",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5093,
+        "Ciudad": "Betulia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5101,
+        "Ciudad": "Ciudad Bolívar",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5107,
+        "Ciudad": "Briceño",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5113,
+        "Ciudad": "Buriticá",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5120,
+        "Ciudad": "Cáceres",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5125,
+        "Ciudad": "Caicedo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5129,
+        "Ciudad": "Caldas",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5134,
+        "Ciudad": "Campamento",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5138,
+        "Ciudad": "Cañasgordas",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5142,
+        "Ciudad": "Caracolí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5145,
+        "Ciudad": "Caramanta",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5147,
+        "Ciudad": "Carepa",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5148,
+        "Ciudad": "El Carmen de Viboral",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5150,
+        "Ciudad": "Carolina",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5154,
+        "Ciudad": "Caucasia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5172,
+        "Ciudad": "Chigorodó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5190,
+        "Ciudad": "Cisneros",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5197,
+        "Ciudad": "Cocorná",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5206,
+        "Ciudad": "Concepción",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5209,
+        "Ciudad": "Concordia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5212,
+        "Ciudad": "Copacabana",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5234,
+        "Ciudad": "Dabeiba",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5237,
+        "Ciudad": "Don Matías",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5240,
+        "Ciudad": "Ebejico",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5250,
+        "Ciudad": "El Bagre",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5264,
+        "Ciudad": "Entrerríos",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5266,
+        "Ciudad": "Envigado",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5282,
+        "Ciudad": "Fredonia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5284,
+        "Ciudad": "Frontino",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5306,
+        "Ciudad": "Giraldo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5308,
+        "Ciudad": "Girardota",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5310,
+        "Ciudad": "Gomez Plata",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5313,
+        "Ciudad": "Granada",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5315,
+        "Ciudad": "Guadalupe",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5318,
+        "Ciudad": "Guarne",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5321,
+        "Ciudad": "Guatapé",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5347,
+        "Ciudad": "Heliconia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5353,
+        "Ciudad": "Hispania",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5360,
+        "Ciudad": "Itagüí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5361,
+        "Ciudad": "Ituango",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5364,
+        "Ciudad": "Jardín",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5368,
+        "Ciudad": "Jericó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5376,
+        "Ciudad": "La Ceja",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5380,
+        "Ciudad": "La Estrella",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5390,
+        "Ciudad": "La Pintada",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5400,
+        "Ciudad": "La Unión",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5411,
+        "Ciudad": "Liborina",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5425,
+        "Ciudad": "Maceo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5440,
+        "Ciudad": "Marinilla",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5467,
+        "Ciudad": "Montebello",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5475,
+        "Ciudad": "Murindó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5480,
+        "Ciudad": "Mutatá",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5483,
+        "Ciudad": "Nariño",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5490,
+        "Ciudad": "Necoclí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5495,
+        "Ciudad": "Nechí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5501,
+        "Ciudad": "Olaya",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5541,
+        "Ciudad": "Peñol",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5543,
+        "Ciudad": "Peque",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5576,
+        "Ciudad": "Pueblorrico",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5579,
+        "Ciudad": "Puerto Berrío",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5585,
+        "Ciudad": "Puerto Nare",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5591,
+        "Ciudad": "Puerto Triunfo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5604,
+        "Ciudad": "Remedios",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5607,
+        "Ciudad": "Retiro",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5615,
+        "Ciudad": "Rionegro",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5628,
+        "Ciudad": "Sabanalarga",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5631,
+        "Ciudad": "Sabaneta",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5642,
+        "Ciudad": "Salgar",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5647,
+        "Ciudad": "San Andres",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5649,
+        "Ciudad": "San Carlos",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5652,
+        "Ciudad": "San Francisco",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5656,
+        "Ciudad": "San Jeronimo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5658,
+        "Ciudad": "San Jose de la Montaña",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5659,
+        "Ciudad": "San Juan de Urabá",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5660,
+        "Ciudad": "San Luis",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5664,
+        "Ciudad": "San Pedro",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5665,
+        "Ciudad": "San Pedro de Urabá",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5667,
+        "Ciudad": "San Rafael",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5670,
+        "Ciudad": "San Roque",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5674,
+        "Ciudad": "San Vicente",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5679,
+        "Ciudad": "Santa Bárbara",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5686,
+        "Ciudad": "Santa Rosa de Osos",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5690,
+        "Ciudad": "Santo Domingo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5697,
+        "Ciudad": "El Santuario",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5736,
+        "Ciudad": "Segovia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5756,
+        "Ciudad": "Sonsón",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5761,
+        "Ciudad": "Sopetrán",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5789,
+        "Ciudad": "Támesis",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5790,
+        "Ciudad": "Tarazá",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5792,
+        "Ciudad": "Tarso",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5809,
+        "Ciudad": "Titiribí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5819,
+        "Ciudad": "Toledo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5837,
+        "Ciudad": "Turbo",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5842,
+        "Ciudad": "Uramita",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5847,
+        "Ciudad": "Urrao",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5854,
+        "Ciudad": "Valdivia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5856,
+        "Ciudad": "Valparaiso",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5858,
+        "Ciudad": "Vegachí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5861,
+        "Ciudad": "Venecia",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5873,
+        "Ciudad": "Vigía del Fuerte",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5885,
+        "Ciudad": "Yalí",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5887,
+        "Ciudad": "Yarumal",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5890,
+        "Ciudad": "Yolombó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5893,
+        "Ciudad": "Yondó",
+        "Depto": 5
+        },
+        {
+        "Codigo": 5895,
+        "Ciudad": "Zaragoza",
+        "Depto": 5
+        },
+        {
+        "Codigo": 8001,
+        "Ciudad": "Barranquilla",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8078,
+        "Ciudad": "Baranoa",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8137,
+        "Ciudad": "Campo de La Cruz",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8141,
+        "Ciudad": "Candelaria",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8296,
+        "Ciudad": "Galapa",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8372,
+        "Ciudad": "Juan de Acosta",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8421,
+        "Ciudad": "Luruaco",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8433,
+        "Ciudad": "Malambo",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8436,
+        "Ciudad": "Manatí",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8520,
+        "Ciudad": "Palmar de Varela",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8549,
+        "Ciudad": "Piojó",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8558,
+        "Ciudad": "Polonuevo",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8560,
+        "Ciudad": "Ponedera",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8573,
+        "Ciudad": "Puerto Colombia",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8606,
+        "Ciudad": "Repelón",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8634,
+        "Ciudad": "Sabanagrande",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8638,
+        "Ciudad": "Sabanalarga",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8675,
+        "Ciudad": "Santa Lucía",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8685,
+        "Ciudad": "Santo Tomás",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8758,
+        "Ciudad": "Soledad",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8770,
+        "Ciudad": "Suan",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8832,
+        "Ciudad": "Tubará",
+        "Depto": 8
+        },
+        {
+        "Codigo": 8849,
+        "Ciudad": "Usiacurí",
+        "Depto": 8
+        },
+        {
+        "Codigo": 11001,
+        "Ciudad": "Bogotá, D.C.",
+        "Depto": 11
+        },
+        {
+        "Codigo": 13001,
+        "Ciudad": "Cartagena",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13006,
+        "Ciudad": "Achí",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13030,
+        "Ciudad": "Altos del Rosario",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13042,
+        "Ciudad": "Arenal",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13052,
+        "Ciudad": "Arjona",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13062,
+        "Ciudad": "Arroyohondo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13074,
+        "Ciudad": "Barranco de Loba",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13140,
+        "Ciudad": "Calamar",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13160,
+        "Ciudad": "Cantagallo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13188,
+        "Ciudad": "Cicuco",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13212,
+        "Ciudad": "Córdoba",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13222,
+        "Ciudad": "Clemencia",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13244,
+        "Ciudad": "El Carmen de Bolívar",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13248,
+        "Ciudad": "El Guamo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13268,
+        "Ciudad": "El Peñón",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13300,
+        "Ciudad": "Hatillo de Loba",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13430,
+        "Ciudad": "Magangué",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13433,
+        "Ciudad": "Mahates",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13440,
+        "Ciudad": "Margarita",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13442,
+        "Ciudad": "María la Baja",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13458,
+        "Ciudad": "Montecristo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13468,
+        "Ciudad": "Mompós",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13473,
+        "Ciudad": "Morales",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13549,
+        "Ciudad": "Pinillos",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13580,
+        "Ciudad": "Regidor",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13600,
+        "Ciudad": "Río Viejo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13620,
+        "Ciudad": "San Cristobal",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13647,
+        "Ciudad": "San Estanislao",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13650,
+        "Ciudad": "San Fernando",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13654,
+        "Ciudad": "San Jacinto",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13655,
+        "Ciudad": "San Jacinto del Cauca",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13657,
+        "Ciudad": "San Juan Nepomuceno",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13667,
+        "Ciudad": "San Martín de Loba",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13670,
+        "Ciudad": "San Pablo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13673,
+        "Ciudad": "Santa Catalina",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13683,
+        "Ciudad": "Santa Rosa",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13688,
+        "Ciudad": "Santa Rosa del Sur",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13744,
+        "Ciudad": "Simití",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13760,
+        "Ciudad": "Soplaviento",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13780,
+        "Ciudad": "Talaigua Nuevo",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13810,
+        "Ciudad": "Tiquisio",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13836,
+        "Ciudad": "Turbaco",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13838,
+        "Ciudad": "Turbaná",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13873,
+        "Ciudad": "Villanueva",
+        "Depto": 13
+        },
+        {
+        "Codigo": 13894,
+        "Ciudad": "Zambrano",
+        "Depto": 13
+        },
+        {
+        "Codigo": 15001,
+        "Ciudad": "Tunja",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15022,
+        "Ciudad": "Almeida",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15047,
+        "Ciudad": "Aquitania",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15051,
+        "Ciudad": "Arcabuco",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15087,
+        "Ciudad": "Belén",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15090,
+        "Ciudad": "Berbeo",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15092,
+        "Ciudad": "Betéitiva",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15097,
+        "Ciudad": "Boavita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15104,
+        "Ciudad": "Boyacá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15106,
+        "Ciudad": "Briceño",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15109,
+        "Ciudad": "Buenavista",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15114,
+        "Ciudad": "Busbanzá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15131,
+        "Ciudad": "Caldas",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15135,
+        "Ciudad": "Campohermoso",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15162,
+        "Ciudad": "Cerinza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15172,
+        "Ciudad": "Chinavita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15176,
+        "Ciudad": "Chiquinquirá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15180,
+        "Ciudad": "Chiscas",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15183,
+        "Ciudad": "Chita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15185,
+        "Ciudad": "Chitaraque",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15187,
+        "Ciudad": "Chivatá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15189,
+        "Ciudad": "Cienega",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15204,
+        "Ciudad": "Cómbita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15212,
+        "Ciudad": "Coper",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15215,
+        "Ciudad": "Corrales",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15218,
+        "Ciudad": "Covarachía",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15223,
+        "Ciudad": "Cubará",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15224,
+        "Ciudad": "Cucaita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15226,
+        "Ciudad": "Cuitiiva",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15232,
+        "Ciudad": "Chiquiza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15236,
+        "Ciudad": "Chivor",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15238,
+        "Ciudad": "Duitama",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15244,
+        "Ciudad": "El Cocuy",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15248,
+        "Ciudad": "El Espino",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15272,
+        "Ciudad": "Firavitoba",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15276,
+        "Ciudad": "Floresta",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15293,
+        "Ciudad": "Gachantivá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15296,
+        "Ciudad": "Gameza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15299,
+        "Ciudad": "Garagoa",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15317,
+        "Ciudad": "Guacamayas",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15322,
+        "Ciudad": "Guateque",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15325,
+        "Ciudad": "Guayatá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15332,
+        "Ciudad": "Güicán",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15362,
+        "Ciudad": "Iza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15367,
+        "Ciudad": "Jenesano",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15368,
+        "Ciudad": "Jericó",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15377,
+        "Ciudad": "Labranzagrande",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15380,
+        "Ciudad": "La Capilla",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15401,
+        "Ciudad": "La Victoria",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15403,
+        "Ciudad": "La Uvita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15407,
+        "Ciudad": "Villa de Leyva",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15425,
+        "Ciudad": "Macanal",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15442,
+        "Ciudad": "Maripí",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15455,
+        "Ciudad": "Miraflores",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15464,
+        "Ciudad": "Mongua",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15466,
+        "Ciudad": "Monguí",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15469,
+        "Ciudad": "Moniquirá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15476,
+        "Ciudad": "Motavita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15480,
+        "Ciudad": "Muzo",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15491,
+        "Ciudad": "Nobsa",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15494,
+        "Ciudad": "Nuevo Colón",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15500,
+        "Ciudad": "Oicata",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15507,
+        "Ciudad": "Otanche",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15511,
+        "Ciudad": "Pachavita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15514,
+        "Ciudad": "Paez",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15516,
+        "Ciudad": "Paipa",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15518,
+        "Ciudad": "Pajarito",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15522,
+        "Ciudad": "Panqueba",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15531,
+        "Ciudad": "Pauna",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15533,
+        "Ciudad": "Paya",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15537,
+        "Ciudad": "Paz de Río",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15542,
+        "Ciudad": "Pesca",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15550,
+        "Ciudad": "Pisba",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15572,
+        "Ciudad": "Puerto Boyacá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15580,
+        "Ciudad": "Quipama",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15599,
+        "Ciudad": "Ramiriquí",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15600,
+        "Ciudad": "Ráquira",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15621,
+        "Ciudad": "Rondón",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15632,
+        "Ciudad": "Saboyá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15638,
+        "Ciudad": "Sáchica",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15646,
+        "Ciudad": "Samacá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15660,
+        "Ciudad": "San Eduardo",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15664,
+        "Ciudad": "San José de Pare",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15667,
+        "Ciudad": "San Luis de Gaceno",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15673,
+        "Ciudad": "San Mateo",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15676,
+        "Ciudad": "San Miguel de Sema",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15681,
+        "Ciudad": "San Pablo Borbur",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15686,
+        "Ciudad": "Santana",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15690,
+        "Ciudad": "Santa María",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15693,
+        "Ciudad": "Santa Rosa de Viterbo",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15696,
+        "Ciudad": "Santa Sofía",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15720,
+        "Ciudad": "Sativanorte",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15723,
+        "Ciudad": "Sativasur",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15740,
+        "Ciudad": "Siachoque",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15753,
+        "Ciudad": "Soatá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15755,
+        "Ciudad": "Socotá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15757,
+        "Ciudad": "Socha",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15759,
+        "Ciudad": "Sogamoso",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15761,
+        "Ciudad": "Somondoco",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15762,
+        "Ciudad": "Sora",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15763,
+        "Ciudad": "Sotaquirá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15764,
+        "Ciudad": "Soracá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15774,
+        "Ciudad": "Susacón",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15776,
+        "Ciudad": "Sutamarchán",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15778,
+        "Ciudad": "Sutatenza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15790,
+        "Ciudad": "Tasco",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15798,
+        "Ciudad": "Tenza",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15804,
+        "Ciudad": "Tibaná",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15806,
+        "Ciudad": "Tibasosa",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15808,
+        "Ciudad": "Tinjacá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15810,
+        "Ciudad": "Tipacoque",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15814,
+        "Ciudad": "Toca",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15816,
+        "Ciudad": "Togüí",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15820,
+        "Ciudad": "Topaga",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15822,
+        "Ciudad": "Tota",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15832,
+        "Ciudad": "Tununguá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15835,
+        "Ciudad": "Turmequé",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15837,
+        "Ciudad": "Tuta",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15839,
+        "Ciudad": "Tutasá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15842,
+        "Ciudad": "Umbita",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15861,
+        "Ciudad": "Ventaquemada",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15879,
+        "Ciudad": "Viracachá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 15897,
+        "Ciudad": "Zetaquirá",
+        "Depto": 15
+        },
+        {
+        "Codigo": 17001,
+        "Ciudad": "Manizales",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17013,
+        "Ciudad": "Aguadas",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17042,
+        "Ciudad": "Anserma",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17050,
+        "Ciudad": "Aranzazu",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17088,
+        "Ciudad": "Belalcázar",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17174,
+        "Ciudad": "Chinchiná",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17272,
+        "Ciudad": "Filadelfia",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17380,
+        "Ciudad": "La Dorada",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17388,
+        "Ciudad": "La Merced",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17433,
+        "Ciudad": "Manzanares",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17442,
+        "Ciudad": "Marmato",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17444,
+        "Ciudad": "Marquetalia",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17446,
+        "Ciudad": "Marulanda",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17486,
+        "Ciudad": "Neira",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17495,
+        "Ciudad": "Norcasia",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17513,
+        "Ciudad": "Pácora",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17524,
+        "Ciudad": "Palestina",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17541,
+        "Ciudad": "Pensilvania",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17614,
+        "Ciudad": "Riosucio",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17616,
+        "Ciudad": "Risaralda",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17653,
+        "Ciudad": "Salamina",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17662,
+        "Ciudad": "Samaná",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17665,
+        "Ciudad": "San José",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17777,
+        "Ciudad": "Supía",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17867,
+        "Ciudad": "Victoria",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17873,
+        "Ciudad": "Villamaría",
+        "Depto": 17
+        },
+        {
+        "Codigo": 17877,
+        "Ciudad": "Viterbo",
+        "Depto": 17
+        },
+        {
+        "Codigo": 18001,
+        "Ciudad": "Florencia",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18029,
+        "Ciudad": "Albania",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18094,
+        "Ciudad": "Belén de Los Andaquíes",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18150,
+        "Ciudad": "Cartagena del Chairá",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18205,
+        "Ciudad": "Currillo",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18247,
+        "Ciudad": "El Doncello",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18256,
+        "Ciudad": "El Paujil",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18410,
+        "Ciudad": "La Montañita",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18460,
+        "Ciudad": "Milán",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18479,
+        "Ciudad": "Morelia",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18592,
+        "Ciudad": "Puerto Rico",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18610,
+        "Ciudad": "San José de La Fragua",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18753,
+        "Ciudad": "San Vicente del Caguán",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18756,
+        "Ciudad": "Solano",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18785,
+        "Ciudad": "Solita",
+        "Depto": 18
+        },
+        {
+        "Codigo": 18860,
+        "Ciudad": "Valparaíso",
+        "Depto": 18
+        },
+        {
+        "Codigo": 19001,
+        "Ciudad": "Popayán",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19022,
+        "Ciudad": "Almaguer",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19050,
+        "Ciudad": "Argelia",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19075,
+        "Ciudad": "Balboa",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19100,
+        "Ciudad": "Bolívar",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19110,
+        "Ciudad": "Buenos Aires",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19130,
+        "Ciudad": "Cajibío",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19137,
+        "Ciudad": "Caldono",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19142,
+        "Ciudad": "Caloto",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19212,
+        "Ciudad": "Corinto",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19256,
+        "Ciudad": "El Tambo",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19290,
+        "Ciudad": "Florencia",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19318,
+        "Ciudad": "Guapi",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19355,
+        "Ciudad": "Inzá",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19364,
+        "Ciudad": "Jambaló",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19392,
+        "Ciudad": "La Sierra",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19397,
+        "Ciudad": "La Vega",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19418,
+        "Ciudad": "López",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19450,
+        "Ciudad": "Mercaderes",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19455,
+        "Ciudad": "Miranda",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19473,
+        "Ciudad": "Morales",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19513,
+        "Ciudad": "Padilla",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19517,
+        "Ciudad": "Páez",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19532,
+        "Ciudad": "Patía",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19533,
+        "Ciudad": "Piamonte",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19548,
+        "Ciudad": "Piendamó",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19573,
+        "Ciudad": "Puerto Tejada",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19585,
+        "Ciudad": "Puracé",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19622,
+        "Ciudad": "Rosas",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19693,
+        "Ciudad": "San Sebastián",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19698,
+        "Ciudad": "Santander de Quilichao",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19701,
+        "Ciudad": "Santa Rosa",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19743,
+        "Ciudad": "Silvia",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19760,
+        "Ciudad": "Sotará",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19780,
+        "Ciudad": "Suárez",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19785,
+        "Ciudad": "Sucre",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19807,
+        "Ciudad": "Timbío",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19809,
+        "Ciudad": "Timbiquí",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19821,
+        "Ciudad": "Toribío",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19824,
+        "Ciudad": "Totoró",
+        "Depto": 19
+        },
+        {
+        "Codigo": 19845,
+        "Ciudad": "Villa Rica",
+        "Depto": 19
+        },
+        {
+        "Codigo": 20001,
+        "Ciudad": "Valledupar",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20011,
+        "Ciudad": "Aguachica",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20013,
+        "Ciudad": "Agustín Codazzi",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20032,
+        "Ciudad": "Astrea",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20045,
+        "Ciudad": "Becerril",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20060,
+        "Ciudad": "Bosconia",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20175,
+        "Ciudad": "Chimichagua",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20178,
+        "Ciudad": "Chiriguaná",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20228,
+        "Ciudad": "Curumaní",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20238,
+        "Ciudad": "El Copey",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20250,
+        "Ciudad": "El Paso",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20295,
+        "Ciudad": "Gamarra",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20310,
+        "Ciudad": "González",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20383,
+        "Ciudad": "La Gloria",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20400,
+        "Ciudad": "La Jagua de Ibirico",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20443,
+        "Ciudad": "Manaure",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20517,
+        "Ciudad": "Pailitas",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20550,
+        "Ciudad": "Pelaya",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20570,
+        "Ciudad": "Pueblo Bello",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20614,
+        "Ciudad": "Río de Oro",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20621,
+        "Ciudad": "La Paz",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20710,
+        "Ciudad": "San Alberto",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20750,
+        "Ciudad": "San Diego",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20770,
+        "Ciudad": "San Martín",
+        "Depto": 20
+        },
+        {
+        "Codigo": 20787,
+        "Ciudad": "Tamalameque",
+        "Depto": 20
+        },
+        {
+        "Codigo": 23001,
+        "Ciudad": "Montería",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23068,
+        "Ciudad": "Ayapel",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23079,
+        "Ciudad": "Buenavista",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23090,
+        "Ciudad": "Canalete",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23162,
+        "Ciudad": "Cereté",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23168,
+        "Ciudad": "Chima",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23182,
+        "Ciudad": "Chinú",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23189,
+        "Ciudad": "Ciénaga de Oro",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23300,
+        "Ciudad": "Cotorra",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23350,
+        "Ciudad": "La Apartada",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23417,
+        "Ciudad": "Lorica",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23419,
+        "Ciudad": "Los Córdobas",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23464,
+        "Ciudad": "Momil",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23466,
+        "Ciudad": "Montelíbano",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23500,
+        "Ciudad": "Moñitos",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23555,
+        "Ciudad": "Planeta Rica",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23570,
+        "Ciudad": "Pueblo Nuevo",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23574,
+        "Ciudad": "Puerto Escondido",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23580,
+        "Ciudad": "Puerto Libertador",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23586,
+        "Ciudad": "Purísima",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23660,
+        "Ciudad": "Sahagún",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23670,
+        "Ciudad": "San Andrés de Sotavento",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23672,
+        "Ciudad": "San Antero",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23675,
+        "Ciudad": "San Bernardo del Viento",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23678,
+        "Ciudad": "San Carlos",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23686,
+        "Ciudad": "San Pelayo",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23807,
+        "Ciudad": "Tierralta",
+        "Depto": 23
+        },
+        {
+        "Codigo": 23855,
+        "Ciudad": "Valencia",
+        "Depto": 23
+        },
+        {
+        "Codigo": 25001,
+        "Ciudad": "Agua de Dios",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25019,
+        "Ciudad": "Albán",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25035,
+        "Ciudad": "Anapoima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25040,
+        "Ciudad": "Anolaima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25053,
+        "Ciudad": "Arbeláez",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25086,
+        "Ciudad": "Beltrán",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25095,
+        "Ciudad": "Bituima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25099,
+        "Ciudad": "Bojacá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25120,
+        "Ciudad": "Cabrera",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25123,
+        "Ciudad": "Cachipay",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25126,
+        "Ciudad": "Cajicá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25148,
+        "Ciudad": "Caparrapí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25151,
+        "Ciudad": "Cáqueza",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25154,
+        "Ciudad": "Carmen de Carupa",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25168,
+        "Ciudad": "Chaguaní",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25175,
+        "Ciudad": "Chía",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25178,
+        "Ciudad": "Chipaque",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25181,
+        "Ciudad": "Choachí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25183,
+        "Ciudad": "Chocontá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25200,
+        "Ciudad": "Cogua",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25214,
+        "Ciudad": "Cota",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25224,
+        "Ciudad": "Cucunubá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25245,
+        "Ciudad": "El Colegio",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25258,
+        "Ciudad": "El Peñón",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25260,
+        "Ciudad": "El Rosal",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25269,
+        "Ciudad": "Facatativá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25279,
+        "Ciudad": "Fómeque",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25281,
+        "Ciudad": "Fosca",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25286,
+        "Ciudad": "Funza",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25288,
+        "Ciudad": "Fúquene",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25290,
+        "Ciudad": "Fusagasugá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25293,
+        "Ciudad": "Gachalá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25295,
+        "Ciudad": "Gachancipá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25297,
+        "Ciudad": "Gachetá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25299,
+        "Ciudad": "Gama",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25307,
+        "Ciudad": "Girardot",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25312,
+        "Ciudad": "Granada",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25317,
+        "Ciudad": "Guachetá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25320,
+        "Ciudad": "Guaduas",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25322,
+        "Ciudad": "Guasca",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25324,
+        "Ciudad": "Guataquí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25326,
+        "Ciudad": "Guatavita",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25328,
+        "Ciudad": "Guayabal de Síquima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25335,
+        "Ciudad": "Guayabetal",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25339,
+        "Ciudad": "Gutiérrez",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25368,
+        "Ciudad": "Jerusalén",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25372,
+        "Ciudad": "Junín",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25377,
+        "Ciudad": "La Calera",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25386,
+        "Ciudad": "La Mesa",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25394,
+        "Ciudad": "La Palma",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25398,
+        "Ciudad": "La Peña",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25402,
+        "Ciudad": "La Vega",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25407,
+        "Ciudad": "Lenguazaque",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25426,
+        "Ciudad": "Machetá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25430,
+        "Ciudad": "Madrid",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25436,
+        "Ciudad": "Manta",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25438,
+        "Ciudad": "Medina",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25473,
+        "Ciudad": "Mosquera",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25483,
+        "Ciudad": "Nariño",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25486,
+        "Ciudad": "Nemocón",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25488,
+        "Ciudad": "Nilo",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25489,
+        "Ciudad": "Nimaima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25491,
+        "Ciudad": "Nocaima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25506,
+        "Ciudad": "Venecia",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25513,
+        "Ciudad": "Pacho",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25518,
+        "Ciudad": "Paime",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25524,
+        "Ciudad": "Pandí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25530,
+        "Ciudad": "Paratebueno",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25535,
+        "Ciudad": "Pasca",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25572,
+        "Ciudad": "Puerto Salgar",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25580,
+        "Ciudad": "Pulí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25592,
+        "Ciudad": "Quebradanegra",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25594,
+        "Ciudad": "Quetame",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25596,
+        "Ciudad": "Quípile",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25599,
+        "Ciudad": "Apulo",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25612,
+        "Ciudad": "Ricaurte",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25645,
+        "Ciudad": "San Antonio de Tequendama",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25649,
+        "Ciudad": "San Bernardo",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25653,
+        "Ciudad": "San Cayetano",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25658,
+        "Ciudad": "San Francisco",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25662,
+        "Ciudad": "San Juan de Ríoseco",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25718,
+        "Ciudad": "Sasaima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25736,
+        "Ciudad": "Sesquilé",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25740,
+        "Ciudad": "Sibaté",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25743,
+        "Ciudad": "Silvania",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25745,
+        "Ciudad": "Simijaca",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25754,
+        "Ciudad": "Soacha",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25758,
+        "Ciudad": "Sopó",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25769,
+        "Ciudad": "Subachoque",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25772,
+        "Ciudad": "Suesca",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25777,
+        "Ciudad": "Supatá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25779,
+        "Ciudad": "Susa",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25781,
+        "Ciudad": "Sutatausa",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25785,
+        "Ciudad": "Tabio",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25793,
+        "Ciudad": "Tausa",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25797,
+        "Ciudad": "Tena",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25799,
+        "Ciudad": "Tenjo",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25805,
+        "Ciudad": "Tibacuy",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25807,
+        "Ciudad": "Tibirita",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25815,
+        "Ciudad": "Tocaima",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25817,
+        "Ciudad": "Tocancipá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25823,
+        "Ciudad": "Topaipí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25839,
+        "Ciudad": "Ubalá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25841,
+        "Ciudad": "Ubaque",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25843,
+        "Ciudad": "Ubaté",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25845,
+        "Ciudad": "Une",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25851,
+        "Ciudad": "Útica",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25862,
+        "Ciudad": "Vergara",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25867,
+        "Ciudad": "Vianí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25871,
+        "Ciudad": "Villagómez",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25873,
+        "Ciudad": "Villapinzón",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25875,
+        "Ciudad": "Villeta",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25878,
+        "Ciudad": "Viotá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25885,
+        "Ciudad": "Yacopí",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25898,
+        "Ciudad": "Zipacón",
+        "Depto": 25
+        },
+        {
+        "Codigo": 25899,
+        "Ciudad": "Zipaquirá",
+        "Depto": 25
+        },
+        {
+        "Codigo": 27001,
+        "Ciudad": "Quibdó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27006,
+        "Ciudad": "Acandí",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27025,
+        "Ciudad": "Alto Baudó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27050,
+        "Ciudad": "Atrato",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27073,
+        "Ciudad": "Bagadó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27075,
+        "Ciudad": "Bahía Solano",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27077,
+        "Ciudad": "Bajo Baudó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27086,
+        "Ciudad": "Belén de Bajira",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27099,
+        "Ciudad": "Bojayá",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27135,
+        "Ciudad": "Cantón del San Pablo",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27150,
+        "Ciudad": "Carmen del Darien",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27160,
+        "Ciudad": "Certegui",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27205,
+        "Ciudad": "Condoto",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27245,
+        "Ciudad": "El Carmen de Atrato",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27250,
+        "Ciudad": "Litoral del Bajo San Juan",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27361,
+        "Ciudad": "Istmina",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27372,
+        "Ciudad": "Juradó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27413,
+        "Ciudad": "Lloró",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27425,
+        "Ciudad": "Medio Atrato",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27430,
+        "Ciudad": "Medio Baudó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27450,
+        "Ciudad": "Medio San Juan",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27491,
+        "Ciudad": "Nóvita",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27495,
+        "Ciudad": "Nuquí",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27580,
+        "Ciudad": "Río Iro",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27600,
+        "Ciudad": "Río Quito",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27615,
+        "Ciudad": "Riosucio",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27660,
+        "Ciudad": "San José del Palmar",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27745,
+        "Ciudad": "Sipí",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27787,
+        "Ciudad": "Tadó",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27800,
+        "Ciudad": "Unguía",
+        "Depto": 27
+        },
+        {
+        "Codigo": 27810,
+        "Ciudad": "Unión Panamericana",
+        "Depto": 27
+        },
+        {
+        "Codigo": 41001,
+        "Ciudad": "Neiva",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41006,
+        "Ciudad": "Acevedo",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41013,
+        "Ciudad": "Agrado",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41016,
+        "Ciudad": "Aipe",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41020,
+        "Ciudad": "Algeciras",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41026,
+        "Ciudad": "Altamira",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41078,
+        "Ciudad": "Baraya",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41132,
+        "Ciudad": "Campoalegre",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41206,
+        "Ciudad": "Colombia",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41244,
+        "Ciudad": "Elías",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41298,
+        "Ciudad": "Garzón",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41306,
+        "Ciudad": "Gigante",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41319,
+        "Ciudad": "Guadalupe",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41349,
+        "Ciudad": "Hobo",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41357,
+        "Ciudad": "Iquira",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41359,
+        "Ciudad": "Isnos",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41378,
+        "Ciudad": "La Argentina",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41396,
+        "Ciudad": "La Plata",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41483,
+        "Ciudad": "Nátaga",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41503,
+        "Ciudad": "Oporapa",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41518,
+        "Ciudad": "Paicol",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41524,
+        "Ciudad": "Palermo",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41530,
+        "Ciudad": "Palestina",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41548,
+        "Ciudad": "Pital",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41551,
+        "Ciudad": "Pitalito",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41615,
+        "Ciudad": "Rivera",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41660,
+        "Ciudad": "Saladoblanco",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41668,
+        "Ciudad": "San Agustín",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41676,
+        "Ciudad": "Santa María",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41770,
+        "Ciudad": "Suaza",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41791,
+        "Ciudad": "Tarquí",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41797,
+        "Ciudad": "Tesalia",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41799,
+        "Ciudad": "Tello",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41801,
+        "Ciudad": "Teruel",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41807,
+        "Ciudad": "Timaná",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41872,
+        "Ciudad": "Villavieja",
+        "Depto": 41
+        },
+        {
+        "Codigo": 41885,
+        "Ciudad": "Yaguará",
+        "Depto": 41
+        },
+        {
+        "Codigo": 44001,
+        "Ciudad": "Riohacha",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44035,
+        "Ciudad": "Albania",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44078,
+        "Ciudad": "Barrancas",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44090,
+        "Ciudad": "Dibulla",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44098,
+        "Ciudad": "Distraccion",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44110,
+        "Ciudad": "El Molino",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44279,
+        "Ciudad": "Fonseca",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44378,
+        "Ciudad": "Hatonuevo",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44420,
+        "Ciudad": "La Jagua del Pilar",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44430,
+        "Ciudad": "Maicao",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44560,
+        "Ciudad": "Manaure",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44650,
+        "Ciudad": "San Juan del Cesar",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44847,
+        "Ciudad": "Uribía",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44855,
+        "Ciudad": "Urumita",
+        "Depto": 44
+        },
+        {
+        "Codigo": 44874,
+        "Ciudad": "Villanueva",
+        "Depto": 44
+        },
+        {
+        "Codigo": 47001,
+        "Ciudad": "Santa Marta",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47030,
+        "Ciudad": "Algarrobo",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47053,
+        "Ciudad": "Aracataca",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47058,
+        "Ciudad": "Ariguaní",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47161,
+        "Ciudad": "Cerro San Antonio",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47170,
+        "Ciudad": "Chivoló",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47189,
+        "Ciudad": "Ciénaga",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47205,
+        "Ciudad": "Concordia",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47245,
+        "Ciudad": "El Banco",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47258,
+        "Ciudad": "El Piñón",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47268,
+        "Ciudad": "El Retén",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47288,
+        "Ciudad": "Fundación",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47318,
+        "Ciudad": "Guamal",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47460,
+        "Ciudad": "Nueva Granada",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47541,
+        "Ciudad": "Pedraza",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47545,
+        "Ciudad": "Pijino del Carmen",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47551,
+        "Ciudad": "Pivijay",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47555,
+        "Ciudad": "Plato",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47570,
+        "Ciudad": "Puebloviejo",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47605,
+        "Ciudad": "Remolino",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47660,
+        "Ciudad": "Sabanas de San Ángel",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47675,
+        "Ciudad": "Salamina",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47692,
+        "Ciudad": "San Sebastián de Buenavista",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47703,
+        "Ciudad": "San Zenón",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47707,
+        "Ciudad": "Santa Ana",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47720,
+        "Ciudad": "Santa Bárbara de Pinto",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47745,
+        "Ciudad": "Sitionuevo",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47798,
+        "Ciudad": "Tenerife",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47960,
+        "Ciudad": "Zapayán",
+        "Depto": 47
+        },
+        {
+        "Codigo": 47980,
+        "Ciudad": "Zona Bananera",
+        "Depto": 47
+        },
+        {
+        "Codigo": 50001,
+        "Ciudad": "Villavicencio",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50006,
+        "Ciudad": "Acacías",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50110,
+        "Ciudad": "Barranca de Upía",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50124,
+        "Ciudad": "Cabuyaro",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50150,
+        "Ciudad": "Castilla La Nueva",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50223,
+        "Ciudad": "Cubarral",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50226,
+        "Ciudad": "Cumaral",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50245,
+        "Ciudad": "El Calvario",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50251,
+        "Ciudad": "El Castillo",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50270,
+        "Ciudad": "El Dorado",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50287,
+        "Ciudad": "Fuente de Oro",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50313,
+        "Ciudad": "Granada",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50318,
+        "Ciudad": "Guamal",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50325,
+        "Ciudad": "Mapiripán",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50330,
+        "Ciudad": "Mesetas",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50350,
+        "Ciudad": "La Macarena",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50370,
+        "Ciudad": "Uribe",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50400,
+        "Ciudad": "Lejanías",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50450,
+        "Ciudad": "Puerto Concordia",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50568,
+        "Ciudad": "Puerto Gaitán",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50573,
+        "Ciudad": "Puerto López",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50577,
+        "Ciudad": "Puerto Lleras",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50590,
+        "Ciudad": "Puerto Rico",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50606,
+        "Ciudad": "Restrepo",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50680,
+        "Ciudad": "San Carlos de Guaroa",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50683,
+        "Ciudad": "San Juan de Arama",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50686,
+        "Ciudad": "San Juanito",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50689,
+        "Ciudad": "San Martín",
+        "Depto": 50
+        },
+        {
+        "Codigo": 50711,
+        "Ciudad": "Vista Hermosa",
+        "Depto": 50
+        },
+        {
+        "Codigo": 52001,
+        "Ciudad": "Pasto",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52019,
+        "Ciudad": "Albán",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52022,
+        "Ciudad": "Aldana",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52036,
+        "Ciudad": "Ancuyá",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52051,
+        "Ciudad": "Arboleda",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52079,
+        "Ciudad": "Barbacoas",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52083,
+        "Ciudad": "Belén",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52110,
+        "Ciudad": "Buesaco",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52203,
+        "Ciudad": "Colón",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52207,
+        "Ciudad": "Consacá",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52210,
+        "Ciudad": "Contadero",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52215,
+        "Ciudad": "Córdoba",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52224,
+        "Ciudad": "Cuaspud",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52227,
+        "Ciudad": "Cumbal",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52233,
+        "Ciudad": "Cumbitara",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52240,
+        "Ciudad": "Chachaguí",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52250,
+        "Ciudad": "El Charco",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52254,
+        "Ciudad": "El Peñol",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52256,
+        "Ciudad": "El Rosario",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52258,
+        "Ciudad": "El Tablón",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52260,
+        "Ciudad": "El Tambo",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52287,
+        "Ciudad": "Funes",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52317,
+        "Ciudad": "Guachucal",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52320,
+        "Ciudad": "Guaitarilla",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52323,
+        "Ciudad": "Gualmatán",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52352,
+        "Ciudad": "Iles",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52354,
+        "Ciudad": "Imués",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52356,
+        "Ciudad": "Ipiales",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52378,
+        "Ciudad": "La Cruz",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52381,
+        "Ciudad": "La Florida",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52385,
+        "Ciudad": "La Llanada",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52390,
+        "Ciudad": "La Tola",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52399,
+        "Ciudad": "La Unión",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52405,
+        "Ciudad": "Leiva",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52411,
+        "Ciudad": "Linares",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52418,
+        "Ciudad": "Los Andes",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52427,
+        "Ciudad": "Maguí",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52435,
+        "Ciudad": "Mallama",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52473,
+        "Ciudad": "Mosquera",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52480,
+        "Ciudad": "Nariño",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52490,
+        "Ciudad": "Olaya Herrera",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52506,
+        "Ciudad": "Ospina",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52520,
+        "Ciudad": "Francisco Pizarro",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52540,
+        "Ciudad": "Policarpa",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52560,
+        "Ciudad": "Potosí",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52565,
+        "Ciudad": "Providencia",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52573,
+        "Ciudad": "Puerres",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52585,
+        "Ciudad": "Pupiales",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52612,
+        "Ciudad": "Ricaurte",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52621,
+        "Ciudad": "Roberto Payán",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52678,
+        "Ciudad": "Samaniego",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52683,
+        "Ciudad": "Sandoná",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52685,
+        "Ciudad": "San Bernardo",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52687,
+        "Ciudad": "San Lorenzo",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52693,
+        "Ciudad": "San Pablo",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52694,
+        "Ciudad": "San Pedro de Cartago",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52696,
+        "Ciudad": "Santa Bárbara",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52699,
+        "Ciudad": "Santa Cruz",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52720,
+        "Ciudad": "Sapuyes",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52786,
+        "Ciudad": "Taminango",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52788,
+        "Ciudad": "Tangua",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52835,
+        "Ciudad": "Tumaco",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52838,
+        "Ciudad": "Túquerres",
+        "Depto": 52
+        },
+        {
+        "Codigo": 52885,
+        "Ciudad": "Yacuanquer",
+        "Depto": 52
+        },
+        {
+        "Codigo": 54001,
+        "Ciudad": "Cúcuta",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54003,
+        "Ciudad": "Ábrego",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54051,
+        "Ciudad": "Arboledas",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54099,
+        "Ciudad": "Bochalema",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54109,
+        "Ciudad": "Bucarasica",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54125,
+        "Ciudad": "Cácota",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54128,
+        "Ciudad": "Cáchira",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54172,
+        "Ciudad": "Chinácota",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54174,
+        "Ciudad": "Chitagá",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54206,
+        "Ciudad": "Convención",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54223,
+        "Ciudad": "Cucutilla",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54239,
+        "Ciudad": "Durania",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54245,
+        "Ciudad": "El Carmen",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54250,
+        "Ciudad": "El Tarra",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54261,
+        "Ciudad": "El Zulia",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54313,
+        "Ciudad": "Gramalote",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54344,
+        "Ciudad": "Hacarí",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54347,
+        "Ciudad": "Herrán",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54377,
+        "Ciudad": "Labateca",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54385,
+        "Ciudad": "La Esperanza",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54398,
+        "Ciudad": "La Playa",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54405,
+        "Ciudad": "Los Patios",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54418,
+        "Ciudad": "Lourdes",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54480,
+        "Ciudad": "Mutiscua",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54498,
+        "Ciudad": "Ocaña",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54518,
+        "Ciudad": "Pamplona",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54520,
+        "Ciudad": "Pamplonita",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54553,
+        "Ciudad": "Puerto Santander",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54599,
+        "Ciudad": "Ragonvalia",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54660,
+        "Ciudad": "Salazar",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54670,
+        "Ciudad": "San Calixto",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54673,
+        "Ciudad": "San Cayetano",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54680,
+        "Ciudad": "Santiago",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54720,
+        "Ciudad": "Sardinata",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54743,
+        "Ciudad": "Silos",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54800,
+        "Ciudad": "Teorama",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54810,
+        "Ciudad": "Tibú",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54820,
+        "Ciudad": "Toledo",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54871,
+        "Ciudad": "Villa Caro",
+        "Depto": 54
+        },
+        {
+        "Codigo": 54874,
+        "Ciudad": "Villa del Rosario",
+        "Depto": 54
+        },
+        {
+        "Codigo": 63001,
+        "Ciudad": "Armenia",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63111,
+        "Ciudad": "Buenavista",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63130,
+        "Ciudad": "Calarcá",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63190,
+        "Ciudad": "Circasia",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63212,
+        "Ciudad": "Córdoba",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63272,
+        "Ciudad": "Filandia",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63302,
+        "Ciudad": "Génova",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63401,
+        "Ciudad": "La Tebaida",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63470,
+        "Ciudad": "Montenegro",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63548,
+        "Ciudad": "Pijao",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63594,
+        "Ciudad": "Quimbaya",
+        "Depto": 63
+        },
+        {
+        "Codigo": 63690,
+        "Ciudad": "Salento",
+        "Depto": 63
+        },
+        {
+        "Codigo": 66001,
+        "Ciudad": "Pereira",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66045,
+        "Ciudad": "Apía",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66075,
+        "Ciudad": "Balboa",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66088,
+        "Ciudad": "Belén de Umbría",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66170,
+        "Ciudad": "Dos Quebradas",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66318,
+        "Ciudad": "Guática",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66383,
+        "Ciudad": "La Celia",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66400,
+        "Ciudad": "La Virginia",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66440,
+        "Ciudad": "Marsella",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66456,
+        "Ciudad": "Mistrató",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66572,
+        "Ciudad": "Pueblo Rico",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66594,
+        "Ciudad": "Quinchía",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66682,
+        "Ciudad": "Santa Rosa de Cabal",
+        "Depto": 66
+        },
+        {
+        "Codigo": 66687,
+        "Ciudad": "Santuario",
+        "Depto": 66
+        },
+        {
+        "Codigo": 68001,
+        "Ciudad": "Bucaramanga",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68013,
+        "Ciudad": "Aguada",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68020,
+        "Ciudad": "Albania",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68051,
+        "Ciudad": "Aratoca",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68077,
+        "Ciudad": "Barbosa",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68079,
+        "Ciudad": "Barichara",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68081,
+        "Ciudad": "Barrancabermeja",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68092,
+        "Ciudad": "Betulia",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68101,
+        "Ciudad": "Bolívar",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68121,
+        "Ciudad": "Cabrera",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68132,
+        "Ciudad": "California",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68147,
+        "Ciudad": "Capitanejo",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68152,
+        "Ciudad": "Carcasí",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68160,
+        "Ciudad": "Cepitá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68162,
+        "Ciudad": "Cerrito",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68167,
+        "Ciudad": "Charalá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68169,
+        "Ciudad": "Charta",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68176,
+        "Ciudad": "Chima",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68179,
+        "Ciudad": "Chipatá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68190,
+        "Ciudad": "Cimitarra",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68207,
+        "Ciudad": "Concepción",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68209,
+        "Ciudad": "Confines",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68211,
+        "Ciudad": "Contratación",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68217,
+        "Ciudad": "Coromoro",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68229,
+        "Ciudad": "Curití",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68235,
+        "Ciudad": "El Carmen de Chucurí",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68245,
+        "Ciudad": "El Guacamayo",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68250,
+        "Ciudad": "El Peñón",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68255,
+        "Ciudad": "El Playón",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68264,
+        "Ciudad": "Encino",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68266,
+        "Ciudad": "Enciso",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68271,
+        "Ciudad": "El Florián",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68276,
+        "Ciudad": "Floridablanca",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68296,
+        "Ciudad": "Galán",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68298,
+        "Ciudad": "Gámbita",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68307,
+        "Ciudad": "Girón",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68318,
+        "Ciudad": "Guaca",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68320,
+        "Ciudad": "Guadalupe",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68322,
+        "Ciudad": "Guapotá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68324,
+        "Ciudad": "Guavatá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68327,
+        "Ciudad": "Guepsa",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68344,
+        "Ciudad": "Hato",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68368,
+        "Ciudad": "Jesús María",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68370,
+        "Ciudad": "Jordán",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68377,
+        "Ciudad": "La Belleza",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68385,
+        "Ciudad": "Landázuri",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68397,
+        "Ciudad": "La Paz",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68406,
+        "Ciudad": "Lebrija",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68418,
+        "Ciudad": "Los Santos",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68425,
+        "Ciudad": "Macaravita",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68432,
+        "Ciudad": "Málaga",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68444,
+        "Ciudad": "Matanza",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68464,
+        "Ciudad": "Mogotes",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68468,
+        "Ciudad": "Molagavita",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68498,
+        "Ciudad": "Ocamonte",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68500,
+        "Ciudad": "Oiba",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68502,
+        "Ciudad": "Onzaga",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68522,
+        "Ciudad": "Palmar",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68524,
+        "Ciudad": "Palmas del Socorro",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68533,
+        "Ciudad": "Páramo",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68547,
+        "Ciudad": "Piedecuesta",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68549,
+        "Ciudad": "Pinchote",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68572,
+        "Ciudad": "Puente Nacional",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68573,
+        "Ciudad": "Puerto Parra",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68575,
+        "Ciudad": "Puerto wilches",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68615,
+        "Ciudad": "Rionegro",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68655,
+        "Ciudad": "Sabana de Torres",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68669,
+        "Ciudad": "San Andrés",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68673,
+        "Ciudad": "San Benito",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68679,
+        "Ciudad": "San Gil",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68682,
+        "Ciudad": "San Joaquín",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68684,
+        "Ciudad": "San José de Miranda",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68686,
+        "Ciudad": "San Miguel",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68689,
+        "Ciudad": "San Vicente de Chucurí",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68705,
+        "Ciudad": "Santa Bárbara",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68720,
+        "Ciudad": "Santa Helena del Opón",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68745,
+        "Ciudad": "Simacota",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68755,
+        "Ciudad": "Socorro",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68770,
+        "Ciudad": "Suaita",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68773,
+        "Ciudad": "Sucre",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68780,
+        "Ciudad": "Suratá",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68820,
+        "Ciudad": "Tona",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68855,
+        "Ciudad": "Valle de San José",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68861,
+        "Ciudad": "Vélez",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68867,
+        "Ciudad": "Vetas",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68872,
+        "Ciudad": "Villanueva",
+        "Depto": 68
+        },
+        {
+        "Codigo": 68895,
+        "Ciudad": "Zapatoca",
+        "Depto": 68
+        },
+        {
+        "Codigo": 70001,
+        "Ciudad": "Sincelejo",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70110,
+        "Ciudad": "Buenavista",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70124,
+        "Ciudad": "Caimito",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70204,
+        "Ciudad": "Colosó",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70215,
+        "Ciudad": "Corozal",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70221,
+        "Ciudad": "Coveñas",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70230,
+        "Ciudad": "Chalán",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70233,
+        "Ciudad": "El Roble",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70235,
+        "Ciudad": "Galeras",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70265,
+        "Ciudad": "Guaranda",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70400,
+        "Ciudad": "La Unión",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70418,
+        "Ciudad": "Los Palmitos",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70429,
+        "Ciudad": "Majagual",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70473,
+        "Ciudad": "Morroa",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70508,
+        "Ciudad": "Ovejas",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70523,
+        "Ciudad": "Palmito",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70670,
+        "Ciudad": "Sampués",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70678,
+        "Ciudad": "San Benito Abad",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70702,
+        "Ciudad": "San Juan Betulia",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70708,
+        "Ciudad": "San Marcos",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70713,
+        "Ciudad": "San Onofre",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70717,
+        "Ciudad": "San Pedro",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70742,
+        "Ciudad": "Sincé",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70771,
+        "Ciudad": "Sucre",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70820,
+        "Ciudad": "Santiago de Tolú",
+        "Depto": 70
+        },
+        {
+        "Codigo": 70823,
+        "Ciudad": "Tolúviejo",
+        "Depto": 70
+        },
+        {
+        "Codigo": 73001,
+        "Ciudad": "Ibagué",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73024,
+        "Ciudad": "Alpujarra",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73026,
+        "Ciudad": "Alvarado",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73030,
+        "Ciudad": "Ambalema",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73043,
+        "Ciudad": "Anzoátegui",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73055,
+        "Ciudad": "Armero",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73067,
+        "Ciudad": "Ataco",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73124,
+        "Ciudad": "Cajamarca",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73148,
+        "Ciudad": "Carmen Apicalá",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73152,
+        "Ciudad": "Casabianca",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73168,
+        "Ciudad": "Chaparral",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73200,
+        "Ciudad": "Coello",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73217,
+        "Ciudad": "Coyaima",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73226,
+        "Ciudad": "Cunday",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73236,
+        "Ciudad": "Dolores",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73268,
+        "Ciudad": "Espinal",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73270,
+        "Ciudad": "Falán",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73275,
+        "Ciudad": "Flandes",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73283,
+        "Ciudad": "Fresno",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73319,
+        "Ciudad": "Guamo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73347,
+        "Ciudad": "Herveo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73349,
+        "Ciudad": "Honda",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73352,
+        "Ciudad": "Icononzo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73408,
+        "Ciudad": "Lérida",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73411,
+        "Ciudad": "Líbano",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73443,
+        "Ciudad": "Mariquita",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73449,
+        "Ciudad": "Melgar",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73461,
+        "Ciudad": "Murillo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73483,
+        "Ciudad": "Natagaima",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73504,
+        "Ciudad": "Ortega",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73520,
+        "Ciudad": "Palo Cabildo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73547,
+        "Ciudad": "Piedras",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73555,
+        "Ciudad": "Planadas",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73563,
+        "Ciudad": "Prado",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73585,
+        "Ciudad": "Purificación",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73616,
+        "Ciudad": "Ríoblanco",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73622,
+        "Ciudad": "Roncesvalles",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73624,
+        "Ciudad": "Rovira",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73671,
+        "Ciudad": "Saldaña",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73675,
+        "Ciudad": "San Antonio",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73678,
+        "Ciudad": "San Luis",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73686,
+        "Ciudad": "Santa Isabel",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73770,
+        "Ciudad": "Suárez",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73854,
+        "Ciudad": "Valle de San Juan",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73861,
+        "Ciudad": "Venadillo",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73870,
+        "Ciudad": "Villahermosa",
+        "Depto": 73
+        },
+        {
+        "Codigo": 73873,
+        "Ciudad": "Villarrica",
+        "Depto": 73
+        },
+        {
+        "Codigo": 76001,
+        "Ciudad": "Cali",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76020,
+        "Ciudad": "Alcalá",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76036,
+        "Ciudad": "Andalucía",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76041,
+        "Ciudad": "Ansermanuevo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76054,
+        "Ciudad": "Argelia",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76100,
+        "Ciudad": "Bolívar",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76109,
+        "Ciudad": "Buenaventura",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76111,
+        "Ciudad": "Buga",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76113,
+        "Ciudad": "Bugalagrande",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76122,
+        "Ciudad": "Caicedonia",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76126,
+        "Ciudad": "Calima",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76130,
+        "Ciudad": "Candelaria",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76147,
+        "Ciudad": "Cartago",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76233,
+        "Ciudad": "Dagua",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76243,
+        "Ciudad": "El Águila",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76246,
+        "Ciudad": "El Cairo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76248,
+        "Ciudad": "El Cerrito",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76250,
+        "Ciudad": "El Dovio",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76275,
+        "Ciudad": "Florida",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76306,
+        "Ciudad": "Ginebra",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76318,
+        "Ciudad": "Guacarí",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76364,
+        "Ciudad": "Jamundí",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76377,
+        "Ciudad": "La Cumbre",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76400,
+        "Ciudad": "La Unión",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76403,
+        "Ciudad": "La Victoria",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76497,
+        "Ciudad": "Obando",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76520,
+        "Ciudad": "Palmira",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76563,
+        "Ciudad": "Pradera",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76606,
+        "Ciudad": "Restrepo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76616,
+        "Ciudad": "Riofrío",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76622,
+        "Ciudad": "Roldanillo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76670,
+        "Ciudad": "San Pedro",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76736,
+        "Ciudad": "Sevilla",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76823,
+        "Ciudad": "Toro",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76828,
+        "Ciudad": "Trujillo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76834,
+        "Ciudad": "Tuluá",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76845,
+        "Ciudad": "Ulloa",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76863,
+        "Ciudad": "Versalles",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76869,
+        "Ciudad": "Vijes",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76890,
+        "Ciudad": "Yotoco",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76892,
+        "Ciudad": "Yumbo",
+        "Depto": 76
+        },
+        {
+        "Codigo": 76895,
+        "Ciudad": "Zarzal",
+        "Depto": 76
+        },
+        {
+        "Codigo": 81001,
+        "Ciudad": "Arauca",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81065,
+        "Ciudad": "Arauquita",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81220,
+        "Ciudad": "Cravo Norte",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81300,
+        "Ciudad": "Fortul",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81591,
+        "Ciudad": "Puerto Rondón",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81736,
+        "Ciudad": "Saravena",
+        "Depto": 81
+        },
+        {
+        "Codigo": 81794,
+        "Ciudad": "Tame",
+        "Depto": 81
+        },
+        {
+        "Codigo": 85001,
+        "Ciudad": "Yopal",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85010,
+        "Ciudad": "Aguazul",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85015,
+        "Ciudad": "Chámeza",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85125,
+        "Ciudad": "Hato Corozal",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85136,
+        "Ciudad": "La Salina",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85139,
+        "Ciudad": "Maní",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85162,
+        "Ciudad": "Monterrey",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85225,
+        "Ciudad": "Nunchía",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85230,
+        "Ciudad": "Orocué",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85250,
+        "Ciudad": "Paz de Ariporo",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85263,
+        "Ciudad": "Pore",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85279,
+        "Ciudad": "Recetor",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85300,
+        "Ciudad": "Sabanalarga",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85315,
+        "Ciudad": "Sácama",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85325,
+        "Ciudad": "San Luis de Palenque",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85400,
+        "Ciudad": "Támara",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85410,
+        "Ciudad": "Tauramena",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85430,
+        "Ciudad": "Trinidad",
+        "Depto": 85
+        },
+        {
+        "Codigo": 85440,
+        "Ciudad": "Villanueva",
+        "Depto": 85
+        },
+        {
+        "Codigo": 86001,
+        "Ciudad": "Mocoa",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86219,
+        "Ciudad": "Colón",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86320,
+        "Ciudad": "Orito",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86568,
+        "Ciudad": "Puerto Asís",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86569,
+        "Ciudad": "Puerto Caicedo",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86571,
+        "Ciudad": "Puerto Guzmán",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86573,
+        "Ciudad": "Puerto Leguízamo",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86749,
+        "Ciudad": "Sibundoy",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86755,
+        "Ciudad": "San Francisco",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86757,
+        "Ciudad": "San Miguel",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86760,
+        "Ciudad": "Santiago",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86865,
+        "Ciudad": "Valle del Guamuez",
+        "Depto": 86
+        },
+        {
+        "Codigo": 86885,
+        "Ciudad": "Villagarzón",
+        "Depto": 86
+        },
+        {
+        "Codigo": 88001,
+        "Ciudad": "San Andrés",
+        "Depto": 88
+        },
+        {
+        "Codigo": 88564,
+        "Ciudad": "Providencia",
+        "Depto": 88
+        },
+        {
+        "Codigo": 91001,
+        "Ciudad": "Leticia",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91263,
+        "Ciudad": "El Encanto",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91405,
+        "Ciudad": "La Chorrera",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91407,
+        "Ciudad": "La Pedrera",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91430,
+        "Ciudad": "La Victoria",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91460,
+        "Ciudad": "Mirití-Paraná",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91530,
+        "Ciudad": "Puerto Alegría",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91536,
+        "Ciudad": "Puerto Arica",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91540,
+        "Ciudad": "Puerto Nariño",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91669,
+        "Ciudad": "Puerto Santander",
+        "Depto": 91
+        },
+        {
+        "Codigo": 91798,
+        "Ciudad": "Tarapacá",
+        "Depto": 91
+        },
+        {
+        "Codigo": 94001,
+        "Ciudad": "Inírida",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94343,
+        "Ciudad": "Barranco Minas",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94663,
+        "Ciudad": "Mapiripana",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94883,
+        "Ciudad": "San Felipe",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94884,
+        "Ciudad": "Puerto Colombia",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94885,
+        "Ciudad": "La Guadalupe",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94886,
+        "Ciudad": "Cacahual",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94887,
+        "Ciudad": "Pana Pana",
+        "Depto": 94
+        },
+        {
+        "Codigo": 94888,
+        "Ciudad": "Morichal Nuevo",
+        "Depto": 94
+        },
+        {
+        "Codigo": 95001,
+        "Ciudad": "San José del Guaviare",
+        "Depto": 95
+        },
+        {
+        "Codigo": 95015,
+        "Ciudad": "Calamar",
+        "Depto": 95
+        },
+        {
+        "Codigo": 95025,
+        "Ciudad": "El Retorno",
+        "Depto": 95
+        },
+        {
+        "Codigo": 95200,
+        "Ciudad": "Miraflores",
+        "Depto": 95
+        },
+        {
+        "Codigo": 97001,
+        "Ciudad": "Mitú",
+        "Depto": 97
+        },
+        {
+        "Codigo": 97161,
+        "Ciudad": "Caruru",
+        "Depto": 97
+        },
+        {
+        "Codigo": 97511,
+        "Ciudad": "Pacoa",
+        "Depto": 97
+        },
+        {
+        "Codigo": 97666,
+        "Ciudad": "Taraira",
+        "Depto": 97
+        },
+        {
+        "Codigo": 97777,
+        "Ciudad": "Papunahua",
+        "Depto": 97
+        },
+        {
+        "Codigo": 97889,
+        "Ciudad": "Yavaraté",
+        "Depto": 97
+        },
+        {
+        "Codigo": 99001,
+        "Ciudad": "Puerto Carreño",
+        "Depto": 99
+        },
+        {
+        "Codigo": 99524,
+        "Ciudad": "La Primavera",
+        "Depto": 99
+        },
+        {
+        "Codigo": 99624,
+        "Ciudad": "Santa Rosalía",
+        "Depto": 99
+        },
+        {
+        "Codigo": 99773,
+        "Ciudad": "Cumaribo",
+        "Depto": 99
+        }
+    ]
+}
