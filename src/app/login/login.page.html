@@ -10,10 +10,10 @@
       <ion-list>
         <ion-item class="correo">
           <ion-label position="stacked">Correo Electronico</ion-label>
-          <ion-input type="email" formControlName="correo"></ion-input>
+          <ion-input formControlName="correo"></ion-input>
         </ion-item>
 
-        <!---------------------------------- Error de Validadores -------------------------------------->
+        <!---------------------------------- Error de Validadores Correo -------------------------------------->
         <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.required">
           El correo es obligatorio.
         </span>
@@ -28,7 +28,7 @@
           <ion-input type="password" formControlName="contrasena"></ion-input>
         </ion-item>
 
-        <!---------------------------------- Error de Validadores -------------------------------------->
+        <!---------------------------------- Error de Validadores Contrasena -------------------------------------->
         <span class="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.required">
           La contraseña es obligatoria.
         </span>

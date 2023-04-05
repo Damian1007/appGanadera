@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-ñ]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]]
     });
   }

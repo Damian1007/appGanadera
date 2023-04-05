@@ -18,6 +18,7 @@ export class SeleccionarFincaPage implements OnInit {
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
+  noFincas : boolean;
 
   constructor(
     private fincaService : FincaService,
@@ -42,11 +43,10 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ngOnInit(){
-    
   }
 
   ionViewWillEnter(){
-    this.getFincas();
+    this.getFincas()
   }
 
   ionViewDidLeave(){
@@ -54,28 +54,31 @@ export class SeleccionarFincaPage implements OnInit {
     this.fincaSub.unsubscribe();
   }
 
-  getFincas() {
+  getFincas(){
     this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
-      this.fincas.pop();
+      this.fincas = finca;
+      this.fincasAux = finca;
 
-      finca.forEach(f => {
-        this.miembroSub = this.miembrosServices.getMiembro(f.id, this.usuarioId).subscribe(miembro => {
-          
-          if(miembro) {
-            console.log(miembro.id, f.id);
-            this.fincas.push(f);
-          }
-          else {
+      if (finca.length == 0) {
+        this.noFincas = true;
+      }
+
+      this.fincas.map((finca : any) => {
+        //console.log(finca);
+        this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
+          //console.log(miembro);
+          if(!miembro) {
             //console.log(miembro);
-          } 
-        });
+            this.fincasAux.splice(this.fincasAux.indexOf(finca), 1);
+          }
+        })
       });
     });
+    
   }
 
   getId(id : any) {
     localStorage.setItem('id', id);
     this.router.navigate(['/tabs/finca'], { replaceUrl: true });
   }
-  
 }
