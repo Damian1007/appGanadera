@@ -10,6 +10,10 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form" novalidate (ngSubmit)="crearFinca()">
+    <ion-card class="imagen">
+      <img src={{finca.foto}}>
+    </ion-card>
+    
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>

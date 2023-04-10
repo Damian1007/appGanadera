@@ -56,7 +56,7 @@ export class CrearFincaPage implements OnInit {
         orientacion: '',
         areaFinca: '',
         areaGanaderia: '',
-        foto: '',
+        foto: "assets/icon/imagen_camara.png",
         departamento: '',
         ciudad: '',
         corregimiento: '',

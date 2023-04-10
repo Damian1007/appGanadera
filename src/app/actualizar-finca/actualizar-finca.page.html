@@ -10,11 +10,21 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form" novalidate (ngSubmit)="actualizarFinca()">
+    <ion-card class="imagen">
+      <img src={{finca.foto}}>
+    </ion-card>
+
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
         <ion-input formControlName="nombre"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Nombre -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
+        El nombre es obligatorio.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Orientación</ion-label>
@@ -25,35 +35,83 @@
         </ion-select>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Orientación -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.orientacion.errors?.required">
+        La orientación es obligatoria.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
       <ion-item>
-        <ion-label position="stacked">Área total de la finca</ion-label>
+        <ion-label position="stacked">Área total de la finca en Hectarias (ha)</ion-label>
         <ion-input formControlName="areaFinca"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Área Total -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.areaFinca.errors?.required">
+        El area de la finca es obligatorio.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.areaFinca.errors?.pattern">
+        Debe ingresar un area valida.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
       <ion-item>
-        <ion-label position="stacked">Área para ganadería</ion-label>
+        <ion-label position="stacked">Área para ganadería en Hectarias (ha)</ion-label>
         <ion-input formControlName="areaGanaderia"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Área Ganaderia -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.areaGanaderia.errors?.required">
+        El area para ganaderia es obligatoria.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.areaGanaderia.errors?.pattern">
+        Debe ingresar un area valida.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
       <ion-item>
         <ion-label position="stacked">Departamento</ion-label>
-        <ion-input formControlName="departamento"></ion-input>
+        <ion-input formControlName="departamento" placeholder="Seleccione un departamento"  value='{{dpto}}' (click)="setOpen(true, 1)"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Departamento -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.departamento.errors?.required">
+        El departamento es obligatorio.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Ciudad</ion-label>
-        <ion-input formControlName="ciudad"></ion-input>
+        <ion-input formControlName="ciudad" placeholder="Seleccione un municipio"  value='{{ciud}}' (click)="setOpen(true, 2)"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Ciudad -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.ciudad.errors?.required">
+        La ciudad es obligatoria.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Corregimiento</ion-label>
         <ion-input formControlName="corregimiento"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Ciudad -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.corregimiento.errors?.required">
+        El corregimiento es obligatorio.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
       <ion-item>
         <ion-label position="stacked">Coordenadas</ion-label>
         <ion-input formControlName="coordenadas"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Coordenadas -------------------------------------->
+      
+      <!---------------------------------------------------------------------------------------------->
     </ion-list>
 
     <ion-row>
@@ -62,4 +120,42 @@
       </ion-col>
     </ion-row>
   </form>
+
+  <!--------------------------------------- Departamentos Modal --------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar un departamento" animated (ionChange)="buscarDpto($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let departamento of departamentosAux" (click)="dptoChange(departamento)">
+            <ion-label> {{departamento.depto}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!--------------------------------------- Ciudades Modal --------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar una ciudad" animated (ionChange)="buscarCiudad($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let ciudad of ciudadesAux" (click)="ciudadChange(ciudad)">
+            <ion-label> {{ciudad.Ciudad}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

@@ -35,6 +35,10 @@ export class FincaPage implements OnInit {
   ngOnInit() {  
     this.fincaService.getFinca(this.fincaId).subscribe(finca => {
       this.finca = finca;
+
+      if (this.finca.foto == '') {
+        this.finca.foto = "assets/icon/imagen_camara.png"
+      }
     })
   }
 
