@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/tabs/animales"></ion-back-button>
     </ion-buttons>
 
     <ion-title>Nuevo Animal</ion-title>
@@ -10,11 +10,21 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form" novalidate (ngSubmit)="crearAnimal()">
+    <ion-card class="imagen">
+      <img src={{animal.foto}}>
+    </ion-card>
+
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
         <ion-input formControlName="nombre"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Nombre -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
+        El nombre es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Genero</ion-label>
@@ -24,10 +34,22 @@
         </ion-select>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Genero -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.genero.errors?.required">
+        El genero es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
+
       <ion-item>
         <ion-label position="stacked">Lote</ion-label>
         <ion-input formControlName="lote"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Lote ---------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.lote.errors?.required">
+        El lote es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Raza</ion-label>
@@ -42,35 +64,75 @@
         </ion-select>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Raza ---------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.raza.errors?.required">
+        La raza es obligatoria.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
+
       <ion-item>
         <ion-label position="stacked">Grupo Etario</ion-label>
         <ion-select formControlName="grupoEtario" placeholder="Selecciona un Grupo">
-          <ion-select-option value="Ternera ordeño">Ternera ordeño</ion-select-option>
-          <ion-select-option value="Ternero ordeño">Ternero ordeño</ion-select-option>
-          <ion-select-option value="Ternera levante">Ternera levante</ion-select-option>
-          <ion-select-option value="Ternero levante">Ternero levante</ion-select-option>
-          <ion-select-option value="Novillo">Novillo</ion-select-option>
-          <ion-select-option value="Novilla de vientre">Novilla de vientre</ion-select-option>
-          <ion-select-option value="Vaca lactante">Vaca lactante</ion-select-option>
-          <ion-select-option value="Vaca seca (horra)">Vaca seca (horra)</ion-select-option>
-          <ion-select-option value="Toro">Toro</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Ternera ordeño">Ternera ordeño</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Ternero ordeño">Ternero ordeño</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Ternera levante">Ternera levante</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Ternero levante">Ternero levante</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Novillo">Novillo</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Novilla de vientre">Novilla de vientre</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Vaca lactante">Vaca lactante</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Vaca seca (horra)">Vaca seca (horra)</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Toro">Toro</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <!------------------------------- Error de Validadores Grupo Etario ----------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.grupoEtario.errors?.required">
+        El grupo etario es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
+
+      <ion-item (click)="showPicker = !showPicker">
         <ion-label position="stacked">Fecha de Nacimiento</ion-label>
-        <ion-input formControlName="fechaNacimiento"></ion-input>
+        <ion-input maxlength="0">{{fechaValor}}</ion-input>
       </ion-item>
+      
+      <ion-datetime *ngIf="showPicker"
+        #datetime
+        [value]="dateValor"
+        size="cover"
+        presentation="date"
+        (ionChange)="tiempoChange(datetime.value)"
+        showDefaultButtons="true"
+        (ionCancel)="showPicker = false"
+      ></ion-datetime>
+
+      <!----------------------------- Error de Validadores Fecha de Nacimiento ------------------------------>
+      <!-- <span class="error" *ngIf="isSubmitted && errorControl.fechaNacimiento.errors?.required">
+        La fecha de nacimiento es obligatoria.
+      </span> -->
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Padre</ion-label>
-        <ion-input formControlName="padre"></ion-input>
+        <ion-input formControlName="padre" placeholder="Seleccione un padre"  value='{{padreSelected}}' (click)="setOpen(true, 1)"></ion-input>
       </ion-item>
+
+      <!----------------------------------- Error de Validadores Padre -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.padre.errors?.required">
+        El padre es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Madre</ion-label>
-        <ion-input formControlName="madre"></ion-input>
+        <ion-input formControlName="madre" placeholder="Seleccione una madre"  value='{{madreSelected}}' (click)="setOpen(true, 2)"></ion-input>
       </ion-item>
+
+      <!----------------------------------- Error de Validadores Madre -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.madre.errors?.required">
+        La madre es obligatoria.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
     
     </ion-list>
     <ion-row>
@@ -79,4 +141,42 @@
       </ion-col>
     </ion-row>
   </form>
+
+  <!--------------------------------------------- Padres Modal ----------------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar un padre" animated (ionChange)="buscarPadre($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let padre of padresAux" (click)="padreChange(padre)">
+            <ion-label> {{padre.nombre}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!---------------------------------------------- Madres Modal ---------------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar una madre" animated (ionChange)="buscarMadre($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let madre of madresAux" (click)="madreChange(madre)">
+            <ion-label> {{madre.nombre}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

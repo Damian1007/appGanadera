@@ -46,8 +46,7 @@ export class ProduccionCarnePage implements OnInit {
       };
 
       this.setTiempo();
-
-     }
+    }
 
   ngOnInit() {
   }
