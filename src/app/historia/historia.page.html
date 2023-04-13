@@ -3,9 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/salud"></ion-back-button>
     </ion-buttons>
-
     <ion-title>{{historia.nombre}}</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
@@ -40,10 +38,19 @@
 
     <ion-row class="row1">
       <ion-col class="atributo">
-        <ion-label >Medicamento y Cantidad:</ion-label>
+        <ion-label >Nombre del medicamento:</ion-label>
       </ion-col>
       <ion-col class="valor">
-        <ion-label>{{historia.nomCan_med}}</ion-label>
+        <ion-label>{{historia.nomMedicamento}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row1">
+      <ion-col class="atributo">
+        <ion-label >Cantidad del medicamento:</ion-label>
+      </ion-col>
+      <ion-col class="valor">
+        <ion-label>{{historia.canMedicamento}}</ion-label>
       </ion-col>
     </ion-row>
 
@@ -55,9 +62,5 @@
         <ion-label>{{historia.fecha}}</ion-label>
       </ion-col>
     </ion-row>
-  </ion-grid>
-
-  <ion-grid>
-
   </ion-grid>
 </ion-content>

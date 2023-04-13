@@ -17,16 +17,16 @@
 }
 
 ion-button[shape=circle] {
-    position: absolute;
+    position: fixed;
 
     --background: #3880ff;
 
     --border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 
-    right: 15px;
-    bottom: 5%;
+    bottom: 2%;
+    right: 2%;
 }
 
 ion-modal {
@@ -36,7 +36,13 @@ ion-modal {
 }
 
 ion-modal.modal2 {
-    --height: 45%;
+    --height: 51%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal.modal3 {
+    --height: 51%;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

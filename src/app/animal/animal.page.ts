@@ -72,23 +72,23 @@ export class AnimalPage implements OnInit {
   }
 
   salud() {
-    this.setOpen(false)
-    this.router.navigate(['/tabs/salud']);
+    this.modal.isOpen = false;
+    this.router.navigate(['/tabs/salud'], { replaceUrl: true });
   }
 
   produccionCarne() {
-    this.setOpen(false);
-    this.router.navigate(['/tabs/produccion-carne']);
+    this.modal.isOpen = false;
+    this.router.navigate(['/tabs/produccion-carne'], { replaceUrl: true });
   }
 
   produccionLeche() {
-    this.setOpen(false);
-    this.router.navigate(['/tabs/produccion-leche']);
+    this.modal.isOpen = false;
+    this.router.navigate(['/tabs/produccion-leche'], { replaceUrl: true });
   }
 
   reproduccion() {
-    this.setOpen(false);
-    this.router.navigate(['/tabs/reproduccion']);
+    this.modal.isOpen = false;
+    this.router.navigate(['/tabs/reproduccion'], { replaceUrl: true });
   }
 
   onWillDismiss(event: Event) {

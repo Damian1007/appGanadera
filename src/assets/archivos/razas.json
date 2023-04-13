@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "codigo": 1,
+            "raza": "Normando"
+        },
+        {
+            "codigo": 2,
+            "raza": "Ayrshire"
+        },
+        {
+            "codigo": 3,
+            "raza": "Holstein"
+        },
+        {
+            "codigo": 4,
+            "raza": "Pardo Suizo"
+        },
+        {
+            "codigo": 5,
+            "raza": "Red Polled"
+        },
+        {
+            "codigo": 6,
+            "raza": "Jersey"
+        },
+        {
+            "codigo": 7,
+            "raza": "Cruces (siete colores)"
+        },
+        {
+            "codigo": 8,
+            "raza": "Gyr"
+        },
+        {
+            "codigo": 9,
+            "raza": "Criolla"
+        },
+        {
+            "codigo": 10,
+            "raza": "Nelore"
+        },
+        {
+            "codigo": 11,
+            "raza": "Brahman"
+        },
+        {
+            "codigo": 12,
+            "raza": "Otra"
+        }
+    ]
+}

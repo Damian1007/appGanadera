@@ -10,7 +10,7 @@ import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { FincaService } from '../services/finca.service';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-salud',
@@ -30,15 +30,21 @@ export class SaludPage implements OnInit {
   saludSub : Subscription;
   usuarioSub : Subscription;
   fincaSub : Subscription;
+
   isModalOpen = false;
   isModalOpen2 = false;
+  isModalOpen3 = false;
+  isSubmitted = false;
+  dateValor = format(new Date(), 'yyyy-MM-dd');
+  fechaValor = '';
 
   form = this.formBuilder.group({
     ref: ['', [Validators.required]],
     nombre: ['', [Validators.required]],
     sintomas: ['', [Validators.required]],
-    nomCan_med: ['', [Validators.required]],
-    fecha: ['', [Validators.required]],
+    nomMedicamento: ['', [Validators.required]],
+    canMedicamento: ['', [Validators.required]],
+    fecha: [''],
   });
 
   constructor( 
@@ -54,7 +60,8 @@ export class SaludPage implements OnInit {
         ref: '',
         nombre: '',
         sintomas: '',
-        nomCan_med: '',
+        nomMedicamento: '',
+        canMedicamento: '',
         fecha: ''
       }];
 
@@ -62,7 +69,8 @@ export class SaludPage implements OnInit {
         ref: '',
         nombre: '',
         sintomas: '',
-        nomCan_med: '',
+        nomMedicamento: '',
+        canMedicamento: '',
         fecha: ''
       };
 
@@ -72,6 +80,8 @@ export class SaludPage implements OnInit {
         foto: '',
         fecha: ''
       };
+
+      this.setTiempo();
     }
 
   ngOnInit() {
@@ -102,7 +112,21 @@ export class SaludPage implements OnInit {
     this.setOpen(false, 1);
     this.setOpen(false, 2);
     this.saludSub.unsubscribe();
+    this.usuarioSub.unsubscribe();
+    this.fincaSub.unsubscribe();
   }
+
+  // <!----------------------------------- Configuración de Fecha ------------------------------------------->
+  setTiempo() {
+    this.fechaValor = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'yyyy/MM/dd');
+  }
+
+  tiempoChange(value: any) {
+    this.dateValor = value;
+    this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
+    this.setOpen(false, 3);
+  }
+  // <!------------------------------------------------------------------------------------------------------>
 
   getId(id : any) {
     localStorage.setItem('saludId', id);
@@ -111,11 +135,21 @@ export class SaludPage implements OnInit {
   }
 
   tipo() {
-    this.historia.ref = this.form.getRawValue().ref;
-    this.modal.dismiss(null, 'tipo');
-    this.setOpen(false, 1);
-    this.setOpen(true, 2);
-    //console.log(this.historia);
+    this.isSubmitted = true;
+  
+    if(this.form.getRawValue().ref) {
+      this.isSubmitted = false;
+      this.historia.ref = this.form.getRawValue().ref;
+
+      if(this.historia.ref == 'Vacuna') {
+        this.form.get('sintomas').setValue('N/A', { onlySelf: true});
+        this.form.get('nomMedicamento').setValue('N/A', { onlySelf: true});
+        this.form.get('canMedicamento').setValue('N/A', { onlySelf: true});
+      }
+      //console.log(this.form.getRawValue());
+      this.setOpen(false, 1);
+      this.setOpen(true, 2);
+    }
   }
 
   setOpen(isOpen : boolean, num : any) {
@@ -125,56 +159,62 @@ export class SaludPage implements OnInit {
     if(num == 2) {
       this.isModalOpen2 = isOpen;
     }
+    if(num == 3) {
+      this.isModalOpen3 = isOpen;
+      //console.log(this.isModalOpen3);
+    }
   }
 
   crearHistoria() {
-    this.historia.nombre = this.form.getRawValue().nombre;
-    this.historia.sintomas = this.form.getRawValue().sintomas;
-    this.historia.nomCan_med = this.form.getRawValue().nomCan_med;
-    this.historia.fecha = this.form.getRawValue().fecha;
+    this.isSubmitted = true;
+    this.form.get('fecha').setValue(this.fechaValor, { onlySelf: true});
+    //console.log(this.form.getRawValue());
 
-    this.alertas.cambio = 'Agrego una ' + this.form.getRawValue().ref + ' a ' + this.animalNombre;
+    if(this.form.valid) {
+      this.historia.nombre = this.form.getRawValue().nombre;
+      this.historia.sintomas = this.form.getRawValue().sintomas;
+      this.historia.nomMedicamento = this.form.getRawValue().nomMedicamento;
+      this.historia.canMedicamento = this.form.getRawValue().canMedicamento;
+      this.historia.fecha = this.form.getRawValue().fecha;
+      //console.log(this.historia);
+      this.alertas.cambio = 'Agrego una ' + this.form.getRawValue().ref + ' a ' + this.animalNombre;
 
-    this.saludService.addHistoria(this.fincaId, this.animalId, this.historia)
-    .then(() => {
-      this.alertasService.addAlerta(this.alertas, this.fincaId);
-    })
-    .catch(error => {
-      console.log('Error al Crear animal', error);
-    });
+      this.saludService.addHistoria(this.fincaId, this.animalId, this.historia)
+      .then(() => {
+        this.isSubmitted = false;
+        this.alertasService.addAlerta(this.alertas, this.fincaId);
+      })
+      .catch(error => {
+        console.log('Error al Crear animal', error);
+      });
 
-    this.modal.dismiss(null, "crear");
-    this.setOpen(false, 2);
-    console.log(this.historia);
+      this.form.reset();
+      this.setOpen(false, 2);
+      this.setOpen(false, 3);
+    } else {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  get errorControl() {
+    return this.form.controls;
   }
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'tipo') {
-      //console.log("tipo");
-      this.form.reset();
-    }
 
-    console.log(ev.detail.role);
-    if (ev.detail.role === 'crear') {
-      //console.log("crear");
-      this.form.reset();
-      this.historia.ref = '';
-      this.historia.nombre = '';
-      this.historia.sintomas = '';
-      this.historia.nomCan_med = '';
-      this.historia.fecha = '';
-    }
-
+    //console.log(ev.detail.role);
     if (ev.detail.role === 'backdrop') {
       this.setOpen(false, 1);
       this.setOpen(false, 2);
-      //console.log("else");
+      this.setOpen(false, 3);
+      this.isSubmitted = false;
       this.form.reset();
       this.historia.ref = '';
       this.historia.nombre = '';
       this.historia.sintomas = '';
-      this.historia.nomCan_med = '';
+      this.historia.nomMedicamento = '';
+      this.historia.canMedicamento = '';
       this.historia.fecha = '';
     }
   }

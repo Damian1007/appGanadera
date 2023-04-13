@@ -7,10 +7,11 @@ import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { FincaService } from '../services/finca.service';
 import { format, parseISO } from 'date-fns';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { Animal } from '../interfaces/animal';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-animal',
@@ -28,6 +29,7 @@ export class CrearAnimalPage implements OnInit {
   usuarioSub : Subscription;
   animalSub : Subscription;
   fincaSub : Subscription;
+  razaSub : Subscription;
 
   isSubmitted = false;
   showPicker = false;
@@ -35,6 +37,10 @@ export class CrearAnimalPage implements OnInit {
   fechaValor = '';
   isModalOpen = false;
   isModalOpen2 = false;
+  isModalOpen3 = false;
+  razas : any[];
+  razasAux : any[];
+  razaSelected : any;
   padres : any[];
   madres : any[];
   padresAux : any[];
@@ -48,7 +54,8 @@ export class CrearAnimalPage implements OnInit {
     private animalService : AnimalService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService
+    private fincaService : FincaService,
+    private http : HttpClient
   ) {
       this.animal = {
         nombre: 'otro',
@@ -100,6 +107,11 @@ export class CrearAnimalPage implements OnInit {
       this.madres.push(this.animal);
       this.madresAux = this.madres;
     });
+
+    this.razaSub = this.getRaza().subscribe(razas => {
+      this.razas = razas;
+      this.razasAux = razas;
+    });
   }
 
   ionViewDidLeave() {
@@ -107,6 +119,7 @@ export class CrearAnimalPage implements OnInit {
       this.usuarioSub.unsubscribe();
     }
     this.animalSub.unsubscribe();
+    this.razaSub.unsubscribe();
   }
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
@@ -121,7 +134,7 @@ export class CrearAnimalPage implements OnInit {
   }
   // <!------------------------------------------------------------------------------------------------------>
   
-  // ------------------------------ SearchBars y Changes de Padres y Madres ----------------------------------
+  // -------------------------- SearchBars, Changes y Get de Padres, Madres y Razas --------------------------
   buscarPadre(ev : any) {
     const text = ev.target.value;
     
@@ -146,6 +159,18 @@ export class CrearAnimalPage implements OnInit {
     }
   }
 
+  buscarRaza(ev : any) {
+    const text = ev.target.value;
+    
+    if(text && text.trim() != '') {
+      this.razasAux = this.razasAux.filter((razas : any) => {
+        return (razas.raza.toLowerCase().indexOf(text.toLowerCase()) > -1);
+      })
+    }else{
+      this.razasAux = this.razas;
+    }
+  }
+
   padreChange(padre : any) {
     this.padreSelected = padre.nombre;
     this.setOpen(false, 1);
@@ -155,6 +180,17 @@ export class CrearAnimalPage implements OnInit {
     this.madreSelected = madre.nombre;
     this.setOpen(false, 2);
   }
+
+  razaChange(raza : any) {
+    this.razaSelected = raza.raza;
+    this.setOpen(false, 3);
+  }
+
+  getRaza() {
+    return this.http.get("assets/archivos/razas.json").pipe( map((res:any) => {
+      return res.data;
+    }));
+  }
   // <!------------------------------------------------------------------------------------------------------>
 
   setOpen(isOpen : boolean, num : any) {
@@ -163,6 +199,9 @@ export class CrearAnimalPage implements OnInit {
     }
     if(num == 2) {
       this.isModalOpen2 = isOpen;
+    }
+    if(num == 3) {
+      this.isModalOpen3 = isOpen;
     }
   }
 
@@ -218,6 +257,7 @@ export class CrearAnimalPage implements OnInit {
       //console.log(this.evento);
       this.setOpen(false, 1);
       this.setOpen(false, 2);
+      this.setOpen(false, 3);
     }
   }
 }

@@ -3,6 +3,7 @@ export interface Salud {
     ref: string;
     nombre: string;
     sintomas: string;
-    nomCan_med: string;
+    nomMedicamento: string;
+    canMedicamento: string;
     fecha: string;
 }

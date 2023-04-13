@@ -53,15 +53,7 @@
 
       <ion-item>
         <ion-label position="stacked">Raza</ion-label>
-        <ion-select formControlName="raza" placeholder="Selecciona una Raza">
-          <ion-select-option value="Normando">Normando</ion-select-option>
-          <ion-select-option value="Jersey">Jersey</ion-select-option>
-          <ion-select-option value="Criolla">Criolla</ion-select-option>
-          <ion-select-option value="Nelore">Nelore</ion-select-option>
-          <ion-select-option value="Brahman">Brahman</ion-select-option>
-          <ion-select-option value="Holstein ">Holstein </ion-select-option>
-          <ion-select-option value="Otra ">Otra </ion-select-option>
-        </ion-select>
+        <ion-input formControlName="raza" placeholder="Seleccione una raza"  value='{{razaSelected}}' (click)="setOpen(true, 3)"></ion-input>
       </ion-item>
 
       <!---------------------------------- Error de Validadores Raza ---------------------------------------->
@@ -174,6 +166,25 @@
         <ion-list [inset]="true">
           <ion-item *ngFor="let madre of madresAux" (click)="madreChange(madre)">
             <ion-label> {{madre.nombre}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!---------------------------------------------- Razas Modal ---------------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen3" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar una raza" animated (ionChange)="buscarRaza($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let raza of razasAux" (click)="razaChange(raza)">
+            <ion-label> {{raza.raza}} </ion-label>
           </ion-item>
         </ion-list>
       </ion-content>

@@ -4,7 +4,6 @@ import { Salud } from '../interfaces/salud';
 import { Subscription } from 'rxjs';
 import { IonModal } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-historia',
@@ -24,7 +23,8 @@ export class HistoriaPage implements OnInit {
     ref: ['', [Validators.required]],
     nombre: ['', [Validators.required]],
     sintomas: ['', [Validators.required]],
-    nomCan_med: ['', [Validators.required]],
+    nomMedicamento: ['', [Validators.required]],
+    canMedicamento: ['', [Validators.required]],
     fecha: ['', [Validators.required]],
   });
 
@@ -36,7 +36,8 @@ export class HistoriaPage implements OnInit {
         ref: '',
         nombre: '',
         sintomas: '',
-        nomCan_med: '',
+        nomMedicamento: '',
+        canMedicamento: '',
         fecha: ''
       };
     }
