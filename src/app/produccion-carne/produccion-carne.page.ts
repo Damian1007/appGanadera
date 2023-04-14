@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { IonModal } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { Router } from '@angular/router';
 import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
 
@@ -24,20 +23,19 @@ export class ProduccionCarnePage implements OnInit {
   myChart : Chart;
 
   isModalOpen = false;
-  showPicker = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
+  isModalOpen2 = false;
+  isSubmitted = false;
   fechaValor = '';
   pesajesArray : any[];
   label : any[];
   data : any[];
 
   form = this.formBuilder.group({
-    peso: ['', [Validators.required]],
+    peso: ['', [Validators.required, Validators.pattern('[0-9]+')]],
     fecha: [''],
   });
 
   constructor(private produccionService : ProduccionService,
-    private router : Router,
     private formBuilder : FormBuilder) { 
 
       this.pesaje = {
@@ -99,10 +97,14 @@ export class ProduccionCarnePage implements OnInit {
     });
   }
 
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  setOpen(isOpen : boolean, num : any) {
+    if(num == 1) {
+      this.isModalOpen = isOpen;
+    }
+    if(num == 2) {
+      this.isModalOpen2 = isOpen;
+    }
   }
-
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
   setTiempo() {
@@ -110,28 +112,31 @@ export class ProduccionCarnePage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.dateValor = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-    this.showPicker = false;
+    this.setOpen(false, 2);
   }
   // <!------------------------------------------------------------------------------------------------------>
 
-
   async agregarPeso() {
+    this.isSubmitted = true;
     this.form.setValue({peso : this.form.getRawValue().peso, fecha : this.fechaValor});
-    //console.log(this.form.getRawValue());
+   
+    if(this.form.valid) {
+      this.pesaje.peso = this.form.getRawValue().peso
+      this.pesaje.fecha = this.form.getRawValue().fecha
 
-    this.pesaje.peso = this.form.getRawValue().peso
-    this.pesaje.fecha = this.form.getRawValue().fecha
+      this.form.reset();
+      this.setOpen(false, 1);
 
-    this.modal.dismiss(null, 'peso');
-    this.setOpen(false);
+      this.graficaSub.unsubscribe();
+      this.myChart.destroy();
+      await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
+      this.isSubmitted = false;
 
-    this.graficaSub.unsubscribe();
-    this.myChart.destroy();
-    await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
-
-    this.mostrarGrafico();
+      this.mostrarGrafico();
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   crearGrafico() {
@@ -157,18 +162,18 @@ export class ProduccionCarnePage implements OnInit {
     });
   }
 
+  get errorControl() {
+    return this.form.controls;
+  }
+
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'peso') {
-      //console.log(this.evento);
-      this.form.reset();
-    }
-
-    console.log(ev.detail.role);
+    //console.log(ev.detail.role);
 
     if (ev.detail.role === 'backdrop') {
       //console.log(this.evento);
-      this.setOpen(false);
+      this.setOpen(false, 1);
+      this.setOpen(false, 2);
       this.form.reset();
     }
   }

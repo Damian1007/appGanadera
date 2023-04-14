@@ -2,7 +2,6 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
-      <!-- <ion-menu-button></ion-menu-button> -->
     </ion-buttons>
 
     <ion-title>Producción de Leche</ion-title>
@@ -14,7 +13,7 @@
   <canvas id="myChartLeche" width="400" height="400"></canvas>
 
   <div class="leche">
-    <ion-button (click)="setOpen(true)">Agregar Ordeño</ion-button>
+    <ion-button (click)="setOpen(true, 1)">Agregar Ordeño</ion-button>
   </div>
 
     <!----------------------------------- Modal ------------------------------------------->
@@ -31,25 +30,24 @@
           <form [formGroup]="form" novalidate (ngSubmit)="agregarLeche()">
             <ion-list>
               <ion-item>
-                <ion-label position="stacked">Leche</ion-label>
+                <ion-label position="stacked">Leche en litros</ion-label>
                 <ion-input formControlName="leche"></ion-input>
               </ion-item>
+
+              <!---------------------------------- Error de Validadores Leche -------------------------------------->
+              <span class="error" *ngIf="isSubmitted && errorControl.leche.errors?.required">
+                La cantidad de leche es obligatoria.
+              </span>
+
+              <span class="error" *ngIf="isSubmitted && errorControl.leche.errors?.pattern">
+                Debe ingresar una cantidad de leche valida.
+              </span>
+              <!--------------------------------------------------------------------------------------------------->
   
-              <ion-item (click)="showPicker = !showPicker">
+              <ion-item (click)="setOpen(true, 2)">
                 <ion-label position="stacked">Fecha</ion-label>
-                <ion-input maxlength="0">{{fechaValor}}</ion-input>
+                <ion-input [readonly]="true">{{fechaValor}}</ion-input>
               </ion-item>
-              
-              <ion-datetime *ngIf="showPicker"
-                #datetime
-                [value]="dateValor"
-                size="cover"
-                presentation="date"
-                (ionChange)="tiempoChange(datetime.value)"
-                showDefaultButtons="true"
-                (ionCancel)="showPicker = false"
-              ></ion-datetime>
-  
             </ion-list>
   
             <ion-row>
@@ -62,4 +60,24 @@
   
       </ng-template>
     </ion-modal>
+
+    <!------------------------------------------------ Calendario Modal --------------------------------------------------->
+  <ion-modal class="modal2" [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header></ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-datetime
+          #datetime
+          size="cover"
+          presentation="date"
+          (ionChange)="tiempoChange(datetime.value)"
+          showDefaultButtons="true"
+          doneText="Hecho"
+          cancelText="Cancelar"
+          (ionCancel)="setOpen(false, 2)"
+        ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

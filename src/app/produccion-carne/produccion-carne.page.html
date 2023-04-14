@@ -2,11 +2,8 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
-      <!-- <ion-menu-button></ion-menu-button> -->
     </ion-buttons>
-
     <ion-title>Producción de Carne</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
@@ -14,10 +11,10 @@
   <canvas id="myChartCarne" width="400" height="400"></canvas>
 
   <div class="peso">
-    <ion-button (click)="setOpen(true)">Agregar Peso</ion-button>
+    <ion-button (click)="setOpen(true, 1)">Agregar Peso</ion-button>
   </div>
 
-  <!----------------------------------- Modal ------------------------------------------->
+  <!---------------------------------------------- Peso Modal ------------------------------------------------>
   
   <ion-modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
@@ -31,25 +28,24 @@
         <form [formGroup]="form" novalidate (ngSubmit)="agregarPeso()">
           <ion-list>
             <ion-item>
-              <ion-label position="stacked">Peso</ion-label>
+              <ion-label position="stacked">Peso en KG</ion-label>
               <ion-input formControlName="peso"></ion-input>
             </ion-item>
 
-            <ion-item (click)="showPicker = !showPicker">
-              <ion-label position="stacked">Fecha</ion-label>
-              <ion-input maxlength="0">{{fechaValor}}</ion-input>
-            </ion-item>
-            
-            <ion-datetime *ngIf="showPicker"
-              #datetime
-              [value]="dateValor"
-              size="cover"
-              presentation="date"
-              (ionChange)="tiempoChange(datetime.value)"
-              showDefaultButtons="true"
-              (ionCancel)="showPicker = false"
-            ></ion-datetime>
+            <!---------------------------------- Error de Validadores Peso -------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl.peso.errors?.required">
+              El peso del animal es obligatorio.
+            </span>
 
+            <span class="error" *ngIf="isSubmitted && errorControl.peso.errors?.pattern">
+              Debe ingresar un peso valido.
+            </span>
+            <!--------------------------------------------------------------------------------------------------->
+
+            <ion-item (click)="setOpen(true, 2)">
+              <ion-label position="stacked">Fecha</ion-label>
+              <ion-input [readonly]="true">{{fechaValor}}</ion-input>
+            </ion-item>
           </ion-list>
 
           <ion-row>
@@ -60,6 +56,26 @@
         </form>
       </ion-content>
 
+    </ng-template>
+  </ion-modal>
+
+  <!------------------------------------------------ Calendario Modal --------------------------------------------------->
+  <ion-modal class="modal2" [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header></ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-datetime
+          #datetime
+          size="cover"
+          presentation="date"
+          (ionChange)="tiempoChange(datetime.value)"
+          showDefaultButtons="true"
+          doneText="Hecho"
+          cancelText="Cancelar"
+          (ionCancel)="setOpen(false, 2)"
+        ></ion-datetime>
+      </ion-content>
     </ng-template>
   </ion-modal>
 </ion-content>

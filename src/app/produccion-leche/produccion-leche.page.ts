@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { Chart } from 'chart.js';
 import { format, parseISO } from 'date-fns';
@@ -24,20 +23,19 @@ export class ProduccionLechePage implements OnInit {
   myChart : Chart
 
   isModalOpen = false;
-  showPicker = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
+  isModalOpen2 = false;
+  isSubmitted = false;
   fechaValor = '';
   ordeñosArray : any[];
   label : any[];
   data : any[];
 
   form = this.formBuilder.group({
-    leche: ['', [Validators.required]],
+    leche: ['', [Validators.required, Validators.pattern('[0-9]+')]],
     fecha: [''],
   });
 
   constructor(private produccionService : ProduccionService,
-    private router : Router,
     private formBuilder : FormBuilder) { 
 
       this.ordeño = {
@@ -99,8 +97,13 @@ export class ProduccionLechePage implements OnInit {
     });
   }
 
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  setOpen(isOpen : boolean, num : any) {
+    if(num == 1) {
+      this.isModalOpen = isOpen;
+    }
+    if(num == 2) {
+      this.isModalOpen2 = isOpen;
+    }
   }
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
@@ -109,27 +112,31 @@ export class ProduccionLechePage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.dateValor = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-    this.showPicker = false;
+    this.setOpen(false, 2);
   }
   // <!------------------------------------------------------------------------------------------------------>
 
   async agregarLeche() {
+    this.isSubmitted = true;
     this.form.setValue({leche : this.form.getRawValue().leche, fecha : this.fechaValor});
-    //console.log(this.form.getRawValue());
+    
+    if(this.form.valid) {
+      this.ordeño.leche = this.form.getRawValue().leche
+      this.ordeño.fecha = this.form.getRawValue().fecha
 
-    this.ordeño.leche = this.form.getRawValue().leche
-    this.ordeño.fecha = this.form.getRawValue().fecha
+      this.form.reset();
+      this.setOpen(false, 1);
 
-    this.modal.dismiss(null, 'leche');
-    this.setOpen(false);
+      this.graficaSub.unsubscribe();
+      this.myChart.destroy();
+      await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño);
+      this.isSubmitted = false;
 
-    this.graficaSub.unsubscribe();
-    this.myChart.destroy();
-    await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño);
-
-    this.mostrarGrafico();
+      this.mostrarGrafico();
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   crearGrafico() {
@@ -155,20 +162,19 @@ export class ProduccionLechePage implements OnInit {
     });
   }
 
+  get errorControl() {
+    return this.form.controls;
+  }
+
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'leche') {
-      //console.log(this.evento);
-      this.form.reset();
-    }
-
-    console.log(ev.detail.role);
+    //console.log(ev.detail.role);
 
     if (ev.detail.role === 'backdrop') {
       //console.log(this.evento);
-      this.setOpen(false);
+      this.setOpen(false, 1);
+      this.setOpen(false, 2);
       this.form.reset();
     }
   }
-  
 }

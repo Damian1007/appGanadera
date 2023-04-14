@@ -35,7 +35,6 @@ export class SaludPage implements OnInit {
   isModalOpen2 = false;
   isModalOpen3 = false;
   isSubmitted = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
 
   form = this.formBuilder.group({
@@ -122,7 +121,6 @@ export class SaludPage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.dateValor = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
     this.setOpen(false, 3);
   }
@@ -161,7 +159,6 @@ export class SaludPage implements OnInit {
     }
     if(num == 3) {
       this.isModalOpen3 = isOpen;
-      //console.log(this.isModalOpen3);
     }
   }
 

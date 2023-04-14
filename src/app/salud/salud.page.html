@@ -128,7 +128,7 @@
 
             <ion-item (click)="setOpen(true, 3)">
               <ion-label position="stacked">Fecha de inyección del medicamento</ion-label>
-              <ion-input maxlength="0">{{fechaValor}}</ion-input>
+              <ion-input [readonly]="true">{{fechaValor}}</ion-input>
             </ion-item>          
 
             <!------------------------ Error de Validadores Fecha de inyección del medicamento -------------------------->
@@ -155,7 +155,7 @@
             <br>
             <ion-item (click)="setOpen(true, 3)">
               <ion-label position="stacked">Fecha de Vacunación</ion-label>
-              <ion-input maxlength="0">{{fechaValor}}</ion-input>
+              <ion-input [readonly]="true">{{fechaValor}}</ion-input>
             </ion-item>          
 
             <!-------------------------------- Error de Validadores Fecha de Vacunación --------------------------------->
@@ -184,12 +184,13 @@
       <ion-content class="ion-padding">
         <ion-datetime
           #datetime
-          [value]="dateValor"
           size="cover"
           presentation="date"
           (ionChange)="tiempoChange(datetime.value)"
           showDefaultButtons="true"
-          (ionCancel)="setOpen(false, 3)"   
+          doneText="Hecho"
+          cancelText="Cancelar"
+          (ionCancel)="setOpen(false, 3)"
         ></ion-datetime>
       </ion-content>
     </ng-template>
