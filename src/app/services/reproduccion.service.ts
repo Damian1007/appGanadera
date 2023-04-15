@@ -24,7 +24,7 @@ export class ReproduccionService {
 
   getReproduccion(fincaId : any, animalId : any, id : any): Observable<Reproduccion> {
     const reproDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion/${id}`);
-    return docData(reproDocRef) as Observable<Reproduccion>;
+    return docData(reproDocRef, { idField: 'id'}) as Observable<Reproduccion>;
   }
 
   updateReproduccion(reproduccion : Reproduccion, fincaId : any, animalId : any) {

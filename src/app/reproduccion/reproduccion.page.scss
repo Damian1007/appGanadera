@@ -12,8 +12,7 @@
 
 .grid1{
     font-size: 18px;
-    margin-top: 30px;
-    padding: 10px;
+    margin-top: 20px;
 }
 
 .row1{
@@ -22,7 +21,6 @@
 
 .atributo{
     text-align: left;
-    margin-left: 15px;
 
     border-bottom-style: solid;
     border-color: #3880ff;
@@ -31,11 +29,21 @@
 
 .valor{
     text-align: center;
-    margin-right: 15px;
 
     border-bottom-style: solid;
     border-color: #3880ff;
     border-width: 1px;
+}
+
+.error {
+    position: relative;
+    padding-left: 16px;
+}
+
+ion-modal {
+    --height: 32%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 ion-modal.modal2{
@@ -44,8 +52,14 @@ ion-modal.modal2{
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-ion-modal {
-    --height: 80%;
+ion-modal.modal3 {
+    --height: 53%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal.modal4 {
+    --height: 51%;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

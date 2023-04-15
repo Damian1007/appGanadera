@@ -7,6 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
+import { Animal } from '../interfaces/animal';
+import { AnimalService } from '../services/animal.service';
 
 @Component({
   selector: 'app-produccion-carne',
@@ -17,8 +19,10 @@ export class ProduccionCarnePage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
 
   pesaje : Pesaje;
+  animal : Animal;
   fincaId : any;
   animalId : any;
+  animalSub : Subscription;
   graficaSub : Subscription;
   myChart : Chart;
 
@@ -36,11 +40,25 @@ export class ProduccionCarnePage implements OnInit {
   });
 
   constructor(private produccionService : ProduccionService,
-    private formBuilder : FormBuilder) { 
+    private formBuilder : FormBuilder,
+    private animalService : AnimalService) { 
 
       this.pesaje = {
         peso: '',
         fecha: ''
+      };
+
+      this.animal = {
+        nombre: '',
+        genero: '',
+        foto: '',
+        lote: '',
+        raza: '',
+        grupoEtario: '',
+        fechaNacimiento: '',
+        padre: '',
+        madre: '',
+        pesoActual: ''
       };
 
       this.setTiempo();
@@ -53,10 +71,15 @@ export class ProduccionCarnePage implements OnInit {
     this.fincaId = localStorage.getItem('id');
     this.animalId = localStorage.getItem('animalId');
     
+    this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
+      this.animal = animal;
+    });
+
     this.mostrarGrafico();
   }
 
   ionViewDidLeave() {
+    this.animalSub.unsubscribe();
     this.graficaSub.unsubscribe();
     this.myChart.destroy();
   }
@@ -130,7 +153,29 @@ export class ProduccionCarnePage implements OnInit {
 
       this.graficaSub.unsubscribe();
       this.myChart.destroy();
-      await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje);
+      await this.produccionService.addPeso(this.fincaId, this.animalId, this.pesaje)
+      .then(() => {
+        this.pesajesArray.push(this.pesaje);
+
+        this.pesajesArray.sort(function (a, b) {
+          if (a.fecha > b.fecha) {
+            return 1;
+          }
+  
+          if (a.fecha < b.fecha) {
+            return -1;
+          }
+          
+          // a must be equal to b
+          return 0;
+        });
+        //console.log(this.pesajesArray);
+        this.animal.pesoActual = this.pesajesArray.pop().peso;
+        this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId);
+      })
+      .catch(error => {
+        console.log('Error al Agregar el Peso del animal', error);
+      });
       this.isSubmitted = false;
 
       this.mostrarGrafico();

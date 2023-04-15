@@ -28,7 +28,7 @@
   <ion-button (click)="setOpen(true, 1)" expand="block">Nueva Monta</ion-button>
   
 
-  <!----------------------------------- 1er Modal ------------------------------------------->
+  <!---------------------------------------- Monta Modal ------------------------------------------------->
   <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
@@ -42,21 +42,19 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">Nombre del Toro</ion-label>
-              <ion-input formControlName="nombre"></ion-input>
+              <ion-input formControlName="nombre" placeholder="Seleccione un toro"  value='{{padreSelected}}' (click)="setOpen(true, 5)"></ion-input>
             </ion-item>
 
-            <ion-item (click)="showPicker = !showPicker">
+            <!---------------------------------- Error de Validadores Nombre -------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
+              El nombre del toro es obligatorio.
+            </span>
+            <!----------------------------------------------------------------------------------------------------->
+
+            <ion-item (click)="setOpen(true, 4)">
               <ion-label position="stacked">Fecha</ion-label>
-              <ion-input maxlength="0">{{fechaValor}}</ion-input>
+              <ion-input [readonly]="true">{{fechaValor}}</ion-input>
             </ion-item>
-            
-            <ion-datetime *ngIf="showPicker"
-              #datetime
-              [value]="dateValor"
-              size="cover"
-              presentation="date"
-              (ionChange)="tiempoChange(datetime.value)"
-            ></ion-datetime>
           </ion-list>
 
           <ion-row>
@@ -69,7 +67,7 @@
     </ng-template>
   </ion-modal>
 
-  <!----------------------------------- 2do Modal ------------------------------------------->
+  <!----------------------------------- Datos de Reproducción Modal ------------------------------------------->
   <ion-modal class="modal2" [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
@@ -78,7 +76,7 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content>
+      <ion-content class="ion-padding">
         <ion-grid class="grid1">
           <ion-row class="row1">
             <ion-col class="atributo">
@@ -97,7 +95,7 @@
               <ion-label>{{evento.nombreToro}}</ion-label>
             </ion-col>
           </ion-row>
-          
+
           <ion-row class="row1">
             <ion-col class="atributo">
               <ion-label>Probable Fecha del Parto:</ion-label>
@@ -107,13 +105,12 @@
             </ion-col>
           </ion-row>
 
+          <ion-row *ngIf="evento.tipo == 'Monta'">
+            <ion-col>
+              <ion-button expand="block" (click)="registrarParto()">Registrar Parto</ion-button>
+            </ion-col>
+          </ion-row>
         </ion-grid>
-
-        <ion-row *ngIf="evento.tipo == 'Monta'">
-          <ion-col>
-            <ion-button expand="block" (click)="registrarParto()">Registrar Parto</ion-button>
-          </ion-col>
-        </ion-row>
 
         <ion-grid *ngIf="evento.tipo == 'Parto'" class="grid1">
           <ion-row class="row1">
@@ -124,7 +121,7 @@
               <ion-label>{{evento.fechaParto}}</ion-label>
             </ion-col>
           </ion-row>
-
+          
           <ion-row class="row1">
             <ion-col class="atributo">
               <ion-label >Nombre de la Cria:</ion-label>
@@ -133,14 +130,13 @@
               <ion-label>{{evento.nombreCria}}</ion-label>
             </ion-col>
           </ion-row>
-
         </ion-grid>
       </ion-content>
     </ng-template>
   </ion-modal>
 
-  <!----------------------------------- 3er Modal ------------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen3" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <!------------------------------------------ Parto Modal ------------------------------------------------>
+  <ion-modal class="modal3" [isOpen]="isModalOpen3" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -156,6 +152,12 @@
               <ion-input formControlName="nombre"></ion-input>
             </ion-item>
 
+            <!---------------------------------- Error de Validadores Nombre -------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl2.nombre.errors?.required">
+              El nombre de la cria es obligatorio.
+            </span>
+            <!----------------------------------------------------------------------------------------------------->
+
             <ion-item>
               <ion-label position="stacked">Genero</ion-label>
               <ion-select formControlName="genero" placeholder="Selecciona un genero">
@@ -163,37 +165,39 @@
                 <ion-select-option value="Hembra">Hembra</ion-select-option>
               </ion-select>
             </ion-item>
+
+            <!---------------------------------- Error de Validadores Genero -------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl2.genero.errors?.required">
+              El genero de la cria es obligatorio.
+            </span>
+            <!----------------------------------------------------------------------------------------------------->
       
             <ion-item>
               <ion-label position="stacked">Lote</ion-label>
               <ion-input formControlName="lote"></ion-input>
             </ion-item>
+
+            <!---------------------------------- Error de Validadores Lote ---------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl2.lote.errors?.required">
+              El lote es obligatorio.
+            </span>
+            <!----------------------------------------------------------------------------------------------------->
       
             <ion-item>
               <ion-label position="stacked">Raza</ion-label>
-              <ion-select formControlName="raza" placeholder="Selecciona una Raza">
-                <ion-select-option value="Normando">Normando</ion-select-option>
-                <ion-select-option value="Jersey">Jersey</ion-select-option>
-                <ion-select-option value="Criolla">Criolla</ion-select-option>
-                <ion-select-option value="Nelore">Nelore</ion-select-option>
-                <ion-select-option value="Brahman">Brahman</ion-select-option>
-                <ion-select-option value="Holstein ">Holstein </ion-select-option>
-                <ion-select-option value="Otra ">Otra </ion-select-option>
-              </ion-select>
+              <ion-input formControlName="raza" placeholder="Seleccione una raza"  value='{{razaSelected}}' (click)="setOpen(true, 6)"></ion-input>
             </ion-item>
+      
+            <!---------------------------------- Error de Validadores Raza ---------------------------------------->
+            <span class="error" *ngIf="isSubmitted && errorControl2.raza.errors?.required">
+              La raza es obligatoria.
+            </span>
+            <!----------------------------------------------------------------------------------------------------->
 
-            <ion-item (click)="showPicker = !showPicker">
-              <ion-label position="stacked">Fecha del Parto</ion-label>
-              <ion-input maxlength="0">{{fechaValor}}</ion-input>
+            <ion-item (click)="setOpen(true, 4)">
+              <ion-label position="stacked">Fecha</ion-label>
+              <ion-input [readonly]="true">{{fechaValor}}</ion-input>
             </ion-item>
-            
-            <ion-datetime *ngIf="showPicker"
-              #datetime
-              [value]="dateValor"
-              size="cover"
-              presentation="date"
-              (ionChange)="tiempoChange(datetime.value)"
-            ></ion-datetime>
           </ion-list>
           
           <ion-row>
@@ -202,6 +206,64 @@
             </ion-col>
           </ion-row >
         </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!------------------------------------------------ Calendario Modal --------------------------------------------------->
+  <ion-modal class="modal4" [isOpen]="isModalOpen4" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header></ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-datetime
+          #datetime
+          size="cover"
+          presentation="date"
+          (ionChange)="tiempoChange(datetime.value)"
+          showDefaultButtons="true"
+          doneText="Hecho"
+          cancelText="Cancelar"
+          (ionCancel)="setOpen(false, 4)"
+        ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!------------------------------------------------ Padres Modal --------------------------------------------------->
+  <ion-modal class="modal4" [isOpen]="isModalOpen5" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar un toro" animated (ionChange)="buscarPadre($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let padre of padresAux" (click)="padreChange(padre)">
+            <ion-label> {{padre.nombre}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!---------------------------------------------- Razas Modal ---------------------------------------------->
+  <ion-modal class="modal4" [isOpen]="isModalOpen6" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar una raza" animated (ionChange)="buscarRaza($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let raza of razasAux" (click)="razaChange(raza)">
+            <ion-label> {{raza.raza}} </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ng-template>
   </ion-modal>

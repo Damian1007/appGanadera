@@ -94,6 +94,19 @@ export class SaludPage implements OnInit {
 
     this.saludSub = this.saludService.getHistorias(this.fincaId, this.animalId).subscribe(historias => {
       this.historias = historias;
+
+      this.historias.sort(function (a, b) {
+        if (a.fecha > b.fecha) {
+          return -1;
+        }
+
+        if (a.fecha < b.fecha) {
+          return 1;
+        }
+        
+        // a must be equal to b
+        return 0;
+      });
     });
 
     this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {

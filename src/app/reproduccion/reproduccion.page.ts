@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ReproduccionService } from '../services/reproduccion.service';
 import { Reproduccion } from '../interfaces/reproduccion';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { AnimalService } from '../services/animal.service';
+import { Animal } from '../interfaces/animal';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { FincaService } from '../services/finca.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reproduccion',
@@ -20,9 +22,12 @@ import { FincaService } from '../services/finca.service';
 export class ReproduccionPage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
 
+  form : FormGroup;
+  form2 : FormGroup;
   eventos : Reproduccion[];
   evento : Reproduccion;
   alertas : Alertas;
+  animal : Animal;
   fincaId : any;
   animalId : any;
   animalNombre : any;
@@ -30,6 +35,8 @@ export class ReproduccionPage implements OnInit {
   usuarioId : any = localStorage.getItem('usuarioId');
   usuarioSub : Subscription;
   fincaSub : Subscription;
+  animalSub : Subscription;
+  razaSub : Subscription;
   reproduccionesSub : Subscription;
   reproduccionSub : Subscription;
 
@@ -37,29 +44,20 @@ export class ReproduccionPage implements OnInit {
   isModalOpen = false;
   isModalOpen2 = false;
   isModalOpen3 = false;
-  showPicker = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
+  isModalOpen4 = false;
+  isModalOpen5 = false;
+  isModalOpen6 = false;
+  isSubmitted = false;
   fechaValor = '';
+  fechaProbable = new Date();
   grupoEtario = '';
 
-  form = this.formBuilder.group({
-    tipo: ['', [Validators.required]],
-    nombre: ['', [Validators.required]],
-    fecha: ['', [Validators.required]],
-  });
-
-  form2 = this.formBuilder.group({
-    nombre: ['', [Validators.required]],
-    genero: ['', [Validators.required]],
-    foto: ['', [Validators.required]],
-    lote: ['', [Validators.required]],
-    raza: ['', [Validators.required]],
-    grupoEtario: ['', [Validators.required]],
-    fechaNacimiento: ['', [Validators.required]],
-    padre: ['', [Validators.required]],
-    madre: ['', [Validators.required]],
-    pesoActual: ['', [Validators.required]],
-  });
+  razas : any[];
+  razasAux : any[];
+  razaSelected : any;
+  padres : any[];
+  padresAux : any[];
+  padreSelected : any;
 
   constructor(
     private reproduccionService : ReproduccionService,
@@ -67,7 +65,8 @@ export class ReproduccionPage implements OnInit {
     private animalService : AnimalService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService
+    private fincaService : FincaService,
+    private http : HttpClient
   ) { 
     this.eventos = [{
       tipo: '',
@@ -79,7 +78,6 @@ export class ReproduccionPage implements OnInit {
     }];
 
     this.evento = {
-      id: '',
       tipo: '',
       nombreToro: '',
       fechaMonta: '',
@@ -95,10 +93,41 @@ export class ReproduccionPage implements OnInit {
       fecha: ''
     };
 
+    this.animal = {
+      nombre: 'otro',
+      genero: '',
+      foto: "assets/icon/imagen_camara.png",
+      lote: '',
+      raza: '',
+      grupoEtario: '',
+      fechaNacimiento: '',
+      padre: '',
+      madre: '',
+      pesoActual: '0'
+    };
+
     this.setTiempo();
   }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      tipo: [''],
+      nombre: ['', [Validators.required]],
+      fecha: [''],
+    });
+  
+    this.form2 = this.formBuilder.group({
+      nombre: ['', [Validators.required]],
+      genero: ['', [Validators.required]],
+      foto: ['assets/icon/imagen_camara.png'],
+      lote: ['', [Validators.required]],
+      raza: ['', [Validators.required]],
+      grupoEtario: [''],
+      fechaNacimiento: [''],
+      padre: [''],
+      madre: [''],
+      pesoActual: ['0'],
+    });
   }
 
   ionViewWillEnter(){
@@ -117,6 +146,19 @@ export class ReproduccionPage implements OnInit {
       });
     });
 
+    this.animalSub = this.animalService.getAnimales(this.fincaId).subscribe(animales => {
+      this.padres = animales.filter((animales : any) => {
+        return (animales.genero == 'Macho' && animales.grupoEtario == 'Toro');
+      });
+      this.padres.push(this.animal);
+      this.padresAux = this.padres;
+    });
+
+    this.razaSub = this.getRaza().subscribe(razas => {
+      this.razas = razas;
+      this.razasAux = razas;
+    });
+
     this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
       this.alertas.usuario = usuario.nombre;
     });
@@ -129,10 +171,9 @@ export class ReproduccionPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.setOpen(false, 1);
-    this.setOpen(false, 2);
-    this.setOpen(false, 3);
     this.reproduccionesSub.unsubscribe();
+    this.animalSub.unsubscribe();
+    this.razaSub.unsubscribe();
 
     if (this.reproduccionSub) {
       this.reproduccionSub.unsubscribe();
@@ -149,13 +190,20 @@ export class ReproduccionPage implements OnInit {
     if(num == 3) {
       this.isModalOpen3 = isOpen;
     }
+    if(num == 4) {
+      this.isModalOpen4 = isOpen;
+    }
+    if(num == 5) {
+      this.isModalOpen5 = isOpen;
+    }
+    if(num == 6) {
+      this.isModalOpen6 = isOpen;
+    }
   }
 
   getId(id : any) {
     this.reproduccionSub = this.reproduccionService.getReproduccion(this.fincaId, this.animalId, id).subscribe(evento => {
       this.evento = evento;
-      //console.log(evento);
-      this.evento.id = id;
 
       this.setOpen(true, 2);
     });
@@ -167,45 +215,101 @@ export class ReproduccionPage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.dateValor = value;
+    this.fechaProbable = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-    this.showPicker = false;
+    this.setOpen(false, 2);
+  }
+  // <!------------------------------------------------------------------------------------------------------>
+
+  // -------------------------------- SearchBars, Changes y Get de Padres y Razas ----------------------------
+  buscarPadre(ev : any) {
+    const text = ev.target.value;
+    
+    if(text && text.trim() != '') {
+      this.padresAux = this.padresAux.filter((padres : any) => {
+        return (padres.nombre.toLowerCase().indexOf(text.toLowerCase()) > -1);
+      })
+    }else{
+      this.padresAux = this.padres;
+    }
+  }
+
+  padreChange(padre : any) {
+    this.padreSelected = padre.nombre;
+    this.setOpen(false, 5);
+  }
+
+  buscarRaza(ev : any) {
+    const text = ev.target.value;
+    
+    if(text && text.trim() != '') {
+      this.razasAux = this.razasAux.filter((razas : any) => {
+        return (razas.raza.toLowerCase().indexOf(text.toLowerCase()) > -1);
+      })
+    }else{
+      this.razasAux = this.razas;
+    }
+  }
+
+  razaChange(raza : any) {
+    this.razaSelected = raza.raza;
+    this.setOpen(false, 6);
+  }
+
+  getRaza() {
+    return this.http.get("assets/archivos/razas.json").pipe( map((res:any) => {
+      return res.data;
+    }));
   }
   // <!------------------------------------------------------------------------------------------------------>
 
   agregarMonta() {
+    this.isSubmitted = true;
+    this.form.get('tipo').setValue('Monta', { onlySelf: true});
+    this.form.get('fecha').setValue(this.fechaValor, { onlySelf: true});
+    
     if (this.embarazo) {
       console.log("Ya preñada");
+      this.form.markAllAsTouched();
     }else {
-      this.evento.tipo = 'Monta';
-      this.evento.nombreToro = this.form.getRawValue().nombre;
-      this.evento.fechaMonta = this.fechaValor;
+      console.log(this.form.getRawValue());
+      if(this.form.valid) {
+        this.evento.tipo = this.form.getRawValue().tipo;
+        this.evento.nombreToro = this.form.getRawValue().nombre;
+        this.evento.fechaMonta = this.form.getRawValue().fecha;
+        
+        this.evento.fechaPartoProbable = format(new Date(this.fechaProbable.getFullYear(), this.fechaProbable.getMonth() + 9, this.fechaProbable.getDay()), 'yyyy/MM/dd');
 
-      this.alertas.cambio = 'Agrego una monta a ' + this.animalNombre;
+        this.alertas.cambio = 'Agrego una monta a ' + this.animalNombre;
 
-      this.modal.dismiss(null, 'monta');
-      this.setOpen(false, 1);
+        this.form.reset();
+        this.setOpen(false, 1);
+        this.isSubmitted = false;
 
-      this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento)
-      .then(() => {
-        this.alertasService.addAlerta(this.alertas, this.fincaId);
-      })
-      .catch(error => {
-        console.log('Error al Agregar monta', error);
-      });
+        this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento)
+        .then(() => {
+          this.alertasService.addAlerta(this.alertas, this.fincaId);
+        })
+        .catch(error => {
+          console.log('Error al Agregar monta', error);
+        });
+      } else {
+        this.form.markAllAsTouched();
+      }
     }
   }
 
   registrarParto() {
     this.form2.get('padre').setValue(this.evento.nombreToro, { onlySelf: true});
     this.form2.get('madre').setValue(this.animalNombre, { onlySelf: true});
-
-    this.modal.dismiss(null, 'monta_parto');
+    
+    this.form.reset();
     this.setOpen(false, 2);
     this.setOpen(true, 3);
   }
 
   agregarParto() {
+    this.isSubmitted = true;
     this.evento.tipo = 'Parto';
     this.evento.fechaParto = this.fechaValor;
     this.evento.nombreCria = this.form2.getRawValue().nombre;
@@ -219,46 +323,50 @@ export class ReproduccionPage implements OnInit {
     this.form2.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
 
     this.alertas.cambio = 'Agrego el nacimiento de ' + this.evento.nombreCria;
+    
+    console.log(this.form2.getRawValue());
+    if(this.form2.valid) {
+      this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
+      this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
+      .then(() => {
+        this.alertasService.addAlerta(this.alertas, this.fincaId);
+      })
+      .catch(error => {
+        console.log('Error al Agregar parto', error);
+      });
 
-    this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
-    this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
-    .then(() => {
-      this.alertasService.addAlerta(this.alertas, this.fincaId);
-    })
-    .catch(error => {
-      console.log('Error al Agregar parto', error);
-    });
+      this.isSubmitted = false;
+      this.embarazo = false;
+      this.form.reset();
+      this.form2.reset();
+      this.setOpen(false, 3);
+    } else {
+        this.form.markAllAsTouched();
+    }
+  }
 
-    this.modal.dismiss(null, 'parto');
-    this.setOpen(false, 3);
+  get errorControl() {
+    return this.form.controls;
+  }
+
+  get errorControl2() {
+    return this.form2.controls;
   }
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'monta') {
-      console.log(this.evento);
-      this.form.reset();
-    }
-
-    console.log(ev.detail.role);
-    if (ev.detail.role === 'monta_parto') {
-      console.log(this.evento);
-      this.form.reset();
-    }
-
-    if (ev.detail.role === 'parto') {
-      console.log(this.evento);
-      this.form.reset();
-      this.form2.reset();
-    }
+    //console.log(ev.detail.role);
 
     if (ev.detail.role === 'backdrop') {
-      //console.log(this.evento);
       this.setOpen(false, 1);
       this.setOpen(false, 2);
       this.setOpen(false, 3);
+      this.setOpen(false, 4);
+      this.setOpen(false, 5);
+      this.setOpen(false, 6);
       this.form.reset();
       this.form2.reset();
+      this.isSubmitted = false;
     }
   }
 }
