@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformesService } from '../services/informes.service';
 import { AnimalService } from '../services/animal.service';
 import { ProduccionService } from '../services/produccion.service';
 import { SaludService } from '../services/salud.service';
+import { ReproduccionService } from '../services/reproduccion.service';
+import { FincaService } from '../services/finca.service';
 import { Subscription } from 'rxjs';
 import { Animal } from '../interfaces/animal';
 import { Pesaje } from '../interfaces/pesaje';
 import { Ordeño } from '../interfaces/ordeño';
 import { Salud } from '../interfaces/salud';
-import { ReproduccionService } from '../services/reproduccion.service';
 import { Reproduccion } from '../interfaces/reproduccion';
 
 @Component({
@@ -18,6 +20,7 @@ import { Reproduccion } from '../interfaces/reproduccion';
 })
 export class InformesPage implements OnInit {
 
+  form : FormGroup;
   animales: Animal[];
   pesajes : Pesaje[];
   pesajesAux : any[];
@@ -27,19 +30,26 @@ export class InformesPage implements OnInit {
   historiasAux : any[];
   eventos : Reproduccion[];
   eventosAux : any[];
+
+  isSubmitted = false;
+  tipoInforme : any;
   fincaId : any;
+  fincaNombre : string;
   animalSub : Subscription;
   pesajesSub : Subscription;
   ordeñoSub : Subscription;
   saludSub : Subscription;
   reproduccionesSub : Subscription;
+  fincaSub : Subscription;
 
   constructor(
+    private formBuilder : FormBuilder,
     private informe : InformesService,
     private animalService : AnimalService,
     private produccionService : ProduccionService,
     private saludService : SaludService,
-    private reproduccionService : ReproduccionService
+    private reproduccionService : ReproduccionService,
+    private fincaService : FincaService
   ) { 
     this.animales = [{
       nombre: '',
@@ -90,33 +100,62 @@ export class InformesPage implements OnInit {
     this.historiasAux = [];
     this.eventosAux = [];
 
+    this.form = this.formBuilder.group({
+      tipo: ['', [Validators.required]],
+    });
+
+    this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
+      this.fincaNombre = finca.nombre;
+    });
+
     this.informeAnimales();
   }
 
   ionViewDidLeave() {
-    if(this.animalSub) {
-      this.animalSub.unsubscribe();
-    }
-    
-    if(this.pesajesSub) {
-      this.pesajesSub.unsubscribe();
-    }
-
-    if(this.ordeñoSub) {
-      this.ordeñoSub.unsubscribe();
-    }
-
-    if(this.saludSub) {
-      this.saludSub.unsubscribe();
-    }
-
-    if(this.reproduccionesSub) {
-      this.reproduccionesSub.unsubscribe();
-    }
+    this.animalSub.unsubscribe();
+    this.fincaSub.unsubscribe();
+    this.pesajesSub.unsubscribe();
+    this.ordeñoSub.unsubscribe();
+    this.saludSub.unsubscribe();
+    this.reproduccionesSub.unsubscribe();
   }
 
   exportToExcel() {
-    this.informe.exportToExcel(this.eventos, 'Reproduccion');
+    this.isSubmitted = true;
+
+    if(this.form.valid) {
+      switch (this.form.getRawValue().tipo) {
+        case 'IC':
+          this.informe.exportToExcelAll(this.animales, this.pesajes, this.ordeños, this.historias, this.eventos, 'Informe ' + this.fincaNombre);
+          break;
+        
+        case 'A':
+          this.informe.exportToExcel(this.animales, 'Animales ', this.fincaNombre);
+          break;
+
+        case 'PC':
+          this.informe.exportToExcel(this.pesajes, 'Pesajes ', this.fincaNombre);
+          break;
+
+        case 'PL':
+          this.informe.exportToExcel(this.ordeños, 'Ordeños ', this.fincaNombre);
+          break;
+
+        case 'HM':
+          this.informe.exportToExcel(this.historias, 'Salud ', this.fincaNombre);
+          break;
+
+        case 'R':
+          this.informe.exportToExcel(this.eventos, 'Reproducción ', this.fincaNombre);
+          break;
+
+        default:
+          break;
+      }
+      
+    }else {
+      this.form.markAllAsTouched();
+    }
   }
 
   informeAnimales() {
@@ -246,5 +285,9 @@ export class InformesPage implements OnInit {
         return 0;
       });
     });
+  }
+
+  get errorControl() {
+    return this.form.controls;
   }
 }

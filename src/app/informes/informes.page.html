@@ -8,7 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="exportToExcel()">
-    Generar Informe
-  </ion-button>
+  <form [formGroup]="form" novalidate (ngSubmit)="exportToExcel()">
+    <ion-item class="tipo">
+      <ion-label position="stacked">Tipo de Informe</ion-label>
+      <ion-select formControlName="tipo" placeholder="Seleccione un tipo de Informe">
+        <ion-select-option value="IC">Informe Completo</ion-select-option>
+        <ion-select-option value="A">Animales</ion-select-option>
+        <ion-select-option value="PC">Produccion de Carne</ion-select-option>
+        <ion-select-option value="PL">Produccion de Leche</ion-select-option>
+        <ion-select-option value="HM">Historial Medico</ion-select-option>
+        <ion-select-option value="R">Reproducción</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!----------------------------------- Error de Validadores Tipo -------------------------------------->
+    <span class="error" *ngIf="isSubmitted && errorControl.tipo.errors?.required">
+      El tipo de informe es obligatorio.
+    </span>
+    <!----------------------------------------------------------------------------------------------------->
+  
+    <div class="boton">
+      <ion-button type="submit">Generar Informe</ion-button>
+    </div>
+  </form>
+  
 </ion-content>
