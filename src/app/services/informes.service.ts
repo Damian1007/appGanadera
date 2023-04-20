@@ -13,8 +13,10 @@ export class InformesService {
   async exportToExcel(data : any, filename : any) {
     {
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    //const ws2: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, filename);
+    //XLSX.utils.book_append_sheet(wb, ws2, 'otro');
     XLSX.writeFile(wb, filename + '.xlsx');
     }
   }

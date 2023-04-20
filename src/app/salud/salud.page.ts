@@ -55,7 +55,6 @@ export class SaludPage implements OnInit {
     private fincaService : FincaService
   ) { 
       this.historias = [{
-        id: '',
         ref: '',
         nombre: '',
         sintomas: '',
