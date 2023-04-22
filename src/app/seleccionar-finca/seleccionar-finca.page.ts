@@ -18,7 +18,8 @@ export class SeleccionarFincaPage implements OnInit {
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
-  noFincas : boolean;
+  noFincas : boolean = false;
+  fincasBool : boolean = false;
 
   constructor(
     private fincaService : FincaService,
@@ -43,10 +44,8 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ngOnInit(){
-  }
-
-  ionViewWillEnter(){
     this.getFincas()
+    this.menuCtrl.enable(true);
   }
 
   ionViewDidLeave(){
@@ -64,14 +63,13 @@ export class SeleccionarFincaPage implements OnInit {
       }
 
       this.fincas.map((finca : any) => {
-        //console.log(finca);
         this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
-          //console.log(miembro);
+
           if(!miembro) {
-            //console.log(miembro);
             this.fincasAux.splice(this.fincasAux.indexOf(finca), 1);
           }
-        })
+          this.fincasBool = true;
+        });
       });
     });
     

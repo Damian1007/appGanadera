@@ -28,9 +28,9 @@ export class LoginPage implements OnInit {
     });
   }
 
-  // ionViewDidEnter() {
-  //   this.menuCtrl.enable(false);
-  // }
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   get errorControl() {
     return this.form.controls;
@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
   
   login(){
     this.isSubmitted = true;
+    
     if(this.form.valid) {
         this.autentificarService.iniciarSesion(this.form.getRawValue().correo, this.form.getRawValue().contrasena)
         .then(() => {
@@ -50,7 +51,4 @@ export class LoginPage implements OnInit {
         this.form.markAllAsTouched();
     }
   }
-
-  
-
 }

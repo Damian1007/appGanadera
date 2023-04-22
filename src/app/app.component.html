@@ -3,10 +3,10 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ng-container *ngIf="usuario$ | async as usuario">
-            <ion-list-header>Nombre</ion-list-header>
-            <ion-note>{{ usuario.email }}</ion-note>
-          </ng-container>
+          <ng-container *ngIf="usuario">
+            <ion-list-header>{{usuario.nombre}}</ion-list-header>
+            <ion-note>{{usuario.correo}}</ion-note>
+          </ng-container>                      
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">

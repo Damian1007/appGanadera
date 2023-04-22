@@ -10,8 +10,6 @@ import { Usuario } from '../interfaces/usuario';
 })
 export class AutentificarService {
 
-  authState$ = authState(this.afAutentificador)
-
   constructor(
     private afAutentificador: Auth,
     private firestore : Firestore

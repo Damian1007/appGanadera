@@ -132,7 +132,7 @@
             </ion-col>
           </ion-row>
 
-          <ion-row class="row2">
+          <ion-row *ngIf="animal.genero == 'Hembra'" class="row2">
             <ion-col>
               <ion-card class="card-content" (click)="produccionLeche()">
                 <img src=\assets\icon\leche.png>

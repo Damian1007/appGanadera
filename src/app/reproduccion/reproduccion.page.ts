@@ -31,6 +31,7 @@ export class ReproduccionPage implements OnInit {
   fincaId : any;
   animalId : any;
   animalNombre : any;
+  animalGenero : any;
   reproduccionId : any;
   usuarioId : any = localStorage.getItem('usuarioId');
   usuarioSub : Subscription;
@@ -134,6 +135,7 @@ export class ReproduccionPage implements OnInit {
     this.fincaId = localStorage.getItem('id');
     this.animalId = localStorage.getItem('animalId');
     this.animalNombre = localStorage.getItem('animalNombre');
+    this.animalGenero = localStorage.getItem('animalGenero');
     this.embarazo = false;
 
     this.reproduccionesSub = this.reproduccionService.getReproducciones(this.fincaId, this.animalId).subscribe(eventos => {

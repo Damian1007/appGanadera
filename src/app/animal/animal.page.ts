@@ -83,6 +83,7 @@ export class AnimalPage implements OnInit {
 
   produccionLeche() {
     this.modal.isOpen = false;
+    localStorage.setItem('animalGenero', this.animal.genero);
     this.router.navigate(['/tabs/produccion-leche'], { replaceUrl: true });
   }
 
