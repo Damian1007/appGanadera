@@ -24,7 +24,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.pattern">
         Debe ingresar un correo valido.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------>
 
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
@@ -35,18 +35,18 @@
       <span class="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
         El nombre es obligatorio.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Apellido</ion-label>
         <ion-input formControlName="apellido"></ion-input>
       </ion-item>
 
-      <!---------------------------------- Error de Validadores Apellido-------------------------------------->
+      <!---------------------------------- Error de Validadores Apellido -------------------------------------->
       <span class="error" *ngIf="isSubmitted && errorControl.apellido.errors?.required">
         El apellido es obligatorio.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
@@ -61,7 +61,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.minlength">
         Debe tener un minimo de 8 caracteres.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!---------------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Confirmar Contraseña</ion-label>
@@ -72,7 +72,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.confirmarContrasena.errors?.required">
         La confirmación de contraseña es obligatoria.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Pais</ion-label>
@@ -85,7 +85,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.pais.errors?.required">
         El pais es obligatorio.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!---------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Teléfono</ion-label>
@@ -104,7 +104,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.maxlength">
         Debe ser un telefono valido.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!--------------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Departamento</ion-label>
@@ -115,7 +115,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.departamento.errors?.required">
         El Departamento es obligatorio.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!----------------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Municipio</ion-label>
@@ -126,7 +126,7 @@
       <span class="error" *ngIf="isSubmitted && errorControl.ciudad.errors?.required">
         La ciudad es obligatoria.
       </span>
-      <!---------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------->
     </ion-list>
 
     <ion-row>

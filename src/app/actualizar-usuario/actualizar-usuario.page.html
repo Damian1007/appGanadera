@@ -12,19 +12,41 @@
   <form [formGroup]="form" novalidate (ngSubmit)="actualizarUsuario()">
     <ion-list>
       <ion-item>
-        <ion-label position="stacked">Correo</ion-label>
+        <ion-label position="stacked">Correo Electronico</ion-label>
         <ion-input formControlName="correo"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Correo -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.required">
+        El correo es obligatorio.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.pattern">
+        Debe ingresar un correo valido.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
         <ion-input formControlName="nombre"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Nombre -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
+        El nombre es obligatorio.
+      </span>
+      <!------------------------------------------------------------------------------------------------------>
+
       <ion-item>
         <ion-label position="stacked">Apellido</ion-label>
         <ion-input formControlName="apellido"></ion-input>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Apellido -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.apellido.errors?.required">
+        El apellido es obligatorio.
+      </span>
+      <!------------------------------------------------------------------------------------------------------->
 
       <!-- <ion-item> -------- CAMBIAR CONTARSEÑA -------------
         <ion-label position="stacked">Contraseña</ion-label>
@@ -38,24 +60,57 @@
 
       <ion-item>
         <ion-label position="stacked">Pais</ion-label>
-        <ion-input formControlName="pais"></ion-input>
+        <ion-select formControlName="pais" placeholder="Selecciona un pais">
+          <ion-select-option value="Colombia">Colombia</ion-select-option>
+        </ion-select>
       </ion-item>
+
+      <!---------------------------------- Error de Validadores Pais -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.pais.errors?.required">
+        El pais es obligatorio.
+      </span>
+      <!---------------------------------------------------------------------------------------------------->
 
       <ion-item>
         <ion-label position="stacked">Telefono</ion-label>
         <ion-input formControlName="telefono"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Telefono -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.required">
+        El telefono es obligatorio.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.minlength">
+        Debe ser un telefono valido.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.maxlength">
+        Debe ser un telefono valido.
+      </span>
+      <!--------------------------------------------------------------------------------------------------------->
+
       <ion-item>
         <ion-label position="stacked">Departamento</ion-label>
-        <ion-input formControlName="departamento"></ion-input>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label position="stacked">Ciudad</ion-label>
-        <ion-input formControlName="ciudad"></ion-input>
+        <ion-input formControlName="departamento" placeholder="Seleccione un departamento"  value='{{dpto}}' (click)="setOpen(true, 1)"></ion-input>
       </ion-item>
 
+      <!---------------------------------- Error de Validadores Departamento-------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.departamento.errors?.required">
+        El Departamento es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------------->
+      
+      <ion-item>
+        <ion-label position="stacked">Municipio</ion-label>
+        <ion-input formControlName="ciudad" placeholder="Seleccione un municipio"  value='{{ciud}}' (click)="setOpen(true, 2)"></ion-input>
+      </ion-item>
+
+      <!---------------------------------- Error de Validadores Ciudad -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.ciudad.errors?.required">
+        La ciudad es obligatoria.
+      </span>
+      <!------------------------------------------------------------------------------------------------------->
     </ion-list>
 
     <ion-row>
@@ -64,4 +119,42 @@
       </ion-col>
     </ion-row>
   </form>
+
+  <!--------------------------------------- Departamentos Modal --------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar un departamento" animated (ionChange)="buscarDpto($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let departamento of departamentosAux" (click)="dptoChange(departamento)">
+            <ion-label> {{departamento.depto}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!--------------------------------------- Ciudades Modal --------------------------------------->
+  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-searchbar placeholder="Buscar una ciudad" animated (ionChange)="buscarCiudad($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list [inset]="true">
+          <ion-item *ngFor="let ciudad of ciudadesAux" (click)="ciudadChange(ciudad)">
+            <ion-label> {{ciudad.Ciudad}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

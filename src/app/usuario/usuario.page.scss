@@ -5,7 +5,8 @@
 }
 
 ion-row{
-    margin-top: 10px; 
+    margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 ion-col{
@@ -34,21 +35,15 @@ ion-col{
     margin-right: 15px;
 }
 
-ion-fab-button::part(native){
-    --background-color: blue;
-}
-
-ion-fab-button.btn{
-    width: 65px;
-    height: 65px;
-}
-
-ion-fab-button.btns{
-    margin-left: 6px;
-
-    width: 55px;
-    height: 55px;
+ion-button[shape=circle] {
+    position: fixed;
 
     --background: #3880ff;
-    --color: white;
+
+    --border-radius: 50%;
+    width: 80px;
+    height: 80px;
+
+    bottom: 2%;
+    right: 2%;
 }
