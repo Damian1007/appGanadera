@@ -32,6 +32,7 @@ export class InformesPage implements OnInit {
   eventosAux : any[];
 
   isSubmitted = false;
+  prueba = false;
   tipoInforme : any;
   fincaId : any;
   fincaNombre : string;
@@ -153,6 +154,7 @@ export class InformesPage implements OnInit {
           break;
       }
       
+      this.prueba = true;
     }else {
       this.form.markAllAsTouched();
     }
