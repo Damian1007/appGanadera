@@ -126,27 +126,27 @@ export class InformesPage implements OnInit {
     if(this.form.valid) {
       switch (this.form.getRawValue().tipo) {
         case 'IC':
-          this.informe.exportToExcelAll(this.animales, this.pesajes, this.ordeños, this.historias, this.eventos, 'Informe ' + this.fincaNombre);
+          this.informe.crearToExcelAll(this.animales, this.pesajes, this.ordeños, this.historias, this.eventos, 'Informe ' + this.fincaNombre);
           break;
         
         case 'A':
-          this.informe.exportToExcel(this.animales, 'Animales ', this.fincaNombre);
+          this.informe.crearToExcel(this.animales, 'Animales ', this.fincaNombre);
           break;
 
         case 'PC':
-          this.informe.exportToExcel(this.pesajes, 'Pesajes ', this.fincaNombre);
+          this.informe.crearToExcel(this.pesajes, 'Pesajes ', this.fincaNombre);
           break;
 
         case 'PL':
-          this.informe.exportToExcel(this.ordeños, 'Ordeños ', this.fincaNombre);
+          this.informe.crearToExcel(this.ordeños, 'Ordeños ', this.fincaNombre);
           break;
 
         case 'HM':
-          this.informe.exportToExcel(this.historias, 'Salud ', this.fincaNombre);
+          this.informe.crearToExcel(this.historias, 'Salud ', this.fincaNombre);
           break;
 
         case 'R':
-          this.informe.exportToExcel(this.eventos, 'Reproducción ', this.fincaNombre);
+          this.informe.crearToExcel(this.eventos, 'Reproducción ', this.fincaNombre);
           break;
 
         default:

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AutentificarService } from './services/autentificar.service';
 import { Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Usuario } from './interfaces/usuario';
 
 @Component({
