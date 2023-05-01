@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Miembro } from '../interfaces/miembro';
@@ -11,9 +11,9 @@ export class MiembrosService {
 
   constructor(private firestore : Firestore) { }
 
-  addMiembro(fincaId : any, miembro : Miembro) {
+  async addMiembro(fincaId : any, miembro : Miembro) {
     const miembroRef = doc(this.firestore, `fincas/${fincaId}/miembros/${miembro.id}`);
-    return setDoc(miembroRef, miembro);
+    await setDoc(miembroRef, miembro);
   }
 
   getMiembros(fincaId : any): Observable<Miembro[]> {

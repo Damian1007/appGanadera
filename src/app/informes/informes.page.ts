@@ -132,29 +132,33 @@ export class InformesPage implements OnInit {
         
         case 'A':
           this.informe.crearToExcel(this.animales, 'Animales ', this.fincaNombre);
+          this.prueba = true;
           break;
 
         case 'PC':
           this.informe.crearToExcel(this.pesajes, 'Pesajes ', this.fincaNombre);
+          
           break;
 
         case 'PL':
           this.informe.crearToExcel(this.ordeños, 'Ordeños ', this.fincaNombre);
+          
           break;
 
         case 'HM':
           this.informe.crearToExcel(this.historias, 'Salud ', this.fincaNombre);
+          
           break;
 
         case 'R':
           this.informe.crearToExcel(this.eventos, 'Reproducción ', this.fincaNombre);
+          
           break;
 
         default:
           break;
       }
       
-      this.prueba = true;
     }else {
       this.form.markAllAsTouched();
     }

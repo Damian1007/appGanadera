@@ -7,6 +7,7 @@ import { AutentificarService } from '../services/autentificar.service';
 import { IonModal } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -48,7 +49,8 @@ export class ActualizarUsuarioPage implements OnInit {
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
     this.usuario = {
       correo: '',
@@ -175,10 +177,12 @@ export class ActualizarUsuarioPage implements OnInit {
 
       this.autentificarService.updateUsuario(this.usuario, this.usuarioId)
       .then(() => {
+        this.presentToast();
         this.router.navigate(['/usuario'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Actualizar usuario', error);
+        this.presentToastError();
       });
     } else {
       this.form.markAllAsTouched();
@@ -187,6 +191,26 @@ export class ActualizarUsuarioPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'El usuario fue actualizado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar actualizar el usuario, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

@@ -12,6 +12,7 @@ import { Animal } from '../interfaces/animal';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crear-animal',
@@ -55,7 +56,8 @@ export class CrearAnimalPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private fincaService : FincaService,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) {
       this.animal = {
         nombre: 'otro',
@@ -238,11 +240,12 @@ export class CrearAnimalPage implements OnInit {
       this.animalService.addAnimal(this.animal, this.fincaId)
       .then(() => {
         this.alertasService.addAlerta(this.alertas, this.fincaId);
-  
+        this.presentToast();
         this.router.navigate(['/tabs/animales'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Crear animal', error);
+        this.presentToastError();
       });
     } else {
       this.form.markAllAsTouched();
@@ -251,6 +254,26 @@ export class CrearAnimalPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+  
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nuevo animal creado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar crear un nuevo animal, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

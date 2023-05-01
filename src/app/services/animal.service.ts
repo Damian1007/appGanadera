@@ -12,14 +12,14 @@ export class AnimalService {
     private firestore : Firestore
   ) { }
 
-  addAnimal(animal : Animal, fincaId : any) {
+  async addAnimal(animal : Animal, fincaId : any) {
     const animalRef = collection(this.firestore, `fincas/${fincaId}/animales`);
-    return addDoc(animalRef, animal);
+    await addDoc(animalRef, animal);
   }
 
-  updateAnimal(animal : Animal, fincaId : any, animalId : any) {
+  async updateAnimal(animal : Animal, fincaId : any, animalId : any) {
     const animalDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}`);
-    return updateDoc(animalDocRef, {
+    await updateDoc(animalDocRef, {
       nombre: animal.nombre,
       genero: animal.genero,
       foto: animal.foto,
@@ -43,8 +43,8 @@ export class AnimalService {
     return docData(animalDocRef) as Observable<Animal>;
   }
 
-  deleteAnimal(fincaId : any, animalId : any) {
+  async deleteAnimal(fincaId : any, animalId : any) {
     const animalDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}`);
-    return deleteDoc(animalDocRef);
+    await deleteDoc(animalDocRef);
   }
 }

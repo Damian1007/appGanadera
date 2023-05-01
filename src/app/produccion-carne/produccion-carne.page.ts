@@ -9,6 +9,7 @@ import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
 import { Animal } from '../interfaces/animal';
 import { AnimalService } from '../services/animal.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produccion-carne',
@@ -39,9 +40,12 @@ export class ProduccionCarnePage implements OnInit {
     fecha: [''],
   });
 
-  constructor(private produccionService : ProduccionService,
+  constructor(
+    private produccionService : ProduccionService,
     private formBuilder : FormBuilder,
-    private animalService : AnimalService) { 
+    private animalService : AnimalService, 
+    public toastController : ToastController
+    ) { 
 
       this.pesaje = {
         peso: '',
@@ -172,9 +176,11 @@ export class ProduccionCarnePage implements OnInit {
         //console.log(this.pesajesArray);
         this.animal.pesoActual = this.pesajesArray.pop().peso;
         this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId);
+        this.presentToast();
       })
       .catch(error => {
         console.log('Error al Agregar el Peso del animal', error);
+        this.presentToastError();
       });
       this.isSubmitted = false;
 
@@ -209,6 +215,26 @@ export class ProduccionCarnePage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nuevo pesaje registrado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar registrar un nuevo pesaje, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

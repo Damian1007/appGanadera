@@ -24,7 +24,10 @@ export class InformesService {
       XLSX.utils.book_append_sheet(wb, ws3, 'Ordeños');
       XLSX.utils.book_append_sheet(wb, ws4, 'Salud');
       XLSX.utils.book_append_sheet(wb, ws5, 'Reproducción');
+      //XLSX.writeFile(wb, filename + '.xlsx');
+
       var buffer = XLSX.write(wb, {bookType : 'xlsx', type : 'array'});
+      //console.log(buffer);
       this.exportToPhone(buffer, filename);
     }
   }
@@ -34,8 +37,11 @@ export class InformesService {
       const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data); 
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, filename);
+      //XLSX.writeFile(wb, filename + '.xlsx');
+
       var buffer = XLSX.write(wb, {bookType : 'xlsx', type : 'array'});
-      this.exportToPhone(buffer, filename);
+      //console.log(buffer);
+      this.exportToPhone(buffer, filename + finca);
     }
   }
 
@@ -44,7 +50,12 @@ export class InformesService {
     var fileExtension = '.xlsx';
     
     var data: Blob = new Blob([buffer], {type : fileType});
-    console.log(data, filename);
-    this.file.writeFile(this.file.externalRootDirectory, filename + fileExtension, data, {replace : true});
+
+    this.file.writeFile('file:///storage/emulated/0/Android/data/io.ionic.appGanadera/', filename + fileExtension, data, { replace: true })
+    .then(() => {
+      alert("Informe generado con exito, consulte la carpeta (Almacenacimento interno/Android/data/io.ionic.appGanadera)");
+    }, (err) => {
+      alert("Algo fallo al generar el informe, repitalo nuevamente o mas tarde");
+    });
   }
 }

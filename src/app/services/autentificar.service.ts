@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, authState } from '@angular/fire/auth';
-import { addDoc, collection, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
@@ -25,8 +25,8 @@ export class AutentificarService {
   }
 
   registroUsu(usuario : Usuario, id : any) {
-      const usuarioDocRef = doc(this.firestore, `usuarios/${id}`);
-      return setDoc(usuarioDocRef, usuario);
+    const usuarioDocRef = doc(this.firestore, `usuarios/${id}`);
+    return setDoc(usuarioDocRef, usuario);
   }
 
   iniciarSesion(correo: string, contraseña: string) {
@@ -37,6 +37,7 @@ export class AutentificarService {
   }
 
   cerrarSesion() {
+    localStorage.setItem("usuarioId", "");
     return signOut(this.afAutentificador);
   }
 

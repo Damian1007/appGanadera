@@ -11,6 +11,7 @@ import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { FincaService } from '../services/finca.service';
 import { format, parseISO } from 'date-fns';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-salud',
@@ -52,7 +53,8 @@ export class SaludPage implements OnInit {
     private formBuilder : FormBuilder,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService
+    private fincaService : FincaService, 
+    public toastController : ToastController
   ) { 
       this.historias = [{
         ref: '',
@@ -191,10 +193,12 @@ export class SaludPage implements OnInit {
       this.saludService.addHistoria(this.fincaId, this.animalId, this.historia)
       .then(() => {
         this.isSubmitted = false;
+        this.presentToast();
         this.alertasService.addAlerta(this.alertas, this.fincaId);
       })
       .catch(error => {
-        console.log('Error al Crear animal', error);
+        console.log('Error al Crear la historia', error);
+        this.presentToastError();
       });
 
       this.form.reset();
@@ -207,6 +211,26 @@ export class SaludPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nueva historia medica registrada con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar registrar una nueva historia medica, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

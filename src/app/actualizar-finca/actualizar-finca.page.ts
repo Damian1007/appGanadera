@@ -11,6 +11,7 @@ import { Subscription, map } from 'rxjs';
 import { IonModal } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actualizar-finca',
@@ -47,7 +48,8 @@ export class ActualizarFincaPage implements OnInit {
     private fincaService : FincaService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
       this.finca = {
         nombre: '',
@@ -213,11 +215,12 @@ setOpen(isOpen : boolean, num : any) {
       this.fincaService.updateFinca(this.finca, this.fincaId)
       .then(() => {
         this.alertasService.addAlerta(this.alertas, this.fincaId);
-
+        this.presentToast();
         this.router.navigate(['/tabs/finca'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Actualizar finca', error);
+        this.presentToastError();
       });
     } else {
       this.form.markAllAsTouched();
@@ -226,6 +229,26 @@ setOpen(isOpen : boolean, num : any) {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'La finca fue actualizada con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar actualizar la finca, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

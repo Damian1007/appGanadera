@@ -44,16 +44,10 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ngOnInit(){
-    this.getFincas()
     this.menuCtrl.enable(true);
   }
 
-  ionViewDidLeave(){
-    this.miembroSub.unsubscribe();
-    this.fincaSub.unsubscribe();
-  }
-
-  getFincas(){
+  ionViewWillEnter(){
     this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
       this.fincas = finca;
       this.fincasAux = finca;
@@ -72,7 +66,11 @@ export class SeleccionarFincaPage implements OnInit {
         });
       });
     });
-    
+  }
+
+  ionViewDidLeave(){
+    this.miembroSub.unsubscribe();
+    this.fincaSub.unsubscribe();
   }
 
   getId(id : any) {

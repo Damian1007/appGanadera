@@ -13,6 +13,7 @@ import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { FincaService } from '../services/finca.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reproduccion',
@@ -67,7 +68,8 @@ export class ReproduccionPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private fincaService : FincaService,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
     this.eventos = [{
       tipo: '',
@@ -272,6 +274,7 @@ export class ReproduccionPage implements OnInit {
     
     if (this.embarazo) {
       console.log("Ya preñada");
+      this.presentToast3();
       this.form.markAllAsTouched();
     }else {
       console.log(this.form.getRawValue());
@@ -291,9 +294,11 @@ export class ReproduccionPage implements OnInit {
         this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento)
         .then(() => {
           this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.presentToast();
         })
         .catch(error => {
           console.log('Error al Agregar monta', error);
+          this.presentToastError();
         });
       } else {
         this.form.markAllAsTouched();
@@ -332,9 +337,11 @@ export class ReproduccionPage implements OnInit {
       this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
       .then(() => {
         this.alertasService.addAlerta(this.alertas, this.fincaId);
+        this.presentToast2();
       })
       .catch(error => {
         console.log('Error al Agregar parto', error);
+        this.presentToastError2();
       });
 
       this.isSubmitted = false;
@@ -353,6 +360,56 @@ export class ReproduccionPage implements OnInit {
 
   get errorControl2() {
     return this.form2.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nueva monta registrada con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToast2() {
+    const toast = await this.toastController.create({
+      message: 'Nuevo parto registrado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToast3() {
+    const toast = await this.toastController.create({
+      message: 'La vaca ya ha sido montada y se encuentra gestando',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar registrar una nueva monta, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar registrar un nuevo parto, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

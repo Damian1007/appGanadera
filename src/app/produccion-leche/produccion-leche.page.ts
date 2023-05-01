@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Ordeño } from '../interfaces/ordeño';
 import { ProduccionService } from '../services/produccion.service';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produccion-leche',
@@ -35,8 +36,11 @@ export class ProduccionLechePage implements OnInit {
     fecha: [''],
   });
 
-  constructor(private produccionService : ProduccionService,
-    private formBuilder : FormBuilder) { 
+  constructor(
+    private produccionService : ProduccionService,
+    private formBuilder : FormBuilder, 
+    public toastController : ToastController
+    ) { 
 
       this.ordeño = {
         leche: '',
@@ -130,7 +134,14 @@ export class ProduccionLechePage implements OnInit {
 
       this.graficaSub.unsubscribe();
       this.myChart.destroy();
-      await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño);
+      await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño)
+      .then(() => {
+        this.presentToast();
+      })
+      .catch(error => {
+        console.log('Error al Agregar el ordeño del animal', error);
+        this.presentToastError();
+      });
       this.isSubmitted = false;
 
       this.mostrarGrafico();
@@ -164,6 +175,26 @@ export class ProduccionLechePage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nuevo ordeño registrado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar registrar un nuevo ordeño, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, doc, docData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Salud } from '../interfaces/salud';
 
@@ -12,9 +12,9 @@ export class SaludService {
     private firestore : Firestore
   ) { }
 
-  addHistoria(fincaId : any, animalId : any, salud : Salud) {
+  async addHistoria(fincaId : any, animalId : any, salud : Salud) {
     const saludDocRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/salud`);
-    return addDoc(saludDocRef, salud);
+    await addDoc(saludDocRef, salud);
   }
 
   getHistorias(fincaId : any, animalId : any): Observable<Salud[]> {

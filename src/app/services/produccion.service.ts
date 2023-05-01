@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Pesaje } from '../interfaces/pesaje';
 import { Ordeño } from '../interfaces/ordeño';
@@ -11,14 +11,14 @@ export class ProduccionService {
 
   constructor(private firestore : Firestore) { }
 
-  addPeso(fincaId : any, animalId : any, pesaje : Pesaje) {
+  async addPeso(fincaId : any, animalId : any, pesaje : Pesaje) {
     const prodRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/prodCarne`);
-    return addDoc(prodRef, pesaje);
+    await addDoc(prodRef, pesaje);
   }
 
-  addOrdeño(fincaId : any, animalId : any, ordeño : Ordeño) {
+  async addOrdeño(fincaId : any, animalId : any, ordeño : Ordeño) {
     const prodRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/prodLeche`);
-    return addDoc(prodRef, ordeño);
+    await addDoc(prodRef, ordeño);
   }
 
   getPesajes(fincaId : any, animalId : any): Observable<Pesaje[]> {

@@ -12,6 +12,7 @@ import { format } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { IonModal } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crear-finca',
@@ -48,7 +49,8 @@ export class CrearFincaPage implements OnInit {
     private fincaService : FincaService,
     private auth : AutentificarService,
     private alertasService : AlertasService,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
       this.finca = {
         id: '',
@@ -197,7 +199,7 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.departamento = this.form.getRawValue().departamento;
       this.finca.ciudad = this.form.getRawValue().ciudad;
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
-      this.finca.id = this.finca.nombre + this.finca.areaFinca + this.finca.areaGanaderia + '_' + this.finca.corregimiento + this.randomId;
+      this.finca.id = this.finca.nombre +  '_' + this.finca.areaFinca + this.finca.areaGanaderia + '_' + this.finca.corregimiento + this.randomId;
 
       this.alertas.cambio = 'Creo la finca ' + this.finca.nombre;
       this.alertas.foto = this.finca.foto;
@@ -206,11 +208,12 @@ setOpen(isOpen : boolean, num : any) {
       this.fincaService.addFinca(this.finca, this.miembro)
       .then(() => {
         this.alertasService.addAlerta(this.alertas, this.finca.id);
-
+        this.presentToast();
         this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Crear finca', error);
+        this.presentToastError();
       });
     } else {
       this.form.markAllAsTouched();
@@ -219,6 +222,26 @@ setOpen(isOpen : boolean, num : any) {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Nueva finca creada con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar crear la nueva finca, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

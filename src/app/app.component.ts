@@ -24,15 +24,22 @@ export class AppComponent {
   constructor(
     private autentificarService : AutentificarService,
     private router : Router
-  ) { 
-    this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
-      this.usuario = usuario;
-    });
+  ) {
+    if(localStorage.getItem("usuarioId")) {
+      this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
+        this.usuario = usuario;
+        console.log(usuario)
+      });
+    }
+    
   }
 
   async cerrarSesion() {
     await this.autentificarService.cerrarSesion();
-    this.usuarioSub.unsubscribe();
+    
+    if(this.usuarioSub){
+      this.usuarioSub.unsubscribe();
+    }
     this.router.navigate(['/login'], { replaceUrl: true });
   }
 

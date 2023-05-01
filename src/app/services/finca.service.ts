@@ -21,9 +21,9 @@ export class FincaService {
     this.miembroService.addMiembro(finca.id, miembro);
   }
 
-  updateFinca(finca : Finca, id : any) {
+  async updateFinca(finca : Finca, id : any) {
     const fincaDocRef = doc(this.firestore, `fincas/${id}`);
-    return updateDoc(fincaDocRef, {
+    await updateDoc(fincaDocRef, {
       nombre: finca.nombre,
       orientacion: finca.orientacion,
       areaFinca: finca.areaFinca,

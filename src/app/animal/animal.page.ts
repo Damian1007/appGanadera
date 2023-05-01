@@ -5,7 +5,7 @@ import { Animal } from '../interfaces/animal';
 import { Subscription } from 'rxjs';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { __await } from 'tslib';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-animal',
@@ -24,7 +24,8 @@ export class AnimalPage implements OnInit {
   
   constructor(
     private animalService : AnimalService,
-    private router : Router
+    private router : Router, 
+    public toastController : ToastController
   ) { 
       this.animal = {
         id: '',
@@ -67,6 +68,7 @@ export class AnimalPage implements OnInit {
   }
 
   eliminarAnimal() {
+    this.presentToast();
     // this.animalService.deleteAnimal(this.fincaId, this.animalId)
     // this.router.navigate(['/tabs/animales'], { replaceUrl: true });
   }
@@ -90,6 +92,16 @@ export class AnimalPage implements OnInit {
   reproduccion() {
     this.modal.isOpen = false;
     this.router.navigate(['/tabs/reproduccion'], { replaceUrl: true });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'La opción de eliminar estas desactivada',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

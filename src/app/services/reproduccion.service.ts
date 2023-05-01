@@ -12,9 +12,9 @@ export class ReproduccionService {
     private firestore : Firestore
   ) { }
 
-  addReproduccion(fincaId : any, animalId : any, reproduccion : Reproduccion) {
+  async addReproduccion(fincaId : any, animalId : any, reproduccion : Reproduccion) {
     const reproDocRef = collection(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion`);
-    return addDoc(reproDocRef, reproduccion);
+    await addDoc(reproDocRef, reproduccion);
   }
 
   getReproducciones(fincaId : any, animalId : any): Observable<Reproduccion[]> {
@@ -27,9 +27,9 @@ export class ReproduccionService {
     return docData(reproDocRef, { idField: 'id'}) as Observable<Reproduccion>;
   }
 
-  updateReproduccion(reproduccion : Reproduccion, fincaId : any, animalId : any) {
+  async updateReproduccion(reproduccion : Reproduccion, fincaId : any, animalId : any) {
     const reproDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animalId}/reproduccion/${reproduccion.id}`);
-    return updateDoc(reproDocRef, {
+    await updateDoc(reproDocRef, {
       tipo: reproduccion.tipo,
       fechaMonta: reproduccion.fechaMonta,
       nombreToro: reproduccion.nombreToro,

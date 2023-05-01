@@ -12,6 +12,7 @@ import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actualizar-animal',
@@ -69,7 +70,8 @@ export class ActualizarAnimalPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private fincaService : FincaService,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
       this.animal = {
         nombre: 'otro',
@@ -243,11 +245,12 @@ export class ActualizarAnimalPage implements OnInit {
       this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId)
       .then(() => {
         this.alertasService.addAlerta(this.alertas, this.fincaId);
-
+        this.presentToast();
         this.router.navigate(['/tabs/animal'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Actualizar animal', error);
+        this.presentToastError();
       });
     } else {
       this.form.markAllAsTouched();
@@ -256,6 +259,26 @@ export class ActualizarAnimalPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'El animal fue actualizado con exito',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar actualizar el animal, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {
