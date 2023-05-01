@@ -169,6 +169,7 @@ export class RegistroPage implements OnInit {
   
           this.autentificarService.registroUsu(this.usuario, localStorage.getItem("usuarioId"))
           .then(() => {
+            window.location.reload();
             this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
           })
           .catch(error => {

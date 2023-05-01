@@ -34,12 +34,11 @@ export class ActualizarAnimalPage implements OnInit {
   razaSub : Subscription;
 
   isSubmitted = false;
-  showPicker = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
   isModalOpen = false;
   isModalOpen2 = false;
   isModalOpen3 = false;
+  isModalOpen4 = false;
   razas : any[];
   razasAux : any[];
   razaSelected : any;
@@ -149,9 +148,8 @@ export class ActualizarAnimalPage implements OnInit {
     }
   
     tiempoChange(value: any) {
-      this.dateValor = value;
       this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-      this.showPicker = false;
+      this.setOpen(false, 3);
     }
     // <!------------------------------------------------------------------------------------------------------>
 
@@ -224,6 +222,9 @@ export class ActualizarAnimalPage implements OnInit {
     if(num == 3) {
       this.isModalOpen3 = isOpen;
     }
+    if(num == 4) {
+      this.isModalOpen4 = isOpen;
+    }
   }
 
   actualizarAnimal() {
@@ -289,6 +290,7 @@ export class ActualizarAnimalPage implements OnInit {
       this.setOpen(false, 1);
       this.setOpen(false, 2);
       this.setOpen(false, 3);
+      this.setOpen(false, 4);
     }
   }
 }

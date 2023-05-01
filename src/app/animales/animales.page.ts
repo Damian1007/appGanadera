@@ -33,7 +33,9 @@ export class AnimalesPage implements OnInit {
       }];
     }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
     this.animalSub = this.animalService.getAnimales(this.fincaId).subscribe(animales => {
       this.animales = animales;
     });

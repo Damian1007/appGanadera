@@ -16,9 +16,9 @@
     </ion-card-header>
     
     <ion-card-content>
-      <ion-grid class="grid1">
+      <ion-grid class="grid1" [fixed]="true">
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label>Total de Animales:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -27,7 +27,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Total de Hembras:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -36,8 +36,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Terneras de ordeño:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Terneras de ordeño:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalTernerasO}}</ion-label>
@@ -45,8 +45,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Terneras de levante:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Terneras de levante:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalTernerasL}}</ion-label>
@@ -54,8 +54,8 @@
         </ion-row>
         
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Novillas de vientre:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Novillas de vientre:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalNovillas}}</ion-label>
@@ -63,8 +63,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Vacas lactantes:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Vacas de lactantes:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalVacasL}}</ion-label>
@@ -72,8 +72,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Vacas secas (horras):</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Vacas secas (horras):</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalVacasS}}</ion-label>
@@ -81,7 +81,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Total de Machos:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -90,8 +90,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Terneros de ordeño:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Terneros de ordeño:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalTernerosO}}</ion-label>
@@ -99,8 +99,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Total de Terneros de levante:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Terneros de levante:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalTernerosL}}</ion-label>
@@ -108,7 +108,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Total de Novillos:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -117,7 +117,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Total de Toros:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -135,9 +135,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-grid class="grid1">
+      <ion-grid class="grid1" [fixed]="true">
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label>Cantidad de Terneros:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -146,7 +146,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Cantidad de Destetos:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -155,7 +155,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Cantidad de Novillos:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -164,8 +164,8 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
-            <ion-label >Cantidad de Vacas Adultas:</ion-label>
+          <ion-col class="atributo" size="8">
+            <ion-label >Cantidad de Vacas:</ion-label>
           </ion-col>
           <ion-col class="valor">
             <ion-label>{{totalVacasL + totalVacasS}}</ion-label>
@@ -173,7 +173,7 @@
         </ion-row>
         
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Cantidad de Toros:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -182,7 +182,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Ganancia de Peso Mes:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -191,7 +191,7 @@
         </ion-row>
 
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Ganancia de Peso Año:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -200,7 +200,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="8">
             <ion-label >Peso actual de la Finca:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -218,9 +218,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-grid class="grid1">
+      <ion-grid class="grid1" [fixed]="true">
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="9">
             <ion-label>Cantidad de Vacas Lactantes:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -229,7 +229,7 @@
         </ion-row>
     
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="9">
             <ion-label >Produccion de Leche Mes:</ion-label>
           </ion-col>
           <ion-col class="valor">
@@ -238,7 +238,7 @@
         </ion-row>
 
         <ion-row class="row1">
-          <ion-col class="atributo">
+          <ion-col class="atributo" size="9">
             <ion-label >Produccion de Leche Año:</ion-label>
           </ion-col>
           <ion-col class="valor">

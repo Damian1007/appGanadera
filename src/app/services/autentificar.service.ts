@@ -13,7 +13,7 @@ export class AutentificarService {
   constructor(
     private afAutentificador: Auth,
     private firestore : Firestore
-    ) { }
+  ) { }
 
   getUid() {
     localStorage.setItem("usuarioId", this.afAutentificador.currentUser.uid);
@@ -29,11 +29,9 @@ export class AutentificarService {
     return setDoc(usuarioDocRef, usuario);
   }
 
-  iniciarSesion(correo: string, contraseña: string) {
-    return signInWithEmailAndPassword(this.afAutentificador, correo, contraseña)
-    .then(() => {
-      this.getUid();
-    });
+  async iniciarSesion(correo: string, contraseña: string) {
+    await signInWithEmailAndPassword(this.afAutentificador, correo, contraseña);
+    this.getUid();
   }
 
   cerrarSesion() {

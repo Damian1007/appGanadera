@@ -5,13 +5,13 @@
 }
 
 ion-row{
-    margin-top: 10px; 
-}
+    margin: 10px;
 
-ion-col{
     border-bottom-style: solid;
     border-color: #3880ff;
     border-width: 1px;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
 }
 
 .imagen{

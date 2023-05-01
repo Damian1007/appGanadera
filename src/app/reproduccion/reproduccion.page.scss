@@ -1,12 +1,10 @@
 .nombre{
     font-size: 18px;
-
     padding-left: 0%;
 }
 
 .tipo{
     font-size: 18px;
-
     padding-left: 10%;
 }
 
@@ -16,23 +14,21 @@
 }
 
 .row1{
-    margin-top: 10px; 
+    margin: 10px;
+
+    border-bottom-style: solid;
+    border-color: #3880ff;
+    border-width: 1px;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
 }
 
 .atributo{
     text-align: left;
-
-    border-bottom-style: solid;
-    border-color: #3880ff;
-    border-width: 1px;
 }
 
 .valor{
     text-align: center;
-
-    border-bottom-style: solid;
-    border-color: #3880ff;
-    border-width: 1px;
 }
 
 .error {
@@ -59,7 +55,7 @@ ion-modal.modal3 {
 }
 
 ion-modal.modal4 {
-    --height: 51%;
+    --height: 60%;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

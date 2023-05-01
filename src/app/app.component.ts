@@ -25,13 +25,11 @@ export class AppComponent {
     private autentificarService : AutentificarService,
     private router : Router
   ) {
-    if(localStorage.getItem("usuarioId")) {
-      this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
-        this.usuario = usuario;
-        console.log(usuario)
-      });
-    }
     
+    this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
+      this.usuario = usuario;
+      console.log(usuario);
+    });
   }
 
   async cerrarSesion() {

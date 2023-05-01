@@ -77,9 +77,9 @@
       </ion-header>
 
       <ion-content class="ion-padding">
-        <ion-grid class="grid1">
+        <ion-grid class="grid1" [fixed]="true">
           <ion-row class="row1">
-            <ion-col class="atributo">
+            <ion-col class="atributo" size="7">
               <ion-label>Fecha de la Monta:</ion-label>
             </ion-col>
             <ion-col class="valor">
@@ -88,7 +88,7 @@
           </ion-row>
 
           <ion-row class="row1">
-            <ion-col class="atributo">
+            <ion-col class="atributo" size="7">
               <ion-label >Nombre del Toro:</ion-label>
             </ion-col>
             <ion-col class="valor">
@@ -97,8 +97,8 @@
           </ion-row>
 
           <ion-row class="row1">
-            <ion-col class="atributo">
-              <ion-label>Probable Fecha del Parto:</ion-label>
+            <ion-col class="atributo" size="7">
+              <ion-label>Posible Fecha de Parto:</ion-label>
             </ion-col>
             <ion-col class="valor">
               <ion-label>{{evento.fechaPartoProbable}}</ion-label>
@@ -112,9 +112,9 @@
           </ion-row>
         </ion-grid>
 
-        <ion-grid *ngIf="evento.tipo == 'Parto'" class="grid1">
+        <ion-grid *ngIf="evento.tipo == 'Parto'" class="grid1"[fixed]="true">
           <ion-row class="row1">
-            <ion-col class="atributo">
+            <ion-col class="atributo" size="7">
               <ion-label>Fecha del Parto:</ion-label>
             </ion-col>
             <ion-col class="valor">
@@ -123,7 +123,7 @@
           </ion-row>
           
           <ion-row class="row1">
-            <ion-col class="atributo">
+            <ion-col class="atributo" size="7">
               <ion-label >Nombre de la Cria:</ion-label>
             </ion-col>
             <ion-col class="valor">

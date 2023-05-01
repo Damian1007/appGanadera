@@ -37,25 +37,23 @@
 }
 
 .row1{
-    margin-top: 10px; 
+    margin: 10px;
+
+    border-bottom-style: solid;
+    border-color: #3880ff;
+    border-width: 1px;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
 }
 
 .atributo{
     text-align: left;
-    margin-left: 15px;
-
-    border-bottom-style: solid;
-    border-color: #3880ff;
-    border-width: 1px;
+    margin-left: 7px;
 }
 
 .valor{
     text-align: center;
-    margin-right: 15px;
-
-    border-bottom-style: solid;
-    border-color: #3880ff;
-    border-width: 1px;
+    margin-right: 10px;
 }
 
 ion-fab-button::part(native){
