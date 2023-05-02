@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -37,7 +38,8 @@ export class RegistroPage implements OnInit {
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
-    private http : HttpClient
+    private http : HttpClient, 
+    public toastController : ToastController
   ) { 
       this.usuario = {
         correo: '',
@@ -178,6 +180,7 @@ export class RegistroPage implements OnInit {
         })
         .catch(error => {
           console.error(error, "Error al autentificar Usuario");
+          this.presentToastError2();
         });
   
       } else {
@@ -186,11 +189,32 @@ export class RegistroPage implements OnInit {
     }else {
       this.form.get('confirmarContrasena').setValue('', { onlySelf: true});
       console.log("Contraseña y Confirmar Contraseña son diferentes");
+      this.presentToastError();
     }
   }
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Contraseña y Confirmar Contraseña no coinciden',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al registrar el nuevo usuario, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom"
+    });
+    toast.present()
   }
 
   onWillDismiss(event: Event) {

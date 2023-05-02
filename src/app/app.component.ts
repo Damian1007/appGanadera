@@ -26,10 +26,12 @@ export class AppComponent {
     private router : Router
   ) {
     
-    this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
-      this.usuario = usuario;
-      console.log(usuario);
-    });
+    if(localStorage.getItem("usuarioId")){
+      this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
+        this.usuario = usuario;
+        //console.log(usuario);
+      });
+    }
   }
 
   async cerrarSesion() {

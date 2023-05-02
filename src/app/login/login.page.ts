@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutentificarService } from './../services/autentificar.service';
 import { MenuController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController, 
+    public toastController : ToastController
   ) { }
 
   ngOnInit() {
@@ -32,10 +34,6 @@ export class LoginPage implements OnInit {
     this.menuCtrl.enable(false);
   }
 
-  get errorControl() {
-    return this.form.controls;
-  }
-  
   login(){
     this.isSubmitted = true;
     
@@ -47,9 +45,24 @@ export class LoginPage implements OnInit {
         })
         .catch(error => {
           console.error(error, "Error al Iniciar Sesión");
+          this.presentToastError();
         });
     } else {
         this.form.markAllAsTouched();
     }
+  }
+
+  get errorControl() {
+    return this.form.controls;
+  }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'El Correo o la Contraseña son incorrectos',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom"
+    });
+    toast.present()
   }
 }

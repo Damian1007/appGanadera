@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">appGanadera</string>
-    <string name="title_activity_main">appGanadera</string>
+    <string name="app_name">App Ganadera</string>
+    <string name="title_activity_main">App Ganadera</string>
     <string name="package_name">io.ionic.appGanadera</string>
     <string name="custom_url_scheme">io.ionic.appGanadera</string>
 </resources>
