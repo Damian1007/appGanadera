@@ -140,8 +140,7 @@
 
           <!---------------------------------------------- VENTANA VACUNA ----------------------------------------------->
           <ion-list *ngIf="historia.ref == 'Vacuna'">
-            <br>
-            <ion-item>
+            <ion-item class="espacio">
               <ion-label position="stacked">Nombre de la vacuna</ion-label>
               <ion-input formControlName="nombre"></ion-input>
             </ion-item>
@@ -151,9 +150,8 @@
               El nombre de la vacuna es obligatorio.
             </span>
             <!----------------------------------------------------------------------------------------------------------->
-            
-            <br>
-            <ion-item (click)="setOpen(true, 3)">
+
+            <ion-item (click)="setOpen(true, 3)" class="espacio">
               <ion-label position="stacked">Fecha de Vacunación</ion-label>
               <ion-input [readonly]="true">{{fechaValor}}</ion-input>
             </ion-item>          
@@ -163,7 +161,6 @@
               La fecha es obligatoria.
             </span> -->
             <!----------------------------------------------------------------------------------------------------------->
-            <br>
           </ion-list>
 
           <ion-row>

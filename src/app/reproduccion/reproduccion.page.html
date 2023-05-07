@@ -96,7 +96,7 @@
             </ion-col>
           </ion-row>
 
-          <ion-row class="row1">
+          <ion-row class="row1" *ngIf="evento.tipo == 'Monta'">
             <ion-col class="atributo" size="7">
               <ion-label>Posible Fecha de Parto:</ion-label>
             </ion-col>
@@ -110,10 +110,8 @@
               <ion-button expand="block" (click)="registrarParto()">Registrar Parto</ion-button>
             </ion-col>
           </ion-row>
-        </ion-grid>
 
-        <ion-grid *ngIf="evento.tipo == 'Parto'" class="grid1"[fixed]="true">
-          <ion-row class="row1">
+          <ion-row class="row1" *ngIf="evento.tipo == 'Parto'">
             <ion-col class="atributo" size="7">
               <ion-label>Fecha del Parto:</ion-label>
             </ion-col>
@@ -122,7 +120,7 @@
             </ion-col>
           </ion-row>
           
-          <ion-row class="row1">
+          <ion-row class="row1" *ngIf="evento.tipo == 'Parto'">
             <ion-col class="atributo" size="7">
               <ion-label >Nombre de la Cria:</ion-label>
             </ion-col>

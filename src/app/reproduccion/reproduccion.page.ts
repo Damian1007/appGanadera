@@ -273,16 +273,17 @@ export class ReproduccionPage implements OnInit {
     this.form.get('fecha').setValue(this.fechaValor, { onlySelf: true});
     
     if (this.embarazo) {
-      console.log("Ya preñada");
+      //console.log("Ya preñada");
       this.presentToast3();
       this.form.markAllAsTouched();
     }else {
-      console.log(this.form.getRawValue());
+      //console.log(this.form.getRawValue());
       if(this.form.valid) {
         this.evento.tipo = this.form.getRawValue().tipo;
         this.evento.nombreToro = this.form.getRawValue().nombre;
         this.evento.fechaMonta = this.form.getRawValue().fecha;
         
+        this.fechaProbable = new Date(this.fechaProbable);
         this.evento.fechaPartoProbable = format(new Date(this.fechaProbable.getFullYear(), this.fechaProbable.getMonth() + 9, this.fechaProbable.getDay()), 'yyyy/MM/dd');
 
         this.alertas.cambio = 'Agrego una monta a ' + this.animalNombre;

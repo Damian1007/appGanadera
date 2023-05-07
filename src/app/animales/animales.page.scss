@@ -3,16 +3,16 @@
     width: 80px;
 }
 
-.nombre{
+.nombreDiv{
     font-size: 22px;
-
-    padding-left: 10%;
+    text-align: center;
+    width: 70%;
 }
 
-.genero{
-    font-size: 22px;
-
-    padding-left: 20%;
+.generoDiv{
+    font-size: 20px;
+    text-align: center;
+    width: 35%;
 }
 
 ion-button[shape=circle] {

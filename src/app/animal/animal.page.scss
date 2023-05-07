@@ -6,7 +6,6 @@
 
 .row2{
     text-align: center;
-    padding-top: 10px;
 }
 
 .card-content{
@@ -19,7 +18,7 @@
 }
 
 .card-title{
-    font-size: 16px;
+    font-size: 18px;
     color: black;
     background-color: white;
 
@@ -76,7 +75,7 @@ ion-fab-button.btns{
 }
 
 ion-modal {
-    --height: 52%;
+    --height: 58%;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

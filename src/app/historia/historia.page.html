@@ -27,7 +27,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="row1">
+    <ion-row class="row1" *ngIf="historia.ref == 'Enfermedad'">
       <ion-col class="atributo">
         <ion-label >Sintomas:</ion-label>
       </ion-col>
@@ -36,7 +36,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="row1">
+    <ion-row class="row1" *ngIf="historia.ref == 'Enfermedad'">
       <ion-col class="atributo">
         <ion-label >Nombre del medicamento:</ion-label>
       </ion-col>
@@ -45,7 +45,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="row1">
+    <ion-row class="row1" *ngIf="historia.ref == 'Enfermedad'">
       <ion-col class="atributo">
         <ion-label >Cantidad del medicamento:</ion-label>
       </ion-col>
