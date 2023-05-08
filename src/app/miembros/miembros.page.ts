@@ -53,7 +53,7 @@ export class MiembrosPage implements OnInit {
   }
 
   getId(id : any) {
-    console.log(id);
+    //console.log(id);
     // localStorage.setItem('id', id);
     // this.router.navigate(['/tabs/finca'], { replaceUrl: true });
   }

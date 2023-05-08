@@ -33,7 +33,6 @@ export class CrearAnimalPage implements OnInit {
   razaSub : Subscription;
 
   isSubmitted = false;
-  dateValor = format(new Date(), 'yyyy-MM-dd');
   fechaValor = '';
   isModalOpen = false;
   isModalOpen2 = false;
@@ -130,7 +129,6 @@ export class CrearAnimalPage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.dateValor = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
     this.setOpen(false, 4);
   }

@@ -91,14 +91,13 @@ export class ActualizarAnimalPage implements OnInit {
         foto: '',
         fecha: ''
       };
-
-      this.setTiempo();
     }
 
   ngOnInit() {
     this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
       this.form.setValue(animal);
       this.animal.foto = animal.foto;
+      this.setTiempo(animal.fechaNacimiento);
 
       this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
         this.alertas.usuario = usuario.nombre;
@@ -143,13 +142,13 @@ export class ActualizarAnimalPage implements OnInit {
   }
 
     // <!----------------------------------- Configuración de Fecha ------------------------------------------->
-    setTiempo() {
-      this.fechaValor = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'yyyy/MM/dd');
+    setTiempo(fechaNacimiento : any) {
+      this.fechaValor = fechaNacimiento;
     }
   
     tiempoChange(value: any) {
       this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-      this.setOpen(false, 3);
+      this.setOpen(false, 4);
     }
     // <!------------------------------------------------------------------------------------------------------>
 
@@ -230,7 +229,7 @@ export class ActualizarAnimalPage implements OnInit {
   actualizarAnimal() {
     this.isSubmitted = true;
     this.form.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
-
+    console.log(this.form.getRawValue())
     if(this.form.valid) {
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;

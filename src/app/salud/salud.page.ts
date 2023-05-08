@@ -122,9 +122,6 @@ export class SaludPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.setOpen(false, 1);
-    this.setOpen(false, 2);
-    this.setOpen(false, 3);
     this.saludSub.unsubscribe();
     this.usuarioSub.unsubscribe();
     this.fincaSub.unsubscribe();

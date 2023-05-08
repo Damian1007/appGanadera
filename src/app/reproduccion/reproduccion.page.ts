@@ -219,9 +219,8 @@ export class ReproduccionPage implements OnInit {
   }
 
   tiempoChange(value: any) {
-    this.fechaProbable = value;
     this.fechaValor = format(parseISO(value), 'yyyy/MM/dd');
-    this.setOpen(false, 2);
+    this.setOpen(false, 4);
   }
   // <!------------------------------------------------------------------------------------------------------>
 
@@ -332,7 +331,7 @@ export class ReproduccionPage implements OnInit {
 
     this.alertas.cambio = 'Agrego el nacimiento de ' + this.evento.nombreCria;
     
-    console.log(this.form2.getRawValue());
+    //console.log(this.form2.getRawValue());
     if(this.form2.valid) {
       this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
       this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)

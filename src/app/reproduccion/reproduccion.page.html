@@ -2,7 +2,6 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
-      <!-- <ion-menu-button></ion-menu-button> -->
     </ion-buttons>
 
     <ion-title>Reproducción</ion-title>
@@ -219,11 +218,13 @@
           size="cover"
           presentation="date"
           (ionChange)="tiempoChange(datetime.value)"
-          showDefaultButtons="true"
-          doneText="Hecho"
-          cancelText="Cancelar"
           (ionCancel)="setOpen(false, 4)"
-        ></ion-datetime>
+        >
+        <ion-buttons slot="buttons">
+          <ion-button color="danger" (click)="datetime.cancel()">Cancelar</ion-button>
+          <ion-button color="primary" (click)="datetime.confirm()">Hecho</ion-button>
+        </ion-buttons>
+        </ion-datetime>
       </ion-content>
     </ng-template>
   </ion-modal>
