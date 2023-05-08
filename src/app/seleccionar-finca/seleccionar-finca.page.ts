@@ -18,8 +18,8 @@ export class SeleccionarFincaPage implements OnInit {
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
-  noFincas : boolean = false;
-  fincasBool : boolean = false;
+
+  noFincas : boolean = true;
 
   constructor(
     private fincaService : FincaService,
@@ -48,29 +48,31 @@ export class SeleccionarFincaPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.fincaSub = this.fincaService.getFincas().subscribe(finca => {
-      this.fincas = finca;
-      this.fincasAux = finca;
+    this.fincaSub = this.fincaService.getFincas().subscribe(fincasGet => {
+      this.fincas.pop();
+      this.fincasAux = fincasGet;
 
-      if (finca.length == 0) {
-        this.noFincas = true;
-      }
-
-      this.fincas.map((finca : any) => {
-        this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
-
-          if(!miembro) {
-            this.fincasAux.splice(this.fincasAux.indexOf(finca), 1);
-          }
-          this.fincasBool = true;
-        });
-      });
+      this.getMiembrosFinca(fincasGet);
     });
   }
 
   ionViewDidLeave(){
     this.miembroSub.unsubscribe();
     this.fincaSub.unsubscribe();
+  }
+
+  getMiembrosFinca(fincasGet : any) {
+    fincasGet.map((finca : any) => {
+      this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
+
+        if(miembro) {
+          const Aux = this.fincasAux.slice(this.fincasAux.indexOf(finca), this.fincasAux.indexOf(finca) + 1);
+          this.fincas.push(Aux.pop());
+          this.noFincas = false;
+        }
+        //console.log(this.fincasAux)
+      });
+    });
   }
 
   getId(id : any) {
