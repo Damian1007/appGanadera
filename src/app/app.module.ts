@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
 
 import { NgChartsModule } from 'ng2-charts';
@@ -22,11 +23,16 @@ import { File } from '@ionic-native/file/ngx';
     BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule, 
-    provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), 
+    provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideStorage(() => getStorage()),
     AuthGuardModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, NgChartsModule, File],
+  providers: [
+    NgChartsModule,
+    File,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

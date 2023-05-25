@@ -10,8 +10,8 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form" novalidate (ngSubmit)="crearFinca()">
-    <ion-card class="imagen">
-      <img src={{finca.foto}}>
+    <ion-card class="imagen-card">
+      <img class="imagen" [src]="mostrarFoto">
     </ion-card>
     
     <ion-list>
@@ -70,6 +70,16 @@
         Debe ingresar un area valida.
       </span>
       <!---------------------------------------------------------------------------------------------->
+
+      <ion-item>
+        <ion-label>Foto</ion-label>
+        <ion-buttons slot="end">
+          <label for="img-upload">
+            <ion-icon slot="icon-only" name="images"></ion-icon>
+          </label>
+          <input id="img-upload" (change)="mostrarImagen($event)" style="display: none" type="file" accept="image/*">
+        </ion-buttons>
+      </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Departamento</ion-label>
