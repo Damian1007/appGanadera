@@ -123,6 +123,7 @@ export class CrearFincaPage implements OnInit {
     this.usuarioSub.unsubscribe();
     this.citySub.unsubscribe();
     this.dptoSub.unsubscribe();
+    //console.log("fincaCrear");
   }
 
   // --------------------------------------------- SearchBars ------------------------------------------------
@@ -243,8 +244,8 @@ setOpen(isOpen : boolean, num : any) {
   }
 
   async nuevaImagen() {
-    const path = 'fincas';
-    const nombre = this.finca.id;
+    const path = 'fincas_img';
+    const nombre = this.finca.nombre;
     const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
     this.finca.foto = res;
   }

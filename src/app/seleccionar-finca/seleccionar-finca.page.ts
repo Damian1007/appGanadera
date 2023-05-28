@@ -13,8 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class SeleccionarFincaPage implements OnInit {
 
-  fincas : Finca[];
-  fincasAux : Finca[];
+  fincasSelect : Finca[] = [];
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
@@ -27,21 +26,7 @@ export class SeleccionarFincaPage implements OnInit {
     private router : Router,
     private miembrosServices : MiembrosService
   ) 
-  { 
-    this.fincas = [{
-      id: '',
-      nombre: '',
-      orientacion: '',
-      areaFinca: '',
-      areaGanaderia: '',
-      foto: '',
-      departamento: '',
-      ciudad: '',
-      corregimiento: '',
-      coordenadas: '',
-      propietario: ''
-    }];
-  }
+  {  }
 
   ngOnInit(){
     this.menuCtrl.enable(true);
@@ -49,30 +34,33 @@ export class SeleccionarFincaPage implements OnInit {
 
   ionViewWillEnter(){
     this.fincaSub = this.fincaService.getFincas().subscribe(fincasGet => {
-      this.fincas.pop();
-      this.fincasAux = fincasGet;
 
-      this.getMiembrosFinca(fincasGet);
+      this.fincasSelect = fincasGet.filter( finca => finca.propietario == this.usuarioId);
+      this.noFincas = false;
+      //console.log(this.fincasSelect);
+      
     });
   }
+
+      // fincasGet.map((finca : any) => {
+      //   this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
+      //     //console.log(miembro, 'miembro');
+      //     if(miembro) {
+  
+      //       let Aux = fincasGet.slice(fincasGet.indexOf(finca), fincasGet.indexOf(finca) + 1);
+      //       this.fincas.push(Aux.pop());
+  
+      //       //console.log(this.fincas);
+      //       this.noFincas = false;
+      //     }
+          
+      //   });
+      // });
 
   ionViewDidLeave(){
-    this.miembroSub.unsubscribe();
     this.fincaSub.unsubscribe();
-  }
-
-  getMiembrosFinca(fincasGet : any) {
-    fincasGet.map((finca : any) => {
-      this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
-
-        if(miembro) {
-          const Aux = this.fincasAux.slice(this.fincasAux.indexOf(finca), this.fincasAux.indexOf(finca) + 1);
-          this.fincas.push(Aux.pop());
-          this.noFincas = false;
-        }
-        //console.log(this.fincasAux)
-      });
-    });
+    //this.miembroSub.unsubscribe();
+    console.log("selec");
   }
 
   getId(id : any) {

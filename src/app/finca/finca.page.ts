@@ -43,6 +43,7 @@ export class FincaPage implements OnInit {
   }
 
   ionViewDidLeave() {
+    //console.log("finca");
     this.fincaSub.unsubscribe();
   }
 
