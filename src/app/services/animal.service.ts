@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, Firestore, doc, deleteDoc, docData, updateDoc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Animal } from '../interfaces/animal';
 
@@ -13,8 +13,8 @@ export class AnimalService {
   ) { }
 
   async addAnimal(animal : Animal, fincaId : any) {
-    const animalRef = collection(this.firestore, `fincas/${fincaId}/animales`);
-    await addDoc(animalRef, animal);
+    const animalDocRef = doc(this.firestore, `fincas/${fincaId}/animales/${animal.id}`);
+    await setDoc(animalDocRef, animal);
   }
 
   async updateAnimal(animal : Animal, fincaId : any, animalId : any) {

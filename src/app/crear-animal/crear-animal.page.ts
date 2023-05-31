@@ -109,7 +109,7 @@ export class CrearAnimalPage implements OnInit {
       
 
       this.madres = animales.filter((animales : any) => {
-        return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante'));
+        return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante' || animales.grupoEtario == 'Vaca seca'));
       });
       this.madres.push(this.animal);
       this.madresAux = this.madres;
