@@ -123,7 +123,6 @@ export class CrearFincaPage implements OnInit {
     this.usuarioSub.unsubscribe();
     this.citySub.unsubscribe();
     this.dptoSub.unsubscribe();
-    //console.log("fincaCrear");
   }
 
   // --------------------------------------------- SearchBars ------------------------------------------------
@@ -193,7 +192,7 @@ setOpen(isOpen : boolean, num : any) {
   }
 }
 
-  crearFinca() {
+  async crearFinca() {
     this.isSubmitted = true;
 
     if(this.form.valid) {
@@ -205,14 +204,17 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.ciudad = this.form.getRawValue().ciudad;
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
       this.finca.id = this.finca.nombre +  '_' + this.finca.areaFinca + this.finca.areaGanaderia + '_' + this.finca.corregimiento + this.randomId;
+
       this.nuevaImagen()
       .then(() => {
+
         this.alertas.cambio = 'Creo la finca ' + this.finca.nombre;
         this.alertas.foto = this.finca.foto;
         this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
 
         this.fincaService.addFinca(this.finca, this.miembro)
         .then(() => {
+          
           this.alertasService.addAlerta(this.alertas, this.finca.id);
           this.presentToast();
           this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
@@ -245,7 +247,7 @@ setOpen(isOpen : boolean, num : any) {
 
   async nuevaImagen() {
     const path = 'fincas_img';
-    const nombre = this.finca.nombre;
+    const nombre = this.finca.id;
     const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
     this.finca.foto = res;
   }

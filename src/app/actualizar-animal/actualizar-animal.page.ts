@@ -13,6 +13,7 @@ import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
   selector: 'app-actualizar-animal',
@@ -32,6 +33,10 @@ export class ActualizarAnimalPage implements OnInit {
   usuarioSub : Subscription;
   fincaSub : Subscription;
   razaSub : Subscription;
+
+  mostrarFoto = '';
+  nuevoFile : any;
+  cambiaFoto = false;
 
   isSubmitted = false;
   fechaValor = '';
@@ -70,7 +75,8 @@ export class ActualizarAnimalPage implements OnInit {
     private autentificarService : AutentificarService,
     private fincaService : FincaService,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    private almacenamientoService : AlmacenamientoService
   ) { 
       this.animal = {
         nombre: 'otro',
@@ -95,8 +101,20 @@ export class ActualizarAnimalPage implements OnInit {
 
   ngOnInit() {
     this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
-      this.form.setValue(animal);
-      this.animal.foto = animal.foto;
+      this.form.setValue({
+        nombre: animal.nombre,
+        genero: animal.genero,
+        foto: animal.foto,
+        lote: animal.lote,
+        raza: animal.raza,
+        grupoEtario: animal.grupoEtario,
+        fechaNacimiento: animal.fechaNacimiento,
+        padre: animal.padre,
+        madre: animal.madre,
+        pesoActual: animal.pesoActual
+      });
+      this.mostrarFoto = animal.foto;
+
       this.setTiempo(animal.fechaNacimiento);
 
       this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
@@ -121,7 +139,7 @@ export class ActualizarAnimalPage implements OnInit {
       
 
       this.madres = animales.filter((animales : any) => {
-        return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante'));
+        return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante' || animales.grupoEtario == 'Vaca seca'));
       });
       this.madres.push(this.animal);
       this.madresAux = this.madres;
@@ -229,7 +247,7 @@ export class ActualizarAnimalPage implements OnInit {
   actualizarAnimal() {
     this.isSubmitted = true;
     this.form.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
-    console.log(this.form.getRawValue())
+    
     if(this.form.valid) {
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;
@@ -242,18 +260,49 @@ export class ActualizarAnimalPage implements OnInit {
       this.animal.madre = this.form.getRawValue().madre;
       this.animal.pesoActual = this.form.getRawValue().pesoActual;
 
-      this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId)
+      this.nuevaImagen()
       .then(() => {
-        this.alertasService.addAlerta(this.alertas, this.fincaId);
-        this.presentToast();
-        this.router.navigate(['/tabs/animal'], { replaceUrl: true });
+
+        this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId)
+        .then(() => {
+
+          this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.presentToast();
+          this.router.navigate(['/tabs/animal'], { replaceUrl: true });
+        })
+        .catch(error => {
+          console.log('Error al Actualizar animal', error);
+          this.presentToastError();
+        });
       })
       .catch(error => {
-        console.log('Error al Actualizar animal', error);
-        this.presentToastError();
+        console.log('Error al subir la imagen', error);
+        this.presentToastError2();
       });
     } else {
       this.form.markAllAsTouched();
+    }
+  }
+
+  mostrarImagen(event : any) {
+    if (event.target.files && event.target.files[0]) {
+      this.nuevoFile = event.target.files[0];
+      this.cambiaFoto = true;
+
+      const reader = new FileReader();
+      reader.onload = ((image) => {
+        this.mostrarFoto = image.target.result as string;
+      });
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  async nuevaImagen() {
+    if (this.cambiaFoto) {
+      const path = 'animales_img';
+      const nombre = this.animalId;
+      const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
+      this.animal.foto = res;
     }
   }
 
@@ -274,6 +323,16 @@ export class ActualizarAnimalPage implements OnInit {
   async presentToastError() {
     const toast = await this.toastController.create({
       message: 'Error al intentar actualizar el animal, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar subir la imagen, intentelo nuevamente',
       duration: 5000,
       position: "bottom",
       cssClass: "custom-toast"

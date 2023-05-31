@@ -12,6 +12,7 @@ import { IonModal } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ToastController } from '@ionic/angular';
+import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
   selector: 'app-actualizar-finca',
@@ -32,6 +33,10 @@ export class ActualizarFincaPage implements OnInit {
   citySub : Subscription;
   isSubmitted = false;
 
+  mostrarFoto = '';
+  nuevoFile : any;
+  cambiaFoto = false;
+
   isModalOpen = false;
   isModalOpen2 = false;
   departamentos : any[];
@@ -49,7 +54,8 @@ export class ActualizarFincaPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    private almacenamientoService : AlmacenamientoService
   ) { 
       this.finca = {
         nombre: '',
@@ -78,7 +84,7 @@ export class ActualizarFincaPage implements OnInit {
       orientacion: ['', [Validators.required]],
       areaFinca: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       areaGanaderia: ['', [Validators.required, Validators.pattern('[0-9]+')]],
-      //foto: ['', [Validators.required]], AGREGAR FUNCIONALIDAD DE GALERIA Y CAMARA
+      foto: ['', [Validators.required]],
       departamento: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       corregimiento: ['', [Validators.required]],
@@ -91,18 +97,13 @@ export class ActualizarFincaPage implements OnInit {
         orientacion: finca.orientacion,
         areaFinca: finca.areaFinca,
         areaGanaderia: finca.areaGanaderia,
-        //foto: finca.foto,
+        foto: finca.foto,
         departamento: finca.departamento,
         ciudad: finca.ciudad,
         corregimiento: finca.corregimiento,
         coordenadas: finca.coordenadas
       });
-
-      if (finca.foto == '') {
-        this.finca.foto = "assets/icon/imagen_camara.png";
-      } else{
-        this.finca.foto = finca.foto;
-      }
+      this.mostrarFoto = finca.foto;
 
       this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
         this.alertas.usuario = usuario.nombre;
@@ -206,24 +207,55 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.orientacion = this.form.getRawValue().orientacion;
       this.finca.areaFinca = this.form.getRawValue().areaFinca;
       this.finca.areaGanaderia = this.form.getRawValue().areaGanaderia;
-      //this.finca.foto = this.form.getRawValue().foto;
+      this.finca.foto = this.form.getRawValue().foto;
       this.finca.departamento = this.form.getRawValue().departamento;
       this.finca.ciudad = this.form.getRawValue().ciudad;
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
       this.finca.coordenadas = this.form.getRawValue().coordenadas;
 
-      this.fincaService.updateFinca(this.finca, this.fincaId)
+      this.nuevaImagen()
       .then(() => {
-        this.alertasService.addAlerta(this.alertas, this.fincaId);
-        this.presentToast();
-        this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+        
+        this.fincaService.updateFinca(this.finca, this.fincaId)
+        .then(() => {
+          this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.presentToast();
+          this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+        })
+        .catch(error => {
+          console.log('Error al Actualizar finca', error);
+          this.presentToastError();
+        });
       })
+      
       .catch(error => {
-        console.log('Error al Actualizar finca', error);
-        this.presentToastError();
+        console.log('Error al subir la imagen', error);
+        this.presentToastError2();
       });
     } else {
       this.form.markAllAsTouched();
+    }
+  }
+
+  mostrarImagen(event : any) {
+    if (event.target.files && event.target.files[0]) {
+      this.nuevoFile = event.target.files[0];
+      this.cambiaFoto = true;
+
+      const reader = new FileReader();
+      reader.onload = ((image) => {
+        this.mostrarFoto = image.target.result as string;
+      });
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  async nuevaImagen() {
+    if (this.cambiaFoto) {
+      const path = 'fincas_img';
+      const nombre = this.fincaId;
+      const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
+      this.finca.foto = res;
     }
   }
 
@@ -244,6 +276,16 @@ setOpen(isOpen : boolean, num : any) {
   async presentToastError() {
     const toast = await this.toastController.create({
       message: 'Error al intentar actualizar la finca, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar subir la imagen, intentelo nuevamente',
       duration: 5000,
       position: "bottom",
       cssClass: "custom-toast"

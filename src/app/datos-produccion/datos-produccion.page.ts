@@ -195,8 +195,6 @@ export class DatosProduccionPage implements OnInit {
 
   ionViewDidLeave() {
     this.animalSub.unsubscribe();
-    this.pesajeSub.unsubscribe();
-    this.ordeñoSub.unsubscribe();
 
     if (this.pesajeSub) {
       this.pesajeSub.unsubscribe();

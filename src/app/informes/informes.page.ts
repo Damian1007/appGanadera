@@ -113,12 +113,27 @@ export class InformesPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.animalSub.unsubscribe();
     this.fincaSub.unsubscribe();
-    this.pesajesSub.unsubscribe();
-    this.ordeñoSub.unsubscribe();
-    this.saludSub.unsubscribe();
-    this.reproduccionesSub.unsubscribe();
+
+    if(this.animalSub){
+      this.animalSub.unsubscribe();
+    }
+    
+    if(this.pesajesSub){
+      this.pesajesSub.unsubscribe();
+    }
+
+    if(this.ordeñoSub){
+      this.ordeñoSub.unsubscribe();
+    }
+
+    if(this.saludSub){
+      this.saludSub.unsubscribe();
+    }
+
+    if(this.reproduccionesSub){
+      this.reproduccionesSub.unsubscribe();
+    }
   }
 
   exportToExcel() {

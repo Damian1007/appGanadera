@@ -13,6 +13,7 @@ import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
   selector: 'app-crear-animal',
@@ -31,6 +32,9 @@ export class CrearAnimalPage implements OnInit {
   animalSub : Subscription;
   fincaSub : Subscription;
   razaSub : Subscription;
+
+  mostrarFoto = 'assets/icon/imagen_camara.png';
+  nuevoFile : any;
 
   isSubmitted = false;
   fechaValor = '';
@@ -56,9 +60,11 @@ export class CrearAnimalPage implements OnInit {
     private autentificarService : AutentificarService,
     private fincaService : FincaService,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    private almacenamientoService : AlmacenamientoService
   ) {
       this.animal = {
+        id: '',
         nombre: 'otro',
         genero: '',
         foto: "assets/icon/imagen_camara.png",
@@ -223,6 +229,8 @@ export class CrearAnimalPage implements OnInit {
       this.animal.padre = this.form.getRawValue().padre;
       this.animal.madre = this.form.getRawValue().madre;
 
+      this.animal.id = this.generarUID();
+
       this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
         this.alertas.usuario = usuario.nombre;
       });
@@ -235,19 +243,61 @@ export class CrearAnimalPage implements OnInit {
   
       this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
   
-      this.animalService.addAnimal(this.animal, this.fincaId)
+      this.nuevaImagen()
       .then(() => {
-        this.alertasService.addAlerta(this.alertas, this.fincaId);
-        this.presentToast();
-        this.router.navigate(['/tabs/animales'], { replaceUrl: true });
+
+        this.animalService.addAnimal(this.animal, this.fincaId)
+        .then(() => {
+          
+          this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.presentToast();
+          this.router.navigate(['/tabs/animales'], { replaceUrl: true });
+        })
+        .catch(error => {
+          console.log('Error al Crear animal', error);
+          this.presentToastError();
+        });
       })
       .catch(error => {
-        console.log('Error al Crear animal', error);
-        this.presentToastError();
+        console.log('Error al subir la imagen', error);
+        this.presentToastError2();
       });
+      
     } else {
       this.form.markAllAsTouched();
     }
+  }
+
+  mostrarImagen(event : any) {
+    if (event.target.files && event.target.files[0]) {
+      this.nuevoFile = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = ((image) => {
+        this.mostrarFoto = image.target.result as string;
+      });
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  async nuevaImagen() {
+    const path = 'animales_img';
+    const nombre = this.animal.id;
+    const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
+    this.animal.foto = res;
+  }
+
+  generarUID(){
+    const n = this.animal.nombre;
+    let d = new Date().getTime();
+
+    let uid = '_xxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+
+    return uid = n + uid;
   }
 
   get errorControl() {
@@ -267,6 +317,16 @@ export class CrearAnimalPage implements OnInit {
   async presentToastError() {
     const toast = await this.toastController.create({
       message: 'Error al intentar crear un nuevo animal, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "custom-toast"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar subir la imagen, intentelo nuevamente',
       duration: 5000,
       position: "bottom",
       cssClass: "custom-toast"

@@ -60,7 +60,7 @@ export class SeleccionarFincaPage implements OnInit {
   ionViewDidLeave(){
     this.fincaSub.unsubscribe();
     //this.miembroSub.unsubscribe();
-    console.log("selec");
+    
   }
 
   getId(id : any) {
