@@ -10,9 +10,9 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form" novalidate (ngSubmit)="crearAnimal()">
-    <ion-card class="imagen-card">
-      <img class="imagen" [src]="mostrarFoto">
-    </ion-card>
+    <!-- <ion-card class="imagen-card">
+      <ion-img class="imagen" [src]="mostrarFoto"></ion-img>
+    </ion-card> -->
 
     <ion-list>
       <ion-item>
@@ -42,6 +42,7 @@
 
       <ion-item>
         <ion-label>Foto</ion-label>
+        <label *ngIf="cambiaFoto">Nueva foto Cargada</label>
         <ion-buttons slot="end">
           <label for="img-upload">
             <ion-icon slot="icon-only" name="images"></ion-icon>

@@ -35,6 +35,7 @@ export class CrearAnimalPage implements OnInit {
 
   mostrarFoto = 'assets/icon/imagen_camara.png';
   nuevoFile : any;
+  cambiaFoto = false;
 
   isSubmitted = false;
   fechaValor = '';
@@ -91,7 +92,7 @@ export class CrearAnimalPage implements OnInit {
     this.form = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       genero: ['', [Validators.required]],
-      //foto: [''],
+      //foto: ['', [Validators.required]],
       lote: ['', [Validators.required]],
       raza: ['', [Validators.required]],
       grupoEtario: ['', [Validators.required]],
@@ -271,6 +272,7 @@ export class CrearAnimalPage implements OnInit {
   mostrarImagen(event : any) {
     if (event.target.files && event.target.files[0]) {
       this.nuevoFile = event.target.files[0];
+      this.cambiaFoto = true;
 
       const reader = new FileReader();
       reader.onload = ((image) => {
@@ -281,10 +283,12 @@ export class CrearAnimalPage implements OnInit {
   }
 
   async nuevaImagen() {
-    const path = 'animales_img';
-    const nombre = this.animal.id;
-    const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
-    this.animal.foto = res;
+    if(this.cambiaFoto){
+      const path = 'animales_img';
+      const nombre = this.animal.id;
+      const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
+      this.animal.foto = res;
+    }
   }
 
   generarUID(){

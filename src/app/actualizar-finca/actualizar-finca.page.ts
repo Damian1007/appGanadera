@@ -218,6 +218,7 @@ setOpen(isOpen : boolean, num : any) {
         
         this.fincaService.updateFinca(this.finca, this.fincaId)
         .then(() => {
+
           this.alertasService.addAlerta(this.alertas, this.fincaId);
           this.presentToast();
           this.router.navigate(['/tabs/finca'], { replaceUrl: true });
@@ -227,7 +228,6 @@ setOpen(isOpen : boolean, num : any) {
           this.presentToastError();
         });
       })
-      
       .catch(error => {
         console.log('Error al subir la imagen', error);
         this.presentToastError2();

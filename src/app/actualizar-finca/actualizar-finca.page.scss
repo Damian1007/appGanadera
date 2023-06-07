@@ -1,3 +1,8 @@
+.error {
+    position: relative;
+    padding-left: 16px;
+}
+
 .imagen{
     max-width: 100%;
 }
@@ -23,7 +28,3 @@ ion-modal ion-toolbar {
     --color: white;
 }
 
-.error {
-    position: relative;
-    padding-left: 16px;
-}

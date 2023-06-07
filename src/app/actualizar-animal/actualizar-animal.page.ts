@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { AlmacenamientoService } from '../services/almacenamiento.service';
 
+
 @Component({
   selector: 'app-actualizar-animal',
   templateUrl: './actualizar-animal.page.html',
@@ -285,15 +286,18 @@ export class ActualizarAnimalPage implements OnInit {
   }
 
   mostrarImagen(event : any) {
-    if (event.target.files && event.target.files[0]) {
+    if(event.target.files && event.target.files[0]){
+      const reader = new FileReader();
       this.nuevoFile = event.target.files[0];
+    
       this.cambiaFoto = true;
 
-      const reader = new FileReader();
       reader.onload = ((image) => {
         this.mostrarFoto = image.target.result as string;
+        //console.log(image);
       });
       reader.readAsDataURL(event.target.files[0]);
+      
     }
   }
 

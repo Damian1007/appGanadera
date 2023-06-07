@@ -36,6 +36,7 @@ export class CrearFincaPage implements OnInit {
 
   mostrarFoto = 'assets/icon/imagen_camara.png';
   nuevoFile : any;
+  cambiaFoto = false;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -63,7 +64,7 @@ export class CrearFincaPage implements OnInit {
         orientacion: '',
         areaFinca: '',
         areaGanaderia: '',
-        foto: '',
+        foto: "assets/icon/imagen_camara.png",
         departamento: '',
         ciudad: '',
         corregimiento: '',
@@ -192,7 +193,7 @@ setOpen(isOpen : boolean, num : any) {
   }
 }
 
-  async crearFinca() {
+  crearFinca() {
     this.isSubmitted = true;
 
     if(this.form.valid) {
@@ -236,6 +237,7 @@ setOpen(isOpen : boolean, num : any) {
   mostrarImagen(event : any) {
     if (event.target.files && event.target.files[0]) {
       this.nuevoFile = event.target.files[0];
+      this.cambiaFoto = true;
 
       const reader = new FileReader();
       reader.onload = ((image) => {
@@ -246,10 +248,12 @@ setOpen(isOpen : boolean, num : any) {
   }
 
   async nuevaImagen() {
-    const path = 'fincas_img';
-    const nombre = this.finca.id;
-    const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
-    this.finca.foto = res;
+    if(this.cambiaFoto){
+      const path = 'fincas_img';
+      const nombre = this.finca.id;
+      const res = await this.almacenamientoService.subirImagen(this.nuevoFile, path, nombre);
+      this.finca.foto = res;
+    }
   }
 
   get errorControl() {
