@@ -21,6 +21,9 @@ export class AnimalPage implements OnInit {
   animalNombre : any;
   animalSub : Subscription;
   isModalOpen = false;
+
+  modalOrdeno = true;
+  modalReproduccion = true;
   
   constructor(
     private animalService : AnimalService,
@@ -48,7 +51,7 @@ export class AnimalPage implements OnInit {
   ionViewWillEnter(){
     this.fincaId = localStorage.getItem('id');
     this.animalId = localStorage.getItem('animalId');
-
+    
     this.animalSub = this.animalService.getAnimal(this.fincaId, this.animalId).subscribe(animal => {
       this.animal = animal;
       this.animalNombre = localStorage.setItem('animalNombre', animal.nombre);
@@ -57,6 +60,8 @@ export class AnimalPage implements OnInit {
 
   ionViewDidLeave() {
     this.animalSub.unsubscribe();
+    this.modalOrdeno = true;
+    this.modalReproduccion = true;
   }
 
   setOpen(isOpen : boolean) {
@@ -92,6 +97,20 @@ export class AnimalPage implements OnInit {
   reproduccion() {
     this.modal.isOpen = false;
     this.router.navigate(['/tabs/reproduccion'], { replaceUrl: true });
+  }
+
+  opciones() {
+    console.log("Opciones");
+    if(this.animal.genero == 'Macho'){
+      this.modalReproduccion = false;
+      this.modalOrdeno = false;
+      console.log("Macho");
+    }
+
+    if(this.animal.grupoEtario == 'Vaca seca' && this.animal.genero == 'Hembra'){
+      this.modalOrdeno = false;
+      console.log("horra");
+    }
   }
 
   async presentToast() {

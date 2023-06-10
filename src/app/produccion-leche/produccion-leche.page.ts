@@ -22,6 +22,7 @@ export class ProduccionLechePage implements OnInit {
   animalId : any;
   graficaSub : Subscription;
   myChart : Chart
+  regex: RegExp = /^[1-9]\d*(\.\d)?$|^0(\.\d)?$/;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -32,7 +33,7 @@ export class ProduccionLechePage implements OnInit {
   data : any[];
 
   form = this.formBuilder.group({
-    leche: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+    leche: ['', [Validators.required, Validators.pattern(this.regex)]],
     fecha: [''],
   });
 
@@ -57,12 +58,13 @@ export class ProduccionLechePage implements OnInit {
     this.fincaId = localStorage.getItem('id');
     this.animalId = localStorage.getItem('animalId');
     
+
     this.mostrarGrafico();
   }
 
   ionViewDidLeave() {
-    this.graficaSub.unsubscribe();
     this.myChart.destroy();
+    this.graficaSub.unsubscribe();
   }
 
   mostrarGrafico() {

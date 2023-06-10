@@ -27,18 +27,18 @@
       </span>
       <!----------------------------------------------------------------------------------------------------->
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label position="stacked">Genero</ion-label>
         <ion-select formControlName="genero" placeholder="Selecciona un genero">
           <ion-select-option value="Macho">Macho</ion-select-option>
           <ion-select-option value="Hembra">Hembra</ion-select-option>
         </ion-select>
-      </ion-item>
+      </ion-item> -->
 
       <!---------------------------------- Error de Validadores Genero -------------------------------------->
-      <span class="error" *ngIf="isSubmitted && errorControl.genero.errors?.required">
+      <!-- <span class="error" *ngIf="isSubmitted && errorControl.genero.errors?.required">
         El genero es obligatorio.
-      </span>
+      </span> -->
       <!----------------------------------------------------------------------------------------------------->
 
       <ion-item>
@@ -84,7 +84,7 @@
           <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Novillo">Novillo</ion-select-option>
           <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Novilla de vientre">Novilla de vientre</ion-select-option>
           <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Vaca lactante">Vaca lactante</ion-select-option>
-          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Vaca seca (horra)">Vaca seca (horra)</ion-select-option>
+          <ion-select-option *ngIf="form.getRawValue().genero == 'Hembra'" value="Vaca seca">Vaca seca (horra)</ion-select-option>
           <ion-select-option *ngIf="form.getRawValue().genero == 'Macho'" value="Toro">Toro</ion-select-option>
         </ion-select>
       </ion-item>

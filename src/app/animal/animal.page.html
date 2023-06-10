@@ -133,7 +133,7 @@
           </ion-row>
 
           <ion-row *ngIf="animal.genero == 'Hembra'" class="row2">
-            <ion-col>
+            <ion-col *ngIf="animal.grupoEtario != 'Vaca seca'">
               <ion-card class="card-content" (click)="produccionLeche()">
                 <img src=\assets\icon\leche.png>
                 <div class="card-title">Producción de Leche</div>
@@ -151,8 +151,5 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  
-
-  
 
 </ion-content>
