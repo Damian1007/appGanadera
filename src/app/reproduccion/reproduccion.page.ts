@@ -97,7 +97,7 @@ export class ReproduccionPage implements OnInit {
     };
 
     this.animal = {
-      nombre: 'otro',
+      nombre: '',
       genero: '',
       foto: "assets/icon/imagen_camara.png",
       lote: '',
@@ -140,21 +140,24 @@ export class ReproduccionPage implements OnInit {
     this.animalGenero = localStorage.getItem('animalGenero');
     this.embarazo = false;
 
-    this.reproduccionesSub = this.reproduccionService.getReproducciones(this.fincaId, this.animalId).subscribe(eventos => {
-      this.eventos = eventos;
+    this.reproduccionesSub = this.reproduccionService.getReproducciones(this.fincaId, this.animalId).subscribe(events => {
+      this.eventos = events;
 
-      eventos.forEach(evento => {
-        if(evento.tipo == 'Monta') {
+      for (let i = 0; i < this.eventos.length; i++) {
+        if(this.eventos[i].tipo == 'Monta') {
           this.embarazo = true;
+
+          const aux = this.eventos.splice(i, 1);
+          this.eventos.unshift(aux.pop())
         }
-      });
+        
+      } 
     });
 
     this.animalSub = this.animalService.getAnimales(this.fincaId).subscribe(animales => {
       this.padres = animales.filter((animales : any) => {
         return (animales.genero == 'Macho' && animales.grupoEtario == 'Toro');
       });
-      this.padres.push(this.animal);
       this.padresAux = this.padres;
     });
 
@@ -336,6 +339,7 @@ export class ReproduccionPage implements OnInit {
       this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
       this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
       .then(() => {
+        
         this.alertasService.addAlerta(this.alertas, this.fincaId);
         this.presentToast2();
       })

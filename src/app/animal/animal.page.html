@@ -140,7 +140,7 @@
               </ion-card>
             </ion-col>
 
-            <ion-col>
+            <ion-col *ngIf="animal.grupoEtario != 'Ternera ordeño' && animal.grupoEtario != 'Ternera levante'">
               <ion-card class="card-content" (click)="reproduccion()">
                 <img src=\assets\icon\Reproduccion.png>
                 <div class="card-title">Lista de Reproducción</div>

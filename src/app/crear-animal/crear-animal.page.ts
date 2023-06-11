@@ -66,7 +66,7 @@ export class CrearAnimalPage implements OnInit {
   ) {
       this.animal = {
         id: '',
-        nombre: 'otro',
+        nombre: '',
         genero: '',
         foto: "assets/icon/imagen_camara.png",
         lote: '',
@@ -105,14 +105,12 @@ export class CrearAnimalPage implements OnInit {
       this.padres = animales.filter((animales : any) => {
         return (animales.genero == 'Macho' && animales.grupoEtario == 'Toro');
       });
-      this.padres.push(this.animal);
       this.padresAux = this.padres;
       
 
       this.madres = animales.filter((animales : any) => {
         return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante' || animales.grupoEtario == 'Vaca seca'));
       });
-      this.madres.push(this.animal);
       this.madresAux = this.madres;
     });
 

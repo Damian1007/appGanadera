@@ -107,7 +107,12 @@
 
       <ion-item>
         <ion-label position="stacked">Padre</ion-label>
-        <ion-input formControlName="padre" placeholder="Seleccione un padre"  value='{{padreSelected}}' (click)="setOpen(true, 1)"></ion-input>
+        <ion-input formControlName="padre" placeholder="Escriba / Seleccione un padre"  value='{{padreSelected}}'></ion-input>
+        <ion-buttons slot="end">
+          <label class="search" (click)="setOpen(true, 1)">
+            <ion-icon slot="icon-only" name="search-circle" size="large"></ion-icon>
+          </label>
+        </ion-buttons>
       </ion-item>
 
       <!----------------------------------- Error de Validadores Padre -------------------------------------->
@@ -118,7 +123,12 @@
 
       <ion-item>
         <ion-label position="stacked">Madre</ion-label>
-        <ion-input formControlName="madre" placeholder="Seleccione una madre"  value='{{madreSelected}}' (click)="setOpen(true, 2)"></ion-input>
+        <ion-input formControlName="madre" placeholder="Escriba / Seleccione una madre"  value='{{madreSelected}}'></ion-input>
+        <ion-buttons slot="end">
+          <label class="search" (click)="setOpen(true, 2)">
+            <ion-icon slot="icon-only" name="search-circle" size="large"></ion-icon>
+          </label>
+        </ion-buttons>
       </ion-item>
 
       <!----------------------------------- Error de Validadores Madre -------------------------------------->

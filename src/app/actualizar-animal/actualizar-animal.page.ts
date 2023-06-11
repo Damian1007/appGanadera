@@ -80,7 +80,7 @@ export class ActualizarAnimalPage implements OnInit {
     private almacenamientoService : AlmacenamientoService
   ) { 
       this.animal = {
-        nombre: 'otro',
+        nombre: '',
         genero: '',
         foto: '',
         lote: '',
@@ -133,16 +133,15 @@ export class ActualizarAnimalPage implements OnInit {
 
     this.animalesSub = this.animalService.getAnimales(this.fincaId).subscribe(animales => {
       this.padres = animales.filter((animales : any) => {
-        return (animales.genero == 'Macho' && animales.grupoEtario == 'Toro');
+        return (animales.genero == 'Macho' && animales.grupoEtario == 'Toro' && animales.id != this.animalId);
       });
-      this.padres.push(this.animal);
       this.padresAux = this.padres;
       
 
       this.madres = animales.filter((animales : any) => {
-        return (animales.genero == 'Hembra' && (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante' || animales.grupoEtario == 'Vaca seca'));
+        return (animales.genero == 'Hembra' && animales.id != this.animalId && 
+        (animales.grupoEtario == 'Novilla de vientre' || animales.grupoEtario == 'Vaca lactante' || animales.grupoEtario == 'Vaca seca'));
       });
-      this.madres.push(this.animal);
       this.madresAux = this.madres;
     });
 

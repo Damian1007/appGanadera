@@ -41,7 +41,12 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">Nombre del Toro</ion-label>
-              <ion-input formControlName="nombre" placeholder="Seleccione un toro"  value='{{padreSelected}}' (click)="setOpen(true, 5)"></ion-input>
+              <ion-input formControlName="nombre" placeholder="Escriba / Seleccione un padre"  value='{{padreSelected}}'></ion-input>
+              <ion-buttons slot="end">
+                <label class="search" (click)="setOpen(true, 5)">
+                  <ion-icon slot="icon-only" name="search-circle" size="large"></ion-icon>
+                </label>
+              </ion-buttons>
             </ion-item>
 
             <!---------------------------------- Error de Validadores Nombre -------------------------------------->

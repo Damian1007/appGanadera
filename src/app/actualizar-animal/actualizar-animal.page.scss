@@ -12,6 +12,11 @@
     box-shadow: 0 3px 3px rgba(0,0,0,0.19);
 }
 
+.search{
+    position: relative;
+    transform: translate(-40%, 20%);
+}
+
 ion-modal {
     --height: 35%;
     --border-radius: 16px;
