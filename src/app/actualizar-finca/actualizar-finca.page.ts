@@ -73,7 +73,7 @@ export class ActualizarFincaPage implements OnInit {
       this.alertas = {
         usuario: '',
         cambio: '',
-        foto: '',
+        foto: 'assets/icon/Actualizar Finca 100x100.jpg',
         fecha: ''
       };
     }
@@ -109,8 +109,6 @@ export class ActualizarFincaPage implements OnInit {
         this.alertas.usuario = usuario.nombre;
       });
 
-      this.alertas.cambio = 'Actualizo la finca ' + finca.nombre;
-      this.alertas.foto = finca.foto;
       this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
     })
 
@@ -213,6 +211,7 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
       this.finca.coordenadas = this.form.getRawValue().coordenadas;
 
+      this.alertas.cambio = 'Actualizo la finca ' + this.form.getRawValue().nombre;
       this.nuevaImagen()
       .then(() => {
         

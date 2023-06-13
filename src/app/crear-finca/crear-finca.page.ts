@@ -82,7 +82,7 @@ export class CrearFincaPage implements OnInit {
       this.alertas = {
         usuario: '',
         cambio: '',
-        foto: '',
+        foto: 'assets/icon/Crear Finca 100x100.jpg',
         fecha: ''
       };
     }
@@ -210,7 +210,6 @@ setOpen(isOpen : boolean, num : any) {
       .then(() => {
 
         this.alertas.cambio = 'Creo la finca ' + this.finca.nombre;
-        this.alertas.foto = this.finca.foto;
         this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
 
         this.fincaService.addFinca(this.finca, this.miembro)

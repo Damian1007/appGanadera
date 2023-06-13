@@ -7,7 +7,6 @@ import { AnimalService } from '../services/animal.service';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
-import { FincaService } from '../services/finca.service';
 import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
@@ -32,7 +31,6 @@ export class ActualizarAnimalPage implements OnInit {
   animalSub : Subscription;
   animalesSub : Subscription;
   usuarioSub : Subscription;
-  fincaSub : Subscription;
   razaSub : Subscription;
 
   mostrarFoto = '';
@@ -74,7 +72,6 @@ export class ActualizarAnimalPage implements OnInit {
     private animalService : AnimalService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService,
     private http : HttpClient, 
     public toastController : ToastController,
     private almacenamientoService : AlmacenamientoService
@@ -95,7 +92,7 @@ export class ActualizarAnimalPage implements OnInit {
       this.alertas = {
         usuario: '',
         cambio: '',
-        foto: '',
+        foto: 'assets/icon/Actualizar animal 100x100.png',
         fecha: ''
       };
     }
@@ -122,12 +119,6 @@ export class ActualizarAnimalPage implements OnInit {
         this.alertas.usuario = usuario.nombre;
       });
 
-      this.alertas.cambio = 'Actualizo el animal ' + animal.nombre;
-
-      this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
-        this.alertas.foto = finca.foto;
-      });
-
       this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
     });
 
@@ -152,7 +143,6 @@ export class ActualizarAnimalPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.fincaSub.unsubscribe();
     this.usuarioSub.unsubscribe();
     this.animalSub.unsubscribe();
     this.animalesSub.unsubscribe();
@@ -260,6 +250,7 @@ export class ActualizarAnimalPage implements OnInit {
       this.animal.madre = this.form.getRawValue().madre;
       this.animal.pesoActual = this.form.getRawValue().pesoActual;
 
+      this.alertas.cambio = 'Actualizo el animal ' + this.form.getRawValue().nombre;
       this.nuevaImagen()
       .then(() => {
 

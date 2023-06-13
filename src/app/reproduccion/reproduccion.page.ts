@@ -11,7 +11,6 @@ import { Animal } from '../interfaces/animal';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
-import { FincaService } from '../services/finca.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 
@@ -36,7 +35,6 @@ export class ReproduccionPage implements OnInit {
   reproduccionId : any;
   usuarioId : any = localStorage.getItem('usuarioId');
   usuarioSub : Subscription;
-  fincaSub : Subscription;
   animalSub : Subscription;
   razaSub : Subscription;
   reproduccionesSub : Subscription;
@@ -67,7 +65,6 @@ export class ReproduccionPage implements OnInit {
     private animalService : AnimalService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService,
     private http : HttpClient, 
     public toastController : ToastController
   ) { 
@@ -170,10 +167,6 @@ export class ReproduccionPage implements OnInit {
       this.alertas.usuario = usuario.nombre;
     });
 
-    this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
-      this.alertas.foto = finca.foto;
-    });
-
     this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
   }
 
@@ -181,6 +174,7 @@ export class ReproduccionPage implements OnInit {
     this.reproduccionesSub.unsubscribe();
     this.animalSub.unsubscribe();
     this.razaSub.unsubscribe();
+    this.usuarioSub.unsubscribe();
 
     if (this.reproduccionSub) {
       this.reproduccionSub.unsubscribe();
@@ -276,11 +270,14 @@ export class ReproduccionPage implements OnInit {
     
     if (this.embarazo) {
       //console.log("Ya preñada");
+
       this.presentToast3();
       this.form.markAllAsTouched();
     }else {
       //console.log(this.form.getRawValue());
+
       if(this.form.valid) {
+
         this.evento.tipo = this.form.getRawValue().tipo;
         this.evento.nombreToro = this.form.getRawValue().nombre;
         this.evento.fechaMonta = this.form.getRawValue().fecha;
@@ -289,6 +286,7 @@ export class ReproduccionPage implements OnInit {
         this.evento.fechaPartoProbable = format(new Date(this.fechaProbable.getFullYear(), this.fechaProbable.getMonth() + 9, this.fechaProbable.getDay()), 'yyyy/MM/dd');
 
         this.alertas.cambio = 'Agrego una monta a ' + this.animalNombre;
+        this.alertas.foto = 'assets/icon/Reproduccion 100x 100.png';
 
         this.form.reset();
         this.setOpen(false, 1);
@@ -296,6 +294,7 @@ export class ReproduccionPage implements OnInit {
 
         this.reproduccionService.addReproduccion(this.fincaId, this.animalId, this.evento)
         .then(() => {
+
           this.alertasService.addAlerta(this.alertas, this.fincaId);
           this.presentToast();
         })
@@ -333,6 +332,7 @@ export class ReproduccionPage implements OnInit {
     this.form2.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
 
     this.alertas.cambio = 'Agrego el nacimiento de ' + this.evento.nombreCria;
+    this.alertas.foto = 'assets/icon/Reproduccion 100x 100.png';
     
     //console.log(this.form2.getRawValue());
     if(this.form2.valid) {

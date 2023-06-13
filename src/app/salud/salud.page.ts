@@ -9,7 +9,6 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
-import { FincaService } from '../services/finca.service';
 import { format, parseISO } from 'date-fns';
 import { ToastController } from '@ionic/angular';
 
@@ -30,7 +29,6 @@ export class SaludPage implements OnInit {
   animalNombre : any;
   saludSub : Subscription;
   usuarioSub : Subscription;
-  fincaSub : Subscription;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -53,7 +51,6 @@ export class SaludPage implements OnInit {
     private formBuilder : FormBuilder,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService, 
     public toastController : ToastController
   ) { 
       this.historias = [{
@@ -114,17 +111,12 @@ export class SaludPage implements OnInit {
       this.alertas.usuario = usuario.nombre;
     });
 
-    this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
-      this.alertas.foto = finca.foto;
-    });
-
     this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
   }
 
   ionViewDidLeave() {
     this.saludSub.unsubscribe();
     this.usuarioSub.unsubscribe();
-    this.fincaSub.unsubscribe();
   }
 
   // <!----------------------------------- Configuración de Fecha ------------------------------------------->
@@ -152,11 +144,17 @@ export class SaludPage implements OnInit {
       this.historia.ref = this.form.getRawValue().ref;
 
       if(this.historia.ref == 'Vacuna') {
+
+        this.alertas.foto = 'assets/icon/Jeringa.jpg';
         this.form.get('sintomas').setValue('N/A', { onlySelf: true});
         this.form.get('nomMedicamento').setValue('N/A', { onlySelf: true});
         this.form.get('canMedicamento').setValue('N/A', { onlySelf: true});
+      }else {
+
+        this.alertas.foto = 'assets/icon/Enfermedad.jpg';
       }
       //console.log(this.form.getRawValue());
+
       this.setOpen(false, 1);
       this.setOpen(true, 2);
     }
@@ -180,6 +178,7 @@ export class SaludPage implements OnInit {
     //console.log(this.form.getRawValue());
 
     if(this.form.valid) {
+
       this.historia.nombre = this.form.getRawValue().nombre;
       this.historia.sintomas = this.form.getRawValue().sintomas;
       this.historia.nomMedicamento = this.form.getRawValue().nomMedicamento;
@@ -190,6 +189,7 @@ export class SaludPage implements OnInit {
 
       this.saludService.addHistoria(this.fincaId, this.animalId, this.historia)
       .then(() => {
+        
         this.isSubmitted = false;
         this.presentToast();
         this.alertasService.addAlerta(this.alertas, this.fincaId);

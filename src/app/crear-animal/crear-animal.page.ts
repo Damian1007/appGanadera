@@ -5,7 +5,6 @@ import { AnimalService } from '../services/animal.service';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
-import { FincaService } from '../services/finca.service';
 import { format, parseISO } from 'date-fns';
 import { Subscription, map } from 'rxjs';
 import { Animal } from '../interfaces/animal';
@@ -30,7 +29,6 @@ export class CrearAnimalPage implements OnInit {
   usuarioId : any = localStorage.getItem('usuarioId');
   usuarioSub : Subscription;
   animalSub : Subscription;
-  fincaSub : Subscription;
   razaSub : Subscription;
 
   mostrarFoto = 'assets/icon/imagen_camara.png';
@@ -59,7 +57,6 @@ export class CrearAnimalPage implements OnInit {
     private animalService : AnimalService,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    private fincaService : FincaService,
     private http : HttpClient, 
     public toastController : ToastController,
     private almacenamientoService : AlmacenamientoService
@@ -81,7 +78,7 @@ export class CrearAnimalPage implements OnInit {
       this.alertas = {
         usuario: '',
         cambio: '',
-        foto: '',
+        foto: 'assets/icon/Nuevo animal 100x100.png',
         fecha: ''
       };
 
@@ -235,10 +232,6 @@ export class CrearAnimalPage implements OnInit {
       });
   
       this.alertas.cambio = 'Creo el animal ' + this.animal.nombre;
-  
-      this.fincaSub = this.fincaService.getFinca(this.fincaId).subscribe(finca => {
-        this.alertas.foto = finca.foto;
-      });
   
       this.alertas.fecha = format(new Date(), 'yyyy-MM-dd');
   
