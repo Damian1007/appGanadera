@@ -3,7 +3,7 @@ import { AnimalService } from '../services/animal.service';
 import { Animal } from '../interfaces/animal';
 import { Subscription } from 'rxjs';
 import { ProduccionService } from '../services/produccion.service';
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-datos-produccion',

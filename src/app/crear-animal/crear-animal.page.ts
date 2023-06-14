@@ -215,6 +215,7 @@ export class CrearAnimalPage implements OnInit {
     this.form.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
     
     if(this.form.valid) {
+      
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;
       //this.animal.foto = this.form.getRawValue().foto;

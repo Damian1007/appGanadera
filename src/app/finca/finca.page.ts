@@ -19,7 +19,7 @@ export class FincaPage implements OnInit {
 
   constructor(
     private fincaService : FincaService,
-    private router : Router, 
+    private router : Router,
     public toastController : ToastController
   ) { 
       this.finca = {

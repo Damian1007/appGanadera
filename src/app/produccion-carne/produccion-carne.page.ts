@@ -83,9 +83,9 @@ export class ProduccionCarnePage implements OnInit {
   }
 
   ionViewDidLeave() {
+    this.myChart.destroy();
     this.animalSub.unsubscribe();
     this.graficaSub.unsubscribe();
-    this.myChart.destroy();
   }
 
   mostrarGrafico() {

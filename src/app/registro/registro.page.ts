@@ -23,6 +23,7 @@ export class RegistroPage implements OnInit {
   usuario : Usuario;
   dptoSub : Subscription;
   citySub : Subscription;
+  regex: RegExp = /^\d{7,15}$/;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -61,7 +62,7 @@ export class RegistroPage implements OnInit {
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       confirmarContrasena: ['', [Validators.required]],
       pais: ['', [Validators.required]],
-      telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      telefono: ['', [Validators.required, Validators.pattern(this.regex)]],
       departamento: ['', Validators.required],
       ciudad: ['', Validators.required],
     });

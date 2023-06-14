@@ -133,7 +133,7 @@
   </form>
 
   <!--------------------------------------- Departamentos Modal --------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -152,7 +152,7 @@
   </ion-modal>
 
   <!--------------------------------------- Ciudades Modal --------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>

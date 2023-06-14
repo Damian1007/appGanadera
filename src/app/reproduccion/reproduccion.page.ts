@@ -277,7 +277,6 @@ export class ReproduccionPage implements OnInit {
       //console.log(this.form.getRawValue());
 
       if(this.form.valid) {
-
         this.evento.tipo = this.form.getRawValue().tipo;
         this.evento.nombreToro = this.form.getRawValue().nombre;
         this.evento.fechaMonta = this.form.getRawValue().fecha;

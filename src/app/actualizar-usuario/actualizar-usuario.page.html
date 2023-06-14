@@ -81,12 +81,8 @@
         El telefono es obligatorio.
       </span>
 
-      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.minlength">
-        Debe ser un telefono valido.
-      </span>
-
-      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.maxlength">
-        Debe ser un telefono valido.
+      <span class="error" *ngIf="isSubmitted && errorControl.telefono.errors?.pattern">
+        Debe ser un telefono valido. (Sin Prefijo)
       </span>
       <!--------------------------------------------------------------------------------------------------------->
 
@@ -121,7 +117,7 @@
   </form>
 
   <!--------------------------------------- Departamentos Modal --------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -140,7 +136,7 @@
   </ion-modal>
 
   <!--------------------------------------- Ciudades Modal --------------------------------------->
-  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal #modal [isOpen]="isModalOpen2" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>

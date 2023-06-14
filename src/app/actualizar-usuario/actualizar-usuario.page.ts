@@ -23,6 +23,7 @@ export class ActualizarUsuarioPage implements OnInit {
   dptoSub : Subscription;
   citySub : Subscription;
   isSubmitted = false;
+  regex: RegExp = /^\d{7,15}$/;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -40,7 +41,7 @@ export class ActualizarUsuarioPage implements OnInit {
     apellido: ['', [Validators.required]],
     contrasena: [''],
     pais: ['', [Validators.required]],
-    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+    telefono: ['', [Validators.required, Validators.pattern(this.regex)]],
     departamento: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
   });

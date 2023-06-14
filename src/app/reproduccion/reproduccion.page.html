@@ -235,7 +235,7 @@
   </ion-modal>
 
   <!------------------------------------------------ Padres Modal --------------------------------------------------->
-  <ion-modal class="modal4" [isOpen]="isModalOpen5" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal class="modal4" [isOpen]="isModalOpen5" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -254,7 +254,7 @@
   </ion-modal>
 
   <!---------------------------------------------- Razas Modal ---------------------------------------------->
-  <ion-modal class="modal4" [isOpen]="isModalOpen6" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+  <ion-modal class="modal4" [isOpen]="isModalOpen6" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>
