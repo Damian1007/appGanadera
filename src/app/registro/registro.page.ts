@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutentificarService } from './../services/autentificar.service';
 import { Usuario } from '../interfaces/usuario';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -23,7 +22,8 @@ export class RegistroPage implements OnInit {
   usuario : Usuario;
   dptoSub : Subscription;
   citySub : Subscription;
-  regex: RegExp = /^\d{7,15}$/;
+  regex : RegExp = /^\d{7,15}$/;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -40,7 +40,8 @@ export class RegistroPage implements OnInit {
     private autentificarService : AutentificarService,
     private router : Router,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
   ) { 
       this.usuario = {
         correo: '',
@@ -155,6 +156,7 @@ export class RegistroPage implements OnInit {
     
     if(this.form.getRawValue().contrasena == this.form.getRawValue().confirmarContrasena) {
       if(this.form.valid) {
+        this.presentLoading();
         const {correo, contrasena} = this.form.getRawValue();
   
         this.autentificarService.registroAuth(correo, contrasena)
@@ -172,18 +174,20 @@ export class RegistroPage implements OnInit {
   
           this.autentificarService.registroUsu(this.usuario, localStorage.getItem("usuarioId"))
           .then(() => {
-            window.location.reload();
+            
+            this.loading.dismiss();
             this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
           })
           .catch(error => {
             console.error(error, "Error al registrar Usuario");
+            this.loading.dismiss();
           });
         })
         .catch(error => {
           console.error(error, "Error al autentificar Usuario");
+          this.loading.dismiss();
           this.presentToastError2();
         });
-  
       } else {
         this.form.markAllAsTouched();
       }
@@ -196,6 +200,14 @@ export class RegistroPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Registrando Usuario...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToastError() {

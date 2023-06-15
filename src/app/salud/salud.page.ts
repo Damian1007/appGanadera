@@ -3,14 +3,13 @@ import { Router } from '@angular/router';
 import { SaludService } from '../services/salud.service';
 import { Salud } from '../interfaces/salud';
 import { Subscription } from 'rxjs';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { format, parseISO } from 'date-fns';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-salud',
@@ -29,6 +28,7 @@ export class SaludPage implements OnInit {
   animalNombre : any;
   saludSub : Subscription;
   usuarioSub : Subscription;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -51,7 +51,8 @@ export class SaludPage implements OnInit {
     private formBuilder : FormBuilder,
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
   ) { 
       this.historias = [{
         ref: '',
@@ -175,27 +176,29 @@ export class SaludPage implements OnInit {
   crearHistoria() {
     this.isSubmitted = true;
     this.form.get('fecha').setValue(this.fechaValor, { onlySelf: true});
-    //console.log(this.form.getRawValue());
 
     if(this.form.valid) {
+      this.presentLoading();
 
       this.historia.nombre = this.form.getRawValue().nombre;
       this.historia.sintomas = this.form.getRawValue().sintomas;
       this.historia.nomMedicamento = this.form.getRawValue().nomMedicamento;
       this.historia.canMedicamento = this.form.getRawValue().canMedicamento;
       this.historia.fecha = this.form.getRawValue().fecha;
-      //console.log(this.historia);
+      
       this.alertas.cambio = 'Agrego una ' + this.form.getRawValue().ref + ' a ' + this.animalNombre;
 
       this.saludService.addHistoria(this.fincaId, this.animalId, this.historia)
       .then(() => {
         
         this.isSubmitted = false;
+        this.loading.dismiss();
         this.presentToast();
         this.alertasService.addAlerta(this.alertas, this.fincaId);
       })
       .catch(error => {
         console.log('Error al Crear la historia', error);
+        this.loading.dismiss();
         this.presentToastError();
       });
 
@@ -209,6 +212,14 @@ export class SaludPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Guardando ' + this.historia.ref + '...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { Chart } from 'chart.js';
 import { format, parseISO } from 'date-fns';
 import { Subscription } from 'rxjs';
 import { Ordeño } from '../interfaces/ordeño';
 import { ProduccionService } from '../services/produccion.service';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produccion-leche',
@@ -23,6 +22,7 @@ export class ProduccionLechePage implements OnInit {
   graficaSub : Subscription;
   myChart : Chart
   regex: RegExp = /^[1-9]\d*(\.\d)?$|^0(\.\d)?$/;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -40,7 +40,8 @@ export class ProduccionLechePage implements OnInit {
   constructor(
     private produccionService : ProduccionService,
     private formBuilder : FormBuilder, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
     ) { 
 
       this.ordeño = {
@@ -128,6 +129,8 @@ export class ProduccionLechePage implements OnInit {
     this.form.setValue({leche : this.form.getRawValue().leche, fecha : this.fechaValor});
     
     if(this.form.valid) {
+      this.presentLoading();
+      
       this.ordeño.leche = this.form.getRawValue().leche
       this.ordeño.fecha = this.form.getRawValue().fecha
 
@@ -138,10 +141,13 @@ export class ProduccionLechePage implements OnInit {
       this.myChart.destroy();
       await this.produccionService.addOrdeño(this.fincaId, this.animalId, this.ordeño)
       .then(() => {
+
+        this.loading.dismiss();
         this.presentToast();
       })
       .catch(error => {
         console.log('Error al Agregar el ordeño del animal', error);
+        this.loading.dismiss();
         this.presentToastError();
       });
       this.isSubmitted = false;
@@ -177,6 +183,14 @@ export class ProduccionLechePage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Guardando Ordeño...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

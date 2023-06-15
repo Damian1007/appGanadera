@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
 import { AutentificarService } from '../services/autentificar.service';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -24,6 +23,7 @@ export class ActualizarUsuarioPage implements OnInit {
   citySub : Subscription;
   isSubmitted = false;
   regex: RegExp = /^\d{7,15}$/;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -51,7 +51,8 @@ export class ActualizarUsuarioPage implements OnInit {
     private autentificarService : AutentificarService,
     private router : Router,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
   ) { 
     this.usuario = {
       correo: '',
@@ -167,6 +168,8 @@ export class ActualizarUsuarioPage implements OnInit {
     this.isSubmitted = true;
 
     if(this.form.valid) {
+      this.presentLoading();
+
       this.usuario.correo = this.form.getRawValue().correo;
       this.usuario.nombre = this.form.getRawValue().nombre;
       this.usuario.apellido = this.form.getRawValue().apellido;
@@ -178,11 +181,14 @@ export class ActualizarUsuarioPage implements OnInit {
 
       this.autentificarService.updateUsuario(this.usuario, this.usuarioId)
       .then(() => {
+
+        this.loading.dismiss();
         this.presentToast();
         this.router.navigate(['/usuario'], { replaceUrl: true });
       })
       .catch(error => {
         console.log('Error al Actualizar usuario', error);
+        this.loading.dismiss();
         this.presentToastError();
       });
     } else {
@@ -192,6 +198,14 @@ export class ActualizarUsuarioPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Actualizando Usuario...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

@@ -2,14 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ProduccionService } from '../services/produccion.service';
 import { Subscription } from 'rxjs';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { format, parseISO } from 'date-fns';
 import { Pesaje } from '../interfaces/pesaje';
 import { Animal } from '../interfaces/animal';
 import { AnimalService } from '../services/animal.service';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produccion-carne',
@@ -26,6 +25,7 @@ export class ProduccionCarnePage implements OnInit {
   animalSub : Subscription;
   graficaSub : Subscription;
   myChart : Chart;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -44,7 +44,8 @@ export class ProduccionCarnePage implements OnInit {
     private produccionService : ProduccionService,
     private formBuilder : FormBuilder,
     private animalService : AnimalService, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
     ) { 
 
       this.pesaje = {
@@ -149,6 +150,8 @@ export class ProduccionCarnePage implements OnInit {
     this.form.setValue({peso : this.form.getRawValue().peso, fecha : this.fechaValor});
    
     if(this.form.valid) {
+      this.presentLoading();
+
       this.pesaje.peso = this.form.getRawValue().peso
       this.pesaje.fecha = this.form.getRawValue().fecha
 
@@ -175,11 +178,20 @@ export class ProduccionCarnePage implements OnInit {
         });
         //console.log(this.pesajesArray);
         this.animal.pesoActual = this.pesajesArray.pop().peso;
-        this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId);
-        this.presentToast();
+        this.animalService.updateAnimal(this.animal, this.fincaId, this.animalId)
+        .then(() => {
+
+          this.loading.dismiss();
+          this.presentToast();
+        })
+        .catch(error => {
+          console.log('Error al Actualizar el Peso del animal', error);
+          this.presentToastError2();
+        })
       })
       .catch(error => {
-        console.log('Error al Agregar el Peso del animal', error);
+        console.log('Error al Agregar el Pesaje del animal', error);
+        this.loading.dismiss();
         this.presentToastError();
       });
       this.isSubmitted = false;
@@ -217,6 +229,14 @@ export class ProduccionCarnePage implements OnInit {
     return this.form.controls;
   }
 
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Guardando Pesaje...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
+  }
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Nuevo pesaje registrado con exito',
@@ -230,6 +250,16 @@ export class ProduccionCarnePage implements OnInit {
   async presentToastError() {
     const toast = await this.toastController.create({
       message: 'Error al intentar registrar un nuevo pesaje, intentelo nuevamente',
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-custom-class"
+    });
+    toast.present()
+  }
+
+  async presentToastError2() {
+    const toast = await this.toastController.create({
+      message: 'Error al intentar Actualizar el peso del animal',
       duration: 5000,
       position: "bottom",
       cssClass: "toast-custom-class"

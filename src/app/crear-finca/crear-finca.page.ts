@@ -10,9 +10,8 @@ import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { format } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
 import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
@@ -37,6 +36,7 @@ export class CrearFincaPage implements OnInit {
   mostrarFoto = 'assets/icon/imagen_camara.png';
   nuevoFile : any;
   cambiaFoto = false;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -55,8 +55,9 @@ export class CrearFincaPage implements OnInit {
     private auth : AutentificarService,
     private alertasService : AlertasService,
     private http : HttpClient, 
+    private almacenamientoService : AlmacenamientoService,
     public toastController : ToastController,
-    private almacenamientoService : AlmacenamientoService
+    public loadingController : LoadingController
   ) { 
       this.finca = {
         id: '',
@@ -197,6 +198,8 @@ setOpen(isOpen : boolean, num : any) {
     this.isSubmitted = true;
 
     if(this.form.valid) {
+      this.presentLoading();
+
       this.finca.nombre = this.form.getRawValue().nombre;
       this.finca.orientacion = this.form.getRawValue().orientacion;
       this.finca.areaFinca = this.form.getRawValue().areaFinca;
@@ -216,16 +219,19 @@ setOpen(isOpen : boolean, num : any) {
         .then(() => {
           
           this.alertasService.addAlerta(this.alertas, this.finca.id);
+          this.loading.dismiss();
           this.presentToast();
           this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
         })
         .catch(error => {
           console.log('Error al Crear finca', error);
+          this.loading.dismiss();
           this.presentToastError();
         });
       })
       .catch(error => {
         console.log('Error al subir la imagen', error);
+        this.loading.dismiss();
         this.presentToastError2();
       });
     } else {
@@ -257,6 +263,14 @@ setOpen(isOpen : boolean, num : any) {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Creando Finca...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

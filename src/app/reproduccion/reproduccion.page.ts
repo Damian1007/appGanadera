@@ -3,7 +3,7 @@ import { Subscription, map } from 'rxjs';
 import { ReproduccionService } from '../services/reproduccion.service';
 import { Reproduccion } from '../interfaces/reproduccion';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { AnimalService } from '../services/animal.service';
@@ -12,7 +12,6 @@ import { AlertasService } from '../services/alertas.service';
 import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reproduccion',
@@ -39,6 +38,7 @@ export class ReproduccionPage implements OnInit {
   razaSub : Subscription;
   reproduccionesSub : Subscription;
   reproduccionSub : Subscription;
+  loading : any;
 
   embarazo = false;
   isModalOpen = false;
@@ -66,7 +66,8 @@ export class ReproduccionPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private http : HttpClient, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
   ) { 
     this.eventos = [{
       tipo: '',
@@ -147,7 +148,6 @@ export class ReproduccionPage implements OnInit {
           const aux = this.eventos.splice(i, 1);
           this.eventos.unshift(aux.pop())
         }
-        
       } 
     });
 
@@ -277,6 +277,8 @@ export class ReproduccionPage implements OnInit {
       //console.log(this.form.getRawValue());
 
       if(this.form.valid) {
+        this.presentLoadingMonta();
+
         this.evento.tipo = this.form.getRawValue().tipo;
         this.evento.nombreToro = this.form.getRawValue().nombre;
         this.evento.fechaMonta = this.form.getRawValue().fecha;
@@ -295,10 +297,12 @@ export class ReproduccionPage implements OnInit {
         .then(() => {
 
           this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.loading.dismiss();
           this.presentToast();
         })
         .catch(error => {
           console.log('Error al Agregar monta', error);
+          this.loading.dismiss();
           this.presentToastError();
         });
       } else {
@@ -335,15 +339,19 @@ export class ReproduccionPage implements OnInit {
     
     //console.log(this.form2.getRawValue());
     if(this.form2.valid) {
+      this.presentLoadingParto();
+
       this.reproduccionService.updateReproduccion(this.evento, this.fincaId, this.animalId);
       this.animalService.addAnimal(this.form2.getRawValue(), this.fincaId)
       .then(() => {
         
         this.alertasService.addAlerta(this.alertas, this.fincaId);
+        this.loading.dismiss();
         this.presentToast2();
       })
       .catch(error => {
         console.log('Error al Agregar parto', error);
+        this.loading.dismiss();
         this.presentToastError2();
       });
 
@@ -363,6 +371,22 @@ export class ReproduccionPage implements OnInit {
 
   get errorControl2() {
     return this.form2.controls;
+  }
+
+  async presentLoadingMonta() {
+    this.loading = await this.loadingController.create({ 
+      message: 'Guardando Monta...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
+  }
+
+  async presentLoadingParto() {
+    this.loading = await this.loadingController.create({
+      message: 'Guardando Parto...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

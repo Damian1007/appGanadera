@@ -8,10 +8,9 @@ import { Alertas } from '../interfaces/alertas';
 import { AutentificarService } from '../services/autentificar.service';
 import { format } from 'date-fns';
 import { Subscription, map } from 'rxjs';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { ToastController } from '@ionic/angular';
 import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
@@ -36,6 +35,7 @@ export class ActualizarFincaPage implements OnInit {
   mostrarFoto = '';
   nuevoFile : any;
   cambiaFoto = false;
+  loading : any;
 
   isModalOpen = false;
   isModalOpen2 = false;
@@ -54,8 +54,9 @@ export class ActualizarFincaPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private http : HttpClient, 
+    private almacenamientoService : AlmacenamientoService,
     public toastController : ToastController,
-    private almacenamientoService : AlmacenamientoService
+    public loadingController : LoadingController
   ) { 
       this.finca = {
         nombre: '',
@@ -201,6 +202,8 @@ setOpen(isOpen : boolean, num : any) {
     this.isSubmitted = true;
 
     if(this.form.valid) {
+      this.presentLoading();
+
       this.finca.nombre = this.form.getRawValue().nombre;
       this.finca.orientacion = this.form.getRawValue().orientacion;
       this.finca.areaFinca = this.form.getRawValue().areaFinca;
@@ -219,16 +222,19 @@ setOpen(isOpen : boolean, num : any) {
         .then(() => {
 
           this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.loading.dismiss();
           this.presentToast();
           this.router.navigate(['/tabs/finca'], { replaceUrl: true });
         })
         .catch(error => {
           console.log('Error al Actualizar finca', error);
+          this.loading.dismiss();
           this.presentToastError();
         });
       })
       .catch(error => {
         console.log('Error al subir la imagen', error);
+        this.loading.dismiss();
         this.presentToastError2();
       });
     } else {
@@ -260,6 +266,14 @@ setOpen(isOpen : boolean, num : any) {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Actualizando Finca...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToast() {

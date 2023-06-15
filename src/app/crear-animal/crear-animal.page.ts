@@ -8,10 +8,9 @@ import { AutentificarService } from '../services/autentificar.service';
 import { format, parseISO } from 'date-fns';
 import { Subscription, map } from 'rxjs';
 import { Animal } from '../interfaces/animal';
-import { IonModal } from '@ionic/angular';
+import { IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
 import { AlmacenamientoService } from '../services/almacenamiento.service';
 
 @Component({
@@ -34,6 +33,7 @@ export class CrearAnimalPage implements OnInit {
   mostrarFoto = 'assets/icon/imagen_camara.png';
   nuevoFile : any;
   cambiaFoto = false;
+  loading : any;
 
   isSubmitted = false;
   fechaValor = '';
@@ -58,8 +58,9 @@ export class CrearAnimalPage implements OnInit {
     private alertasService : AlertasService,
     private autentificarService : AutentificarService,
     private http : HttpClient, 
+    private almacenamientoService : AlmacenamientoService,
     public toastController : ToastController,
-    private almacenamientoService : AlmacenamientoService
+    public loadingController : LoadingController
   ) {
       this.animal = {
         id: '',
@@ -215,6 +216,7 @@ export class CrearAnimalPage implements OnInit {
     this.form.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
     
     if(this.form.valid) {
+      this.presentLoading();
       
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;
@@ -243,16 +245,19 @@ export class CrearAnimalPage implements OnInit {
         .then(() => {
           
           this.alertasService.addAlerta(this.alertas, this.fincaId);
+          this.loading.dismiss();
           this.presentToast();
           this.router.navigate(['/tabs/animales'], { replaceUrl: true });
         })
         .catch(error => {
           console.log('Error al Crear animal', error);
+          this.loading.dismiss();
           this.presentToastError();
         });
       })
       .catch(error => {
         console.log('Error al subir la imagen', error);
+        this.loading.dismiss();
         this.presentToastError2();
       });
       
@@ -298,6 +303,14 @@ export class CrearAnimalPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Creando Animal...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
   
   async presentToast() {

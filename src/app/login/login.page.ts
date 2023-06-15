@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutentificarService } from './../services/autentificar.service';
 import { MenuController } from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +14,15 @@ export class LoginPage implements OnInit {
 
   form : FormGroup;
   isSubmitted = false;
+  loading : any;
 
   constructor(
     private formBuilder : FormBuilder,
     private autentificarService : AutentificarService,
     private router : Router,
     public menuCtrl: MenuController, 
-    public toastController : ToastController
+    public toastController : ToastController,
+    public loadingController : LoadingController
   ) { }
 
   ngOnInit() {
@@ -38,15 +40,19 @@ export class LoginPage implements OnInit {
     this.isSubmitted = true;
     
     if(this.form.valid) {
-        this.autentificarService.iniciarSesion(this.form.getRawValue().correo, this.form.getRawValue().contrasena)
-        .then(() => {
-          window.location.reload();
-          this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
-        })
-        .catch(error => {
-          console.error(error, "Error al Iniciar Sesión");
-          this.presentToastError();
-        });
+      this.presentLoading();
+
+      this.autentificarService.iniciarSesion(this.form.getRawValue().correo, this.form.getRawValue().contrasena)
+      .then(() => {
+
+        this.loading.dismiss();
+        this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
+      })
+      .catch(error => {
+        console.error(error, "Error al Iniciar Sesión");
+        this.loading.dismiss();
+        this.presentToastError();
+      });
     } else {
         this.form.markAllAsTouched();
     }
@@ -54,6 +60,14 @@ export class LoginPage implements OnInit {
 
   get errorControl() {
     return this.form.controls;
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Iniciando Sesión...',
+      cssClass: "normal"
+    });
+    await this.loading.present();
   }
 
   async presentToastError() {
