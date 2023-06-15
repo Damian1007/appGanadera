@@ -23,7 +23,7 @@ export class AnimalService {
       nombre: animal.nombre,
       genero: animal.genero,
       foto: animal.foto,
-      lote: animal.lote,
+      ubicacion: animal.ubicacion,
       raza: animal.raza,
       grupoEtario: animal.grupoEtario,
       fechaNacimiento: animal.fechaNacimiento,

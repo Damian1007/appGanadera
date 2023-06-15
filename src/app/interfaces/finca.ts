@@ -8,6 +8,7 @@ export interface Finca {
     departamento: string;
     ciudad: string;
     corregimiento: string;
+    vereda_sector: string;
     coordenadas: string;
     propietario: string;
 }

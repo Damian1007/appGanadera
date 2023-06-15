@@ -67,7 +67,7 @@ export class CrearAnimalPage implements OnInit {
         nombre: '',
         genero: '',
         foto: "assets/icon/imagen_camara.png",
-        lote: '',
+        ubicacion: '',
         raza: '',
         grupoEtario: '',
         fechaNacimiento: '',
@@ -91,7 +91,7 @@ export class CrearAnimalPage implements OnInit {
       nombre: ['', [Validators.required]],
       genero: ['', [Validators.required]],
       //foto: ['', [Validators.required]],
-      lote: ['', [Validators.required]],
+      ubicacion: ['', [Validators.required]],
       raza: ['', [Validators.required]],
       grupoEtario: ['', [Validators.required]],
       fechaNacimiento: [''],
@@ -221,7 +221,7 @@ export class CrearAnimalPage implements OnInit {
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;
       //this.animal.foto = this.form.getRawValue().foto;
-      this.animal.lote = this.form.getRawValue().lote;
+      this.animal.ubicacion = this.form.getRawValue().ubicacion;
       this.animal.raza = this.form.getRawValue().raza;
       this.animal.grupoEtario = this.form.getRawValue().grupoEtario;
       this.animal.fechaNacimiento = this.form.getRawValue().fechaNacimiento;

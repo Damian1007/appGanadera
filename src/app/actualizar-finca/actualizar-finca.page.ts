@@ -67,6 +67,7 @@ export class ActualizarFincaPage implements OnInit {
         departamento: '',
         ciudad: '',
         corregimiento: '',
+        vereda_sector: '',
         coordenadas: '',
         propietario: ''
       };
@@ -89,6 +90,7 @@ export class ActualizarFincaPage implements OnInit {
       departamento: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       corregimiento: ['', [Validators.required]],
+      vereda_sector: ['', [Validators.required]],
       coordenadas: [''],
     });
 
@@ -102,6 +104,7 @@ export class ActualizarFincaPage implements OnInit {
         departamento: finca.departamento,
         ciudad: finca.ciudad,
         corregimiento: finca.corregimiento,
+        vereda_sector: finca.vereda_sector,
         coordenadas: finca.coordenadas
       });
       this.mostrarFoto = finca.foto;
@@ -212,6 +215,7 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.departamento = this.form.getRawValue().departamento;
       this.finca.ciudad = this.form.getRawValue().ciudad;
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
+      this.finca.vereda_sector = this.form.getRawValue().vereda_sector;
       this.finca.coordenadas = this.form.getRawValue().coordenadas;
 
       this.alertas.cambio = 'Actualizo la finca ' + this.form.getRawValue().nombre;

@@ -56,7 +56,7 @@ export class ActualizarAnimalPage implements OnInit {
     nombre: ['', [Validators.required]],
     genero: ['', [Validators.required]],
     foto: ['', [Validators.required]],
-    lote: ['', [Validators.required]],
+    ubicacion: ['', [Validators.required]],
     raza: ['', [Validators.required]],
     grupoEtario: ['', [Validators.required]],
     fechaNacimiento: [''],
@@ -80,7 +80,7 @@ export class ActualizarAnimalPage implements OnInit {
         nombre: '',
         genero: '',
         foto: '',
-        lote: '',
+        ubicacion: '',
         raza: '',
         grupoEtario: '',
         fechaNacimiento: '',
@@ -103,7 +103,7 @@ export class ActualizarAnimalPage implements OnInit {
         nombre: animal.nombre,
         genero: animal.genero,
         foto: animal.foto,
-        lote: animal.lote,
+        ubicacion: animal.ubicacion,
         raza: animal.raza,
         grupoEtario: animal.grupoEtario,
         fechaNacimiento: animal.fechaNacimiento,
@@ -244,7 +244,7 @@ export class ActualizarAnimalPage implements OnInit {
       this.animal.nombre = this.form.getRawValue().nombre;
       this.animal.genero = this.form.getRawValue().genero;
       this.animal.foto = this.form.getRawValue().foto;
-      this.animal.lote = this.form.getRawValue().lote;
+      this.animal.ubicacion = this.form.getRawValue().ubicacion;
       this.animal.raza = this.form.getRawValue().raza;
       this.animal.grupoEtario = this.form.getRawValue().grupoEtario;
       this.animal.fechaNacimiento = this.form.getRawValue().fechaNacimiento;

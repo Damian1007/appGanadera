@@ -35,7 +35,7 @@ export class AnimalPage implements OnInit {
         nombre: '',
         genero: '',
         foto: '',
-        lote: '',
+        ubicacion: '',
         raza: '',
         grupoEtario: '',
         fechaNacimiento: '',
@@ -100,16 +100,16 @@ export class AnimalPage implements OnInit {
   }
 
   opciones() {
-    console.log("Opciones");
+    //console.log("Opciones");
     if(this.animal.genero == 'Macho'){
       this.modalReproduccion = false;
       this.modalOrdeno = false;
-      console.log("Macho");
+      //console.log("Macho");
     }
 
     if(this.animal.grupoEtario == 'Vaca seca' && this.animal.genero == 'Hembra'){
       this.modalOrdeno = false;
-      console.log("horra");
+      //console.log("horra");
     }
   }
 

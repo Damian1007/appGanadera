@@ -69,6 +69,7 @@ export class CrearFincaPage implements OnInit {
         departamento: '',
         ciudad: '',
         corregimiento: '',
+        vereda_sector: '',
         coordenadas: '',
         propietario: this.usuarioId
       };
@@ -98,6 +99,7 @@ export class CrearFincaPage implements OnInit {
       departamento: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       corregimiento: ['', [Validators.required]],
+      vereda_sector: ['', [Validators.required]],
     });
 
     this.dptoSub = this.getDpto().subscribe(dptos => {
@@ -207,6 +209,7 @@ setOpen(isOpen : boolean, num : any) {
       this.finca.departamento = this.form.getRawValue().departamento;
       this.finca.ciudad = this.form.getRawValue().ciudad;
       this.finca.corregimiento = this.form.getRawValue().corregimiento;
+      this.finca.vereda_sector = this.form.getRawValue().vereda_sector;
       this.finca.id = this.finca.nombre +  '_' + this.finca.areaFinca + this.finca.areaGanaderia + '_' + this.finca.corregimiento + this.randomId;
 
       this.nuevaImagen()

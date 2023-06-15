@@ -109,9 +109,20 @@
         <ion-input formControlName="corregimiento"></ion-input>
       </ion-item>
 
-      <!---------------------------------- Error de Validadores Ciudad -------------------------------------->
+      <!---------------------------------- Error de Validadores Corregimiento -------------------------------------->
       <span class="error" *ngIf="isSubmitted && errorControl.corregimiento.errors?.required">
         El corregimiento es obligatorio.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
+      <ion-item>
+        <ion-label position="stacked">Vereda / Sector</ion-label>
+        <ion-input formControlName="vereda_sector"></ion-input>
+      </ion-item>
+
+      <!---------------------------------- Error de Validadores vereda_sector -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.vereda_sector.errors?.required">
+        La vereda / sector es obligatorio.
       </span>
       <!---------------------------------------------------------------------------------------------->
 

@@ -50,7 +50,7 @@ export class DatosProduccionPage implements OnInit {
         nombre: '',
         genero: '',
         foto: '',
-        lote: '',
+        ubicacion: '',
         raza: '',
         grupoEtario: '',
         fechaNacimiento: '',

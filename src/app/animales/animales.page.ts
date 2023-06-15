@@ -23,7 +23,7 @@ export class AnimalesPage implements OnInit {
         nombre: '',
         genero: '',
         foto: '',
-        lote: '',
+        ubicacion: '',
         raza: '',
         grupoEtario: '',
         fechaNacimiento: '',

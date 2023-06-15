@@ -3,7 +3,7 @@ export interface Animal {
     nombre: string;
     genero: string;
     foto: string;
-    lote: string;
+    ubicacion: string;
     raza: string;
     grupoEtario: string;
     fechaNacimiento: string;

@@ -31,6 +31,7 @@ export class FincaPage implements OnInit {
         departamento: '',
         ciudad: '',
         corregimiento: '',
+        vereda_sector: '',
         coordenadas: '',
         propietario: ''
       };

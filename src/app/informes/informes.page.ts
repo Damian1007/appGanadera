@@ -32,7 +32,6 @@ export class InformesPage implements OnInit {
   eventosAux : any[];
 
   isSubmitted = false;
-  prueba = false;
   tipoInforme : any;
   fincaId : any;
   fincaNombre : string;
@@ -56,7 +55,7 @@ export class InformesPage implements OnInit {
       nombre: '',
       genero: '',
       foto: '',
-      lote: '',
+      ubicacion: '',
       raza: '',
       grupoEtario: '',
       fechaNacimiento: '',
@@ -147,7 +146,6 @@ export class InformesPage implements OnInit {
         
         case 'A':
           this.informe.crearToExcel(this.animales, 'Animales ', this.fincaNombre);
-          this.prueba = true;
           break;
 
         case 'PC':

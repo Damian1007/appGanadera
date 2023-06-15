@@ -32,6 +32,7 @@ export class FincaService {
       departamento: finca.departamento,
       ciudad: finca.ciudad,
       corregimiento: finca.corregimiento,
+      vereda_sector: finca.vereda_sector,
       coordenadas: finca.coordenadas
     });
   }

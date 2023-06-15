@@ -11,7 +11,7 @@ export class InformesService {
     private file : File
   ) { }
 
-  async crearToExcelAll(data1 : any, data2 : any, data3 : any, data4 : any, data5 : any, filename : any) {
+  crearToExcelAll(data1 : any, data2 : any, data3 : any, data4 : any, data5 : any, filename : any) {
     {
       const ws1: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data1);
       const ws2: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data2);
@@ -32,7 +32,7 @@ export class InformesService {
     }
   }
 
-  async crearToExcel(data : any, filename : any, finca : any) {
+  crearToExcel(data : any, filename : any, finca : any) {
     {
       const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data); 
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -50,8 +50,8 @@ export class InformesService {
     var fileExtension = '.xlsx';
     
     var data: Blob = new Blob([buffer], {type : fileType});
-
-    this.file.writeFile('file:///storage/emulated/0/Android/data/io.ionic.appGanadera/', filename + fileExtension, data, { replace: true })
+    
+    this.file.writeFile('file:///storage/emulated/0/Android/data/io.ionic.appGanadera/' , filename + fileExtension, data, { replace: true })
     .then(() => {
       alert("Informe generado con exito, consulte la carpeta (Almacenacimento interno/Android/data/io.ionic.appGanadera)");
     }, (err) => {
