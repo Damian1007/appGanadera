@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "771917770388",
+    "project_id": "app-ganadera-64d0f",
+    "storage_bucket": "app-ganadera-64d0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771917770388:android:d7dc0c220e2733c7578e81",
+        "android_client_info": {
+          "package_name": "io.ionic.appGanadera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771917770388-fqdc4v6fthqi8jr8vc0fu7uorn7b8u4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlcYzmoFpub1lJp1uHbd0P5Z-y3DJ987U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771917770388-fqdc4v6fthqi8jr8vc0fu7uorn7b8u4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
