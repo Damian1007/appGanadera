@@ -18,7 +18,7 @@
 
     <!----------------------------------- Modal ------------------------------------------->
   
-    <ion-modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
+    <ion-modal [isOpen]="isModalOpen" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-header>
           <ion-toolbar>
@@ -31,8 +31,7 @@
             <ion-list>
               <ion-item>
                 <ion-label position="stacked">Leche en litros</ion-label>
-                <ion-note class="nota">(Se permiten decimales)</ion-note>
-                <ion-input formControlName="leche"></ion-input>
+                <ion-input formControlName="leche" placeholder="Se permiten decimales"></ion-input>
               </ion-item>
 
               <!---------------------------------- Error de Validadores Leche -------------------------------------->

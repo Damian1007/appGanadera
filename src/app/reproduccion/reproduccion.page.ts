@@ -51,6 +51,8 @@ export class ReproduccionPage implements OnInit {
   fechaValor = '';
   fechaProbable = new Date();
   grupoEtario = '';
+  pesoCria = '0';
+  fotoCria = 'assets/icon/imagen_camara.png';
 
   razas : any[];
   razasAux : any[];
@@ -97,14 +99,14 @@ export class ReproduccionPage implements OnInit {
     this.animal = {
       nombre: '',
       genero: '',
-      foto: "assets/icon/imagen_camara.png",
+      foto: '',
       ubicacion: '',
       raza: '',
       grupoEtario: '',
       fechaNacimiento: '',
       padre: '',
       madre: '',
-      pesoActual: '0'
+      pesoActual: ''
     };
 
     this.setTiempo();
@@ -118,16 +120,17 @@ export class ReproduccionPage implements OnInit {
     });
   
     this.form2 = this.formBuilder.group({
+      id: [''],
       nombre: ['', [Validators.required]],
       genero: ['', [Validators.required]],
-      foto: ['assets/icon/imagen_camara.png'],
+      foto: [''],
       ubicacion: ['', [Validators.required]],
       raza: ['', [Validators.required]],
       grupoEtario: [''],
       fechaNacimiento: [''],
       padre: [''],
       madre: [''],
-      pesoActual: ['0'],
+      pesoActual: [''],
     });
   }
 
@@ -322,6 +325,9 @@ export class ReproduccionPage implements OnInit {
 
   agregarParto() {
     this.isSubmitted = true;
+
+    this.form2.get('id').setValue(this.generarUID(), { onlySelf: true});
+
     this.evento.tipo = 'Parto';
     this.evento.fechaParto = this.fechaValor;
     this.evento.nombreCria = this.form2.getRawValue().nombre;
@@ -331,8 +337,10 @@ export class ReproduccionPage implements OnInit {
     } else {
       this.grupoEtario = 'Ternera ordeño';
     }
+    this.form2.get('foto').setValue(this.fotoCria, { onlySelf: true});
     this.form2.get('grupoEtario').setValue(this.grupoEtario, { onlySelf: true});
     this.form2.get('fechaNacimiento').setValue(this.fechaValor, { onlySelf: true});
+    this.form2.get('pesoActual').setValue(this.pesoCria, { onlySelf: true});
 
     this.alertas.cambio = 'Agrego el nacimiento de ' + this.evento.nombreCria;
     this.alertas.foto = 'assets/icon/Reproduccion 100x 100.png';
@@ -363,6 +371,19 @@ export class ReproduccionPage implements OnInit {
     } else {
         this.form.markAllAsTouched();
     }
+  }
+
+  generarUID(){
+    const n = this.form2.getRawValue().nombre;
+    let d = new Date().getTime();
+
+    let uid = '_xxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+
+    return uid = n + uid;
   }
 
   get errorControl() {
