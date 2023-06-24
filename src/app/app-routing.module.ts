@@ -65,6 +65,10 @@ const routes: Routes = [
     path: 'historia',
     loadChildren: () => import('./historia/historia.module').then( m => m.HistoriaPageModule)
   },
+  {
+    path: 'repositorio-links',
+    loadChildren: () => import('./repositorio-links/repositorio-links.module').then( m => m.RepositorioLinksPageModule)
+  },
 ];
 
 @NgModule({

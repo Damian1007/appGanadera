@@ -19,6 +19,7 @@ export class AppComponent {
     { title: 'Seleccionar Finca', url: 'seleccionar-finca', icon: 'home' },
     { title: 'Perfil de Usuario', url: 'usuario', icon: 'person-circle' },
     { title: 'Miembros', url: 'miembros', icon: 'people' },
+    { title: 'Conocimiento WEB', url: 'repositorio-links', icon: 'book' },
   ];
 
   constructor(
