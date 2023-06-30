@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-list *ngIf="noFincas == false">
-    <ion-item *ngFor="let finca of fincasSelect" lines="full" (click)="getId(finca.id)">
+    <ion-item *ngFor="let finca of fincas" lines="full" (click)="getId(finca.id)">
       <ion-thumbnail  class="icono" slot="start">
         <img src={{finca.foto}}>
       </ion-thumbnail >

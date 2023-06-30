@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import { doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
@@ -42,6 +42,11 @@ export class AutentificarService {
   getUsuario(usuarioId : any): Observable<Usuario> {
     const usuarioDocRef = doc(this.firestore, `usuarios/${usuarioId}`);
     return docData(usuarioDocRef) as Observable<Usuario>;
+  }
+
+  getUsuarios(): Observable<Usuario[]> {
+    const usuarioRef = collection(this.firestore, `usuario`);
+    return collectionData(usuarioRef, { idField: 'id'}) as Observable<Usuario[]>;
   }
 
   updateUsuario(usuario : Usuario, usuarioId : any) {

@@ -24,8 +24,48 @@
     </ion-item>
   </ion-list>
 
-  <!-- <ion-button shape="circle" >
+  <form *ngIf="nuevoMiembro" [formGroup]="form" novalidate (ngSubmit)="agregarMiembro()">
+    <ion-list class="nuevo">
+      <ion-item>
+        <ion-label position="stacked">Correo Electronico</ion-label>
+        <ion-input formControlName="correo"></ion-input>
+      </ion-item>
+
+      <!---------------------------------- Error de Validadores Correo -------------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.required">
+        El correo es obligatorio.
+      </span>
+
+      <span class="error" *ngIf="isSubmitted && errorControl.correo.errors?.pattern">
+        Debe ingresar un correo valido.
+      </span>
+      <!---------------------------------------------------------------------------------------------->
+
+      <ion-item>
+        <ion-label position="stacked">Rol</ion-label>
+        <ion-select formControlName="rol" placeholder="Selecciona un Rol">
+          <ion-select-option value="Mayordomo">Mayordomo</ion-select-option>
+          <ion-select-option value="Trabajador">Trabajador</ion-select-option>
+          <ion-select-option value="Visitante">Visitante</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!------------------------------- Error de Validadores Rol ----------------------------------->
+      <span class="error" *ngIf="isSubmitted && errorControl.rol.errors?.required">
+        El rol es obligatorio.
+      </span>
+      <!----------------------------------------------------------------------------------------------------->
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">Agregar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-button shape="circle" (click)="nuevoMiembro = true">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-  </ion-button> -->
+  </ion-button>
 
 </ion-content>

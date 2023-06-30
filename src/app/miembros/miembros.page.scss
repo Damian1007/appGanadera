@@ -8,13 +8,25 @@
     font-size: 16px;
 }
 
+.error {
+    position: relative;
+    padding-left: 16px;
+}
+
+.nuevo{
+    padding-top: 10%;
+    padding: 5%;
+}
+
 ion-button[shape=circle] {
-    position: absolute;
+    position: fixed;
+
+    --background: #3880ff;
 
     --border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 
-    right: 15px;
-    bottom: 5%;
+    bottom: 2%;
+    right: 2%;
 }

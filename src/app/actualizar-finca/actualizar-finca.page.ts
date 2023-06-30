@@ -59,6 +59,7 @@ export class ActualizarFincaPage implements OnInit {
     public loadingController : LoadingController
   ) { 
       this.finca = {
+        id: this.fincaId,
         nombre: '',
         orientacion: '',
         areaFinca: '',
@@ -108,6 +109,7 @@ export class ActualizarFincaPage implements OnInit {
         coordenadas: finca.coordenadas
       });
       this.mostrarFoto = finca.foto;
+      this.finca.propietario = finca.propietario;
 
       this.usuarioSub = this.autentificarService.getUsuario(this.usuarioId).subscribe(usuario => {
         this.alertas.usuario = usuario.nombre;
@@ -222,7 +224,7 @@ setOpen(isOpen : boolean, num : any) {
       this.nuevaImagen()
       .then(() => {
         
-        this.fincaService.updateFinca(this.finca, this.fincaId)
+        this.fincaService.updateFinca(this.finca)
         .then(() => {
 
           this.alertasService.addAlerta(this.alertas, this.fincaId);
@@ -231,15 +233,15 @@ setOpen(isOpen : boolean, num : any) {
           this.router.navigate(['/tabs/finca'], { replaceUrl: true });
         })
         .catch(error => {
-          console.log('Error al Actualizar finca', error);
           this.loading.dismiss();
           this.presentToastError();
+          console.log('Error al Actualizar finca', error);
         });
       })
       .catch(error => {
-        console.log('Error al subir la imagen', error);
         this.loading.dismiss();
         this.presentToastError2();
+        console.log('Error al subir la imagen', error);
       });
     } else {
       this.form.markAllAsTouched();

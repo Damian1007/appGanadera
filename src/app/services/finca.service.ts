@@ -21,8 +21,8 @@ export class FincaService {
     this.miembroService.addMiembro(finca.id, miembro);
   }
 
-  async updateFinca(finca : Finca, id : any) {
-    const fincaDocRef = doc(this.firestore, `fincas/${id}`);
+  async updateFinca(finca : Finca) {
+    const fincaDocRef = doc(this.firestore, `fincas/${finca.id}`);
     await updateDoc(fincaDocRef, {
       nombre: finca.nombre,
       orientacion: finca.orientacion,
@@ -33,7 +33,8 @@ export class FincaService {
       ciudad: finca.ciudad,
       corregimiento: finca.corregimiento,
       vereda_sector: finca.vereda_sector,
-      coordenadas: finca.coordenadas
+      coordenadas: finca.coordenadas,
+      propietario: finca.propietario
     });
   }
 

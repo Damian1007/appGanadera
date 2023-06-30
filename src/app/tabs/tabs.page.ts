@@ -12,4 +12,8 @@ export class TabsPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewDidLeave() {
+    //console.log("finca");
+  }
+
 }

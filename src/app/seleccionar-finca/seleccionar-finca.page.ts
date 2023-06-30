@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class SeleccionarFincaPage implements OnInit {
 
-  fincasSelect : Finca[] = [];
+  fincas : Finca[];
   usuarioId = localStorage.getItem("usuarioId");
   fincaSub : Subscription;
   miembroSub : Subscription;
@@ -26,7 +26,21 @@ export class SeleccionarFincaPage implements OnInit {
     private router : Router,
     private miembrosServices : MiembrosService
   ) 
-  {  }
+  { 
+    this.fincas = [{
+      nombre: '',
+      orientacion: '',
+      areaFinca: '',
+      areaGanaderia: '',
+      foto: '',
+      departamento: '',
+      ciudad: '',
+      corregimiento: '',
+      vereda_sector: '',
+      coordenadas: '',
+      propietario: ''
+    }];
+  }
 
   ngOnInit(){
     this.menuCtrl.enable(true);
@@ -35,9 +49,10 @@ export class SeleccionarFincaPage implements OnInit {
   ionViewWillEnter(){
     this.fincaSub = this.fincaService.getFincas().subscribe(fincasGet => {
 
-      this.fincasSelect = fincasGet.filter( finca => finca.propietario == this.usuarioId);
+      this.fincas = fincasGet.filter( finca => finca.propietario == this.usuarioId);
       this.noFincas = false;
-      //console.log(this.fincasSelect);
+      
+
       
     });
   }
@@ -58,6 +73,7 @@ export class SeleccionarFincaPage implements OnInit {
       // });
 
   ionViewDidLeave(){
+    //console.log("selec");
     this.fincaSub.unsubscribe();
     //this.miembroSub.unsubscribe();
     

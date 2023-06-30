@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
 
       this.autentificarService.iniciarSesion(this.form.getRawValue().correo, this.form.getRawValue().contrasena)
       .then(() => {
-
+        
         this.loading.dismiss();
         this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
       })
