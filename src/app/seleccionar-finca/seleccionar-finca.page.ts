@@ -73,7 +73,7 @@ export class SeleccionarFincaPage implements OnInit {
       // });
 
   ionViewDidLeave(){
-    //console.log("selec");
+    console.log("selec fuera");
     this.fincaSub.unsubscribe();
     //this.miembroSub.unsubscribe();
     
@@ -81,6 +81,6 @@ export class SeleccionarFincaPage implements OnInit {
 
   getId(id : any) {
     localStorage.setItem('id', id);
-    this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+    this.router.navigate(['/finca'], { replaceUrl: true });
   }
 }

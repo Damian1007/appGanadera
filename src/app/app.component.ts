@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { AutentificarService } from './services/autentificar.service';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Usuario } from './interfaces/usuario';
 
 @Component({
   selector: 'app-root',
@@ -12,52 +8,8 @@ import { Usuario } from './interfaces/usuario';
 
 export class AppComponent {
 
-  usuarioSub : Subscription;
-  usuario : Usuario;
-  
-  public appPages = [
-    { title: 'Seleccionar Finca', url: 'seleccionar-finca', icon: 'home' },
-    { title: 'Perfil de Usuario', url: 'usuario', icon: 'person-circle' },
-    { title: 'Miembros', url: 'miembros', icon: 'people' },
-    { title: 'Conocimiento WEB', url: 'repositorio-links', icon: 'book' },
-  ];
+  constructor() {
 
-  constructor(
-    private autentificarService : AutentificarService,
-    private router : Router
-  ) {
-    
-    if(localStorage.getItem("usuarioId")){
-      this.usuarioSub = this.autentificarService.getUsuario(localStorage.getItem("usuarioId")).subscribe(usuario => {
-        this.usuario = usuario;
-        //console.log(usuario);
-      });
-    }
-  }
-
-  seleccionar() {
-    this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
-  }
-
-  perfilUsuario() {
-    this.router.navigate(['/usuario'], { replaceUrl: true });
-  }
-
-  miembros() {
-    this.router.navigate(['/miembros'], { replaceUrl: true });
-  }
-
-  web() {
-    this.router.navigate(['/repositorio-links'], { replaceUrl: true });
-  }
-
-  async cerrarSesion() {
-    await this.autentificarService.cerrarSesion();
-    
-    if(this.usuarioSub){
-      this.usuarioSub.unsubscribe();
-    }
-    this.router.navigate(['/login'], { replaceUrl: true });
   }
 
 }

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -18,21 +19,21 @@ import { NgChartsModule } from 'ng2-charts';
 import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SideMenuComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule, 
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideStorage(() => getStorage()),
     AuthGuardModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
   providers: [
     NgChartsModule,
     File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
+  exports: [SideMenuComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

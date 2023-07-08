@@ -47,7 +47,7 @@ export class AnimalesPage implements OnInit {
 
   getId(id : any) {
     localStorage.setItem('animalId', id);
-    this.router.navigate(['/tabs/animal'], { replaceUrl: true });
+    this.router.navigate(['/animal'], { replaceUrl: true });
   }
 
 }
