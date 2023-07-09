@@ -28,6 +28,22 @@ export class SideMenuComponent implements OnInit {
     }
   }
 
+  seleccionar() {
+    this.router.navigate(['/seleccionar-finca'], { replaceUrl: true });
+  }
+
+  perfil() {
+    this.router.navigate(['/usuario'], { replaceUrl: true });
+  }
+
+  miembros() {
+    this.router.navigate(['/miembros'], { replaceUrl: true });
+  }
+
+  web() {
+    this.router.navigate(['/repositorio-links'], { replaceUrl: true });
+  }
+
   async cerrarSesion() {
     await this.autentificarService.cerrarSesion();
     

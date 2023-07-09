@@ -1,4 +1,11 @@
-.tabs{
-    position: sticky;
-    
+.tabs {
+    display: block;
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: auto;
+    contain: none;
 }

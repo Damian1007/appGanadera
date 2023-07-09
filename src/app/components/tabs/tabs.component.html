@@ -1,26 +1,26 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button [routerLink]="['/finca']">
+<ion-tabs class="tabs">
+  <ion-tab-bar>
+    <ion-tab-button (click)="finca()">
       <ion-icon name="home"></ion-icon>
       <ion-label>Finca</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['/animales']">
+    <ion-tab-button (click)="animales()">
       <ion-icon name="egg"></ion-icon>
       <ion-label>Animales</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['/datos-produccion']">
+    <ion-tab-button (click)="produccion()">
       <ion-icon name="restaurant"></ion-icon>
       <ion-label>Producción</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['/alertas']">
+    <ion-tab-button (click)="alertas()">
       <ion-icon name="alert"></ion-icon>
       <ion-label>Alertas</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [routerLink]="['/informes']">
+    <ion-tab-button (click)="informes()">
       <ion-icon name="stats-chart"></ion-icon>
       <ion-label>Informes</ion-label>
     </ion-tab-button>

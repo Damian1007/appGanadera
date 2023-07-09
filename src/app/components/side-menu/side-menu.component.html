@@ -13,22 +13,22 @@
       </ng-container>                      
 
       <ion-menu-toggle auto-hide="false">
-        <ion-item [routerLink]="['seleccionar-finca']" lines="none" detail="false" button="true" routerLinkActive="selected">
+        <ion-item (click)="seleccionar()" lines="none" detail="false" button="true" routerLinkActive="selected">
           <ion-icon slot="start" icon="home"></ion-icon>
           <ion-label>Seleccionar Finca</ion-label>
         </ion-item>
 
-        <ion-item [routerLink]="['usuario']" lines="none" detail="false" button="true" routerLinkActive="selected">
+        <ion-item (click)="perfil()" lines="none" detail="false" button="true" routerLinkActive="selected">
           <ion-icon slot="start" icon="person-circle"></ion-icon>
           <ion-label>Perfil de Usuario</ion-label>
         </ion-item>
 
-        <ion-item [routerLink]="['miembros']" lines="none" detail="false" button="true" disabled="true" routerLinkActive="selected">
+        <ion-item (click)="miembros()" lines="none" detail="false" button="true" disabled="true" routerLinkActive="selected">
           <ion-icon slot="start" icon="people"></ion-icon>
           <ion-label>Miembros</ion-label>
         </ion-item>
 
-        <ion-item [routerLink]="['repositorio-links']" lines="none" detail="false" button="true" routerLinkActive="selected">
+        <ion-item (click)="web()" lines="none" detail="false" button="true" routerLinkActive="selected">
           <ion-icon slot="start" icon="book"></ion-icon>
           <ion-label>Conocimiento WEB</ion-label>
         </ion-item>

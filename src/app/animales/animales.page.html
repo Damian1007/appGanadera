@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-
+  
   <ion-list>
     <ion-item *ngFor="let animal of animales" lines="full" (click)="getId(animal.id)">
       <ion-thumbnail class="icono" class="icono" slot="start">
@@ -36,5 +36,9 @@
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
 
+  <br>
+  <br>
+  <br>
   <app-tabs></app-tabs>
 </ion-content>
+

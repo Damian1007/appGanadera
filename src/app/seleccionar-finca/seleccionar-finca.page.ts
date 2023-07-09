@@ -15,10 +15,10 @@ export class SeleccionarFincaPage implements OnInit {
 
   fincas : Finca[];
   usuarioId = localStorage.getItem("usuarioId");
-  fincaSub : Subscription;
+  fincasSub : Subscription;
   miembroSub : Subscription;
 
-  noFincas : boolean = true;
+  noFincasBool : boolean = true;
 
   constructor(
     private fincaService : FincaService,
@@ -28,6 +28,7 @@ export class SeleccionarFincaPage implements OnInit {
   ) 
   { 
     this.fincas = [{
+      id: '',
       nombre: '',
       orientacion: '',
       areaFinca: '',
@@ -44,43 +45,46 @@ export class SeleccionarFincaPage implements OnInit {
 
   ngOnInit(){
     this.menuCtrl.enable(true);
+    //this.fincas.pop();
+    //this.fincas = [];
   }
 
   ionViewWillEnter(){
-    this.fincaSub = this.fincaService.getFincas().subscribe(fincasGet => {
-
-      this.fincas = fincasGet.filter( finca => finca.propietario == this.usuarioId);
-      this.noFincas = false;
+    this.fincasSub = this.fincaService.getFincas().subscribe(fincasGet => {
+      this.fincas = fincasGet;
       
+      fincasGet.map((finca : any) => {
+        this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe(miembro => {
+          //console.log(miembro);
+          if(!miembro) {
 
-      
+            this.fincas.splice(fincasGet.indexOf(finca), 1);
+
+            // let Aux = fincasGet.slice(fincasGet.indexOf(finca), fincasGet.indexOf(finca) + 1);
+            // this.fincas.push(Aux.pop());
+
+            setTimeout(()=>{
+              this.noFincasBool = false;
+            },500)
+          }
+        });
+      });
     });
   }
 
-      // fincasGet.map((finca : any) => {
-      //   this.miembroSub = this.miembrosServices.getMiembro(finca.id, this.usuarioId).subscribe( miembro => {
-      //     //console.log(miembro, 'miembro');
-      //     if(miembro) {
-  
-      //       let Aux = fincasGet.slice(fincasGet.indexOf(finca), fincasGet.indexOf(finca) + 1);
-      //       this.fincas.push(Aux.pop());
-  
-      //       //console.log(this.fincas);
-      //       this.noFincas = false;
-      //     }
-          
-      //   });
-      // });
-
   ionViewDidLeave(){
-    console.log("selec fuera");
-    this.fincaSub.unsubscribe();
-    //this.miembroSub.unsubscribe();
-    
+    //console.log("selec fuera");
+    this.miembroSub.unsubscribe();
+    this.fincasSub.unsubscribe();
   }
 
   getId(id : any) {
     localStorage.setItem('id', id);
+    //console.log(id);
     this.router.navigate(['/finca'], { replaceUrl: true });
+  }
+
+  crear() {
+    this.router.navigate(['/crear-finca'], { replaceUrl: true });
   }
 }

@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="noFincas == false">
+  <ion-list *ngIf="noFincasBool == false">
     <ion-item *ngFor="let finca of fincas" lines="full" (click)="getId(finca.id)">
       <ion-thumbnail  class="icono" slot="start">
         <img src={{finca.foto}}>
@@ -25,7 +25,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-button shape="circle" color="primary" routerLink="/crear-finca" routerDirection="forward">
+  <ion-button shape="circle" color="primary" (click)="crear()">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
 </ion-content>
