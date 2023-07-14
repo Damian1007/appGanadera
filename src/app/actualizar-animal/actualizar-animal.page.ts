@@ -262,7 +262,7 @@ export class ActualizarAnimalPage implements OnInit {
           this.alertasService.addAlerta(this.alertas, this.fincaId);
           this.loading.dismiss();
           this.presentToast();
-          this.router.navigate(['/tabs/animal'], { replaceUrl: true });
+          this.router.navigate(['/animal'], { replaceUrl: true });
         })
         .catch(error => {
           console.log('Error al Actualizar animal', error);

@@ -230,7 +230,7 @@ setOpen(isOpen : boolean, num : any) {
           this.alertasService.addAlerta(this.alertas, this.fincaId);
           this.loading.dismiss();
           this.presentToast();
-          this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+          this.router.navigate(['/finca'], { replaceUrl: true });
         })
         .catch(error => {
           this.loading.dismiss();

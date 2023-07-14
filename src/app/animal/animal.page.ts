@@ -75,7 +75,7 @@ export class AnimalPage implements OnInit {
   eliminarAnimal() {
     this.presentToast();
     // this.animalService.deleteAnimal(this.fincaId, this.animalId)
-    // this.router.navigate(['/tabs/animales'], { replaceUrl: true });
+    // this.router.navigate(['/animales'], { replaceUrl: true });
   }
 
   salud() {

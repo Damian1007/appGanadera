@@ -158,7 +158,7 @@ export class MiembrosPage implements OnInit {
   getId(id : any) {
     //console.log(id);
     // localStorage.setItem('id', id);
-    // this.router.navigate(['/tabs/finca'], { replaceUrl: true });
+    // this.router.navigate(['/finca'], { replaceUrl: true });
   }
 
   get errorControl() {
