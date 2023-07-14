@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
+      <ion-back-button defaultHref="/animal"></ion-back-button>
     </ion-buttons>
 
     <ion-title>Reproducción</ion-title>
@@ -26,6 +26,10 @@
 
   <ion-button (click)="setOpen(true, 1)" expand="block">Nueva Monta</ion-button>
   
+  <br>
+  <br>
+  <br>
+  <app-tabs></app-tabs>
 
   <!---------------------------------------- Monta Modal ------------------------------------------------->
   <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">

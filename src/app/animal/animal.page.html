@@ -105,6 +105,11 @@
     <ion-button class="boton" expand="block" (click)="setOpen(true)">Mas Caracteristicas</ion-button>
   </ion-grid>
 
+  <br>
+  <br>
+  <br>
+  <app-tabs></app-tabs>
+
   <!------------------------------------------ Opciones Modal ----------------------------------------------->
   <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" [initialBreakpoint]="1" [breakpoints]="[0.5, 0.75, 1]" (willDismiss)="onWillDismiss($event)">
     <ng-template>

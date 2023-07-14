@@ -29,10 +29,6 @@ const routes: Routes = [
     data: { authGuardPipe : redirectUnauthorizedToLogin },
     loadChildren: () => import('./seleccionar-finca/seleccionar-finca.module').then( m => m.SeleccionarFincaPageModule)
   },
-  {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
 //----------------------------------------- TABS --------------------------------------------
   {
     path: 'finca',

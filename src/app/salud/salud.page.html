@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/animal"></ion-back-button>
+      <ion-back-button defaultHref="/animal"></ion-back-button>
     </ion-buttons>
     <ion-title>Historial Médico</ion-title>
   </ion-toolbar>
@@ -29,6 +29,11 @@
   <ion-button (click)="setOpen(true, 1)" shape="circle">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
+
+  <br>
+  <br>
+  <br>
+  <app-tabs></app-tabs>
 
   <!------------------------------------------------- Tipo Modal -------------------------------------------------------->
   <ion-modal #modal [isOpen]="isModalOpen" [backdropDismiss]="true" (willDismiss)="onWillDismiss($event)">
